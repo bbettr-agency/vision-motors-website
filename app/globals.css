@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: "Space Grotesk", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Sticky header offset for in-page anchor links. */
+  scroll-padding-top: 5rem;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background: #0b0b0b;
+  color: #ffffff;
+  font-family: var(--font-body);
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+::selection {
+  background: #c9a24b;
+  color: #0b0b0b;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0b0b0b;
+}
+::-webkit-scrollbar-thumb {
+  background: #26262c;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #c9a24b;
+}
+
+/* ───────────────────────────────────────────────────────────────────────────
+   Scroll reveal — progressive enhancement (see components/ui/reveal.tsx).
+
+   The `.js-reveal` class is added to <html> by an inline script in
+   app/layout.tsx before first paint. Without JavaScript the class is never
+   added, so nothing is ever hidden and all content renders normally.
+   ─────────────────────────────────────────────────────────────────────────── */
+[data-reveal] {
+  transition:
+    opacity 700ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.js-reveal [data-reveal="pending"] {
+  opacity: 0;
+  transform: translateY(1.5rem);
+}
+
+/*
+  Reduced motion — PIPELINE/gates.md accessibility requirement.
+  Reveals jump straight to their end state instead of animating.
+*/
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .js-reveal [data-reveal="pending"] {
+    opacity: 1;
+    transform: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
