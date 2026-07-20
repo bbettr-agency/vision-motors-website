@@ -31,14 +31,18 @@ const sizes: Record<ButtonSize, string> = {
 };
 
 const variants: Record<ButtonVariant, string> = {
-  // `primary` IS the brass CTA — accent colour is reserved for this and nothing else.
+  // `primary` IS the brass CTA. It must remain the single strongest visual
+  // element on the page, on light surfaces as well as dark — hence the solid
+  // brass fill and the only shadow strong enough to lift off a cream section.
   primary:
-    "bg-brand-accent text-brand-ink hover:bg-brand-accentDark hover:shadow-accent hover:-translate-y-0.5",
+    "bg-brand-accent text-brand-ink shadow-accent hover:bg-brand-accentDark hover:-translate-y-0.5",
+  // Secondary on DARK surfaces.
   secondary:
-    "bg-white/5 text-white border border-white/15 backdrop-blur-md hover:bg-white/10 hover:border-brand-accent/50 hover:-translate-y-0.5",
-  ghost: "text-white/70 hover:text-white",
+    "bg-white/5 text-white border border-white/20 backdrop-blur-md hover:bg-white/10 hover:border-brand-accent/50 hover:-translate-y-0.5",
+  ghost: "text-white/75 hover:text-white",
+  // Secondary on LIGHT surfaces — warm border, never a grey outline.
   outline:
-    "border border-brand-ink/20 text-brand-ink hover:border-brand-ink/40 hover:bg-brand-ink/5",
+    "border border-brand-stone bg-white text-brand-ink shadow-soft hover:border-brand-accent/60 hover:-translate-y-0.5 hover:shadow-softLift",
 };
 
 export default function Button({

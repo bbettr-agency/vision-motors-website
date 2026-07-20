@@ -80,6 +80,75 @@ source. See §3 for the full list of what was deliberately withheld.
 
 ---
 
+## 2a. Visual system (v2 revision — 2026-07-20)
+
+**Feedback:** the first pass put every section on a near-black surface. Structurally sound, but
+the page read as one continuous black slab — flat, dense, and slightly intimidating for an
+ordinary vehicle owner with a broken car.
+
+**Change:** the visual system only. **No layout, copy, section order or functionality changed.**
+
+### What changed
+
+1. **A warm light family was added** — `cream #F7F5F0`, `sand #F5F2EA`, `linen #EEEAE1`, with
+   `stone #E3DFD5` for borders. Warm, never clinical white: warm neutrals sit naturally beside
+   brass, whereas a cool white fights it and reads as a generic mechanic template.
+
+2. **Blue was retired entirely.** The first pass carried a steel blue (`#4A7BA7`) as `primary`
+   for icons and links. Against warm cream it read as a foreign colour. The palette is now
+   black · warm neutral · brass — which is what "premium black and gold" actually means.
+   Brass on light surfaces uses a darkened `accentInk #7E611B` so it passes contrast as text.
+
+3. **Section rhythm** — nine alternating zones, section order untouched:
+
+   | Zone | Sections | Surface |
+   |---|---|---|
+   | dark anchor | Hero · Trust strip | ink / charcoal |
+   | light | Symptom band · Services | cream / linen |
+   | dark anchor | Diagnostics | ink |
+   | light | Workshop proof | cream |
+   | dark | Why us | charcoal |
+   | light | Your rights | sand |
+   | dark anchor | Testimonials | ink |
+   | light | Process · FAQ | cream / linen |
+   | dark anchor | Final CTA · Footer | ink |
+
+   Measured split: **53% light / 47% dark** by pixel height. Previously ~100% dark.
+
+4. **Cards** — white with warm borders and a barely-there lift on light sections; `graphite
+   #1E1E24` on dark sections, raised from `#16161A` so they actually separate from the ink
+   behind them (previously cards and section were nearly the same value).
+
+5. **Hero** — stays dark but opens up: a warm brass wash replaces the flat black field, the
+   photograph sits on a lifted charcoal panel with a slight brightness lift rather than floating
+   in black, and the section fades into charcoal so it eases into the trust strip.
+
+6. **Final CTA form is now a white panel on the dark anchor** — the strongest focal point on the
+   page, and form fields are simply easier to complete on light.
+
+7. **Typography** — body line-height 1.6 → 1.7/1.75, section padding `py-20/28` → `py-24/32`,
+   more space around headings and cards, and muted greys lifted so nothing sits near the
+   contrast floor.
+
+8. **Gold discipline held** — brass remains reserved for primary CTAs, small labels, key icons
+   and active states. It is never used as a large background area.
+
+### Verification
+
+- **Contrast: 66 unique text/background combinations checked programmatically across every
+  section. Zero failures. Lowest ratio 4.81:1** (WCAG AA needs 4.5:1 normal, 3:1 large).
+  Six failures were found during the pass and fixed at source rather than waived:
+  brass-on-linen eyebrows (4.20), hero reassurance line (4.47), dark image-slot brief (4.40),
+  form consent microcopy (3.69), footer legal placeholders (2.61) and the footer copyright row
+  (3.78).
+- Zero horizontal overflow at 360 / 390 / 768px; phone number never wraps.
+- One H1, no skipped heading levels, all images have alt text, no broken links or anchors.
+- Schema unchanged: `AutoRepair` + `FAQPage` + `WebSite`, still no rating schema.
+- Symptom → form prefill, form validation (200/422) and the demo success state all re-verified.
+- First-load JS **121 kB** (was 120 kB; +1 kB of utility classes). Budget 150 kB.
+
+---
+
 ## 3. CLIENT VERIFICATION QUEUE (blocking a truthful production launch)
 
 Nothing below appears on the site. Each is held in config with a `TODO(client)` marker.

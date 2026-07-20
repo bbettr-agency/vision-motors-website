@@ -29,8 +29,9 @@ strict TypeScript, zero hardcoded copy, accessible, and honest about what is not
 | | |
 |---|---|
 | Build / TypeScript / lint | Clean |
-| First-load JS | **120 kB** (budget < 150 kB) |
+| First-load JS | **121 kB** (budget < 150 kB) |
 | Mobile 360 / 390 / 768px | Zero horizontal overflow |
+| Visual system | v2 — alternating dark / warm-light rhythm, 53% light. All 66 contrast pairs pass AA. |
 | Routes | `/` · `/thank-you` (noindex) · `/api/booking` · `/sitemap.xml` · `/robots.txt` |
 | Booking form | **Demo mode** — validates and confirms, forwards nothing, labels itself clearly |
 | Schema | `AutoRepair` + `FAQPage` + `WebSite`. **No rating schema.** |
@@ -71,8 +72,16 @@ valuable sentence the business owns.
   deliberately avoids (there is no "guideline R7"; CPA s56 is not a warranty-choice protection).
 - **No rating displayed, no `aggregateRating` schema.** 4.2★ from 71 reviews with 8 one-star
   entries.
-- **Gold-on-black brand, brass reserved exclusively for the primary CTA.** Derived from the real
-  uniform embroidery, not from the current site's four unrelated CTA colours.
+- **Gold-on-black brand, brass reserved for primary CTAs, small labels, key icons and active
+  states — never large backgrounds.** Derived from the real uniform embroidery, not from the
+  current site's four unrelated CTA colours.
+- **The page alternates dark and warm-light sections (v2, 2026-07-20).** Section order is
+  unchanged; only surfaces differ. Nine zones, measured 53% light / 47% dark. The first pass was
+  all-dark and read as one continuous black slab. **Do not push it back toward all-dark, and do
+  not swap the warm neutrals (`cream`/`sand`/`linen`) for a cool white** — warm sits beside
+  brass, cool fights it and reads as a generic mechanic template.
+- **Blue is retired.** The steel blue that carried icons in v1 is gone; brass (`accentInk
+  #7E611B` on light, `accent #C9A24B` on dark) replaces it. Do not reintroduce a third hue.
 - **framer-motion is not used.** See `PROJECT_STATUS.md` §4.
 - **AdBlue/SCR removal is not on the site.** Emissions-defeat work; raised separately.
 
@@ -94,7 +103,13 @@ framer-motion was removed after `whileInView` proved non-functional under `LazyM
 `domAnimation` feature set, and the full bundle broke the 150 kB budget. Result:
 **155 kB → 120 kB**. Reintroducing an animation library will blow the budget.
 
-**3. Verification statuses**
+**3. The section rhythm and the contrast floor**
+`config/theme-config.ts` documents the palette, the per-pair contrast maths and the `rhythm`
+array recording which surface each section sits on. All 66 text/background combinations on the
+page pass WCAG AA, with the lowest at 4.81:1 — there is very little headroom, so any new muted
+grey or lowered opacity must be re-checked rather than eyeballed.
+
+**4. Verification statuses**
 Every unverified client fact is held in `config/` with a `TODO(client)` marker and a documented
 reason. `lib/schema.ts` is gated on these statuses — it omits unverified fields rather than
 guessing, because a wrong address in schema is worse than none. **Do not fill these in from

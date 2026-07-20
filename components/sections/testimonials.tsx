@@ -14,6 +14,10 @@ import Reveal from "@/components/ui/reveal";
 //     71 reviews with 8 one-star entries; leading with the number would surface
 //     the weakest asset. `aggregateRating` schema is also not emitted.
 //     See config/reviews-config.ts and lib/schema.ts.
+//
+//  v2 (visual only): dark anchor. Quotes carry better on dark — it reads as
+//  considered rather than clinical — and it separates the light process/FAQ
+//  zone below from the light rights section above.
 // ─────────────────────────────────────────────────────────────────────────────
 
 export default function Testimonials() {
@@ -27,30 +31,28 @@ export default function Testimonials() {
         className="max-w-2xl"
       />
 
-      <div className="mt-14 grid gap-6 md:grid-cols-2">
+      <div className="mt-16 grid gap-6 md:grid-cols-2">
         {reviewsConfig.map((review, index) => (
-          <Reveal as="figure"
+          <Reveal
             key={review.author}
-          delay={(index % 2) * 0.08}
-            className="flex flex-col rounded-2xl border border-white/[0.07] bg-brand-graphite p-8"
+            as="figure"
+            delay={(index % 2) * 0.08}
+            className="flex flex-col rounded-2xl border border-white/10 bg-brand-graphite p-9 shadow-card"
           >
-            <Quote
-              className="h-6 w-6 shrink-0 text-brand-accent/50"
-              aria-hidden
-            />
+            <Quote className="h-6 w-6 shrink-0 text-brand-accent/60" aria-hidden />
 
             <blockquote
               lang={review.language}
-              className="mt-5 flex-1 text-sm leading-relaxed text-white/70"
+              className="mt-6 flex-1 text-sm leading-[1.8] text-brand-bone/80"
             >
               {review.quote}
             </blockquote>
 
-            <figcaption className="mt-6 border-t border-white/10 pt-5">
+            <figcaption className="mt-7 border-t border-white/10 pt-6">
               <span className="block font-display text-sm font-semibold text-white">
                 {review.author}
               </span>
-              <span className="mt-0.5 block text-xs text-white/40">
+              <span className="mt-1 block text-xs text-brand-bone/55">
                 {review.role}
               </span>
             </figcaption>

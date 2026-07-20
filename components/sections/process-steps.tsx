@@ -1,6 +1,5 @@
 "use client";
 
-
 import { processConfig } from "@/config/process-config";
 import SectionContainer from "@/components/layout/section-container";
 import SectionHeading from "@/components/ui/section-heading";
@@ -12,32 +11,37 @@ import Reveal from "@/components/ui/reveal";
  *
  * ❌ No timeframes. Turnaround is unverified and one 1-star Google review
  *    specifically cites a 6-week wait. See config/process-config.ts.
+ *
+ * v2 (visual only): light. This is a reassurance section for someone deciding
+ * whether to make contact — it should feel open and easy to scan, not weighty.
  */
 export default function ProcessSteps() {
   return (
-    <SectionContainer className="bg-brand-charcoal">
+    <SectionContainer className="bg-brand-cream">
       <SectionHeading
+        tone="light"
         eyebrow="How it works"
         title="Four steps, no surprises"
         align="center"
         className="max-w-2xl"
       />
 
-      <ol className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+      <ol className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
         {processConfig.map((step, index) => (
-          <Reveal as="li"
+          <Reveal
             key={step.number}
-          delay={index * 0.08}
-            className="relative rounded-2xl border border-white/[0.07] bg-brand-graphite p-7"
+            as="li"
+            delay={index * 0.08}
+            className="relative rounded-2xl border border-brand-stone bg-white p-8 shadow-soft"
           >
-            <span className="font-display text-3xl font-extrabold text-brand-accent/30">
+            <span className="font-display text-3xl font-extrabold text-brand-accent">
               {step.number}
             </span>
 
-            <h3 className="mt-4 font-display text-base font-semibold text-white">
+            <h3 className="mt-5 font-display text-base font-semibold leading-snug text-brand-ink">
               {step.title}
             </h3>
-            <p className="mt-2.5 text-sm leading-relaxed text-white/55">
+            <p className="mt-3 text-sm leading-[1.7] text-brand-inkSoft">
               {step.description}
             </p>
           </Reveal>

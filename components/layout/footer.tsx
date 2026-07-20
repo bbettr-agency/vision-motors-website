@@ -129,12 +129,12 @@ export default function Footer() {
                 link futureRoutes.privacy / futureRoutes.terms here.
               */}
               <li>
-                <span className="inline-flex min-h-[44px] items-center text-white/30" title="Pending — see PROJECT_STATUS.md">
+                <span className="inline-flex min-h-[44px] items-center text-white/55" title="Pending — see PROJECT_STATUS.md">
                   Privacy Policy (pending)
                 </span>
               </li>
               <li>
-                <span className="inline-flex min-h-[44px] items-center text-white/30" title="Pending — see PROJECT_STATUS.md">
+                <span className="inline-flex min-h-[44px] items-center text-white/55" title="Pending — see PROJECT_STATUS.md">
                   Terms of Service (pending)
                 </span>
               </li>
@@ -142,7 +142,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-14 flex flex-col gap-4 border-t border-white/10 pt-8 text-xs text-white/40 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-14 flex flex-col gap-4 border-t border-white/10 pt-8 text-xs text-white/55 sm:flex-row sm:items-center sm:justify-between">
           <p>
             © {new Date().getFullYear()} {siteConfig.legalName}. All rights
             reserved.
