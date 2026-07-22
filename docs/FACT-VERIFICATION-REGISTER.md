@@ -50,6 +50,10 @@
 | B9 | Selling point | Competitive pricing | ⚠️ Use with care. Never "cheapest". See E4 |
 | B10 | Selling point | Warranty on work completed | ⚠️ Existence confirmed; **terms are not**. See C1 |
 | B11 | Selling point | Friendly service / good customer service | Theme. Best expressed through real testimonials |
+| B12 | "Our RMI Approved Workshop" | Client's own `/services` page, verbatim | ⚠️ A **self-claim**, not evidence. Still needs a membership number (C2) |
+| B13 | "Ford Specialists on Duty" | Client's own `/services` page, verbatim | Client claims it themselves. Combined with the "RANGER & BT50" signage this is now well-supported — but scope it (C9) |
+| B14 | **ARASA** logo displayed | Client's own `/services` page, alt text "Asara" (typo for ARASA) | **The Automotive Remanufacturers' Association — the reconditioning-specific body. No competitor in the audited set claims it.** Membership still unevidenced (C2) |
+| B15 | "Family owned and operated" | Client's own `/services` page, verbatim | Human, credible, unclaimed by competitors |
 
 ---
 
@@ -57,7 +61,7 @@
 
 | # | Item | Why it matters | Blocking? |
 |---|---|---|---|
-| C1 | **Warranty terms in writing** — duration, mileage, coverage, exclusions, parts vs labour, whether it varies by repair type | Client lists it as a top selling point but no terms exist anywhere. A 1-star Google review describes a warranty claim being refused, so this is a live dispute risk as well as a truth risk. Interim wording: *"Ask our team about the warranty applicable to your repair."* Never in schema or FAQ until confirmed. | 🔴 **YES** |
+| C1 | **Warranty terms in writing** — duration, mileage, coverage, exclusions, parts vs labour, whether it varies by repair type | 🔥 **Now the highest-value open item.** The Pretoria market standard is **6 months / 10,000 km**, stated identically by three competitors. A Vision Motors testimonial says *"they even gave me a two years unlimited kilometers warranty after they rebuilt the motor."* If that is real policy it beats the market by a wide margin and belongs at the centre of the engine pages. But it appears **nowhere as a company offer**, and a 1-star review describes a refused claim. Interim: *"Ask our team about the warranty applicable to your repair."* Never in schema or FAQ until confirmed. | 🔴 **YES** |
 | C2 | **RMI / MIWA membership certificate + number** | Only logo *images* were supplied. A logo file is not evidence of membership. Needs certificate or number to check against the RMI register. | 🔴 **YES** |
 | C3 | **Role of 1197 Steve Biko Road** | Two premises must be modelled correctly in schema, on Contact, and in the GBP. Getting this wrong sends customers to the wrong building. | 🔴 **YES** |
 | C4 | **Founding year** | Own site says "since 1992" in one place and "almost 30 years" in another. If 1992 is right the business is 34 years old — unmatched locally and the strongest available trust signal. Currently unusable. | 🔴 **YES** |
@@ -75,6 +79,11 @@
 | C16 | **Realistic service areas** | Needed before any location content. Do not assume the suburb list in the brief. | 🟡 Medium |
 | C17 | **GHL webhook URL, GA4/GTM/Ads IDs** | Needed for Phase 5 only. | 🟢 Later |
 | C18 | **Legal pages** | Current site links to third-party generator URLs, almost certainly not POPIA-compliant. | 🟢 Later |
+| C19 | **Opening hours — three-way conflict** | Client onboarding says **07:30**; the Google Business Profile says **07:15**; MechanicBuddy says **07:00**. The site now publishes 07:30 (most recent direct instruction) but the **GBP must be corrected to match**. | 🟠 High |
+| C20 | **Postcode — 0031 vs 0084** | Onboarding says 0084 (now published). The GBP says **0031**. The client's own site publishes neither, which is the root cause of the NAP fragmentation. | 🟠 High |
+| C21 | **Do they actually work on Ford Ranger / BT-50 engines, and to what depth?** | The entire strongest SEO opportunity rests on this. The Engine Shop wall says "RANGER & BT50" and the site says "Ford Specialists on Duty", but **the words Ranger, Mazda, BT-50 and "Engine Shop" appear nowhere on the current website.** Scope it precisely: engine only, or full mechanical? Which years? | 🔴 **YES** — gates the flagship page |
+| C22 | **Ranger DPF / AdBlue work** | Genuinely unresolved whether SA-spec Rangers carry DPF/SCR. Available prevalence data comes almost entirely from delete vendors with a commercial incentive to overstate it. Verify from job cards. Separate from the E5 emissions-removal exclusion. | 🟡 Medium |
+| C23 | **Read the 8 one-star Google reviews** | 8 of 71 (11%). The cheapest available source of truth about where this business disappoints customers. Warranty and turnaround copy must not contradict them. | 🟠 High |
 
 ---
 
@@ -105,6 +114,13 @@
 | E8 | Manufacturer approval / authorised-dealer wording for any make | Displaying a brand logo on signage ≠ authorisation. Describe as "makes we work on" only. |
 | E9 | Staff qualifications, MERSETA/trade-test claims, years of service | Nothing supplied. |
 | E10 | Workshop capacity, bay count, vehicles-per-week figures | Nothing supplied. |
+| E11 | "5-star" RMI/MIWA grading | A **grading** claim, distinct from membership. Three competitors make it; **Vision Motors does not and never has.** Not without a grading document. |
+| E12 | "The 3.2 Ranger has a wet timing belt" | **False — the P5AT is chain-driven.** This is the error the top-ranking incumbent page makes. Never repeat it; correcting it is our advantage. |
+| E13 | "The 3.2 has a balance-shaft problem" | No credible source. An inline-five is inherently balanced. Likely a misremembering of the oil pump drive chain issue. |
+| E14 | Any Ranger overheating / fire recall | **That is the Ford Kuga story** (56 fires, R35m NCC fine, one death). Conflating them would be factually wrong and legally risky. |
+| E15 | "11,000-unit 2014 Ranger turbo recall" | Uncorroborated at any primary source. |
+| E16 | A standalone Mazda BT-50 specialist page or any current-model BT-50 claim | The **post-2020 BT-50 is an Isuzu D-Max twin with zero Ford content**, and Mazda SA discontinued it in March 2024 after 69 units in 2023. Any BT-50 claim must be scoped to **2011–2020**, which genuinely shares the Ranger P4AT/P5AT engines. |
+| E17 | "Two years unlimited km warranty" | Currently **a customer's recollection inside a testimonial**, not a company offer. Removed from the published testimonial. Blocked pending C1. |
 
 ---
 
@@ -119,3 +135,9 @@
 | 2026-07-22 | Brand mark found to be indigo `#290F74`, not gold (A8). Escalated as a client decision. |
 | 2026-07-22 | RMI/MIWA remain **unverified** — logo files only, no certificate (C2). |
 | 2026-07-22 | New conflict logged: email `vision@` vs `service@` (B2). |
+| 2026-07-22 | Research: **ARASA** membership logo found on client's own site (B14) — reconditioning-specific body, unclaimed by any competitor. |
+| 2026-07-22 | Research: client self-claims **"Our RMI Approved Workshop"** and **"Ford Specialists on Duty"** verbatim (B12/B13). |
+| 2026-07-22 | Research: Pretoria warranty market standard is **6mo/10,000km**; the testimonial's 2yr/unlimited would be category-defining. C1 escalated. |
+| 2026-07-22 | Research: three-way hours conflict (C19) and postcode conflict (C20) logged against the GBP. |
+| 2026-07-22 | Research: **contamination confirmed** — "5 STAR RMI"/"Land Rover & Jaguar"/"largest independent" verified as **LR Auto Workshop's**, absent from visionmotors.co.za. E1 upheld. |
+| 2026-07-22 | Research: three factual errors about Ranger engines excluded before they could be published (E12–E16). |

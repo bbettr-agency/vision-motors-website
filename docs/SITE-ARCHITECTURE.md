@@ -45,6 +45,23 @@ audiences without diluting either.
 
 ---
 
+## ⚠️ Research corrections to this plan
+
+Market research overturned three things after the first draft. Recorded because publishing them
+would have been wrong:
+
+1. **Do NOT build a standalone Mazda BT-50 page.** The post-2020 BT-50 is an **Isuzu D-Max twin
+   with zero Ford content**, and Mazda SA discontinued it in March 2024 after 69 units in 2023.
+   BT-50 owners also self-identify as Ranger owners — they share one Facebook group. **Fold
+   BT-50 2011–2020 into the Ranger page**, scoped to those years, which genuinely share the
+   P4AT/P5AT engines.
+2. **The flagship page is renamed** `/ford-ranger-engine-specialists-pretoria`.
+3. **Priority order changed.** `/driveline-repairs-pretoria` moves to Tier 1 — it is the **least
+   defended SERP found** (one real dedicated page; a rival ranks with `/about`). It was
+   originally scheduled mid-pack.
+
+Full evidence in `SEO-STRATEGY.md`.
+
 ## Sitemap
 
 ```
@@ -54,7 +71,7 @@ audiences without diluting either.
 │
 ├── /vehicle-diagnostics-pretoria           Diagnostics & fault finding
 ├── /engine-reconditioning-pretoria         Engine rebuilds & reconditioning
-│   └── /ford-ranger-mazda-bt50-engine-specialists   ★ flagship differentiator
+│   └── /ford-ranger-engine-specialists-pretoria      ★ flagship differentiator
 ├── /gearbox-repairs-pretoria               Automatic + manual gearbox
 ├── /dsg-mechatronic-repairs-pretoria       Dual-clutch & mechatronic units
 ├── /driveline-repairs-pretoria             Differentials, transfer cases, propshafts
@@ -87,7 +104,7 @@ them all. **I recommend 8 service pages, not 13.** Four consolidations and one a
 |---|---|---|---|
 | `/vehicle-diagnostics-pretoria` | "why is my engine light on", "car diagnostics pretoria" | Highest-volume entry point; also the "another workshop couldn't find it" audience. Backed by the strongest testimonial the business owns (the Nissan-dealer quote). | Diagnostic bay photo, scanner in use |
 | `/engine-reconditioning-pretoria` | "engine reconditioning / rebuild pretoria" | High-value job. Backed by a **separate physical premises**. | Engine Shop interior, stripped engine, machining |
-| **`/ford-ranger-mazda-bt50-engine-specialists`** ★ | "ford ranger engine rebuild", "bt50 engine problems" | **The differentiator.** Narrow, high-value, low competition, and backed by literal signage. | Ranger/BT-50 engine on the bench |
+| **`/ford-ranger-engine-specialists-pretoria`** ★ | "ford ranger engine recon", "oil pump", "P5AT" | **The differentiator.** Ranger was the **top-selling used car in Gauteng in 2025** (12,034 units) and is built at Silverton, Pretoria — the parc is on the doorstep and now entirely out of warranty. **No Pretoria workshop ranks for it.** BT-50 2011–2020 folds in here. | Ranger engine on the bench |
 | `/gearbox-repairs-pretoria` | "gearbox repairs pretoria", "automatic gearbox overhaul" | High-value, genuinely distinct from engine work. | Gearbox on bench |
 | `/dsg-mechatronic-repairs-pretoria` | "dsg repair", "mechatronic unit repair" | Distinct technology, distinct search, very few local competitors. | Mechatronic unit photo |
 | `/driveline-repairs-pretoria` | "diff repairs", "transfer case pretoria" | Bakkie/SUV/4x4 audience — commercially aligned with the Ranger niche. | Diff or transfer case on bench |
