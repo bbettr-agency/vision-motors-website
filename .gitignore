@@ -9,3 +9,6 @@ npm-debug.log*
 .vercel
 *.tsbuildinfo
 next-env.d.ts
+
+# Client source material is preserved in client-assets/ and IS committed —
+# it is the evidence base for the fact register.

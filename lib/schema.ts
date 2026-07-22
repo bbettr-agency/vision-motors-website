@@ -52,7 +52,6 @@ export const autoRepairSchema: JsonLd = (() => {
     "@context": "https://schema.org",
     "@type": "AutoRepair",
     name: siteConfig.businessName,
-    legalName: siteConfig.legalName,
     url: siteConfig.website,
     telephone: siteConfig.phone,
     email: siteConfig.email,
@@ -95,11 +94,24 @@ export const autoRepairSchema: JsonLd = (() => {
     };
   }
 
-  if (siteConfig.hours.status === "verified" && siteConfig.hours.value) {
+  // `legalName` is emitted only once the registered entity name is confirmed.
+  if (siteConfig.legalName) {
+    schema.legalName = siteConfig.legalName;
+  }
+
+  // Hours are client-provided (not merely assumed), so they are published.
+  // Emitted as proper opens/closes times rather than a free-text description,
+  // which is what Google actually parses.
+  if (
+    (siteConfig.hours.status === "verified" ||
+      siteConfig.hours.status === "client-stated") &&
+    siteConfig.hours.value
+  ) {
     schema.openingHoursSpecification = siteConfig.hours.value.map((h) => ({
       "@type": "OpeningHoursSpecification",
-      dayOfWeek: h.day,
-      description: h.time,
+      dayOfWeek: `https://schema.org/${h.day}`,
+      opens: "07:30",
+      closes: "17:00",
     }));
   }
 

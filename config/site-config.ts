@@ -12,60 +12,94 @@ import type { Claim, ClaimStatus } from "@/types/site";
 
 export const siteConfig = {
   businessName: "Vision Motors",
-  /** Registered entity name, used in schema `legalName`. */
-  legalName: "Vision Motors CC",
+  /**
+   * ⚠️ REMOVED — "Vision Motors CC" was an unsupported guess and is no longer
+   * emitted in schema. The premises signage carries a legal-entity line ending
+   * `(Pty) Ltd t/a`, but it is illegible at the available photo resolution.
+   * TODO(client): confirm the registered entity name, then restore `legalName`.
+   * See FACT-VERIFICATION-REGISTER.md C6 / E6.
+   */
+  legalName: null as string | null,
   shortName: "Vision Motors",
 
   // ── Contact ────────────────────────────────────────────────────────────────
-  // VERIFIED: appears identically on the client's own site and every directory.
+  // VERIFIED: appears identically on the client's own signage (photographed on
+  // both boards), their website, and every directory listing.
   phone: "+27123350070", // E.164, for schema
   phoneDisplay: "012 335 0070", // human-readable — never allowed to wrap
   phoneLink: "tel:+27123350070",
 
-  email: "service@visionmotors.co.za", // VERIFIED — client's own site
-  emailLink: "mailto:service@visionmotors.co.za",
+  // CLIENT-PROVIDED (onboarding, 2026-07-22). Supersedes the `service@` address
+  // used on the current live site.
+  // ⚠️ TODO(client): confirm WHICH mailbox is actually monitored. If enquiries
+  // go to an unwatched address that is a silent lead leak.
+  email: "vision@visionmotors.co.za",
+  emailLink: "mailto:vision@visionmotors.co.za",
 
   website: "https://visionmotors.co.za",
 
   // ── Location ───────────────────────────────────────────────────────────────
-  // ⚠️ UNVERIFIED STREET NUMBER. Four addresses are in circulation:
-  //      1059 & 1197 Steve Biko Road (client's own site — lists BOTH)
-  //      1059 Steve Biko Rd, 0031    (Google Business Profile)
-  //      1197 Steve Biko Road, Gezina (MechanicBuddy)
-  //      867 Voortrekkers Rd, 0084   (yep.co.za, Hellopeter, africanadvice)
-  // Steve Biko Road was renamed from Voortrekker Road in 2012, but 867/1059/1197
-  // do not reconcile as a renaming artefact.
-  // Until the client confirms ONE canonical address we publish the street and
-  // suburb only — which is accurate — and omit the number.
-  // TODO(client): confirm the single canonical street address, then set
-  //               `streetNumber` and flip `addressStatus` to "verified".
-  streetNumber: null as string | null,
+  // ✅ RESOLVED 2026-07-22. The company profile contains a photograph of the
+  // premises signage. Both boards print the SAME address block:
+  //      012 335 0070
+  //      867 Voortrekkersweg
+  //      1059 Steve Biko Road
+  //      Wonderboom South
+  // i.e. Vision Motors' own signage treats 867 Voortrekkersweg and 1059 Steve
+  // Biko Road as ONE address — Voortrekker Rd was renamed Steve Biko Rd in 2012
+  // and the premises renumbered. The kerb outside is painted "1059".
+  // The directory listings showing "867 Voortrekkers Rd" are therefore the same
+  // premises under its pre-2012 address, not a separate site.
+  streetNumber: "1059",
   street: "Steve Biko Road",
   suburb: "Wonderboom South",
   city: "Pretoria",
   region: "Gauteng",
   country: "South Africa",
-  postalCode: null as string | null, // ⚠️ 0031 vs 0084 conflict — unverified
-  addressStatus: "unverified" as ClaimStatus,
-  /** Safe display string while the number is unconfirmed. */
-  addressDisplay: "Steve Biko Road, Wonderboom South, Pretoria",
+  postalCode: "0084", // CLIENT-PROVIDED (onboarding). Resolves the 0031/0084 conflict.
+  addressStatus: "verified" as ClaimStatus,
+  addressDisplay: "1059 Steve Biko Road, Wonderboom South, Pretoria",
 
-  // ⚠️ Coordinates omitted — they depend on the unresolved street number.
-  // TODO(client): add geo once the address is confirmed (needed for AutoRepair schema).
+  /** Historical alias — for directory NAP clean-up only. NEVER published. */
+  formerAddress: "867 Voortrekkersweg, Wonderboom South, Pretoria",
+
+  // ⚠️ Coordinates still pending — must be taken from the confirmed pin on the
+  // Google Business Profile rather than geocoded, so schema and GBP agree.
+  // TODO(client/agency): capture lat/long from the GBP listing.
   geo: null as { latitude: number; longitude: number } | null,
 
-  // ── Business hours ─────────────────────────────────────────────────────────
-  // ⚠️ CONTRADICTORY SOURCES. The client's homepage says "Open 5 Days a Week";
-  // the /services page says "Our team works 24/7". Directories say 07:00–17:00
-  // and 07:15–17:00 Mon–Fri. None is confirmed, and Saturday is unknown.
-  // We publish NO hours until confirmed — an incorrect hours claim costs real
-  // customers a wasted trip.
-  // TODO(client): confirm exact opening hours including Saturday.
-  hours: {
+  // ── Second premises ────────────────────────────────────────────────────────
+  // ✅ DISCOVERED 2026-07-22 in the company profile: a visually distinct second
+  // building branded "ENGINE SHOP" with a "RANGER & BT50" wall sign.
+  // ⚠️ The street number is INFERRED. The photo shows no number; onboarding
+  // lists 1197 Steve Biko Road as a second address, and there are two premises.
+  // Do NOT publish this address until confirmed.
+  // TODO(client): confirm the Engine Shop address and what work happens there
+  //               vs at 1059. See FACT-VERIFICATION-REGISTER.md C3.
+  engineShop: {
     value: null,
     status: "unverified",
-    note: "Homepage says '5 days a week'; /services says '24/7'. Directories say 07:00-17:00 / 07:15-17:00. Saturday unknown.",
+    note: "Second premises confirmed by photograph (branded ENGINE SHOP + RANGER & BT50). Street number inferred as 1197 Steve Biko Road from onboarding — NOT confirmed.",
+  } as Claim<{ streetNumber: string; street: string; role: string }>,
+
+  // ── Business hours ─────────────────────────────────────────────────────────
+  // ✅ RESOLVED 2026-07-22 — client onboarding. Supersedes the contradiction on
+  // the current live site ("Open 5 Days a Week" vs "Our team works 24/7") and
+  // the varying directory hours (07:00-17:00 / 07:15-17:00).
+  hours: {
+    value: [
+      { day: "Monday", time: "07:30 – 17:00" },
+      { day: "Tuesday", time: "07:30 – 17:00" },
+      { day: "Wednesday", time: "07:30 – 17:00" },
+      { day: "Thursday", time: "07:30 – 17:00" },
+      { day: "Friday", time: "07:30 – 17:00" },
+    ],
+    status: "client-stated",
+    note: "Client onboarding 2026-07-22. Closed Saturdays, Sundays and public holidays.",
   } as Claim<{ day: string; time: string }[]>,
+
+  /** Rendered beneath the hours block. */
+  hoursClosedNote: "Closed Saturdays, Sundays and public holidays",
 
   // ── Heritage ───────────────────────────────────────────────────────────────
   // ⚠️ The client's site says "since 1992" in one place and "almost 30 years" in

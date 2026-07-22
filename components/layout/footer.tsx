@@ -52,9 +52,20 @@ export default function Footer() {
               </li>
             </ul>
 
-            {/* Opening hours deliberately omitted — the client's own site
-                contradicts itself ("5 days a week" vs "24/7") and no source is
-                confirmed. TODO(client): confirm and add. */}
+            {/* Hours confirmed by client onboarding 2026-07-22. */}
+            {siteConfig.hours.value && (
+              <div className="mt-6">
+                <h2 className="font-display text-xs font-bold uppercase tracking-[0.18em] text-white">
+                  Opening hours
+                </h2>
+                <p className="mt-2.5 text-sm text-white/75">
+                  Monday – Friday: 07:30 – 17:00
+                </p>
+                <p className="mt-1 text-xs text-white/55">
+                  {siteConfig.hoursClosedNote}
+                </p>
+              </div>
+            )}
           </div>
 
           {/* Specialist work */}
@@ -144,7 +155,10 @@ export default function Footer() {
 
         <div className="mt-14 flex flex-col gap-4 border-t border-white/10 pt-8 text-xs text-white/55 sm:flex-row sm:items-center sm:justify-between">
           <p>
-            © {new Date().getFullYear()} {siteConfig.legalName}. All rights
+            {/* Falls back to the trading name — the registered entity name is
+                not yet confirmed. See FACT-VERIFICATION-REGISTER.md C6. */}
+            © {new Date().getFullYear()}{" "}
+            {siteConfig.legalName ?? siteConfig.businessName}. All rights
             reserved.
           </p>
           <p>
