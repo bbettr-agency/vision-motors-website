@@ -33,7 +33,7 @@ export default function WhyUs() {
             key={item.title}
             as="article"
             delay={index * 0.08}
-            className="rounded-2xl border border-white/10 bg-brand-graphite p-9 shadow-card"
+            className="rounded-2xl border border-white/10 bg-brand-indigoCard p-9 shadow-card"
           >
             <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-accent/12 text-brand-accent">
               <Icon name={item.icon} className="h-5 w-5" />

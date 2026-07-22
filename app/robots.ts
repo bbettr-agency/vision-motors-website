@@ -7,9 +7,12 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
-      // Conversion page — kept out of the index.
-      disallow: ["/thank-you"],
+      disallow: [
+        "/thank-you", // conversion page — kept out of the index
+        "/api/",
+      ],
     },
     sitemap: `${siteConfig.website}/sitemap.xml`,
+    host: siteConfig.website,
   };
 }

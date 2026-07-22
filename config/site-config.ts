@@ -56,8 +56,15 @@ export const siteConfig = {
   city: "Pretoria",
   region: "Gauteng",
   country: "South Africa",
-  postalCode: "0084", // CLIENT-PROVIDED (onboarding). Resolves the 0031/0084 conflict.
-  addressStatus: "verified" as ClaimStatus,
+  // ⚠️ POSTCODE UNRESOLVED — deliberately NOT published.
+  // Onboarding says 0084; the Google Business Profile says 0031; the client's
+  // own website publishes neither, which is the root cause of the NAP
+  // fragmentation. Two conflicting client-side sources is not confirmation.
+  // Publishing the wrong code into schema would harden the wrong entity signal.
+  // TODO(client): confirm from an authoritative postal source, then set it here
+  //               and in the GBP together. See FACT-VERIFICATION-REGISTER.md C20.
+  postalCode: null as string | null,
+  addressStatus: "verified" as ClaimStatus, // street address is verified; postcode is not
   addressDisplay: "1059 Steve Biko Road, Wonderboom South, Pretoria",
 
   /** Historical alias — for directory NAP clean-up only. NEVER published. */
@@ -126,13 +133,37 @@ export const siteConfig = {
   //    - "Land Rover & Jaguar Specialists" → also LR Auto's, not Vision Motors'.
   //    - "largest independent workshop in Pretoria" → also LR Auto's.
   //
-  // TODO(client): confirm current MIWA membership + membership number, then set
-  //               isMember true and flip status. Badge stays hidden until then.
-  miwa: {
-    value: null,
-    status: "unverified",
-    note: "Client's /services page claims RMI approval; sayellow.com lists MIWA membership. No number, no register check.",
-  } as Claim<{ isMember: boolean; membershipNumber: string | null }>,
+  // ── ACCREDITATION SLOTS ────────────────────────────────────────────────────
+  // Config fields and component slots are PREPARED, but NOTHING renders until a
+  // membership certificate or number is supplied. Logo files and a self-claim on
+  // the old website are not evidence (approved instruction, 2026-07-22).
+  //
+  // To activate one: set `value`, flip `status` to "verified", and the badge
+  // strip renders automatically. `lib/schema.ts` will also start emitting
+  // `hasCredential`. No component changes needed.
+  //
+  // ❌ FORBIDDEN WORDING until evidenced: "RMI Approved", "MIWA Accredited",
+  //    "ARASA Member", "5 Star RMI", "accredited workshop".
+  // ❌ NEVER, at all: "5 STAR RMI approved" / "Land Rover & Jaguar Specialists" /
+  //    "largest independent workshop in Pretoria" — verified as belonging to
+  //    LR Auto Workshop, a different Pretoria business.
+  accreditations: {
+    rmi: {
+      value: null,
+      status: "unverified",
+      note: "Client's own /services page states 'Our RMI Approved Workshop' — a self-claim, not evidence. No membership number, no register check.",
+    } as Claim<{ membershipNumber: string; grading: string | null }>,
+    miwa: {
+      value: null,
+      status: "unverified",
+      note: "MIWA logo displayed on the client's /services page and listed by sayellow.com. No number, no register check.",
+    } as Claim<{ membershipNumber: string; grading: string | null }>,
+    arasa: {
+      value: null,
+      status: "unverified",
+      note: "ARASA (Automotive Remanufacturers' Association) logo displayed on the client's /services page. The reconditioning-specific body — no competitor in the audited set claims it, so it is the most valuable of the three IF evidenced. No number.",
+    } as Claim<{ membershipNumber: string }>,
+  },
 
   // ── Warranty ───────────────────────────────────────────────────────────────
   // ⚠️ DO NOT PUBLISH. A "two years unlimited kilometres" figure appears ONLY
@@ -144,8 +175,16 @@ export const siteConfig = {
   warranty: {
     value: null,
     status: "unverified",
-    note: "'2yr/unlimited km' appears only inside a testimonial. A 1-star review describes a refused warranty claim. Requires written terms.",
+    note: "'2yr/unlimited km' appears only inside a testimonial, never as company policy. The Pretoria market standard is 6mo/10,000km (three competitors state it identically), so if the testimonial figure is real it is category-defining — which is exactly why it must not be published on a customer's recollection. A 1-star review describes a refused warranty claim.",
   } as Claim<{ months: number; kilometres: number | null; scope: string }>,
+
+  /**
+   * The ONLY warranty wording permitted on the site until terms are confirmed.
+   * Approved verbatim, 2026-07-22. Never paired with a duration or mileage,
+   * and never emitted in schema.
+   */
+  warrantyInterimCopy:
+    "Warranty terms depend on the repair completed. Ask our team what applies to your vehicle.",
 
   // ── Towing ─────────────────────────────────────────────────────────────────
   // Client's homepage states "Our team tow multiple cars a week". Hours, radius
@@ -184,10 +223,15 @@ export const siteConfig = {
   googleBusinessProfileUrl: null as string | null,
 
   // ── Conversion ─────────────────────────────────────────────────────────────
-  cta: "Book Your Car In",
-  ctaShort: "Book In",
-  ctaCall: "Call the workshop",
+  // ⚠️ HIERARCHY INVERTED 2026-07-22 on client instruction: CALLING is now the
+  // primary action, booking is secondary. This is right for the business —
+  // most visitors have a broken car and want a person, not a form.
+  // `click_to_call` is therefore the primary tracked conversion.
+  ctaPrimary: "Call Us",
+  ctaPrimaryLong: "Call 012 335 0070",
+  ctaSecondary: "Book Your Car In",
+  ctaSecondaryShort: "Book In",
 
-  /** Where every primary CTA lands. Single destination, per the CTA strategy. */
+  /** Kept for the in-page booking anchor on the homepage. */
   bookingAnchor: "#book",
 } as const;

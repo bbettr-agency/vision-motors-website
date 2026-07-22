@@ -16,7 +16,18 @@ const config: Config = {
     extend: {
       colors: {
         brand: {
-          // Accent — brass. Primary CTAs, small labels, key icons, active states.
+          // ── PRIMARY: official Vision Motors indigo (#290F74, sampled from
+          // the supplied logo). Brand surfaces, headings on light, section
+          // anchors. This is the primary brand colour.
+          indigo: "#290F74", // official mark — text/headings on light (13.6:1 on cream)
+          indigoDeep: "#1A0A4A", // dark brand section surface (white 17.7:1)
+          indigoCard: "#241259", // cards on indigoDeep (white 16.1:1)
+          indigoMid: "#3D1C9E", // hover / mid tone
+          indigoLight: "#8B72D9", // indigo for text+icons ON dark (5.2:1 on ink)
+          indigoTint: "#EDE9F9", // soft indigo chip on light surfaces
+          indigoLine: "#D6CEF0", // indigo-tinted border on light
+
+          // ── ACCENT: brass. Primary CTAs, small labels, key icons, active states.
           accent: "#C9A24B",
           accentDark: "#A8842F",
           accentLight: "#DCBE79",
@@ -51,12 +62,13 @@ const config: Config = {
         "3xl": "1.75rem",
       },
       backgroundImage: {
-        // Warm brass wash. Replaces the previous blue-tinted glow so the hero
-        // opens up without introducing a colour outside the palette.
+        // Indigo brand wash — makes the official brand colour present above the
+        // fold without putting it on a large flat area. Brass is reserved for
+        // CTAs, so it appears here only as a faint warm edge.
         "hero-glow":
-          "radial-gradient(ellipse 90% 60% at 50% -10%, rgba(201,162,75,0.16), transparent 70%)",
+          "radial-gradient(ellipse 90% 65% at 50% -10%, rgba(61,28,158,0.45), transparent 70%), radial-gradient(ellipse 60% 40% at 78% 8%, rgba(201,162,75,0.10), transparent 70%)",
         "brass-glow":
-          "radial-gradient(ellipse 70% 55% at 50% 0%, rgba(201,162,75,0.14), transparent 70%)",
+          "radial-gradient(ellipse 70% 55% at 50% 0%, rgba(201,162,75,0.12), transparent 70%)",
       },
       boxShadow: {
         glow: "0 20px 60px -20px rgba(201,162,75,0.30)",

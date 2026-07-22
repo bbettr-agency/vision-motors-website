@@ -28,7 +28,7 @@ export default function FinalCta() {
   return (
     <section
       id="book"
-      className="relative overflow-hidden border-t border-white/10 bg-brand-ink px-6 py-24 md:py-32 lg:px-8"
+      className="relative overflow-hidden border-t border-white/10 bg-brand-indigoDeep px-6 py-24 md:py-32 lg:px-8"
     >
       <div className="pointer-events-none absolute inset-0 bg-brass-glow" aria-hidden />
 

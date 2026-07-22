@@ -22,7 +22,7 @@ import Reveal from "@/components/ui/reveal";
 
 export default function Testimonials() {
   return (
-    <SectionContainer id="reviews" className="bg-brand-ink">
+    <SectionContainer id="reviews" className="bg-brand-indigoDeep">
       <SectionHeading
         eyebrow="In their words"
         title="What customers actually said"
@@ -37,7 +37,7 @@ export default function Testimonials() {
             key={review.author}
             as="figure"
             delay={(index % 2) * 0.08}
-            className="flex flex-col rounded-2xl border border-white/10 bg-brand-graphite p-9 shadow-card"
+            className="flex flex-col rounded-2xl border border-white/10 bg-brand-indigoCard p-9 shadow-card"
           >
             <Quote className="h-6 w-6 shrink-0 text-brand-accent/60" aria-hidden />
 

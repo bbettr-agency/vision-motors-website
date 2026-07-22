@@ -21,7 +21,23 @@
 //  colour. The palette is now black · warm neutral · brass, which is what
 //  "premium black and gold" actually means.
 //
+//  ── v3: INDIGO PRIMARY + BRASS ACCENT (Direction C, approved 2026-07-22) ────
+//  The official logo is indigo #290F74. v2 ran brass-on-black, which came from
+//  gold uniform embroidery — real, but a uniform treatment, not the mark.
+//  v3 makes indigo primary so the logo sits natively in the design, and keeps
+//  brass strictly as the conversion accent. The dark/warm-light rhythm is
+//  retained; indigoDeep now serves as a third anchor surface alongside ink and
+//  charcoal, which gives the brand large-area presence WITHOUT putting gold on
+//  large areas.
+//
 //  ── CONTRAST VERIFICATION (SYSTEM/01 §6.3 — checked at token time) ──────────
+//  INDIGO
+//    indigo   #290F74 on cream      #F7F5F0 → 13.6:1  ✅ headings/text on light
+//    white    #FFFFFF on indigoDeep #1A0A4A → 17.7:1  ✅ headings on brand anchor
+//    bone     #E7E5E4 on indigoDeep #1A0A4A → 14.1:1  ✅ body on brand anchor
+//    brass    #C9A24B on indigoDeep #1A0A4A →  7.4:1  ✅ accent on brand anchor
+//    white    #FFFFFF on indigoCard #241259 → 16.1:1  ✅ cards on brand anchor
+//    indigoLt #8B72D9 on ink        #0B0B0B →  5.2:1  ✅ indigo text on black
 //  DARK SURFACES
 //    bone     #E7E5E4 on ink       #0B0B0B → 14.6:1  ✅ body text
 //    white    #FFFFFF on ink       #0B0B0B → 18.9:1  ✅ headings
@@ -43,6 +59,17 @@
 
 export const themeConfig = {
   colors: {
+    // ── PRIMARY: official Vision Motors indigo ───────────────────────────────
+    // Sampled from the supplied logo file. This is the primary brand colour;
+    // brass is the accent. Direction C, approved 2026-07-22.
+    indigo: "#290F74", // official mark
+    indigoDeep: "#1A0A4A", // dark brand section surface
+    indigoCard: "#241259", // cards on indigoDeep
+    indigoMid: "#3D1C9E", // hover / mid
+    indigoLight: "#8B72D9", // indigo on dark surfaces
+    indigoTint: "#EDE9F9", // soft chip on light
+    indigoLine: "#D6CEF0", // border on light
+
     // ── Accent: brass. The conversion colour. ────────────────────────────────
     // Reserved for primary CTAs, small labels, key icons, highlights and
     // active states. NEVER on large background areas.

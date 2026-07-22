@@ -51,6 +51,7 @@ export const autoRepairSchema: JsonLd = (() => {
   const schema: JsonLd = {
     "@context": "https://schema.org",
     "@type": "AutoRepair",
+    "@id": `${siteConfig.website}/#business`,
     name: siteConfig.businessName,
     url: siteConfig.website,
     telephone: siteConfig.phone,
@@ -119,6 +120,19 @@ export const autoRepairSchema: JsonLd = (() => {
     schema.foundingDate = String(siteConfig.founded.value);
   }
 
+  // ⛔ Accreditation. Emits `hasCredential` ONLY once membership evidence is
+  // supplied. Logo files and a self-claim are not evidence (C2).
+  const credentials = Object.entries(siteConfig.accreditations)
+    .filter(([, claim]) => claim.status === "verified" && claim.value)
+    .map(([body]) => ({
+      "@type": "EducationalOccupationalCredential",
+      credentialCategory: "membership",
+      recognizedBy: { "@type": "Organization", name: body.toUpperCase() },
+    }));
+  if (credentials.length > 0) {
+    schema.hasCredential = credentials;
+  }
+
   const sameAs = [
     siteConfig.social.facebook,
     siteConfig.social.instagram,
@@ -153,22 +167,56 @@ export const websiteSchema: JsonLd = {
   url: siteConfig.website,
 };
 
-/** Prepared for inner pages. Not used on the homepage. */
-export const breadcrumbSchema = (label: string, path: string): JsonLd => ({
+/**
+ * BreadcrumbList built from the SAME trail array that renders the visible
+ * breadcrumbs (components/ui/breadcrumbs.tsx), so the two cannot drift.
+ */
+export const breadcrumbSchema = (
+  trail: { label: string; href: string }[]
+): JsonLd => ({
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
-  itemListElement: [
-    {
-      "@type": "ListItem",
-      position: 1,
-      name: "Home",
-      item: siteConfig.website,
-    },
-    {
-      "@type": "ListItem",
-      position: 2,
-      name: label,
-      item: `${siteConfig.website}${path}`,
-    },
+  itemListElement: trail.map((crumb, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    name: crumb.label,
+    item: `${siteConfig.website}${crumb.href === "/" ? "" : crumb.href}`,
+  })),
+});
+
+/**
+ * Service schema for a service page. References the AutoRepair entity by @id
+ * rather than redeclaring it, so there is exactly one business entity sitewide.
+ *
+ * ⚠️ No `offers` / `priceRange` — no pricing is published or confirmed.
+ */
+export const serviceSchema = (input: {
+  name: string;
+  description: string;
+  path: string;
+}): JsonLd => ({
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: input.name,
+  description: input.description,
+  serviceType: input.name,
+  url: `${siteConfig.website}${input.path}`,
+  provider: { "@id": `${siteConfig.website}/#business` },
+  areaServed: [
+    { "@type": "City", name: "Pretoria" },
+    { "@type": "AdministrativeArea", name: "Gauteng" },
   ],
+});
+
+/** FAQPage from a visible FAQ array. Only ever called where an FAQ renders. */
+export const faqPageSchema = (
+  items: { question: string; answer: string }[]
+): JsonLd => ({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: items.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: { "@type": "Answer", text: item.answer },
+  })),
 });

@@ -1,21 +1,29 @@
 import Link from "next/link";
-import { CheckCircle2, Phone } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
 
 import { siteConfig } from "@/config/site-config";
+import { navRoutes } from "@/config/routes";
 import Logo from "@/components/ui/logo";
+import CallButton from "@/components/ui/call-button";
+import SkipLink from "@/components/layout/skip-link";
 
 /**
- * Conversion page. Prepared for the production flow — once GHL is connected,
- * set formConfig.redirectOnSuccess = true and the form will land here so
- * analytics conversions fire on a real page view.
+ * Conversion page. Once GHL is connected, set
+ * `formConfig.redirectOnSuccess = true` so the form lands here and analytics
+ * conversions fire on a real page view.
  *
- * TODO: add the GA4/Google Ads conversion event component once IDs are supplied
- * (config/seo-config.ts conversionConfig).
+ * ⚠️ Deliberately restates that the date is unconfirmed — this is the moment
+ * a customer forms an expectation, and getting it wrong here creates a no-show
+ * or a complaint.
+ *
+ * TODO: add the GA4 / Google Ads conversion component once IDs are supplied
+ * (config/seo-config.ts → conversionConfig).
  */
 export default function ThankYouPage() {
   return (
     <>
-      <header className="border-b border-white/10 px-6 py-5 lg:px-8">
+      <SkipLink />
+      <header className="border-b border-white/10 bg-brand-indigoDeep px-6 py-5 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <Link href="/" aria-label={`${siteConfig.businessName} home`}>
             <Logo />
@@ -23,7 +31,10 @@ export default function ThankYouPage() {
         </div>
       </header>
 
-      <main className="flex min-h-[80vh] items-center justify-center px-6 py-20 lg:px-8">
+      <main
+        id="main"
+        className="flex min-h-[80vh] items-center justify-center bg-brand-indigoDeep px-6 py-20 lg:px-8"
+      >
         <div className="mx-auto max-w-lg text-center">
           <CheckCircle2
             className="mx-auto h-14 w-14 text-brand-accent"
@@ -34,31 +45,45 @@ export default function ThankYouPage() {
             Thanks — we&apos;ve got your details
           </h1>
 
-          <p className="mt-4 text-base leading-relaxed text-white/65">
-            The workshop will be in touch to arrange a time for your vehicle. If
-            it&apos;s urgent, phone us directly and we&apos;ll help you straight
-            away.
+          <p className="mt-5 text-base leading-[1.75] text-brand-bone/80">
+            Someone from the workshop will contact you to confirm a time. Your
+            preferred date isn&apos;t booked until we&apos;ve spoken — we&apos;ll
+            either confirm it or offer you the nearest slot we can commit to.
+          </p>
+
+          <p className="mt-4 text-sm leading-[1.7] text-brand-bone/65">
+            If it&apos;s urgent, or your car isn&apos;t driveable, phone us and
+            we&apos;ll help you straight away.
           </p>
 
           <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <a
-              href={siteConfig.phoneLink}
-              className="inline-flex min-h-[52px] items-center justify-center gap-2 rounded-full bg-brand-accent px-7 text-sm font-bold text-brand-ink shadow-accent transition-colors hover:bg-brand-accentDark md:text-base"
-              aria-label={`Call ${siteConfig.businessName} on ${siteConfig.phoneDisplay}`}
-            >
-              <Phone className="h-4 w-4" aria-hidden />
-              <span className="whitespace-nowrap">
-                {siteConfig.phoneDisplay}
-              </span>
-            </a>
-
+            <CallButton location="footer" variant="brass" showNumber />
             <Link
               href="/"
-              className="inline-flex min-h-[52px] items-center justify-center rounded-full border border-white/15 px-7 text-sm font-semibold text-white transition-colors hover:bg-white/5 md:text-base"
+              className="inline-flex min-h-[52px] items-center justify-center rounded-full border border-white/20 px-7 text-sm font-semibold text-white transition-colors hover:border-brand-accent/50 hover:bg-white/5 md:text-base"
             >
               Back to the website
             </Link>
           </div>
+
+          <p className="mt-10 text-xs leading-relaxed text-brand-bone/55">
+            Monday – Friday 07:30 – 17:00 · {siteConfig.addressDisplay}
+          </p>
+
+          <nav aria-label="Site links" className="mt-8">
+            <ul className="flex flex-wrap justify-center gap-x-5 gap-y-2">
+              {navRoutes.map((item) => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    className="inline-flex min-h-[44px] items-center text-xs font-medium text-brand-bone/60 underline underline-offset-4 transition-colors hover:text-brand-accent"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
         </div>
       </main>
     </>

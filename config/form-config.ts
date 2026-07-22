@@ -2,28 +2,24 @@
 //  BOOKING FORM CONFIG
 //
 //  Transport: native form → /api/booking (server route) → GHL inbound webhook.
-//  The webhook URL is a SERVER-ONLY env var (GHL_WEBHOOK_URL) and never reaches
-//  the browser bundle. No secrets in the frontend.
+//  `GHL_WEBHOOK_URL` is SERVER-ONLY (no NEXT_PUBLIC_ prefix) so the endpoint
+//  never reaches the browser bundle. No secrets in the frontend.
 //
-//  DEMO MODE: while GHL_WEBHOOK_URL is unset, the API route validates the
-//  submission and returns success without forwarding anywhere, logging the
-//  payload server-side so nothing is silently lost. The UI shows a clearly
-//  labelled demo notice. See app/api/booking/route.ts.
+//  DEMO MODE: while GHL_WEBHOOK_URL is unset the API route validates the
+//  submission, logs it server-side, and returns `forwarded: false`. The UI then
+//  shows a clearly labelled demo notice. No enquiry is silently lost.
 //
-//  ⚠️ NOTE FOR THE CLIENT CONVERSATION: all three forms on the CURRENT live
-//  visionmotors.co.za have empty `action` and `method` attributes and may have
-//  been silently dropping every enquiry. Worth testing urgently.
+//  ⚠️ All three forms on the CURRENT live visionmotors.co.za have empty
+//  `action` and `method` attributes and capture only name + email — no phone,
+//  no vehicle, no message. They may have been dropping enquiries for years.
 // ─────────────────────────────────────────────────────────────────────────────
 
 export const formConfig = {
-  /** Server route. Never a raw webhook URL. */
   endpoint: "/api/booking",
 
   /**
-   * Post-submission destination for the production build.
-   * Not wired in the demo — the form shows an inline success state instead so
-   * the page can be reviewed end-to-end without a live CRM.
-   * TODO: enable once GHL is connected, so conversion tracking fires on /thank-you.
+   * Production flow redirects to /thank-you so conversions fire on a real page
+   * view. Disabled until GHL is connected so the demo can be reviewed inline.
    */
   successRedirect: "/thank-you",
   redirectOnSuccess: false,
@@ -31,7 +27,7 @@ export const formConfig = {
   headings: {
     title: "Book your car in",
     subtitle:
-      "Tell us what your car is doing. We'll come back to you to arrange a time.",
+      "Tell us what your car is doing and when suits you. We'll come back to you to confirm a time.",
   },
 
   fields: {
@@ -42,33 +38,47 @@ export const formConfig = {
     emailLabel: "Email address",
     emailPlaceholder: "you@email.com",
     makeLabel: "Vehicle make",
-    makePlaceholder: "e.g. Volkswagen",
+    makePlaceholder: "e.g. Ford",
     modelLabel: "Vehicle model",
-    modelPlaceholder: "e.g. Polo 1.4 TSI",
+    modelPlaceholder: "e.g. Ranger 3.2 TDCi",
+    yearLabel: "Year",
+    yearPlaceholder: "e.g. 2018",
+    regLabel: "Registration number",
+    regPlaceholder: "Optional",
     serviceLabel: "What do you need?",
     problemLabel: "What is the car doing?",
     problemPlaceholder:
       "Describe it in your own words — you don't need to know what's wrong.",
+    preferredDateLabel: "Preferred date",
+    contactMethodLabel: "How should we contact you?",
   },
 
-  /** Options mirror servicesConfig titles so the symptom band can pre-select. */
+  /** Mirrors the approved service architecture. */
   serviceOptions: [
     "Not sure — please diagnose",
-    "Complex Fault Finding",
-    "Engine Reconditioning",
-    "Automatic & Manual Gearboxes",
+    "Vehicle Diagnostics & Fault Finding",
+    "Engine Reconditioning & Repairs",
+    "Ford Ranger Engine Work",
+    "Gearbox Repairs",
     "DSG & Mechatronic Repairs",
-    "Differentials & Transfer Cases",
-    "Vehicle Servicing",
-    "Brake Repairs",
-    "Belt Replacement",
-    "Oil Changes",
-    "Fuel System Cleaning",
+    "Driveline Repairs (diff / transfer case)",
+    "Brakes, Clutches & Mechanical Repairs",
+    "Car Servicing & Maintenance",
     "Something else",
   ],
 
-  submitLabel: "Book Your Car In",
+  contactMethods: ["Phone call", "WhatsApp", "Email"],
+
+  submitLabel: "Send booking request",
   submittingLabel: "Sending…",
+
+  /**
+   * ⚠️ MANDATORY. The client instruction is explicit: the requested date is NOT
+   * a confirmed booking until the workshop makes contact. This renders directly
+   * above the submit button and must not be removed or softened.
+   */
+  dateDisclaimer:
+    "Your preferred date is a request, not a confirmed booking. The workshop will contact you to agree a time.",
 
   /**
    * Reassurance microcopy. Every line must be true.
@@ -82,12 +92,11 @@ export const formConfig = {
 
   successTitle: "Thanks — we've got your details.",
   successBody:
-    "The workshop will be in touch to arrange a time. If it's urgent, phone us directly and we'll help you straight away.",
+    "The workshop will be in touch to confirm a time. If it's urgent, phone us directly and we'll help you straight away.",
 
-  /** POPIA (SA). Links to the privacy page — TODO: real legal pages needed. */
   consentText:
     "By submitting this form you agree that Vision Motors may contact you about your enquiry.",
 };
 
-/** Custom event used by the symptom band to pre-select a service and focus the form. */
+/** Lets the homepage symptom band pre-select a service on the booking page. */
 export const SELECT_SERVICE_EVENT = "vm:selectService";

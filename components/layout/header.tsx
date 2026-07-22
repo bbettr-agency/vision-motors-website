@@ -1,15 +1,25 @@
 "use client";
 
-import { Menu, Phone, X } from "lucide-react";
+import Link from "next/link";
+import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 
-import { navRoutes } from "@/config/routes";
+import { navRoutes, utilityRoutes } from "@/config/routes";
 import { siteConfig } from "@/config/site-config";
 import Logo from "@/components/ui/logo";
-import Button from "@/components/ui/button";
-import { scrollToBookingForm } from "@/lib/scroll-to-form";
+import CallButton from "@/components/ui/call-button";
 import { cn } from "@/utils/cn";
 
+/**
+ * Global header.
+ *
+ * CTA hierarchy (client instruction, 2026-07-22):
+ *   PRIMARY   → Call Us (brass, visible from 400px up)
+ *   SECONDARY → Book Your Car In
+ *
+ * The call CTA is deliberately the ONLY brass element in the header, so the
+ * strongest visual weight in the chrome always points at the phone.
+ */
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -21,7 +31,6 @@ export default function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Lock body scroll while the mobile menu is open.
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
     return () => {
@@ -34,58 +43,56 @@ export default function Header() {
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-all duration-300",
         scrolled
-          ? "border-b border-white/10 bg-brand-ink/90 backdrop-blur-xl"
+          ? "border-b border-white/10 bg-brand-indigoDeep/95 backdrop-blur-xl"
           : "bg-transparent"
       )}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 py-4 lg:px-8">
-        <a
-          href="#top"
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-6 py-4 lg:px-8">
+        <Link
+          href="/"
           className="inline-flex min-h-[44px] shrink-0 items-center rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent"
-          aria-label={`${siteConfig.businessName} — back to top`}
+          aria-label={`${siteConfig.businessName} — home`}
         >
           <Logo />
-        </a>
+        </Link>
 
         <nav
           className="hidden items-center gap-8 lg:flex"
           aria-label="Primary navigation"
         >
           {navRoutes.map((item) => (
-            <a
+            <Link
               key={item.href}
               href={item.href}
-              className="rounded text-sm font-medium text-white/70 transition-colors hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent"
+              className="rounded text-sm font-medium text-white/75 transition-colors hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent"
             >
               {item.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
         <div className="flex items-center gap-2 sm:gap-3">
-          {/* Click-to-call — the secondary conversion, always visible. */}
-          <a
-            href={siteConfig.phoneLink}
-            className="hidden min-h-[44px] items-center gap-2 rounded-full border border-white/15 px-4 text-sm font-semibold text-white transition-colors hover:border-brand-accent/50 hover:bg-white/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent sm:inline-flex"
-            aria-label={`Call ${siteConfig.businessName} on ${siteConfig.phoneDisplay}`}
-          >
-            <Phone className="h-4 w-4 text-brand-accent" aria-hidden />
-            {/* whitespace-nowrap: the phone number must never wrap. */}
-            <span className="whitespace-nowrap">{siteConfig.phoneDisplay}</span>
-          </a>
-
-          <Button
+          {/* PRIMARY — call. */}
+          <CallButton
+            location="header"
+            variant="brass"
             size="md"
-            onClick={() => scrollToBookingForm()}
-            className="hidden md:inline-flex"
+            showNumber
+            className="hidden min-[400px]:inline-flex"
+          />
+
+          {/* SECONDARY — book. */}
+          <Link
+            href={utilityRoutes.booking}
+            className="hidden min-h-[44px] items-center rounded-full border border-white/20 px-5 text-sm font-semibold text-white transition-colors hover:border-brand-accent/50 hover:bg-white/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent lg:inline-flex"
           >
-            {siteConfig.cta}
-          </Button>
+            {siteConfig.ctaSecondary}
+          </Link>
 
           <button
             type="button"
             onClick={() => setMenuOpen((v) => !v)}
-            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-white transition-colors hover:bg-white/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent lg:hidden"
+            className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/20 text-white transition-colors hover:bg-white/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent lg:hidden"
             aria-label={menuOpen ? "Close menu" : "Open menu"}
             aria-expanded={menuOpen}
             aria-controls="mobile-menu"
@@ -103,31 +110,38 @@ export default function Header() {
       <div
         id="mobile-menu"
         hidden={!menuOpen}
-        className="border-t border-white/10 bg-brand-ink/98 backdrop-blur-xl lg:hidden"
+        className="border-t border-white/10 bg-brand-indigoDeep/98 backdrop-blur-xl lg:hidden"
       >
         <nav className="px-6 py-6" aria-label="Mobile navigation">
           <ul className="flex flex-col gap-1">
             {navRoutes.map((item) => (
               <li key={item.href}>
-                <a
+                <Link
                   href={item.href}
                   onClick={() => setMenuOpen(false)}
-                  className="flex min-h-[48px] items-center rounded-xl px-3 text-base font-medium text-white/80 transition-colors hover:bg-white/5 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent"
+                  className="flex min-h-[48px] items-center rounded-xl px-3 text-base font-medium text-white/85 transition-colors hover:bg-white/5 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent"
                 >
                   {item.label}
-                </a>
+                </Link>
               </li>
             ))}
+            <li>
+              <Link
+                href={utilityRoutes.booking}
+                onClick={() => setMenuOpen(false)}
+                className="flex min-h-[48px] items-center rounded-xl px-3 text-base font-medium text-white/85 transition-colors hover:bg-white/5 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent"
+              >
+                {siteConfig.ctaSecondary}
+              </Link>
+            </li>
           </ul>
 
-          <a
-            href={siteConfig.phoneLink}
-            className="mt-4 flex min-h-[48px] items-center justify-center gap-2 rounded-full border border-white/15 px-4 text-sm font-semibold text-white"
-            aria-label={`Call ${siteConfig.businessName} on ${siteConfig.phoneDisplay}`}
-          >
-            <Phone className="h-4 w-4 text-brand-accent" aria-hidden />
-            <span className="whitespace-nowrap">{siteConfig.phoneDisplay}</span>
-          </a>
+          <CallButton
+            location="header"
+            variant="brass"
+            showNumber
+            className="mt-5 w-full"
+          />
         </nav>
       </div>
     </header>

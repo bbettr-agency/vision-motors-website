@@ -1,13 +1,15 @@
 "use client";
 
-import { Check, Phone } from "lucide-react";
+import { Check } from "lucide-react";
 
 import { imagesConfig } from "@/config/images-config";
 import { siteConfig } from "@/config/site-config";
+import Link from "next/link";
 import Button from "@/components/ui/button";
+import CallButton from "@/components/ui/call-button";
+import { utilityRoutes } from "@/config/routes";
 import ImageSlotView from "@/components/ui/image-slot";
 import Reveal from "@/components/ui/reveal";
-import { scrollToBookingForm } from "@/lib/scroll-to-form";
 
 // ─────────────────────────────────────────────────────────────────────────────
 //  HERO — answers, in ~5 seconds: what they do, where, why them, what to do next.
@@ -39,7 +41,8 @@ export default function Hero() {
       id="top"
       className="relative overflow-hidden bg-brand-ink pb-20 pt-28 md:pb-28 md:pt-36"
     >
-      {/* Warm brass wash — lifts the top of the page off pure black. */}
+      {/* Indigo brand wash — lifts the top of the page off flat black and makes
+          the official brand colour present above the fold. */}
       <div className="pointer-events-none absolute inset-0 bg-hero-glow" aria-hidden />
       {/* Eases the seam into the trust strip below. */}
       <div
@@ -85,20 +88,16 @@ export default function Hero() {
           </ul>
 
           <div className="mt-11 flex flex-col gap-3 sm:flex-row sm:items-center">
-            <Button onClick={() => scrollToBookingForm()} withArrow>
-              {siteConfig.cta}
-            </Button>
+            {/* PRIMARY — call (client instruction 2026-07-22). */}
+            <CallButton location="hero" variant="brass" showNumber />
 
-            <a
-              href={siteConfig.phoneLink}
-              className="inline-flex min-h-[52px] items-center justify-center gap-2.5 rounded-full border border-white/20 px-7 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-accent/50 hover:bg-white/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-ink md:text-base"
-              aria-label={`Call ${siteConfig.businessName} on ${siteConfig.phoneDisplay}`}
+            {/* SECONDARY — book. */}
+            <Link
+              href={utilityRoutes.booking}
+              className="inline-flex min-h-[52px] items-center justify-center rounded-full border border-white/20 px-7 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-accent/50 hover:bg-white/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-ink md:text-base"
             >
-              <Phone className="h-4 w-4 text-brand-accent" aria-hidden />
-              <span className="whitespace-nowrap">
-                {siteConfig.phoneDisplay}
-              </span>
-            </a>
+              {siteConfig.ctaSecondary}
+            </Link>
           </div>
 
           <p className="mt-6 text-xs leading-relaxed text-brand-bone/65">

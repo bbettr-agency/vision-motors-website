@@ -28,7 +28,7 @@ export default function TrustStrip() {
             delay={index * 0.08}
             className="flex items-start gap-4"
           >
-            <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-accent/12 text-brand-accent">
+            <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/[0.07] text-brand-accent">
               <Icon name={item.icon} className="h-5 w-5" />
             </span>
             <div>

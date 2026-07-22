@@ -16,41 +16,41 @@ export const symptomsConfig: SymptomItem[] = [
   {
     label: "Warning light is on",
     icon: "TriangleAlert",
-    presetService: "Complex Fault Finding",
+    presetService: "Vehicle Diagnostics & Fault Finding",
   },
   {
     label: "Gearbox is slipping or jerking",
     icon: "Settings2",
-    presetService: "Automatic & Manual Gearboxes",
+    presetService: "Gearbox Repairs",
   },
   {
     label: "Engine is knocking or smoking",
     icon: "Cog",
-    presetService: "Engine Reconditioning",
+    presetService: "Engine Reconditioning & Repairs",
   },
   {
     label: "Car won't start",
     icon: "BatteryWarning",
-    presetService: "Complex Fault Finding",
+    presetService: "Vehicle Diagnostics & Fault Finding",
   },
   {
     label: "Noise when I brake",
     icon: "CircleGauge",
-    presetService: "Brake Repairs",
+    presetService: "Brakes, Clutches & Mechanical Repairs",
   },
   {
     label: "It's overheating",
     icon: "Thermometer",
-    presetService: "Complex Fault Finding",
+    presetService: "Vehicle Diagnostics & Fault Finding",
   },
   {
     label: "Another workshop couldn't find it",
     icon: "Search",
-    presetService: "Complex Fault Finding",
+    presetService: "Vehicle Diagnostics & Fault Finding",
   },
   {
     label: "It just needs a service",
     icon: "Wrench",
-    presetService: "Vehicle Servicing",
+    presetService: "Car Servicing & Maintenance",
   },
 ];

@@ -1,6 +1,10 @@
 "use client";
 
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+
 import { specialistServices, everydayServices } from "@/config/services-config";
+import { utilityRoutes } from "@/config/routes";
 import SectionContainer from "@/components/layout/section-container";
 import SectionHeading from "@/components/ui/section-heading";
 import Icon from "@/components/ui/icon";
@@ -99,6 +103,14 @@ export default function ServicesGrid() {
             </Reveal>
           ))}
         </div>
+
+        <Link
+          href={utilityRoutes.services}
+          className="mt-10 inline-flex min-h-[44px] items-center gap-2 text-sm font-semibold text-brand-indigo underline underline-offset-4 transition-colors hover:text-brand-indigoMid focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-indigo"
+        >
+          See all services in detail
+          <ArrowRight className="h-4 w-4" aria-hidden />
+        </Link>
 
         {/*
           Towing is deliberately NOT listed. The client's site claims it, but

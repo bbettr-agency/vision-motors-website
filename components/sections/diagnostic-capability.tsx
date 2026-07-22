@@ -40,7 +40,7 @@ const capabilityPoints = [
 
 export default function DiagnosticCapability() {
   return (
-    <SectionContainer id="diagnostics" className="overflow-hidden bg-brand-ink">
+    <SectionContainer id="diagnostics" className="overflow-hidden bg-brand-indigoDeep">
       <div
         className="pointer-events-none absolute inset-x-0 top-0 h-64 bg-brass-glow"
         aria-hidden
@@ -81,7 +81,7 @@ export default function DiagnosticCapability() {
               onClick={() => scrollToBookingForm("Complex Fault Finding")}
               withArrow
             >
-              {siteConfig.cta}
+              {siteConfig.ctaSecondary}
             </Button>
           </div>
         </div>
@@ -94,7 +94,7 @@ export default function DiagnosticCapability() {
             sizes="(max-width: 1024px) 100vw, 45vw"
           />
 
-          <figure className="rounded-2xl border border-brand-accent/30 bg-brand-graphite p-8 shadow-card">
+          <figure className="rounded-2xl border border-brand-accent/30 bg-brand-indigoCard p-8 shadow-card">
             <blockquote
               lang="af"
               className="font-display text-lg leading-snug text-white"

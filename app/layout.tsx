@@ -3,7 +3,7 @@ import { Inter, Space_Grotesk } from "next/font/google";
 
 import "./globals.css";
 import { createMetadata } from "@/lib/metadata";
-import { autoRepairSchema, faqSchema, websiteSchema } from "@/lib/schema";
+import { autoRepairSchema, websiteSchema } from "@/lib/schema";
 
 // Self-hosted via next/font, display: swap — SYSTEM/07 performance budget.
 const body = Inter({
@@ -50,14 +50,12 @@ export default function RootLayout({
         {/*
           JSON-LD. The current live site emits none at all.
           NOTE: no aggregateRating / review schema is emitted — see lib/schema.ts.
+          FAQPage is NOT emitted here — it belongs only on pages where an FAQ is
+          actually visible, so it lives in the homepage view instead.
         */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(autoRepairSchema) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
         />
         <script
           type="application/ld+json"

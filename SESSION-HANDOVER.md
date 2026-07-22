@@ -1,6 +1,6 @@
 # SESSION HANDOVER — Vision Motors
 
-**Status:** Homepage demo COMPLETE, verified, and migrated to its own repository.
+**Status:** PHASE 2 COMPLETE — global system + primary pages built and verified.
 **Date:** 2026-07-20 · **Built with:** BBETTR Website OS v2.0.0-phase1
 
 ---
@@ -29,17 +29,26 @@ strict TypeScript, zero hardcoded copy, accessible, and honest about what is not
 | | |
 |---|---|
 | Build / TypeScript / lint | Clean |
-| First-load JS | **121 kB** (budget < 150 kB) |
-| Mobile 360 / 390 / 768px | Zero horizontal overflow |
-| Visual system | v2 — alternating dark / warm-light rhythm, 53% light. All 66 contrast pairs pass AA. |
-| Routes | `/` · `/thank-you` (noindex) · `/api/booking` · `/sitemap.xml` · `/robots.txt` |
-| Booking form | **Demo mode** — validates and confirms, forwards nothing, labels itself clearly |
-| Schema | `AutoRepair` + `FAQPage` + `WebSite`. **No rating schema.** |
-| Photography | 1 real photo (hero). 6 documented placeholder slots. |
+| First-load JS | **125 kB max** across all templates (budget < 150 kB) |
+| Responsive | **49 route × width combinations** at 360/390/430/768/1024/1280/1440 — zero overflow, zero phone wraps |
+| Contrast | **338 text/background pairs across 10 routes — zero failures**, lowest 4.70:1 |
+| Visual system | v3 — **indigo primary + brass accent**. Alternating rhythm held at 53% light / 47% dark |
+| Indexable routes | 9 + `/thank-you` (noindex) + 404 |
+| Booking form | **Demo mode** — 11 fields, honeypot, rate limit, validates and confirms, forwards nothing |
+| Schema | `AutoRepair` + `WebSite` global; `BreadcrumbList` per page; `FAQPage` only where visible; `Article` on warranty rights. **No duplicates. No rating schema.** |
+| Photography | 1 real photo. Gallery held pending shoot. |
 
-**Section order** (`views/homepage.tsx`): Header → Hero → Trust strip → **Symptom band** →
-Services (2 tiers) → Diagnostic capability → Workshop proof → Why us → **Customer rights** →
-Testimonials → Process → FAQ → Final CTA + booking form → Footer, plus a sticky mobile CTA bar.
+**Routes built:** `/` · `/services` · `/about-us` · `/contact-us` · `/book-a-vehicle-in` ·
+`/our-work` · `/your-warranty-rights` · `/privacy-policy` · `/website-terms-of-use` ·
+`/thank-you` · 404 · `/api/booking`
+
+**Homepage section order** (`views/homepage.tsx`): Hero → Trust strip → **Symptom band** →
+Services → Diagnostic capability → **Engine Shop** → Why us → **Customer rights** →
+Testimonials → Process → FAQ → **Location & hours** → Final CTA + form.
+
+Phase 2 changes: `WorkshopProof` **removed** from the homepage (four placeholder tiles carrying
+no information — its job is now done by `EngineShop` and `/our-work`; component retained for
+when photography lands). `EngineShop` and `LocationHours` **added**.
 
 ---
 
@@ -72,9 +81,13 @@ valuable sentence the business owns.
   deliberately avoids (there is no "guideline R7"; CPA s56 is not a warranty-choice protection).
 - **No rating displayed, no `aggregateRating` schema.** 4.2★ from 71 reviews with 8 one-star
   entries.
-- **Gold-on-black brand, brass reserved for primary CTAs, small labels, key icons and active
-  states — never large backgrounds.** Derived from the real uniform embroidery, not from the
-  current site's four unrelated CTA colours.
+- **Indigo primary + brass accent (Direction C, approved 2026-07-22).** The official logo is
+  indigo `#290F74`. `indigoDeep #1A0A4A` is now a third dark anchor surface alongside ink and
+  charcoal, which gives the brand large-area presence **without** putting gold on large areas.
+  Brass stays reserved for CTAs, small labels, key icons and active states.
+- **CALLING is the primary CTA, booking is secondary** (client instruction). Inverted from the
+  demo. `click_to_call` is the primary tracked conversion — an Ads setup optimising for form
+  fills alone will misread this account.
 - **The page alternates dark and warm-light sections (v2, 2026-07-20).** Section order is
   unchanged; only surfaces differ. Nine zones, measured 53% light / 47% dark. The first pass was
   all-dark and read as one continuous black slab. **Do not push it back toward all-dark, and do
@@ -124,8 +137,8 @@ Six blocking items. Full detail, wording and config locations in
 
 | # | Item | Why blocked |
 |---|---|---|
-| 1 | Canonical street address | Four addresses in circulation across directories |
-| 2 | Opening hours | Client's own two pages contradict each other ("5 days a week" vs "24/7") |
+| 1 | ~~Canonical street address~~ | ✅ **RESOLVED** from own signage — 1059 Steve Biko Road. ⚠️ **Postcode still unresolved** (GBP 0031 vs onboarding 0084) and deliberately unpublished |
+| 2 | ~~Opening hours~~ | ✅ **RESOLVED** — Mon–Fri 07:30–17:00, published + in schema. GBP says 07:15 and must be corrected before launch |
 | 3 | Founding year | "since 1992" vs "almost 30 years" — if 1992, it is 34 years |
 | 4 | MIWA membership + number | Claimed and corroborated, but unconfirmed |
 | 5 | Warranty terms in writing | Appears only inside a testimonial; a refused-claim review exists |

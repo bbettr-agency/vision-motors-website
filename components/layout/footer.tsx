@@ -1,30 +1,38 @@
+import Link from "next/link";
 import { Mail, MapPin, Phone } from "lucide-react";
 
-import { navRoutes, futureRoutes } from "@/config/routes";
+import { navRoutes, serviceRoutes, utilityRoutes } from "@/config/routes";
 import { siteConfig } from "@/config/site-config";
-import { specialistServices } from "@/config/services-config";
 import Logo from "@/components/ui/logo";
 
+/**
+ * Global footer.
+ *
+ * `pb-28` on mobile so the sticky CTA bar never covers footer content.
+ *
+ * Service links point at planned Phase 3 routes. Those that are not yet `live`
+ * render as plain text rather than dead links — nothing links to a 404.
+ */
 export default function Footer() {
   return (
-    <footer className="border-t border-white/10 bg-brand-ink px-6 pb-28 pt-16 md:pb-16 lg:px-8">
-      {/* pb-28 on mobile so the sticky CTA bar never covers footer content. */}
+    <footer className="border-t border-white/10 bg-brand-indigoDeep px-6 pb-28 pt-16 md:pb-16 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
           {/* Brand + contact */}
           <div>
             <Logo />
-            <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/55">
+            <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/60">
               Independent vehicle workshop in {siteConfig.suburb},{" "}
               {siteConfig.city}. Diagnostics, engine and gearbox specialists.
             </p>
 
-            <ul className="mt-4 text-sm">
+            <ul className="mt-5 text-sm">
               <li>
                 <a
                   href={siteConfig.phoneLink}
-                  className="inline-flex min-h-[44px] items-center gap-2.5 text-white/75 transition-colors hover:text-brand-accent"
+                  className="inline-flex min-h-[44px] items-center gap-2.5 text-white/80 transition-colors hover:text-brand-accent"
                   aria-label={`Call ${siteConfig.businessName} on ${siteConfig.phoneDisplay}`}
+                  data-cta="call"
                 >
                   <Phone className="h-4 w-4 shrink-0 text-brand-accent" aria-hidden />
                   <span className="whitespace-nowrap">
@@ -35,55 +43,64 @@ export default function Footer() {
               <li>
                 <a
                   href={siteConfig.emailLink}
-                  className="inline-flex min-h-[44px] items-center gap-2.5 break-all text-white/75 transition-colors hover:text-brand-accent"
+                  className="inline-flex min-h-[44px] items-center gap-2.5 break-all text-white/80 transition-colors hover:text-brand-accent"
                 >
                   <Mail className="h-4 w-4 shrink-0 text-brand-accent" aria-hidden />
                   {siteConfig.email}
                 </a>
               </li>
-              <li className="flex items-start gap-2.5 text-white/75">
+              <li className="flex items-start gap-2.5 py-2 text-white/80">
                 <MapPin
                   className="mt-0.5 h-4 w-4 shrink-0 text-brand-accent"
                   aria-hidden
                 />
-                {/* Street number omitted — four conflicting addresses in circulation.
-                    TODO(client): confirm canonical address. */}
+                {/* Street address verified from own signage. Postcode is
+                    deliberately omitted — 0031 vs 0084 unresolved (C20). */}
                 <span>{siteConfig.addressDisplay}</span>
               </li>
             </ul>
 
-            {/* Hours confirmed by client onboarding 2026-07-22. */}
             {siteConfig.hours.value && (
               <div className="mt-6">
                 <h2 className="font-display text-xs font-bold uppercase tracking-[0.18em] text-white">
                   Opening hours
                 </h2>
-                <p className="mt-2.5 text-sm text-white/75">
+                <p className="mt-2.5 text-sm text-white/80">
                   Monday – Friday: 07:30 – 17:00
                 </p>
-                <p className="mt-1 text-xs text-white/55">
+                <p className="mt-1 text-xs text-white/60">
                   {siteConfig.hoursClosedNote}
                 </p>
               </div>
             )}
           </div>
 
-          {/* Specialist work */}
+          {/* Services */}
           <div>
             <h2 className="font-display text-sm font-bold uppercase tracking-[0.18em] text-white">
-              Specialist Work
+              What We Do
             </h2>
             <ul className="mt-3 text-sm">
-              {specialistServices.map((service) => (
-                <li key={service.slug}>
-                  <a
-                    href="#services"
-                    className="inline-flex min-h-[44px] items-center text-white/60 transition-colors hover:text-brand-accent"
+              {serviceRoutes.map((service) =>
+                service.live ? (
+                  <li key={service.slug}>
+                    <Link
+                      href={service.slug}
+                      className="inline-flex min-h-[44px] items-center text-white/65 transition-colors hover:text-brand-accent"
+                    >
+                      {service.navLabel}
+                    </Link>
+                  </li>
+                ) : (
+                  // Not yet built — plain text, never a dead link.
+                  <li
+                    key={service.slug}
+                    className="flex min-h-[44px] items-center text-white/65"
                   >
-                    {service.title}
-                  </a>
-                </li>
-              ))}
+                    {service.navLabel}
+                  </li>
+                )
+              )}
             </ul>
           </div>
 
@@ -95,21 +112,29 @@ export default function Footer() {
             <ul className="mt-3 text-sm">
               {navRoutes.map((item) => (
                 <li key={item.href}>
-                  <a
+                  <Link
                     href={item.href}
-                    className="inline-flex min-h-[44px] items-center text-white/60 transition-colors hover:text-brand-accent"
+                    className="inline-flex min-h-[44px] items-center text-white/65 transition-colors hover:text-brand-accent"
                   >
                     {item.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
               <li>
-                <a
-                  href="#book"
-                  className="inline-flex min-h-[44px] items-center text-white/60 transition-colors hover:text-brand-accent"
+                <Link
+                  href={utilityRoutes.booking}
+                  className="inline-flex min-h-[44px] items-center text-white/65 transition-colors hover:text-brand-accent"
                 >
-                  Book Your Car In
-                </a>
+                  {siteConfig.ctaSecondary}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={utilityRoutes.warrantyRights}
+                  className="inline-flex min-h-[44px] items-center text-white/65 transition-colors hover:text-brand-accent"
+                >
+                  Your Warranty Rights
+                </Link>
               </li>
             </ul>
           </div>
@@ -125,38 +150,42 @@ export default function Footer() {
                   href={siteConfig.social.facebook}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex min-h-[44px] items-center text-white/60 transition-colors hover:text-brand-accent"
+                  className="inline-flex min-h-[44px] items-center text-white/65 transition-colors hover:text-brand-accent"
                 >
                   Facebook
                 </a>
               </li>
-              {/*
-                Legal pages are NOT yet linked. The current live site points at
-                third-party free-generator URLs (termsofservicegenerator.net /
-                privacypolicygenerator.info) which are off-domain, may expire,
-                and are almost certainly not POPIA-compliant for a business
-                collecting names and phone numbers.
-                TODO(client): commission real Privacy Policy + Terms pages, then
-                link futureRoutes.privacy / futureRoutes.terms here.
-              */}
               <li>
-                <span className="inline-flex min-h-[44px] items-center text-white/55" title="Pending — see PROJECT_STATUS.md">
-                  Privacy Policy (pending)
-                </span>
+                <Link
+                  href={utilityRoutes.privacy}
+                  className="inline-flex min-h-[44px] items-center text-white/65 transition-colors hover:text-brand-accent"
+                >
+                  Privacy Policy
+                </Link>
               </li>
               <li>
-                <span className="inline-flex min-h-[44px] items-center text-white/55" title="Pending — see PROJECT_STATUS.md">
-                  Terms of Service (pending)
-                </span>
+                <Link
+                  href={utilityRoutes.terms}
+                  className="inline-flex min-h-[44px] items-center text-white/65 transition-colors hover:text-brand-accent"
+                >
+                  Website Terms of Use
+                </Link>
               </li>
             </ul>
+
+            {/*
+              ⛔ ACCREDITATION SLOT — RMI / MIWA / ARASA badges render here
+              ONLY once membership evidence is supplied. Logo files and a
+              self-claim on the old site are not evidence.
+              See config/site-config.ts → accreditations, and
+              FACT-VERIFICATION-REGISTER.md C2.
+            */}
           </div>
         </div>
 
         <div className="mt-14 flex flex-col gap-4 border-t border-white/10 pt-8 text-xs text-white/55 sm:flex-row sm:items-center sm:justify-between">
           <p>
-            {/* Falls back to the trading name — the registered entity name is
-                not yet confirmed. See FACT-VERIFICATION-REGISTER.md C6. */}
+            {/* Falls back to the trading name — registered entity unconfirmed (C6). */}
             © {new Date().getFullYear()}{" "}
             {siteConfig.legalName ?? siteConfig.businessName}. All rights
             reserved.
@@ -167,7 +196,7 @@ export default function Footer() {
               href="https://www.bbettragency.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-semibold text-white/60 transition-colors hover:text-brand-accent"
+              className="font-semibold text-white/70 transition-colors hover:text-brand-accent"
             >
               Bbettr Agency
             </a>
@@ -177,6 +206,3 @@ export default function Footer() {
     </footer>
   );
 }
-
-// Referenced so the future-routes map stays type-checked as pages are added.
-export const plannedLegalRoutes = [futureRoutes.privacy, futureRoutes.terms];

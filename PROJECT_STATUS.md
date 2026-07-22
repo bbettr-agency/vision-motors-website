@@ -289,3 +289,82 @@ page and must not be removed.
    `/your-warranty-rights`, `/about-us`, `/contact-us`)
 7. Local SEO: fix NAP consistency across all directories once the canonical address is agreed;
    attach the website to the GBP
+
+---
+
+## 2b. Phase 2 — global system and primary pages (2026-07-22)
+
+**Approved and delivered.** Global chrome, seven new pages, technical SEO systems, schema
+generators, form architecture and conversion hooks.
+
+### Brand: Direction C applied
+
+The official logo is indigo `#290F74`. v2 ran brass-on-black, sampled from gold uniform
+embroidery — real, but a uniform treatment rather than the primary mark.
+
+v3 makes indigo primary and adds `indigoDeep #1A0A4A` as a **third dark anchor surface**
+alongside ink and charcoal. That gives the brand large-area presence *without* putting gold on
+large areas, which was the constraint. Brass remains reserved for CTAs, small labels, key icons
+and active states.
+
+Contrast verified at token time — white on indigoDeep 17.7:1, bone 14.1:1, brass 7.4:1,
+indigo on cream 13.6:1. All recorded in `config/theme-config.ts`.
+
+### CTA hierarchy inverted
+
+Calling is now primary everywhere: header (the only brass element in the chrome), hero, sticky
+mobile bar (brass fill, larger flex share), every page hero, every closing band. All call CTAs
+route through one `CallButton` component so the number, aria-label, no-wrap rule and tracking
+event cannot drift between placements.
+
+### Routes
+
+`/` · `/services` · `/about-us` · `/contact-us` · `/book-a-vehicle-in` · `/our-work` ·
+`/your-warranty-rights` · `/privacy-policy` · `/website-terms-of-use` · `/thank-you` (noindex) ·
+404 · `/api/booking`
+
+Service pages are **not** built — Phase 3, each gated on its own brief plus a real photograph.
+`config/routes.ts` carries them as `live: false`, so they render as described capabilities
+rather than dead links and stay out of the sitemap until built.
+
+### Homepage section review
+
+Every section re-examined rather than inherited:
+
+| Change | Reason |
+|---|---|
+| **`WorkshopProof` removed** | Four placeholder tiles carrying no information. Its job is now done by `EngineShop` (a real story) and `/our-work`. Component retained for when photography lands |
+| **`EngineShop` added** | The strongest new proof available — a separate premises, carefully scoped to what is photographically evidenced |
+| **`LocationHours` added** | Address and hours were confirmed in Phase 1 and were previously missing from the site entirely |
+
+### Verification
+
+| Check | Result |
+|---|---|
+| Build · TypeScript · lint | Clean |
+| First-load JS | **125 kB max** across all templates (budget 150 kB) |
+| Responsive | **49 route × width combinations** at 360/390/430/768/1024/1280/1440 — **zero overflow, zero phone wraps** |
+| Contrast | **338 pairs across 10 routes — zero failures**, lowest 4.70:1 |
+| Headings | One H1 per route, **zero skipped levels** across all routes |
+| Alt text / labels | Zero images without alt; zero unlabelled form fields |
+| Canonical | Present on every route |
+| Metadata | All titles ≤60, all descriptions ≤155 |
+| Schema | **No duplicates on any route.** No `aggregateRating` |
+| Internal links | 13 unique — **zero broken** |
+| Sitemap / robots | 9 indexable; `/thank-you` + `/api/` disallowed and noindexed |
+| Booking API | 200 valid · 422 invalid · 200-silent honeypot · 400 malformed · 429 rate-limited |
+| Forbidden claims | Automated scan across all routes — **zero hits** for accreditation, warranty figures, LR Auto contamination, or the excluded Ranger technical claims |
+
+### Truth handling in Phase 2
+
+- **Postcode reverted to unpublished.** I had set 0084 from onboarding in Phase 1; the GBP says
+  0031. Two conflicting client-side sources is not confirmation, and a wrong postcode in schema
+  hardens the wrong entity signal.
+- **Accreditation slots built, nothing renders.** `siteConfig.accreditations` carries RMI, MIWA
+  and ARASA. Setting `status: "verified"` renders the badge strip and starts emitting
+  `hasCredential` automatically — no component changes.
+- **Warranty:** one approved sentence sitewide, in `siteConfig.warrantyInterimCopy`. Never with
+  a duration or mileage, never in schema.
+- **Engine Shop:** described as a facility, never given an address, never presented as a second
+  customer-facing branch.
+- **867 Voortrekkersweg** appears only on Contact, labelled as a former address.
