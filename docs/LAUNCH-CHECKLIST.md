@@ -4,6 +4,37 @@
 
 ---
 
+## 🔴 Deployment gate — read first
+
+| Branch | Deploys to |
+|---|---|
+| `main` | **Preview only** |
+| `production` | **Production** → `vision-motors-website.vercel.app` |
+
+```bash
+git checkout production && git merge --ff-only main && git push origin production
+```
+
+⛔ Never `npx vercel --prod`. Full workflow + rollback: `docs/DEPLOYMENT-WORKFLOW.md`.
+
+### Connecting the real domain — 🔴 all required
+
+**`visionmotors.co.za` is not connected. Do not connect it until every box below is ticked.**
+
+- [ ] **Written client approval to go live**
+- [ ] Every 🔴 in this checklist closed
+- [ ] Redirects configured and tested (`REDIRECT-MAP.md`)
+- [ ] Search Console baseline exported **before** cutover
+- [ ] GBP baseline captured before the website link is attached
+- [ ] Client informed of the DNS change window
+- [ ] Rollback path confirmed and someone available to execute it
+- [ ] Old GroovePages site kept reachable for 30 days
+
+⚠️ "Auto-assign Custom Production Domains" is **enabled** — the next production deployment will
+claim the domain the moment it is added. Add it only when you intend to go live.
+
+---
+
 ## 🔴 Blocking — content truth
 
 - [ ] **Warranty terms in writing** (C1) — or interim wording confirmed

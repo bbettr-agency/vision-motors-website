@@ -6,7 +6,27 @@ reconditioning, gearbox, DSG and mechatronic repairs.
 **Built with BBETTR Website OS v2.0.0-phase1.**
 
 **Repository:** https://github.com/bbettr-agency/vision-motors-website — **this repo is the
-source of truth for all Vision Motors work.** Production branch: `main`.
+source of truth for all Vision Motors work.**
+
+## ⚠️ Deployment: `main` does NOT publish
+
+| Branch | Deploys to | When |
+|---|---|---|
+| **`main`** | **Preview only** — unique URL per push | Every push. Safe. |
+| **`production`** | **Production** → `vision-motors-website.vercel.app` | Only when explicitly approved |
+
+```bash
+git push origin main                                    # preview
+
+# production — approved releases only
+git checkout production && git merge --ff-only main && git push origin production && git checkout main
+```
+
+⛔ **Never run `npx vercel --prod`** — it bypasses the branch gate.
+⛔ **`visionmotors.co.za` is not connected and must not be** without written client approval.
+The client's real site is still served by GroovePages and is unaffected by anything here.
+
+Full detail, including rollback: **`docs/DEPLOYMENT-WORKFLOW.md`**.
 
 ---
 

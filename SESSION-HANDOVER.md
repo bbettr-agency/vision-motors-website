@@ -8,7 +8,12 @@
 ## ⚠️ THIS REPOSITORY IS THE SOURCE OF TRUTH
 
 **Repository:** https://github.com/bbettr-agency/vision-motors-website
-**Production branch:** `main`
+**Development branch:** `main` → preview deployments only
+**Production branch:** `production` → `vision-motors-website.vercel.app`
+
+> ⚠️ **Changed 2026-07-22.** `main` used to be the production branch, so ordinary pushes
+> silently replaced the client's approved review deployment. Publishing is now a separate,
+> deliberate act. See `docs/DEPLOYMENT-WORKFLOW.md`.
 
 **All future Vision Motors work must happen here.** Do not continue this project inside the
 Website OS repository.
@@ -170,17 +175,41 @@ WhatsApp number, photography, vector logo.
 
 ## Vercel deployment status
 
-**Not yet deployed.** The repository is ready for it — no blockers.
+**Phase 2 is live and client-approved at** `https://vision-motors-website.vercel.app`
+(commit `8d8f5b7`).
 
-**To deploy:**
-1. Vercel → New Project → import `bbettr-agency/vision-motors-website`
-2. Framework preset: **Next.js** (auto-detected). Root directory `./`. No build overrides needed.
-3. Environment variable (optional at first): `GHL_WEBHOOK_URL` — leave unset to keep the booking
-   form in demo mode for client review.
-4. Deploy from `main`; preview deploys on branches.
+### Workflow — read before pushing
 
-**Before pointing the live domain at it**, work through the blocking items above — the site
-currently publishes no street number, no hours and no accreditation badge by design.
+| Branch | Deploys to |
+|---|---|
+| **`main`** | **Preview only.** Unique URL per push. Never touches the review URL. |
+| **`production`** | **Production** → `vision-motors-website.vercel.app`. Approved releases only. |
+
+```bash
+git push origin main                                    # preview
+
+# production — only after approval
+git checkout production && git merge --ff-only main && git push origin production && git checkout main
+```
+
+⛔ **Never `npx vercel --prod`.** It bypasses the branch gate.
+
+### Real-domain protection
+
+🔴 **`visionmotors.co.za` is NOT connected and must not be** without written client approval.
+Verified 2026-07-22: the project has exactly one domain (`vision-motors-website.vercel.app`),
+`visionmotors.co.za` appears nowhere in the Vercel account, and no DNS has been touched. The
+client's live site is still GroovePages and is unaffected.
+
+⚠️ "Auto-assign Custom Production Domains" is enabled — harmless while no custom domain exists,
+but it means the next production deploy claims the domain the moment one is added.
+
+### Rollback
+
+Fastest: Vercel dashboard → Deployments → **⋯ → Promote to Production** (instant, no rebuild).
+Or `npx vercel promote <deployment-url>`. Known-good: `8d8f5b7` (Phase 2), `6ba5bc5` (Phase 1).
+
+Full detail: **`docs/DEPLOYMENT-WORKFLOW.md`**.
 
 **At launch (Gate 4):** DNS + SSL · 301 map for the old site (only 3 URLs: `/`, `/services`,
 `/cookie`) · Search Console property + sitemap · GBP linked · analytics events verified firing in
