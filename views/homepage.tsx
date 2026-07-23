@@ -31,7 +31,13 @@ export default function Homepage() {
 
       <Header />
 
-      <main id="main" className="overflow-hidden bg-brand-ink">
+      {/*
+        `overflow-x-clip`, NOT `overflow-hidden`: it still clips any horizontal
+        spill, but — unlike `overflow: hidden` — it does not create a scroll
+        container, so the hero's `position: sticky` left column works. Using
+        `overflow-hidden` here silently breaks sticky for every descendant.
+      */}
+      <main id="main" className="overflow-x-clip bg-brand-ink">
         {/*
           SECTION ORDER — reviewed section by section in Phase 2.
           Rhythm: dark anchor → light → light → dark → light → dark → light →
