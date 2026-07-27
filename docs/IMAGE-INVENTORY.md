@@ -18,7 +18,7 @@ diagnostic session, or a completed repair.
 
 | # | File | Px | Category | Authenticity | Quality | Trust value | Verdict |
 |---|---|---|---|---|---|---|---|
-| 1 | `public/images/vision-motors-technicians-engine-bay-pretoria.jpg` | 1024×682 | Team at work | ✅ Real | Good | **Very high** | **In use — /about-us + /our-work.** Best asset by a wide margin. (Was the hero backdrop; hero now uses a decorative photographic background — see B-note below.) |
+| 1 | `public/images/vision-motors-technicians-engine-bay-pretoria.jpg` | 1024×682 | Team at work | ✅ Real | Good | **Very high** | **In use — hero anchor (v5), + /about-us + /our-work.** Best asset by a wide margin. On the homepage it is now the dominant editorial hero crop (`object-[center_28%]`), a DIFFERENT crop/purpose from About/Our-Work (Correction 4). The client-supplied oil image is no longer used on the homepage. |
 | 2 | `client-assets/premises/premises-1059-steve-biko-frontage-541x374.jpg` | 541×374 | Exterior | ✅ Real | ⚠️ Low | **Very high** | Too small to publish. **Reshoot — priority 1.** Evidentially crucial (it resolved the address). |
 | 3 | `client-assets/premises/premises-engine-shop-frontage-560x156.jpg` | 560×156 | Exterior | ✅ Real | ⚠️ Very low | **Very high** | Too small + extreme letterbox crop. **Reshoot — priority 2.** |
 | 4 | `client-assets/team/team-khaki-shirt-163x275.jpg` | 163×275 | Team portrait | ✅ Real | ⚠️ Very low | High | Avatar only (≤80px). Name illegible. |

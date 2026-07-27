@@ -34,7 +34,7 @@ type Props = {
 };
 
 const base =
-  "group inline-flex items-center justify-center gap-2.5 rounded-full font-semibold transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2";
+  "group inline-flex items-center justify-center gap-2.5 rounded-md font-semibold transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2";
 
 const sizes = {
   md: "min-h-[44px] px-5 text-sm",
@@ -43,12 +43,12 @@ const sizes = {
 
 const variants: Record<Variant, string> = {
   brass:
-    "bg-brand-cta text-brand-ink shadow-accent hover:bg-brand-ctaDark hover:-translate-y-0.5 focus-visible:ring-brand-blueMid focus-visible:ring-offset-brand-ink",
+    "bg-brand-cta text-brand-ink shadow-accent hover:bg-brand-ctaDark hover:-translate-y-0.5 focus-visible:ring-brand-cta focus-visible:ring-offset-brand-ink",
   outlineDark:
-    "border border-white/20 text-white hover:-translate-y-0.5 hover:border-brand-blueMid/50 hover:bg-white/5 focus-visible:ring-brand-blueMid focus-visible:ring-offset-brand-ink",
+    "border border-white/25 text-white hover:-translate-y-0.5 hover:border-brand-cta/60 hover:bg-white/5 focus-visible:ring-brand-cta focus-visible:ring-offset-brand-ink",
   outlineLight:
-    "border border-brand-line bg-white text-brand-blue shadow-soft hover:-translate-y-0.5 hover:border-brand-blue/50 hover:shadow-softLift focus-visible:ring-brand-blueMid focus-visible:ring-offset-brand-cream",
-  bare: "text-brand-blue hover:text-brand-navy focus-visible:ring-brand-blueMid focus-visible:ring-offset-white",
+    "border border-brand-ink/25 bg-brand-cream text-brand-ink hover:-translate-y-0.5 hover:border-brand-ink/50 hover:bg-brand-tint focus-visible:ring-brand-blue focus-visible:ring-offset-brand-cream",
+  bare: "text-brand-blue hover:text-brand-ink focus-visible:ring-brand-blue focus-visible:ring-offset-white",
 };
 
 export default function CallButton({
@@ -74,8 +74,8 @@ export default function CallButton({
       <Phone
         className={cn(
           "h-4 w-4 shrink-0",
-          variant === "brass" ? "text-brand-ink" : "text-brand-blueSoft",
-          variant === "outlineLight" && "text-brand-blue",
+          variant === "brass" ? "text-brand-ink" : "text-brand-cta",
+          variant === "outlineLight" && "text-brand-ink",
           variant === "bare" && "text-brand-blue"
         )}
         aria-hidden

@@ -4,11 +4,16 @@ import type { Config } from "tailwindcss";
 // rationale and the full contrast-pair verification. Tailwind is the render
 // path; theme-config is the runtime/documentation reference. Keep them in sync.
 //
-// ── v4: BLUE-LED SYSTEM (approved 2026-07-22) ────────────────────────────────
-// Replaces the indigo + brass system. Navy is the primary dark, blue carries
-// accents / links / active states, warm amber is held strictly for the primary
-// Call CTA. Target balance ~55% light neutral / 30% navy+blue / 10% deep dark /
-// 5% warm accent. See config/theme-config.ts for the full contrast table.
+// ── v5: "WORKSHOP MANUAL" INDUSTRIAL-EDITORIAL SYSTEM (approved 2026-07-27) ───
+// Replaces the v4 blue-led corporate system. Two darks — near-black charcoal
+// (`ink`, dominant) + deep navy (secondary band) — alternate with warm paper /
+// concrete neutrals. Blue is demoted to a muted steel accent used sparingly;
+// large baby-blue is GONE. Amber is held strictly for the Call CTA + the active
+// capability rule. Target balance ~35% charcoal/navy · 40% paper/concrete ·
+// 20% photography · 5% amber. See config/theme-config.ts for the contrast table.
+//
+// Token NAMES are unchanged from v4 so components need no mass rename; only the
+// VALUES moved. A few tokens were added (steel, charcoalLight).
 
 const config: Config = {
   content: [
@@ -22,63 +27,77 @@ const config: Config = {
     extend: {
       colors: {
         brand: {
-          // ── PRIMARY: navy. Header, hero anchor, footer, major dark surfaces.
-          navy: "#0F2A44", // primary dark surface (white 14.6:1)
-          navyCard: "#1A3A5A", // cards on navy — visibly separated (white 11.7:1)
+          // ── PRIMARY DARK: near-black warm charcoal. Dominant workshop surface,
+          //    and the deepest text colour on light. (white 15.9:1)
+          ink: "#15181C",
+          charcoalLight: "#1E2226", // subtle raised charcoal (rare)
 
-          // ── SECONDARY: blue. Accents, links, icons, labels, secondary buttons,
-          //    selected/active states.
-          blue: "#1F4E79", // links + icons + labels on light (7.6:1 on bluegrey)
-          blueMid: "#3E7CB1", // accent blue: hover, borders, focus, active highlight
-          blueSoft: "#7FB0D9", // blue for text + icons ON navy (6.4:1)
+          // ── SECONDARY DARK: deep navy band. Used to punctuate, not dominate.
+          navy: "#0F2A44", // deep-navy band (white 14.6:1)
+          navyCard: "#1C2A36", // rare raised dark surface (booking form, bars)
 
-          // ── LIGHT surfaces.
-          bluegrey: "#EAF1F7", // light section background
-          cream: "#F7F5F0", // warm off-white — keeps the system approachable
-          tint: "#DCE8F3", // soft blue chip behind icons on light
-          line: "#D3E0EC", // blue-grey border / divider on light
+          // ── STEEL-BLUE ACCENT: demoted. Micro technical accents on dark only,
+          //    links + focus. NOT large fills, NOT big baby-blue backgrounds.
+          blue: "#1F4E79", // links + focus on light
+          blueMid: "#3E7CB1", // focus rings / UI borders (3:1)
+          blueSoft: "#8FA6B8", // muted steel-blue for tiny accents ON dark (7.4:1)
+
+          // ── LIGHT surfaces — warm workshop paper + concrete. No baby blue.
+          cream: "#F3EFE7", // warm paper — primary light surface
+          bluegrey: "#E4DFD5", // concrete grey — deeper light surface
+          tint: "#E9E3D7", // warm inset/chip on light
+          line: "#CFC9BC", // warm hairline border / divider on light
+
+          // ── STEEL — muted-steel rules, dividers, vertical labels (UI 3:1).
+          steel: "#7C838B",
 
           // ── TEXT.
-          ink: "#17212B", // headings + body on light; also deepest dark surface
-          inkSoft: "#33414E", // body text on light (9.2:1 on bluegrey)
-          inkMuted: "#51616F", // secondary / caption on light (5.6:1 on bluegrey)
-          mist: "#F4F7FA", // body on navy (13.6:1)
-          bone: "#CBD8E4", // secondary on navy (10.1:1)
+          inkSoft: "#3A3F45", // body on light (9.7:1 on paper)
+          inkMuted: "#5E6368", // muted-steel caption/label on light (5.3:1 paper)
+          mist: "#F4F1EA", // warm off-white body on dark (15.9:1)
+          bone: "#C6C2B8", // warm grey secondary on dark (10.6:1)
 
-          // ── WARM CTA ACCENT — primary Call buttons + small priority only.
-          //    NEVER on large background areas. Always paired with dark (ink)
-          //    text — white-on-amber fails contrast (2.98:1).
+          // ── WARM CTA ACCENT — Call buttons + the active capability rule ONLY.
+          //    NEVER a large background. Always paired with dark (ink) text —
+          //    white-on-amber fails contrast (2.98:1); ink-on-amber is 6.3:1.
           cta: "#C58A32",
           ctaDark: "#A97324", // hover
           ctaTint: "#F3E7D2", // rare amber chip on light
         },
       },
       fontFamily: {
+        // Barlow Semi Condensed — compact industrial display + big numerals.
         display: ["var(--font-display)", "system-ui", "sans-serif"],
+        // Inter — body copy. Never mono for long paragraphs.
         body: ["var(--font-body)", "system-ui", "sans-serif"],
+        // IBM Plex Mono — technical labels, index numerals, spec captions.
+        mono: ["var(--font-mono)", "ui-monospace", "monospace"],
       },
+      // Sharper shape language — squared, not soft. (Tailwind `rounded-md`
+      // default 0.375rem is the button radius; buttons drop the pill.)
       borderRadius: {
-        "2xl": "1.25rem",
-        "3xl": "1.75rem",
+        "2xl": "0.375rem",
+        "3xl": "0.5rem",
       },
       backgroundImage: {
-        // Blue brand wash — makes navy/blue present above the fold without a flat
-        // slab. A faint warm edge nods to the CTA colour; nothing more.
+        // Restrained warm vignette for the charcoal hero — a faint amber edge,
+        // nothing more. No blue wash.
         "hero-glow":
-          "radial-gradient(ellipse 90% 65% at 50% -10%, rgba(62,124,177,0.38), transparent 70%), radial-gradient(ellipse 55% 40% at 80% 6%, rgba(197,138,50,0.10), transparent 70%)",
-        // Subtle blue glow behind conversion sections on navy.
-        "blue-glow":
-          "radial-gradient(ellipse 70% 55% at 50% 0%, rgba(62,124,177,0.16), transparent 70%)",
+          "radial-gradient(ellipse 70% 55% at 12% -5%, rgba(197,138,50,0.07), transparent 60%)",
+        // Technical grid textures — pair with bg-[length:36px_36px] for a faint
+        // blueprint / service-manual grid on dark or light surfaces.
+        "grid-dark":
+          "linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px)",
+        "grid-light":
+          "linear-gradient(rgba(21,24,28,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(21,24,28,0.05) 1px, transparent 1px)",
       },
       boxShadow: {
-        glow: "0 20px 60px -20px rgba(31,78,121,0.35)", // blue lift on dark
-        accent: "0 18px 45px -18px rgba(197,138,50,0.45)", // amber lift — CTA only
-        card: "0 20px 50px -25px rgba(6,18,32,0.55)", // cards on dark (navy shadow)
-        // Cards on light: barely-there lift, cool-neutral so it never reads warm.
-        soft: "0 1px 2px rgba(15,42,68,0.05), 0 10px 30px -14px rgba(15,42,68,0.12)",
-        softLift:
-          "0 2px 4px rgba(15,42,68,0.06), 0 18px 40px -18px rgba(15,42,68,0.18)",
-        ink: "0 30px 80px -30px rgba(6,18,32,0.85)",
+        // Restrained — the new system separates with hairlines + surface
+        // contrast, not drop shadows. `form` is the one real lift, reserved for
+        // the booking panel + sticky bars.
+        accent: "0 14px 34px -18px rgba(197,138,50,0.45)", // amber lift — CTA only
+        form: "0 24px 60px -30px rgba(6,10,14,0.7)",
+        ink: "0 30px 80px -30px rgba(6,10,14,0.85)",
       },
       keyframes: {
         float: {

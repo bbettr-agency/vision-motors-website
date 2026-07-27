@@ -1,23 +1,23 @@
 import Image from "next/image";
-import { Camera } from "lucide-react";
+import { Crop } from "lucide-react";
 
 import type { ImageSlot as ImageSlotType } from "@/types/site";
 import { cn } from "@/utils/cn";
 
 // ─────────────────────────────────────────────────────────────────────────────
-//  Renders a real photograph when one exists, and a clearly-labelled,
-//  intentional-looking placeholder when it doesn't.
+//  Renders a real photograph when one exists, and — when it doesn't — a
+//  deliberate TECHNICAL HOLDING PLATE, not a fake photo.
 //
-//  Per SYSTEM/08: a documented placeholder beats a misleading stock photo.
-//  Only ONE authentic Vision Motors photograph currently exists — every other
-//  image on the client's live site is stock or decorative.
+//  Per SYSTEM/08 and the redesign brief (Correction 5): a documented holding
+//  plate beats misleading stock. The plate reads unmistakably as an editorial
+//  reservation — mono shot code, required subject, required crop, and a
+//  `CLIENT PHOTOGRAPHY REQUIRED` status — framed with crop marks and a faint
+//  service-manual grid. It must NEVER simulate a diagnostic screen, an engine,
+//  tools or a workshop scene that could be mistaken for real Vision Motors work.
 //
-//  v2: placeholders now carry a `tone`, because the workshop-proof section moved
-//  onto a warm light surface. A dark placeholder on cream would punch a hole in
-//  the page; the light variant reads as a reserved space instead.
-//
-//  `showBrief` surfaces the photographer's brief in the demo so the client can
-//  see exactly what is needed. Set false for a client-facing presentation.
+//  Only ONE authentic Vision Motors photograph currently exists; every other
+//  slot is `src: null` and renders this plate until a real shot lands (a
+//  one-line `src` change in config/images-config.ts).
 // ─────────────────────────────────────────────────────────────────────────────
 
 type Props = {
@@ -33,9 +33,20 @@ type Props = {
    * aspect ratio makes the ratio drive WIDTH, which overflows the container.
    */
   fill?: boolean;
-  /** Surface the slot sits on. Drives placeholder styling. */
+  /** Surface the slot sits on. Drives plate styling. */
   tone?: "dark" | "light";
 };
+
+/** Small L-shaped crop mark, one per corner — the editorial "holding" signal. */
+function CropMark({ pos, tone }: { pos: string; tone: "dark" | "light" }) {
+  const color = tone === "dark" ? "border-brand-steel/60" : "border-brand-inkMuted/50";
+  return (
+    <span
+      aria-hidden
+      className={cn("pointer-events-none absolute h-4 w-4", color, pos)}
+    />
+  );
+}
 
 export default function ImageSlotView({
   slot,
@@ -58,7 +69,7 @@ export default function ImageSlotView({
       <div
         className={cn(
           "relative overflow-hidden",
-          isDark ? "bg-brand-navyCard" : "bg-brand-bluegrey",
+          isDark ? "bg-brand-charcoalLight" : "bg-brand-bluegrey",
           sizing.className,
           className
         )}
@@ -76,48 +87,72 @@ export default function ImageSlotView({
     );
   }
 
+  const shotCode = slot.id.replace(/([a-z])([A-Z])/g, "$1-$2").toUpperCase();
+
   return (
     <div
       className={cn(
-        "relative flex flex-col items-center justify-center overflow-hidden border border-dashed p-6 text-center",
+        "relative flex flex-col justify-between overflow-hidden border p-5 sm:p-6",
         isDark
-          ? "border-white/15 bg-brand-navyCard"
-          : "border-brand-blue/25 bg-brand-tint/45",
+          ? "border-white/12 bg-brand-ink text-brand-bone"
+          : "border-brand-line bg-brand-bluegrey text-brand-inkMuted",
         sizing.className,
         className
       )}
       style={sizing.style}
-      // Decorative placeholder — announce nothing meaningful to screen readers.
+      // Decorative holding plate — announce it plainly, nothing meaningful.
       role="img"
       aria-label={`Photograph pending: ${slot.alt}`}
     >
-      <Camera
-        className={cn(
-          "relative h-7 w-7",
-          isDark ? "text-brand-blueSoft" : "text-brand-blue"
-        )}
+      {/* Faint service-manual grid. */}
+      <span
         aria-hidden
-      />
-
-      <p
         className={cn(
-          "relative mt-3 text-[0.65rem] font-semibold uppercase tracking-[0.2em]",
-          isDark ? "text-brand-blueSoft" : "text-brand-blue"
+          "pointer-events-none absolute inset-0 bg-[length:28px_28px] opacity-70",
+          isDark ? "bg-grid-dark" : "bg-grid-light"
         )}
-      >
-        Client photo required
-      </p>
+      />
+      {/* Crop marks. */}
+      <CropMark pos="left-2 top-2 border-l border-t" tone={tone} />
+      <CropMark pos="right-2 top-2 border-r border-t" tone={tone} />
+      <CropMark pos="bottom-2 left-2 border-b border-l" tone={tone} />
+      <CropMark pos="bottom-2 right-2 border-b border-r" tone={tone} />
 
-      {showBrief && (
-        <p
+      {/* Top row — shot code + crop icon. */}
+      <div className="relative flex items-center justify-between font-mono text-[0.65rem] uppercase tracking-[0.2em]">
+        <span>PLATE · {shotCode}</span>
+        <Crop className="h-3.5 w-3.5" aria-hidden />
+      </div>
+
+      {/* Status + required subject + crop brief. */}
+      <div className="relative">
+        <span
           className={cn(
-            "relative mt-2 max-w-xs text-xs leading-relaxed",
-            isDark ? "text-white/60" : "text-brand-inkMuted"
+            "inline-block border px-2 py-1 font-mono text-[0.6rem] font-medium uppercase tracking-[0.2em]",
+            isDark
+              ? "border-brand-cta/50 text-brand-cta"
+              : "border-brand-blue/40 text-brand-blue"
           )}
         >
-          {slot.shotBrief}
+          Client photography required
+        </span>
+
+        <p
+          className={cn(
+            "mt-3 font-display text-base font-semibold leading-tight sm:text-lg",
+            isDark ? "text-white" : "text-brand-ink"
+          )}
+        >
+          {slot.alt}
         </p>
-      )}
+
+        {showBrief && (
+          <p className="mt-2 max-w-md text-xs leading-relaxed">
+            <span className="font-mono uppercase tracking-[0.15em]">Crop:</span>{" "}
+            {slot.shotBrief}
+          </p>
+        )}
+      </div>
     </div>
   );
 }

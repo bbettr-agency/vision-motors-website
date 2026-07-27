@@ -44,8 +44,12 @@ export const serviceRoutes: ServiceRoute[] = [
   },
   {
     slug: "/ford-ranger-engine-specialists-pretoria",
-    label: "Ford Ranger Engine Specialists",
-    navLabel: "Ford Ranger Engines",
+    // ⚠️ Display labels softened to "Ford Engine Work" (Correction 1, 2026-07-27):
+    // no dedicated Ranger-specialist claim until the client confirms models,
+    // engines and in-house scope (C9/C21). The SEO slug is retained for the
+    // future page; restore the specialist label once C21 is confirmed.
+    label: "Ford Engine Work",
+    navLabel: "Ford Engine Work",
     live: false,
   },
   {

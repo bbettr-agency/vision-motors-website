@@ -11,14 +11,14 @@ import Icon from "@/components/ui/icon";
 import Reveal from "@/components/ui/reveal";
 
 // ─────────────────────────────────────────────────────────────────────────────
-//  SERVICES — two tiers.
-//  Specialist work leads (the differentiator); everyday servicing follows
-//  (the volume entry point). Ordered by commercial value, never alphabetically.
+//  SERVICES — the capability index. Specialist work leads (the differentiator);
+//  everyday servicing follows (the volume entry point). Ordered by commercial
+//  value, never alphabetically.
 //
-//  v2 (visual only): light section on `linen`, a half-step deeper than the
-//  symptom band above it so the two light sections separate rather than merging
-//  into one long pale stretch. Specialist cards are white — they carry the most
-//  important content on the page and now read as clean, scannable panels.
+//  v6 ("workshop manual"): NOT a wall of identical cards. Specialist services
+//  are large numbered editorial ROWS — big mono index, uppercase title, then the
+//  explanation and a ruled bullet list. Everyday services collapse to a single
+//  inline ruled list. Concrete surface, hairline rules, no boxes.
 // ─────────────────────────────────────────────────────────────────────────────
 
 export default function ServicesGrid() {
@@ -26,7 +26,7 @@ export default function ServicesGrid() {
     <SectionContainer id="services" className="bg-brand-bluegrey">
       <SectionHeading
         tone="light"
-        eyebrow="What we do"
+        eyebrow="Capabilities"
         title={
           <>
             The work most workshops
@@ -38,75 +38,80 @@ export default function ServicesGrid() {
         className="max-w-3xl"
       />
 
-      {/* Specialist tier */}
-      <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {/* Specialist tier — large numbered rows. */}
+      <div className="mt-14 border-t border-brand-ink/15">
         {specialistServices.map((service, index) => (
           <Reveal
             key={service.slug}
             as="article"
-            delay={(index % 3) * 0.07}
-            className="group flex flex-col rounded-2xl border border-brand-line bg-white p-8 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:border-brand-blueMid/50 hover:shadow-softLift"
+            delay={(index % 3) * 0.06}
+            className="grid gap-x-8 gap-y-4 border-b border-brand-ink/15 py-8 md:py-10 lg:grid-cols-12"
           >
-            <div className="mb-6 flex items-center justify-between">
-              <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-tint text-brand-blue transition-all duration-300 group-hover:bg-brand-cta group-hover:text-brand-ink">
-                <Icon name={service.icon} className="h-5 w-5" />
+            <div className="flex items-start gap-5 lg:col-span-5">
+              <span className="font-mono text-3xl font-medium leading-none text-brand-inkMuted sm:text-4xl">
+                {String(index + 1).padStart(2, "0")}
               </span>
-              <span className="font-mono text-xs text-brand-inkMuted">
-                0{index + 1}
-              </span>
+              <div>
+                <span className="mb-2 inline-flex text-brand-blue">
+                  <Icon name={service.icon} className="h-5 w-5" />
+                </span>
+                <h3 className="font-display text-2xl font-bold uppercase leading-[0.95] tracking-tight text-brand-ink sm:text-3xl">
+                  {service.title}
+                </h3>
+              </div>
             </div>
 
-            <h3 className="font-display text-xl font-semibold text-brand-ink">
-              {service.title}
-            </h3>
-            <p className="mt-3.5 text-sm leading-[1.7] text-brand-inkSoft">
-              {service.description}
-            </p>
+            <div className="lg:col-span-7">
+              <p className="max-w-[56ch] text-base leading-[1.7] text-brand-inkSoft">
+                {service.description}
+              </p>
 
-            {service.bullets && (
-              <ul className="mt-6 space-y-2 border-t border-brand-line pt-5 text-xs text-brand-inkMuted">
-                {service.bullets.map((bullet) => (
-                  <li key={bullet} className="flex items-center gap-2.5">
-                    <span
-                      className="h-1 w-1 shrink-0 rounded-full bg-brand-blue"
-                      aria-hidden
-                    />
-                    {bullet}
-                  </li>
-                ))}
-              </ul>
-            )}
+              {service.bullets && (
+                <ul className="mt-5 flex flex-wrap gap-x-6 gap-y-2 text-xs font-medium uppercase tracking-[0.08em] text-brand-inkMuted">
+                  {service.bullets.map((bullet) => (
+                    <li key={bullet} className="flex items-center gap-2.5">
+                      <span
+                        className="h-1.5 w-1.5 shrink-0 bg-brand-cta"
+                        aria-hidden
+                      />
+                      {bullet}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
           </Reveal>
         ))}
       </div>
 
-      {/* Everyday tier */}
-      <div className="mt-16">
-        <h3 className="font-display text-sm font-bold uppercase tracking-[0.2em] text-brand-inkMuted">
+      {/* Everyday tier — one inline ruled list, no pills. */}
+      <div className="mt-14">
+        <h3 className="font-mono text-xs font-medium uppercase tracking-[0.28em] text-brand-inkMuted">
           Also in the workshop
         </h3>
 
-        <div className="mt-7 flex flex-wrap gap-3">
+        <ul className="mt-6 flex flex-wrap gap-x-8 gap-y-3">
           {everydayServices.map((service, index) => (
             <Reveal
               key={service.slug}
+              as="li"
               delay={index * 0.05}
-              className="inline-flex items-center gap-2.5 rounded-full border border-brand-line bg-white px-5 py-3 shadow-soft"
+              className="inline-flex items-center gap-2.5 text-brand-ink"
             >
               <Icon
                 name={service.icon}
-                className="h-4 w-4 shrink-0 text-brand-blue"
+                className="h-4 w-4 shrink-0 text-brand-inkMuted"
               />
-              <span className="text-sm font-medium text-brand-ink">
+              <span className="text-sm font-semibold uppercase tracking-tight">
                 {service.title}
               </span>
             </Reveal>
           ))}
-        </div>
+        </ul>
 
         <Link
           href={utilityRoutes.services}
-          className="mt-10 inline-flex min-h-[44px] items-center gap-2 text-sm font-semibold text-brand-blue underline underline-offset-4 transition-colors hover:text-brand-navy focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-blueMid"
+          className="mt-10 inline-flex min-h-[44px] items-center gap-2 text-sm font-semibold text-brand-blue underline underline-offset-4 transition-colors hover:text-brand-ink focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue"
         >
           See all services in detail
           <ArrowRight className="h-4 w-4" aria-hidden />

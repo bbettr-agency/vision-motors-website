@@ -22,7 +22,7 @@ type ButtonProps = {
 };
 
 const base =
-  "group inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-blueMid focus-visible:ring-offset-2 focus-visible:ring-offset-brand-ink disabled:cursor-not-allowed disabled:opacity-60";
+  "group inline-flex items-center justify-center gap-2 rounded-md font-semibold transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-cta focus-visible:ring-offset-2 focus-visible:ring-offset-brand-ink disabled:cursor-not-allowed disabled:opacity-60";
 
 // min-h ensures the 44x44px tap-target floor from PIPELINE/gates.md
 const sizes: Record<ButtonSize, string> = {
@@ -32,17 +32,17 @@ const sizes: Record<ButtonSize, string> = {
 
 const variants: Record<ButtonVariant, string> = {
   // `primary` IS the brass CTA. It must remain the single strongest visual
-  // element on the page, on light surfaces as well as dark — hence the solid
-  // brass fill and the only shadow strong enough to lift off a cream section.
+  // element on the page, on light surfaces as well as dark — solid amber fill
+  // with the one shadow strong enough to lift off a paper section.
   primary:
     "bg-brand-cta text-brand-ink shadow-accent hover:bg-brand-ctaDark hover:-translate-y-0.5",
   // Secondary on DARK surfaces.
   secondary:
-    "bg-white/5 text-white border border-white/20 backdrop-blur-md hover:bg-white/10 hover:border-brand-blueMid/50 hover:-translate-y-0.5",
+    "bg-white/5 text-white border border-white/25 hover:bg-white/10 hover:border-brand-cta/60 hover:-translate-y-0.5",
   ghost: "text-white/75 hover:text-white",
-  // Secondary on LIGHT surfaces — warm border, never a grey outline.
+  // Secondary on LIGHT surfaces — warm paper, hairline ink border, no shadow.
   outline:
-    "border border-brand-line bg-white text-brand-ink shadow-soft hover:border-brand-blueMid/60 hover:-translate-y-0.5 hover:shadow-softLift",
+    "border border-brand-ink/25 bg-brand-cream text-brand-ink hover:border-brand-ink/50 hover:bg-brand-tint hover:-translate-y-0.5",
 };
 
 export default function Button({

@@ -10,17 +10,15 @@ import { siteConfig } from "@/config/site-config";
 import { scrollToBookingForm } from "@/lib/scroll-to-form";
 
 // ─────────────────────────────────────────────────────────────────────────────
-//  DIAGNOSTIC CAPABILITY / DIFFICULT FAULTS
+//  DIAGNOSTIC CAPABILITY / DIFFICULT FAULTS — the strategic centre of the page.
 //
-//  This is the strategic centre of the page. It is built around the single most
-//  valuable sentence the business owns — a real published customer testimonial
-//  describing a fault the official Nissan dealer could not resolve.
+//  Built around the single most valuable sentence the business owns: a real
+//  published customer testimonial describing a fault the official Nissan dealer
+//  could not resolve. Used verbatim and attributed; nothing is claimed beyond it.
 //
-//  The quote is used verbatim and attributed. Nothing is claimed beyond it.
-//
-//  v2 (visual only): stays dark, and is now one of three dark anchors that
-//  punctuate the page rather than one slab among many. Arriving here after two
-//  light sections, the darkness reads as emphasis — which is the point.
+//  v6 ("workshop manual"): a proof split on the deep-navy band. Left = the
+//  capability argument as ruled points; right = the diagnostics image plate and
+//  the customer's own words as a large editorial pull-quote (no boxed card).
 // ─────────────────────────────────────────────────────────────────────────────
 
 const capabilityPoints = [
@@ -40,13 +38,8 @@ const capabilityPoints = [
 
 export default function DiagnosticCapability() {
   return (
-    <SectionContainer id="diagnostics" className="overflow-hidden bg-brand-navy">
-      <div
-        className="pointer-events-none absolute inset-x-0 top-0 h-64 bg-brass-glow"
-        aria-hidden
-      />
-
-      <div className="relative grid items-center gap-14 lg:grid-cols-2 lg:gap-16">
+    <SectionContainer id="diagnostics" className="bg-brand-navy">
+      <div className="grid items-start gap-14 lg:grid-cols-2 lg:gap-16">
         <div>
           <SectionHeading
             eyebrow="Difficult faults"
@@ -64,12 +57,12 @@ export default function DiagnosticCapability() {
               <Reveal
                 key={point.title}
                 delay={index * 0.08}
-                className="border-l-2 border-brand-blueMid/45 pl-6"
+                className="border-l-2 border-brand-steel/50 pl-6"
               >
-                <h3 className="font-display text-base font-semibold text-white">
+                <h3 className="font-display text-lg font-bold uppercase leading-tight tracking-tight text-white">
                   {point.title}
                 </h3>
-                <p className="mt-2.5 max-w-[55ch] text-sm leading-[1.75] text-brand-bone/75">
+                <p className="mt-2.5 max-w-[55ch] text-sm leading-[1.75] text-brand-bone">
                   {point.body}
                 </p>
               </Reveal>
@@ -86,35 +79,36 @@ export default function DiagnosticCapability() {
           </div>
         </div>
 
-        {/* Proof: the customer's own words, verbatim. */}
-        <Reveal className="space-y-6">
+        {/* Proof: the diagnostics plate + the customer's own words, verbatim. */}
+        <Reveal className="lg:pt-2">
           <ImageSlotView
             slot={imagesConfig.diagnostics}
-            className="rounded-3xl"
             sizes="(max-width: 1024px) 100vw, 45vw"
           />
 
-          <figure className="rounded-2xl border border-brand-blueMid/30 bg-brand-navyCard p-8 shadow-card">
+          <figure className="mt-10 border-t border-brand-cta/50 pt-8">
+            <span
+              aria-hidden
+              className="font-display text-5xl font-bold leading-none text-brand-cta"
+            >
+              &ldquo;
+            </span>
             <blockquote
               lang="af"
-              className="font-display text-lg leading-snug text-white"
+              className="mt-2 font-display text-2xl font-bold leading-[1.15] tracking-tight text-white sm:text-3xl"
             >
-              &ldquo;Die fout wat julle opgespoor en reggestel het is iets wat
-              die amptelike Nissan handelaar nie kon regkry nie!&rdquo;
+              Die fout wat julle opgespoor en reggestel het is iets wat die
+              amptelike Nissan handelaar nie kon regkry nie!
             </blockquote>
 
-            <p className="mt-4 text-sm leading-[1.7] text-brand-bone/70">
+            <p className="mt-4 text-sm leading-[1.7] text-brand-bone">
               &ldquo;The fault you found and corrected is something the official
               Nissan dealer could not get right.&rdquo;
             </p>
 
-            <figcaption className="mt-6 border-t border-white/10 pt-5 text-sm">
-              <span className="font-semibold text-white">
-                Andries Groenewald
-              </span>
-              <span className="ml-2 text-brand-bone/75">
-                Nissan owner, Pretoria
-              </span>
+            <figcaption className="mt-6 font-mono text-xs uppercase tracking-[0.15em] text-brand-bone">
+              <span className="text-white">Andries Groenewald</span>
+              <span className="text-brand-bone"> / Nissan owner, Pretoria</span>
             </figcaption>
           </figure>
         </Reveal>

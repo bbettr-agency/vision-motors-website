@@ -3,8 +3,9 @@
 @tailwind utilities;
 
 :root {
-  --font-display: "Space Grotesk", system-ui, sans-serif;
+  --font-display: "Barlow Semi Condensed", system-ui, sans-serif;
   --font-body: "Inter", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
 }
 
 html {
@@ -17,9 +18,9 @@ html {
 }
 
 body {
-  /* Navy, not near-black — the primary brand dark. Shows during load and on
+  /* Near-black warm charcoal — the primary brand dark. Shows during load and on
      overscroll. */
-  background: #0f2a44;
+  background: #15181c;
   color: #ffffff;
   font-family: var(--font-body);
   overflow-x: hidden;
@@ -30,24 +31,24 @@ body {
 }
 
 ::selection {
-  background: #1f4e79; /* secondary blue */
-  color: #ffffff;
+  background: #c58a32; /* amber accent */
+  color: #15181c;
 }
 
-/* Scrollbar */
+/* Scrollbar — charcoal track, steel thumb. */
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: #0f2a44;
+  background: #15181c;
 }
 ::-webkit-scrollbar-thumb {
-  background: #1f4e79;
-  border-radius: 5px;
+  background: #3a3f45;
+  border-radius: 2px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #3e7cb1; /* accent blue */
+  background: #7c838b; /* steel */
 }
 
 /* ───────────────────────────────────────────────────────────────────────────

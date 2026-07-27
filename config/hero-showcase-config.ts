@@ -11,10 +11,13 @@
 //  and verified-safe:
 //    ❌ no model years, no engine codes, no fault-mode claims
 //    ❌ no warranty, no accreditation, no pricing
-//    ✅ Ford Ranger item is scoped to "engine work in our own engine shop" —
-//       defensible from the RANGER & BT50 signage (FACT-VERIFICATION-REGISTER
-//       A7) plus the engine-shop capability, WITHOUT the technical claims that
-//       are still blocked on C9/C21.
+//    ✅ Ford item is restrained to "Ford Engine Work" (Correction 1,
+//       2026-07-27). No model/generation, no Ranger-specialist claim, no
+//       BT-50 — those stay fact-gated (C9/C21) until the client confirms which
+//       models/engines they work on and what is done in-house. "Engine work,
+//       done in our own engine shop" is defensible from the engine-shop
+//       capability alone; the RANGER & BT50 signage is NOT enough for a
+//       dedicated specialist claim.
 //
 //  `slug` links to the future service page. While that page is `live: false`
 //  (config/routes.ts) the item is NOT rendered as a link — nothing points at a
@@ -83,9 +86,8 @@ export const heroShowcase: HeroShowcaseItem[] = [
     slug: "/brake-clutch-repairs-pretoria",
   },
   {
-    name: "Ford Ranger Engine Work",
-    blurb:
-      "Engine work on the Ford Ranger, done in our own engine shop.",
+    name: "Ford Engine Work",
+    blurb: "Ford engine work, done in our own engine shop.",
     icon: "Wrench",
     slug: "/ford-ranger-engine-specialists-pretoria",
   },

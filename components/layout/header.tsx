@@ -43,7 +43,7 @@ export default function Header() {
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-all duration-300",
         scrolled
-          ? "border-b border-white/10 bg-brand-navy/95 backdrop-blur-xl"
+          ? "border-b border-white/10 bg-brand-ink/95 backdrop-blur-xl"
           : "bg-transparent"
       )}
     >
@@ -64,7 +64,7 @@ export default function Header() {
             <Link
               key={item.href}
               href={item.href}
-              className="rounded text-sm font-medium text-white/75 transition-colors hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-blueMid"
+              className="rounded text-xs font-semibold uppercase tracking-[0.15em] text-white/75 transition-colors hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-cta"
             >
               {item.label}
             </Link>
@@ -84,7 +84,7 @@ export default function Header() {
           {/* SECONDARY — book. */}
           <Link
             href={utilityRoutes.booking}
-            className="hidden min-h-[44px] items-center rounded-full border border-white/20 px-5 text-sm font-semibold text-white transition-colors hover:border-brand-blueMid/50 hover:bg-white/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-blueMid lg:inline-flex"
+            className="hidden min-h-[44px] items-center rounded-md border border-white/25 px-5 text-xs font-semibold uppercase tracking-[0.12em] text-white transition-colors hover:border-brand-cta/60 hover:bg-white/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-cta lg:inline-flex"
           >
             {siteConfig.ctaSecondary}
           </Link>
@@ -92,7 +92,7 @@ export default function Header() {
           <button
             type="button"
             onClick={() => setMenuOpen((v) => !v)}
-            className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/20 text-white transition-colors hover:bg-white/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-blueMid lg:hidden"
+            className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-md border border-white/25 text-white transition-colors hover:bg-white/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-cta lg:hidden"
             aria-label={menuOpen ? "Close menu" : "Open menu"}
             aria-expanded={menuOpen}
             aria-controls="mobile-menu"
@@ -110,7 +110,7 @@ export default function Header() {
       <div
         id="mobile-menu"
         hidden={!menuOpen}
-        className="border-t border-white/10 bg-brand-navy/98 backdrop-blur-xl lg:hidden"
+        className="border-t border-white/10 bg-brand-ink/98 backdrop-blur-xl lg:hidden"
       >
         <nav className="px-6 py-6" aria-label="Mobile navigation">
           <ul className="flex flex-col gap-1">

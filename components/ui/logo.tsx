@@ -27,7 +27,7 @@ export default function Logo({ className, tone = "dark" }: LogoProps) {
     >
       <span
         className={cn(
-          "font-display text-lg font-extrabold uppercase tracking-[0.18em]",
+          "font-display text-xl font-extrabold uppercase tracking-[0.16em] sm:text-2xl",
           isDark ? "text-white" : "text-brand-ink"
         )}
       >
@@ -35,7 +35,7 @@ export default function Logo({ className, tone = "dark" }: LogoProps) {
       </span>
       <span
         className={cn(
-          "font-display text-[0.65rem] font-semibold uppercase tracking-[0.42em]",
+          "font-display text-[0.7rem] font-semibold uppercase tracking-[0.44em] sm:text-xs",
           isDark ? "text-brand-blueSoft" : "text-brand-blue"
         )}
       >

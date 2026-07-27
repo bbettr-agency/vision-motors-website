@@ -5,7 +5,6 @@ import { ExternalLink, Info } from "lucide-react";
 import { rightsConfig } from "@/config/rights-config";
 import SectionContainer from "@/components/layout/section-container";
 import SectionHeading from "@/components/ui/section-heading";
-import Icon from "@/components/ui/icon";
 import Reveal from "@/components/ui/reveal";
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -13,17 +12,14 @@ import Reveal from "@/components/ui/reveal";
 //
 //  Every competitor sells accreditation. Nobody sells the customer's rights.
 //  All wording, clause numbers and the mandatory caveat live in
-//  config/rights-config.ts, which documents the sourcing and the specific
-//  errors (the phantom "R7", the CPA s56 misattribution) we avoid repeating.
+//  config/rights-config.ts.
 //
 //  The caveat block is NOT optional. Removing it would make the section
-//  misleading, because guideline 5.4.8 is explicit that ISP-caused damage can
-//  void specific warranty provisions.
+//  misleading (guideline 5.4.8: ISP-caused damage can void specific warranty
+//  provisions).
 //
-//  v2 (visual only): this section proved the page needed contrast, but in v1 it
-//  was the ONLY light section, so it read as a different website. It now sits on
-//  `sand` inside a coherent warm family, with brass icons instead of blue —
-//  contrast without discontinuity.
+//  v6 ("workshop manual"): an advice-desk layout — practical answers as ruled
+//  rows, not white cards. Concrete surface, mono citations, hairline rules.
 // ─────────────────────────────────────────────────────────────────────────────
 
 export default function RightsSection() {
@@ -40,51 +36,49 @@ export default function RightsSection() {
         </div>
 
         <div className="lg:col-span-7">
-          <div className="space-y-4">
+          <div className="border-t border-brand-ink/15">
             {rightsConfig.points.map((point, index) => (
               <Reveal
                 key={point.title}
                 delay={index * 0.08}
-                className="flex gap-5 rounded-2xl border border-brand-line bg-white p-7 shadow-soft"
+                className="border-b border-brand-ink/15 py-7"
               >
-                <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-tint text-brand-blue">
-                  <Icon name={point.icon} className="h-5 w-5" />
-                </span>
-
-                <div>
-                  <h3 className="font-display text-base font-semibold text-brand-ink">
-                    {point.title}
-                  </h3>
-                  <p className="mt-2 text-sm leading-[1.7] text-brand-inkSoft">
-                    {point.body}
-                  </p>
-                  <p className="mt-3 text-xs font-semibold uppercase tracking-[0.14em] text-brand-inkMuted">
-                    {point.citation}
-                  </p>
+                <div className="flex items-baseline gap-4">
+                  <span className="font-mono text-xs text-brand-inkMuted">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <div>
+                    <h3 className="font-display text-lg font-bold uppercase leading-tight tracking-tight text-brand-ink">
+                      {point.title}
+                    </h3>
+                    <p className="mt-2.5 text-sm leading-[1.7] text-brand-inkSoft">
+                      {point.body}
+                    </p>
+                    <p className="mt-3 font-mono text-[0.7rem] uppercase tracking-[0.15em] text-brand-inkMuted">
+                      {point.citation}
+                    </p>
+                  </div>
                 </div>
               </Reveal>
             ))}
           </div>
 
-          {/* MANDATORY caveat — see config/rights-config.ts.
-              Deliberately styled as a distinct, quieter surface so it reads as
-              an honest aside rather than another selling point. */}
+          {/* MANDATORY caveat — a distinct, quieter inset so it reads as an
+              honest aside, not another selling point. Kept as a container
+              because it genuinely aids comprehension (Correction 8). */}
           <Reveal
             delay={0.24}
-            className="mt-4 flex gap-5 rounded-2xl border border-brand-ink/15 bg-brand-bluegrey p-7"
+            className="mt-8 flex gap-4 border-l-2 border-brand-cta bg-brand-tint/60 p-6"
           >
-            <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-ink/10 text-brand-ink/70">
-              <Info className="h-5 w-5" aria-hidden />
-            </span>
-
+            <Info className="mt-0.5 h-5 w-5 shrink-0 text-brand-inkSoft" aria-hidden />
             <div>
-              <h3 className="font-display text-base font-semibold text-brand-ink">
+              <h3 className="font-display text-base font-bold uppercase tracking-tight text-brand-ink">
                 {rightsConfig.caveat.title}
               </h3>
               <p className="mt-2 text-sm leading-[1.7] text-brand-inkSoft">
                 {rightsConfig.caveat.body}
               </p>
-              <p className="mt-3 text-xs font-semibold uppercase tracking-[0.14em] text-brand-inkMuted">
+              <p className="mt-3 font-mono text-[0.7rem] uppercase tracking-[0.15em] text-brand-inkMuted">
                 {rightsConfig.caveat.citation}
               </p>
             </div>

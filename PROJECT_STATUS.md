@@ -3,7 +3,38 @@
 **Client:** Vision Motors CC — independent vehicle workshop, Wonderboom South, Pretoria
 **Scope delivered:** Homepage demo (production-quality build)
 **Built with:** BBETTR Website OS v2.0.0-phase1
-**Last updated:** 2026-07-20
+**Last updated:** 2026-07-27
+
+---
+
+## 0. Visual system v5 — "The Pretoria Workshop Manual" (2026-07-27)
+
+The homepage was rescued from a generic corporate/SaaS look to an **industrial-editorial
+"workshop manual"** system. Full brief + corrections: `~/.claude/plans/mellow-wishing-clarke.md`.
+
+- **Tokens** (`tailwind.config.ts` / `config/theme-config.ts`): two darks — near-black
+  charcoal `ink #15181C` (dominant) + deep `navy #0F2A44` (band) — with warm paper
+  `cream #F3EFE7` / concrete `bluegrey #E4DFD5` neutrals. Baby-blue removed; blue demoted to a
+  sparing steel accent; amber held for Call CTA + the active capability rule. Squared shape
+  (radius 0.375/0.5rem, buttons `rounded-md`); hairlines + surface contrast instead of drop
+  shadows.
+- **Type**: Barlow Semi Condensed (display + numerals) · Inter (body) · IBM Plex Mono
+  (technical labels). Self-hosted via `next/font`, limited weights, no external requests.
+- **Composition**: cards replaced by ruled rows / numbered editorial blocks / image plates
+  across hero, symptoms, services, why-us, process, testimonials, rights, location. Hero is
+  photo-anchored (real technicians shot) + a capability index wall. Placeholders are now
+  intentional **technical holding plates** (shot code, subject, crop, status) — never fake
+  photos (Correction 5).
+- **Fact correction**: hero item 8 softened to **"Ford Engine Work"**; engine-shop copy made
+  model-agnostic. No Ranger/BT-50 specialist claim until C9/C21 confirmed (Correction 1).
+
+### ⚠️ Follow-up: internal-page templates NOT yet redesigned
+Scope was the **homepage** (Correction 6). Shared chrome (header, footer, page-hero, buttons,
+image plates) is on the v5 system, and internal pages inherit the new palette/type, but their
+BODIES still use the previous card compositions and have lost the old drop-shadows. A separate
+visual-adaptation pass is needed for: `views/services-page.tsx`, `views/about-page.tsx`,
+`views/booking-page.tsx`, `views/contact-page.tsx`, `views/our-work-page.tsx`,
+`views/warranty-rights-page.tsx`, and `components/templates/service-page-template.tsx`.
 
 ---
 

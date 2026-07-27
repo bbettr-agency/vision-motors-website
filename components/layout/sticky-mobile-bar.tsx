@@ -33,7 +33,7 @@ export default function StickyMobileBar() {
 
   return (
     <div
-      className={`fixed inset-x-0 bottom-0 z-50 border-t border-white/10 bg-brand-navy/95 backdrop-blur-xl transition-transform duration-300 md:hidden ${
+      className={`fixed inset-x-0 bottom-0 z-50 border-t border-white/10 bg-brand-ink/95 backdrop-blur-xl transition-transform duration-300 md:hidden ${
         visible ? "translate-y-0" : "translate-y-full"
       }`}
       style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
@@ -43,7 +43,7 @@ export default function StickyMobileBar() {
         <a
           href={siteConfig.phoneLink}
           onClick={() => trackCall("sticky")}
-          className="inline-flex min-h-[48px] flex-[1.7] items-center justify-center gap-2 rounded-full bg-brand-cta text-sm font-bold text-brand-ink shadow-accent active:scale-[0.98]"
+          className="inline-flex min-h-[48px] flex-[1.7] items-center justify-center gap-2 rounded-md bg-brand-cta text-sm font-bold text-brand-ink shadow-accent active:scale-[0.98]"
           aria-label={`Call ${siteConfig.businessName} on ${siteConfig.phoneDisplay}`}
           data-cta="call"
         >
@@ -54,7 +54,7 @@ export default function StickyMobileBar() {
         {/* SECONDARY — book. */}
         <Link
           href={utilityRoutes.booking}
-          className="inline-flex min-h-[48px] flex-1 items-center justify-center rounded-full border border-white/20 bg-white/5 text-sm font-bold text-white active:scale-[0.98]"
+          className="inline-flex min-h-[48px] flex-1 items-center justify-center rounded-md border border-white/25 bg-white/5 text-sm font-bold text-white active:scale-[0.98]"
         >
           {siteConfig.ctaSecondaryShort}
         </Link>

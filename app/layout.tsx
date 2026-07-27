@@ -1,22 +1,33 @@
 import type { Metadata } from "next";
-import { Inter, Space_Grotesk } from "next/font/google";
+import { Inter, Barlow_Semi_Condensed, IBM_Plex_Mono } from "next/font/google";
 
 import "./globals.css";
 import { createMetadata } from "@/lib/metadata";
 import { autoRepairSchema, websiteSchema } from "@/lib/schema";
 
 // Self-hosted via next/font, display: swap — SYSTEM/07 performance budget.
+// v5 type system ("workshop manual"): Barlow Semi Condensed = compact
+// industrial display + index numerals; IBM Plex Mono = technical labels; Inter
+// = body. Only the weights actually used are loaded, latin subset only, and all
+// three are self-hosted (no external runtime font requests, no layout shift).
 const body = Inter({
   subsets: ["latin"],
   variable: "--font-body",
   display: "swap",
 });
 
-const display = Space_Grotesk({
+const display = Barlow_Semi_Condensed({
   subsets: ["latin"],
   variable: "--font-display",
   display: "swap",
-  weight: ["500", "600", "700"],
+  weight: ["600", "700", "800"],
+});
+
+const mono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+  display: "swap",
+  weight: ["500", "600"],
 });
 
 export const metadata: Metadata = createMetadata();
@@ -29,11 +40,11 @@ export default function RootLayout({
   return (
     <html
       lang="en-ZA"
-      className={`${body.variable} ${display.variable}`}
+      className={`${body.variable} ${display.variable} ${mono.variable}`}
       suppressHydrationWarning
     >
       <head>
-        <meta name="theme-color" content="#0F2A44" />
+        <meta name="theme-color" content="#15181C" />
 
         {/*
           Enables the scroll-reveal hidden state before first paint, so there is

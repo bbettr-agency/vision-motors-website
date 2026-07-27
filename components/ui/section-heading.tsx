@@ -39,10 +39,19 @@ export default function SectionHeading({
       {eyebrow && (
         <p
           className={cn(
-            "text-xs font-semibold uppercase tracking-[0.22em] sm:text-sm",
-            isDark ? "text-brand-blueSoft" : "text-brand-blue"
+            // Mono technical label — the "service manual" voice. A leading rule
+            // gives it the look of a documentation tag without extra markup.
+            "inline-flex items-center gap-2.5 font-mono text-[0.7rem] font-medium uppercase tracking-[0.28em] sm:text-xs",
+            isDark ? "text-brand-cta" : "text-brand-blue"
           )}
         >
+          <span
+            aria-hidden
+            className={cn(
+              "h-px w-8",
+              isDark ? "bg-brand-cta/60" : "bg-brand-blue/50"
+            )}
+          />
           {eyebrow}
         </p>
       )}
@@ -51,9 +60,9 @@ export default function SectionHeading({
         className={cn(
           "font-display font-bold tracking-tight",
           Tag === "h1"
-            ? "text-4xl leading-[1.05] md:text-5xl lg:text-6xl"
-            : "text-3xl leading-[1.1] md:text-4xl lg:text-[2.75rem]",
-          eyebrow && "mt-4",
+            ? "text-[2.75rem] leading-[0.98] md:text-6xl lg:text-7xl"
+            : "text-4xl leading-[0.98] md:text-5xl lg:text-[3.25rem]",
+          eyebrow && "mt-5",
           isDark ? "text-white" : "text-brand-ink"
         )}
       >
@@ -63,9 +72,9 @@ export default function SectionHeading({
       {description && (
         <p
           className={cn(
-            "mt-5 max-w-[62ch] text-base leading-[1.7] md:text-lg",
+            "mt-5 max-w-[60ch] text-base leading-[1.7] md:text-lg",
             align === "center" && "mx-auto",
-            isDark ? "text-brand-bone/80" : "text-brand-inkSoft"
+            isDark ? "text-brand-bone" : "text-brand-inkSoft"
           )}
         >
           {description}

@@ -19,13 +19,16 @@ export default function CtaBand({
   body?: string;
 }) {
   return (
-    <section className="relative overflow-hidden bg-brand-navy px-6 py-20 md:py-24 lg:px-8">
-      <div className="pointer-events-none absolute inset-0 bg-brass-glow" aria-hidden />
+    <section className="relative overflow-hidden border-t border-white/10 bg-brand-ink px-6 py-20 md:py-24 lg:px-8">
+      <span
+        aria-hidden
+        className="pointer-events-none absolute inset-0 bg-grid-dark bg-[length:44px_44px] opacity-30 [mask-image:radial-gradient(ellipse_70%_60%_at_50%_0%,black,transparent_75%)]"
+      />
       <div className="relative mx-auto max-w-3xl text-center">
-        <h2 className="font-display text-3xl font-bold leading-[1.15] tracking-tight text-white md:text-4xl">
+        <h2 className="font-display text-3xl font-bold uppercase leading-[1.05] tracking-tight text-white md:text-4xl">
           {heading}
         </h2>
-        <p className="mx-auto mt-5 max-w-[55ch] text-base leading-[1.75] text-brand-bone/80">
+        <p className="mx-auto mt-5 max-w-[55ch] text-base leading-[1.75] text-brand-bone">
           {body}
         </p>
 
@@ -33,13 +36,13 @@ export default function CtaBand({
           <CallButton location={location} variant="brass" showNumber />
           <Link
             href={utilityRoutes.booking}
-            className="inline-flex min-h-[52px] items-center justify-center rounded-full border border-white/20 px-7 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-blueMid/50 hover:bg-white/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-blueMid focus-visible:ring-offset-2 focus-visible:ring-offset-brand-navy md:text-base"
+            className="inline-flex min-h-[52px] items-center justify-center rounded-md border border-white/25 px-7 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-cta/60 hover:bg-white/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-cta focus-visible:ring-offset-2 focus-visible:ring-offset-brand-ink md:text-base"
           >
             {siteConfig.ctaSecondary}
           </Link>
         </div>
 
-        <p className="mt-6 text-xs leading-relaxed text-brand-bone/75">
+        <p className="mt-6 font-mono text-xs uppercase tracking-[0.15em] text-brand-bone">
           Monday – Friday 07:30 – 17:00 · {siteConfig.addressDisplay}
         </p>
       </div>

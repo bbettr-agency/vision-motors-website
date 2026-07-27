@@ -6,33 +6,32 @@ import { heroShowcase } from "@/config/hero-showcase-config";
 import { cn } from "@/utils/cn";
 
 // ─────────────────────────────────────────────────────────────────────────────
-//  HERO SERVICE-TITLE SHOWCASE — the scroll-driven right column.
+//  HERO CAPABILITY INDEX WALL — the scroll-driven right column of the hero.
 //
-//  v5: TITLES ONLY. Just the service names scroll — no icons, no descriptions.
-//  Each title becomes active in turn as the visitor scrolls, so the breadth of
-//  the workshop lands at a glance: diagnostics, engines, gearboxes, DSG,
-//  driveline, servicing, brakes, Ford Ranger.
+//  v6 ("workshop manual"): a serious capability INDEX, not a dashboard list and
+//  not a floating glass panel. Large mono numerals, uppercase service names,
+//  heavy hairline rules. As the visitor scrolls, each capability becomes active
+//  in turn — the workshop's breadth (diagnostics → engines → gearboxes → DSG →
+//  driveline → servicing → brakes → Ford engine work) lands at a glance.
 //
-//  The list floats on a frosted-navy panel over the hero's photographic
-//  background, which keeps every title readable regardless of the image behind.
+//  Active state is signalled by THREE cues, never colour alone (Correction 9):
+//    1. a thick AMBER left rule (structural),
+//    2. a type-size / weight shift (numeral + name grow, steel → white),
+//    3. a revealed mono/technical sub-label (the "technical detail change").
+//  `aria-current` marks it; no live region → no per-scroll SR chatter.
 //
-//  ── Robustness (the reveal-system lessons) ──────────────────────────────────
-//  1. NO-JS SAFE. All titles are server-rendered here, so they are in the HTML,
-//     crawlable, and visible without JavaScript. The active/subdued styling is
-//     applied only AFTER mount (`interactive`), so no-JS shows every title at
-//     full prominence — nothing hidden.
-//  2. JUMP-SCROLL SAFE. Active is computed from absolute element position on
-//     scroll (rAF-throttled), not from IntersectionObserver change callbacks.
-//  3. One shared listener, self-contained. No animation library.
-//  4. reduced-motion: transitions are motion-safe-gated; active tracking still
-//     runs (it is emphasis, not motion).
+//  Robustness (reveal-system lessons):
+//    • NO-JS SAFE — all names AND sub-lines are server-rendered (in the HTML,
+//      crawlable). Before mount (`interactive` false) every row shows its
+//      sub-line at full prominence; nothing is hidden without JS.
+//    • JUMP-SCROLL SAFE — active is computed from absolute element position on
+//      scroll (rAF-throttled), not IntersectionObserver callbacks.
+//    • Restrained scroll (Correction 7) — slots are ~12vh, so all eight items
+//      cycle within roughly one screen of scrolling. No hijack, no snap.
+//    • reduced-motion — transitions are motion-safe-gated; tracking still runs
+//      (it is emphasis, not motion).
 //
-//  ── Accessibility ──────────────────────────────────────────────────────────
-//  - Active is signalled by THREE cues, never colour alone: a blue left rule
-//    (structural), a size/weight shift, and a brighter number. `aria-current`
-//    marks it. No live region → no per-scroll screen-reader chatter.
-//
-//  Service pages are Phase 3 (`live: false`), so titles are NOT links yet.
+//  Service pages are Phase 3 (`live:false`), so names are NOT links yet.
 // ─────────────────────────────────────────────────────────────────────────────
 
 export default function HeroShowcase() {
@@ -77,61 +76,75 @@ export default function HeroShowcase() {
   }, []);
 
   return (
-    <div className="lg:col-span-6">
-      {/* Frosted-navy panel floating over the hero photograph — guarantees the
-          titles stay readable whatever the image behind. */}
-      <div className="rounded-3xl border border-white/10 bg-brand-navy/45 p-6 backdrop-blur-md sm:p-8 lg:p-9">
-        <p className="text-xs font-semibold uppercase tracking-[0.22em] text-brand-blueSoft">
-          Everything we take on
-        </p>
+    <div className="mt-10 lg:mt-14">
+      <p className="flex items-center gap-3 font-mono text-[0.7rem] font-medium uppercase tracking-[0.28em] text-brand-cta">
+        <span aria-hidden className="h-px w-8 bg-brand-cta/60" />
+        Everything we take on
+        <span className="text-brand-steel" aria-hidden>
+          / 01—08
+        </span>
+      </p>
 
-        <ul className="mt-6 lg:mt-4">
-          {heroShowcase.map((item, i) => {
-            const isActive = interactive && i === active;
-            return (
-              <li
-                key={item.slug}
-                ref={(el) => {
-                  itemRefs.current[i] = el;
-                }}
-                aria-current={isActive ? "true" : undefined}
-                className="relative flex items-baseline gap-4 border-t border-white/5 py-5 first:border-t-0 lg:min-h-[15vh] lg:flex-col lg:justify-center lg:gap-2"
-              >
-                {/* Blue active rule — a structural cue, not colour alone. */}
+      <ul className="mt-2 border-t border-white/10">
+        {heroShowcase.map((item, i) => {
+          const isActive = interactive && i === active;
+          const showSub = !interactive || isActive;
+          return (
+            <li
+              key={item.slug}
+              ref={(el) => {
+                itemRefs.current[i] = el;
+              }}
+              aria-current={isActive ? "true" : undefined}
+              className="relative border-b border-white/10 py-6 pl-6 lg:min-h-[12vh] lg:py-8"
+            >
+              {/* Amber active rule — structural cue, not colour alone. */}
+              <span
+                aria-hidden
+                className={cn(
+                  "absolute left-0 top-0 bottom-0 w-[3px] bg-brand-cta motion-safe:transition-opacity motion-safe:duration-500",
+                  isActive ? "opacity-100" : "opacity-0"
+                )}
+              />
+
+              <div className="flex items-baseline gap-4 sm:gap-6">
                 <span
                   className={cn(
-                    "absolute -left-6 top-4 bottom-4 w-[3px] rounded-full bg-brand-blueMid motion-safe:transition-opacity motion-safe:duration-500 lg:-left-9",
-                    isActive ? "opacity-100" : "opacity-0",
+                    "font-mono text-xl tabular-nums motion-safe:transition-colors motion-safe:duration-500 sm:text-2xl",
+                    isActive
+                      ? "font-semibold text-brand-cta"
+                      : "text-brand-steel"
                   )}
                   aria-hidden
-                />
-
-                <span
-                  className={cn(
-                    "font-mono text-xs motion-safe:transition-colors motion-safe:duration-500",
-                    isActive
-                      ? "font-semibold text-brand-blueSoft"
-                      : "text-brand-bone/70",
-                  )}
                 >
                   {String(i + 1).padStart(2, "0")}
                 </span>
 
                 <span
                   className={cn(
-                    "origin-left font-display text-lg font-semibold leading-tight motion-safe:transition-all motion-safe:duration-500 sm:text-xl",
+                    "font-display font-bold uppercase leading-[0.98] tracking-tight motion-safe:transition-colors motion-safe:duration-500",
                     isActive
-                      ? "text-white lg:scale-[1.03]"
-                      : "text-brand-bone/75",
+                      ? "text-2xl text-white sm:text-3xl"
+                      : "text-xl text-brand-bone sm:text-2xl"
                   )}
                 >
                   {item.name}
                 </span>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
+              </div>
+
+              {/* Technical detail — revealed for the active item (or all, no-JS). */}
+              <p
+                className={cn(
+                  "overflow-hidden pl-[calc(1.25rem+1.5rem)] text-sm leading-relaxed text-brand-bone/80 motion-safe:transition-all motion-safe:duration-500 sm:pl-[calc(1.5rem+2rem)]",
+                  showSub ? "mt-3 max-h-24 opacity-100" : "mt-0 max-h-0 opacity-0"
+                )}
+              >
+                {item.blurb}
+              </p>
+            </li>
+          );
+        })}
+      </ul>
     </div>
   );
 }

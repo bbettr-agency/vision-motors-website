@@ -12,25 +12,23 @@ import Reveal from "@/components/ui/reveal";
 //  FINAL CTA — the single booking destination every CTA on the page scrolls to.
 //  id="book" is the anchor used by lib/scroll-to-form.ts.
 //
-//  Opening hours are deliberately absent: the client's own site contradicts
-//  itself ("5 days a week" vs "24/7") and no source is confirmed. Publishing
-//  wrong hours costs a customer a wasted trip.
-//  TODO(client): confirm hours, then add beside the address.
-//
-//  v2 (visual only): dark anchor, arriving after the light FAQ so the closing
-//  ask carries weight. The form panel is now a WHITE card — a light form on a
-//  dark section is the strongest possible focal point, and form fields are
-//  easier to complete on light. The brass submit button remains the single
-//  strongest element on the page.
+//  v6 ("workshop manual"): charcoal service-desk. Left = the ask + contact
+//  details as a mono spec list; right = the booking form on a squared paper
+//  panel (the strongest focal point on a dark section, and fields are easiest to
+//  complete on light). BookingForm itself is unchanged. The amber submit stays
+//  the single strongest element on the page.
 // ─────────────────────────────────────────────────────────────────────────────
 
 export default function FinalCta() {
   return (
     <section
       id="book"
-      className="relative overflow-hidden border-t border-white/10 bg-brand-navy px-6 py-24 md:py-32 lg:px-8"
+      className="relative overflow-hidden border-t border-white/10 bg-brand-ink px-6 py-24 md:py-32 lg:px-8"
     >
-      <div className="pointer-events-none absolute inset-0 bg-brass-glow" aria-hidden />
+      <span
+        aria-hidden
+        className="pointer-events-none absolute inset-0 bg-grid-dark bg-[length:44px_44px] opacity-30 [mask-image:radial-gradient(ellipse_70%_60%_at_70%_0%,black,transparent_75%)]"
+      />
 
       <div className="relative mx-auto grid max-w-7xl gap-14 lg:grid-cols-12 lg:gap-16">
         <div className="lg:col-span-5">
@@ -45,21 +43,19 @@ export default function FinalCta() {
             description="Send us the details and the workshop will come back to you to arrange a time. If it's urgent, phone us — someone will help you straight away."
           />
 
-          <ul className="mt-12 space-y-6">
+          <ul className="mt-12 space-y-7">
             <li>
               <a
                 href={siteConfig.phoneLink}
-                className="group inline-flex min-h-[44px] items-start gap-4"
+                className="group flex items-start gap-4"
                 aria-label={`Call ${siteConfig.businessName} on ${siteConfig.phoneDisplay}`}
               >
-                <span className="mt-0.5 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-blue/12 text-brand-blueSoft">
-                  <Phone className="h-5 w-5" aria-hidden />
-                </span>
+                <Phone className="mt-1 h-5 w-5 shrink-0 text-brand-cta" aria-hidden />
                 <span>
-                  <span className="block text-xs uppercase tracking-[0.14em] text-brand-bone/75">
+                  <span className="block font-mono text-[0.7rem] uppercase tracking-[0.2em] text-brand-bone">
                     Phone the workshop
                   </span>
-                  <span className="mt-1 block whitespace-nowrap font-display text-lg font-bold text-white transition-colors group-hover:text-brand-blueSoft">
+                  <span className="mt-1.5 block whitespace-nowrap font-display text-2xl font-bold text-white transition-colors group-hover:text-brand-cta">
                     {siteConfig.phoneDisplay}
                   </span>
                 </span>
@@ -67,18 +63,13 @@ export default function FinalCta() {
             </li>
 
             <li>
-              <a
-                href={siteConfig.emailLink}
-                className="group inline-flex min-h-[44px] items-start gap-4"
-              >
-                <span className="mt-0.5 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-blue/12 text-brand-blueSoft">
-                  <Mail className="h-5 w-5" aria-hidden />
-                </span>
+              <a href={siteConfig.emailLink} className="group flex items-start gap-4">
+                <Mail className="mt-1 h-5 w-5 shrink-0 text-brand-steel" aria-hidden />
                 <span>
-                  <span className="block text-xs uppercase tracking-[0.14em] text-brand-bone/75">
+                  <span className="block font-mono text-[0.7rem] uppercase tracking-[0.2em] text-brand-bone">
                     Email
                   </span>
-                  <span className="mt-1 block break-all text-sm font-medium text-white transition-colors group-hover:text-brand-blueSoft">
+                  <span className="mt-1.5 block break-all text-sm font-medium text-white transition-colors group-hover:text-brand-blueSoft">
                     {siteConfig.email}
                   </span>
                 </span>
@@ -86,14 +77,12 @@ export default function FinalCta() {
             </li>
 
             <li className="flex items-start gap-4">
-              <span className="mt-0.5 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-blue/12 text-brand-blueSoft">
-                <MapPin className="h-5 w-5" aria-hidden />
-              </span>
+              <MapPin className="mt-1 h-5 w-5 shrink-0 text-brand-steel" aria-hidden />
               <span>
-                <span className="block text-xs uppercase tracking-[0.14em] text-brand-bone/75">
+                <span className="block font-mono text-[0.7rem] uppercase tracking-[0.2em] text-brand-bone">
                   Where we are
                 </span>
-                <span className="mt-1 block text-sm font-medium text-white">
+                <span className="mt-1.5 block text-sm font-medium text-white">
                   {siteConfig.addressDisplay}
                 </span>
               </span>
@@ -102,8 +91,8 @@ export default function FinalCta() {
         </div>
 
         <Reveal className="lg:col-span-7">
-          <div className="rounded-3xl border border-brand-line bg-white p-7 shadow-ink sm:p-9">
-            <h3 className="font-display text-xl font-bold text-brand-ink sm:text-2xl">
+          <div className="border border-white/12 bg-white p-7 shadow-form sm:p-9">
+            <h3 className="font-display text-2xl font-bold uppercase leading-tight tracking-tight text-brand-ink sm:text-3xl">
               {formConfig.headings.title}
             </h3>
             <p className="mt-2 text-sm leading-[1.7] text-brand-inkSoft">

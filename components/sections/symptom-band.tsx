@@ -10,18 +10,16 @@ import Reveal from "@/components/ui/reveal";
 import { scrollToBookingForm } from "@/lib/scroll-to-form";
 
 // ─────────────────────────────────────────────────────────────────────────────
-//  SYMPTOM BAND — structural change 1 from the approved plan.
+//  SYMPTOM INDEX — structural change 1 from the approved plan.
 //
-//  Visitors do not arrive thinking "I need a gearbox overhaul". They arrive
-//  thinking "it's making a noise". Every competitor leads with a service
-//  taxonomy — the business's mental model, not the customer's.
+//  Visitors arrive thinking "it's making a noise", not "I need a gearbox
+//  overhaul". Each row pre-fills the booking form's service field and scrolls to
+//  it, turning a vague worry into a completed enquiry.
 //
-//  Each tile pre-fills the booking form's service field and scrolls to it,
-//  turning a vague worry into a completed enquiry in two taps.
-//
-//  v2 (visual only): first light section. This is the moment the page opens up
-//  after the dark hero — and it is the most approachable section on the page,
-//  which is exactly why it should not be black. White tiles on warm cream.
+//  v6 ("workshop manual"): not a dashboard-card grid but a technical symptom
+//  INDEX — two columns of large ruled rows. Each row is a real <button>
+//  (Correction 9) with clear hover/focus, an inline steel indicator icon, and a
+//  mono index. Warm paper surface.
 // ─────────────────────────────────────────────────────────────────────────────
 
 export default function SymptomBand() {
@@ -29,7 +27,7 @@ export default function SymptomBand() {
     <SectionContainer id="symptoms" className="bg-brand-cream">
       <SectionHeading
         tone="light"
-        eyebrow="Start here"
+        eyebrow="Diagnostic index"
         title={
           <>
             What is your car doing?
@@ -43,24 +41,26 @@ export default function SymptomBand() {
         className="max-w-3xl"
       />
 
-      <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mt-12 grid border-t border-brand-line sm:grid-cols-2 sm:gap-x-12">
         {symptomsConfig.map((symptom, index) => (
-          <Reveal key={symptom.label} delay={(index % 4) * 0.06}>
+          <Reveal key={symptom.label} as="div" delay={(index % 2) * 0.06}>
             <button
               type="button"
               onClick={() => scrollToBookingForm(symptom.presetService)}
-              className="group flex min-h-[104px] w-full items-center gap-4 rounded-2xl border border-brand-line bg-white p-5 text-left shadow-soft transition-all duration-300 hover:-translate-y-1 hover:border-brand-blueMid/60 hover:shadow-softLift focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue focus-visible:ring-offset-2 focus-visible:ring-offset-brand-cream"
+              className="group flex w-full items-center gap-4 border-b border-brand-line py-6 text-left transition-colors duration-300 hover:bg-brand-tint/60 focus:outline-none focus-visible:bg-brand-tint focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-brand-blue sm:px-3"
             >
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-tint text-brand-blue transition-all duration-300 group-hover:bg-brand-cta group-hover:text-brand-ink">
-                <Icon name={symptom.icon} className="h-5 w-5" />
+              <span className="w-6 shrink-0 font-mono text-xs text-brand-inkMuted">
+                {String(index + 1).padStart(2, "0")}
               </span>
-
-              <span className="flex-1 font-display text-sm font-semibold leading-snug text-brand-ink">
+              <Icon
+                name={symptom.icon}
+                className="h-5 w-5 shrink-0 text-brand-steel transition-colors duration-300 group-hover:text-brand-cta"
+              />
+              <span className="flex-1 font-display text-lg font-semibold uppercase tracking-tight text-brand-ink sm:text-xl">
                 {symptom.label}
               </span>
-
               <ArrowRight
-                className="h-4 w-4 shrink-0 text-brand-inkMuted transition-all duration-300 group-hover:translate-x-0.5 group-hover:text-brand-blue"
+                className="h-5 w-5 shrink-0 text-brand-inkMuted transition-all duration-300 group-hover:translate-x-1 group-hover:text-brand-ink"
                 aria-hidden
               />
             </button>

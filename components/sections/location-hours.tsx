@@ -1,14 +1,16 @@
-import { Clock, MapPin } from "lucide-react";
-
+import { imagesConfig } from "@/config/images-config";
 import { siteConfig } from "@/config/site-config";
 import SectionContainer from "@/components/layout/section-container";
 import SectionHeading from "@/components/ui/section-heading";
 import CallButton from "@/components/ui/call-button";
+import ImageSlotView from "@/components/ui/image-slot";
 import DirectionsLink from "@/components/funnel/directions-link";
 
-// Location + hours. Both were confirmed in Phase 1 and were previously
-// missing from the site entirely — a real usability gap for a workshop.
+// Location + hours. Both confirmed in Phase 1; previously missing from the site.
 // Postcode deliberately omitted (0031 vs 0084 unresolved, C20).
+//
+// v6 ("workshop manual"): a workshop-DESTINATION block — big phone, an exterior
+// image plate, and address/hours as a ruled spec strip. No white info cards.
 
 const mapsQuery = encodeURIComponent(
   `${siteConfig.businessName}, ${siteConfig.addressDisplay}`
@@ -17,63 +19,74 @@ const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${mapsQuery}`;
 
 export default function LocationHours() {
   return (
-    <SectionContainer className="bg-brand-bluegrey">
-      <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
-        <div className="lg:col-span-5">
+    <SectionContainer id="find-us" className="bg-brand-cream">
+      <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 lg:items-center">
+        <div>
           <SectionHeading
             tone="light"
-            eyebrow="Where we are"
+            eyebrow="Find the workshop"
             title="On Steve Biko Road, Wonderboom South"
             description="We're on the M5 running north through the Moot. Phone ahead if you're dropping a vehicle off so we can make sure someone is free to take it in."
           />
-          <CallButton
-            location="final_cta"
-            variant="outlineLight"
-            showNumber
-            className="mt-9"
-          />
+
+          {/* Big phone — decorative emphasis; the tracked CTA is the button. */}
+          <p
+            aria-hidden
+            className="mt-9 font-display text-4xl font-extrabold tracking-tight text-brand-ink sm:text-5xl"
+          >
+            {siteConfig.phoneDisplay}
+          </p>
+
+          <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
+            <CallButton location="final_cta" variant="brass" showNumber />
+            <DirectionsLink href={mapsUrl} />
+          </div>
         </div>
 
-        <div className="grid gap-5 sm:grid-cols-2 lg:col-span-7">
-          <div className="rounded-2xl border border-brand-line bg-white p-7 shadow-soft">
-            <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-tint text-brand-blue">
-              <MapPin className="h-5 w-5" aria-hidden />
-            </span>
-            <h3 className="mt-5 font-display text-base font-semibold text-brand-ink">
-              The workshop
-            </h3>
-            <address className="mt-2.5 not-italic text-sm leading-[1.75] text-brand-inkSoft">
-              {siteConfig.streetNumber} {siteConfig.street}
-              <br />
-              {siteConfig.suburb}
-              <br />
-              {siteConfig.city}
-            </address>
-            <DirectionsLink href={mapsUrl} className="mt-4" />
-          </div>
+        {/* Exterior image plate — the physical destination. */}
+        <div className="relative h-[38vh] min-h-[260px] w-full">
+          <ImageSlotView
+            slot={imagesConfig.exterior}
+            tone="light"
+            fill
+            sizes="(max-width: 1024px) 100vw, 45vw"
+          />
+        </div>
+      </div>
 
-          <div className="rounded-2xl border border-brand-line bg-white p-7 shadow-soft">
-            <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-tint text-brand-blue">
-              <Clock className="h-5 w-5" aria-hidden />
-            </span>
-            <h3 className="mt-5 font-display text-base font-semibold text-brand-ink">
-              Opening hours
-            </h3>
-            <dl className="mt-2.5 space-y-1.5 text-sm text-brand-inkSoft">
-              <div className="flex justify-between gap-3">
-                <dt>Mon – Fri</dt>
-                <dd className="font-semibold text-brand-ink">07:30 – 17:00</dd>
-              </div>
-              <div className="flex justify-between gap-3">
-                <dt>Sat &amp; Sun</dt>
-                <dd>Closed</dd>
-              </div>
-              <div className="flex justify-between gap-3">
-                <dt>Public holidays</dt>
-                <dd>Closed</dd>
-              </div>
-            </dl>
-          </div>
+      {/* Address + hours — ruled spec strip, no cards. */}
+      <div className="mt-14 grid gap-y-8 border-t border-brand-ink/15 pt-10 sm:grid-cols-2 sm:gap-x-0 sm:divide-x sm:divide-brand-ink/15">
+        <div className="sm:pr-10">
+          <h3 className="font-mono text-xs font-medium uppercase tracking-[0.28em] text-brand-inkMuted">
+            The workshop
+          </h3>
+          <address className="mt-4 not-italic font-display text-lg font-semibold uppercase leading-tight tracking-tight text-brand-ink">
+            {siteConfig.streetNumber} {siteConfig.street}
+            <br />
+            {siteConfig.suburb}, {siteConfig.city}
+          </address>
+        </div>
+
+        <div className="sm:pl-10">
+          <h3 className="font-mono text-xs font-medium uppercase tracking-[0.28em] text-brand-inkMuted">
+            Opening hours
+          </h3>
+          <dl className="mt-4 space-y-2 text-sm text-brand-inkSoft">
+            <div className="flex justify-between gap-3 border-b border-brand-ink/10 pb-2">
+              <dt>Mon – Fri</dt>
+              <dd className="font-display font-bold uppercase tracking-tight text-brand-ink">
+                07:30 – 17:00
+              </dd>
+            </div>
+            <div className="flex justify-between gap-3 border-b border-brand-ink/10 pb-2">
+              <dt>Sat &amp; Sun</dt>
+              <dd>Closed</dd>
+            </div>
+            <div className="flex justify-between gap-3">
+              <dt>Public holidays</dt>
+              <dd>Closed</dd>
+            </div>
+          </dl>
         </div>
       </div>
     </SectionContainer>

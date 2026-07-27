@@ -78,8 +78,10 @@ const detail: Record<string, { icon: string; blurb: string }> = {
   },
   "/ford-ranger-engine-specialists-pretoria": {
     icon: "Wrench",
+    // ⚠️ Softened to model-agnostic (Correction 1, 2026-07-27). No Ranger/BT-50
+    // specialist or model-year claim until C9/C21 is confirmed by the client.
     blurb:
-      "Engine work on the Ford Ranger, and on the Mazda BT-50 of the years that share its engines. Our engine shop carries Ranger and BT-50 signage for a reason.",
+      "Ford engine work carried out in our own engine shop — full rebuilds and reconditioning done in-house rather than sent away and marked up.",
   },
   "/gearbox-repairs-pretoria": {
     icon: "Settings2",

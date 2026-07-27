@@ -35,7 +35,7 @@ export default function Faq() {
         </div>
 
         <div className="lg:col-span-8">
-          <dl className="divide-y divide-brand-line border-y border-brand-line">
+          <dl className="divide-y divide-brand-ink/15 border-y border-brand-ink/15">
             {faqConfig.map((item, index) => {
               const isOpen = openIndex === index;
               const panelId = `faq-panel-${index}`;
@@ -52,12 +52,12 @@ export default function Faq() {
                       aria-controls={panelId}
                       className="flex w-full items-center justify-between gap-6 py-7 text-left transition-colors hover:text-brand-blue focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue"
                     >
-                      <span className="font-display text-base font-semibold text-brand-ink md:text-lg">
+                      <span className="font-display text-lg font-bold uppercase leading-tight tracking-tight text-brand-ink md:text-xl">
                         {item.question}
                       </span>
                       <ChevronDown
                         className={cn(
-                          "h-5 w-5 shrink-0 text-brand-blue transition-transform duration-300",
+                          "h-5 w-5 shrink-0 text-brand-cta transition-transform duration-300",
                           isOpen && "rotate-180"
                         )}
                         aria-hidden
@@ -71,7 +71,7 @@ export default function Faq() {
                     aria-labelledby={buttonId}
                     hidden={!isOpen}
                   >
-                    <p className="max-w-[68ch] pb-7 text-sm leading-[1.8] text-brand-inkSoft">
+                    <p className="max-w-[68ch] pb-7 text-sm leading-[1.8] text-brand-inkSoft md:text-base">
                       {item.answer}
                     </p>
                   </dd>

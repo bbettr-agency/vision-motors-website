@@ -9,98 +9,107 @@ import ImageSlotView from "@/components/ui/image-slot";
 import Reveal from "@/components/ui/reveal";
 
 // ─────────────────────────────────────────────────────────────────────────────
-//  THE ENGINE SHOP — new in Phase 2.
+//  THE ENGINE SHOP — the flagship differentiator.
 //
-//  Discovered in the client's company profile: a visually distinct SECOND
-//  premises branded "ENGINE SHOP" with a "RANGER & BT50" wall sign. It appears
-//  nowhere on the current website and in no directory listing.
+//  The client's company profile shows a visually distinct SECOND premises
+//  branded "ENGINE SHOP". Every competitor lists "engine overhauls" as a bullet;
+//  Vision Motors has a building with it painted on the front. This is treated as
+//  the page's flagship visual band.
 //
-//  This is the single strongest differentiator the business has. Every
-//  competitor lists "engine overhauls" as a bullet; Vision Motors has a
-//  building with it painted on the front.
-//
-//  ⚠️ CAREFULLY SCOPED — approved instruction. We state only what is
-//  photographically evidenced:
-//     ✅ a separate engine shop exists
-//     ✅ its signage reads "RANGER & BT50"
-//     ✅ the client's own site says "Ford Specialists on Duty"
-//  ⛔ NO street address (C3 unconfirmed)
-//  ⛔ NO technical fault claims — no wet-belt, balance-shaft, recall or
-//     emissions claims. Those await C21.
-//  ⛔ NO model-year or engine-code claims until the client confirms scope.
+//  ⚠️ CAREFULLY SCOPED (Correction 1, 2026-07-27). We state only what is
+//  photographically evidenced and model-AGNOSTIC:
+//     ✅ a separate engine shop exists (FACT-REGISTER A7)
+//     ✅ full rebuilds / reconditioning done in-house
+//  ⛔ NO dedicated Ford Ranger / BT-50 SPECIALIST claim from signage alone.
+//  ⛔ NO street address (C3), NO model-year / engine-code / fault claims (C21),
+//     NO volume claims ("a large part of what comes through it"). All gated
+//     until the client confirms which models/engines and what is done in-house.
 // ─────────────────────────────────────────────────────────────────────────────
 
 export default function EngineShop() {
   return (
-    <SectionContainer className="bg-brand-bluegrey">
-      <div className="grid items-center gap-14 lg:grid-cols-2 lg:gap-16">
-        <Reveal>
+    <SectionContainer id="engine-shop" className="bg-brand-cream">
+      {/* Flagship header. */}
+      <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
+        <SectionHeading
+          tone="light"
+          eyebrow="The engine shop"
+          title={
+            <>
+              We don&apos;t send engine work
+              <span className="text-brand-inkMuted"> anywhere else</span>
+            </>
+          }
+          description="Most independent workshops sub-contract engine reconditioning out and mark it up. We run a separate engine shop of our own — where rebuilds and reconditioning are actually done."
+          className="lg:col-span-8"
+        />
+        <p className="font-mono text-xs uppercase tracking-[0.2em] text-brand-inkMuted lg:col-span-4 lg:text-right">
+          Second premises
+          <span className="block text-brand-inkMuted">In-house rebuilds</span>
+        </p>
+      </div>
+
+      {/* Full-width flagship image plate. */}
+      <Reveal className="mt-12">
+        <div className="relative h-[40vh] min-h-[280px] w-full lg:h-[52vh]">
           <ImageSlotView
             slot={imagesConfig.engineRoom}
             tone="light"
-            className="rounded-3xl"
-            sizes="(max-width: 1024px) 100vw, 45vw"
+            fill
+            sizes="100vw"
           />
-        </Reveal>
+        </div>
+      </Reveal>
 
-        <div>
-          <SectionHeading
-            tone="light"
-            eyebrow="Our engine shop"
-            title={
-              <>
-                We don&apos;t send engine work
-                <span className="text-brand-blue"> anywhere else</span>
-              </>
-            }
-            description="Most independent workshops sub-contract engine reconditioning out and mark it up. We run a separate engine shop of our own, which is where rebuilds and reconditioning are actually done."
-          />
+      {/* Feature blocks + proof quote. */}
+      <div className="mt-14 grid gap-x-16 gap-y-10 lg:grid-cols-2">
+        <div className="border-l-2 border-brand-ink/25 pl-6">
+          <h3 className="font-display text-xl font-bold uppercase leading-tight tracking-tight text-brand-ink">
+            A second premises, not a corner of the workshop
+          </h3>
+          <p className="mt-3 max-w-[55ch] text-sm leading-[1.75] text-brand-inkSoft">
+            Engine work has its own building, its own benches and its own
+            equipment. That is what lets us take on full rebuilds rather than
+            just fitting parts somebody else machined.
+          </p>
+        </div>
 
-          <div className="mt-11 space-y-8">
-            <div className="border-l-2 border-brand-blue/35 pl-6">
-              <h3 className="font-display text-base font-semibold text-brand-ink">
-                A second premises, not a corner of the workshop
-              </h3>
-              <p className="mt-2.5 max-w-[55ch] text-sm leading-[1.75] text-brand-inkSoft">
-                Engine work has its own building, its own benches and its own
-                equipment. That is what lets us take on full rebuilds rather
-                than just fitting parts somebody else machined.
-              </p>
-            </div>
-
-            <div className="border-l-2 border-brand-blueMid/50 pl-6">
-              <h3 className="font-display text-base font-semibold text-brand-ink">
-                Ford Ranger and Mazda BT-50 engines
-              </h3>
-              <p className="mt-2.5 max-w-[55ch] text-sm leading-[1.75] text-brand-inkSoft">
-                Our engine shop carries Ranger and BT-50 signage because that is
-                a large part of what comes through it. If you have one, you are
-                talking to people who see these engines regularly.
-              </p>
-            </div>
-          </div>
-
-          <Link
-            href={utilityRoutes.services}
-            className="mt-11 inline-flex min-h-[44px] items-center gap-2 text-sm font-semibold text-brand-blue underline underline-offset-4 transition-colors hover:text-brand-navy focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-blueMid"
-          >
-            See what we take on
-            <ArrowRight className="h-4 w-4" aria-hidden />
-          </Link>
+        <div className="border-l-2 border-brand-cta/60 pl-6">
+          <h3 className="font-display text-xl font-bold uppercase leading-tight tracking-tight text-brand-ink">
+            Rebuilt and reconditioned in-house
+          </h3>
+          <p className="mt-3 max-w-[55ch] text-sm leading-[1.75] text-brand-inkSoft">
+            Petrol and diesel engines for cars, bakkies and commercial vehicles —
+            stripped, measured and rebuilt on our own benches, not sent away and
+            marked up.
+          </p>
         </div>
       </div>
 
-      <figure className="mt-16 max-w-2xl border-l-2 border-brand-blue/40 pl-6">
-        <blockquote className="font-display text-lg leading-snug text-brand-ink">
-          &ldquo;Do yourself a favor, take a walk through their engine overall
-          room, go and check the work that they do. It&apos;s proper, it&apos;s
-          sufficient.&rdquo;
+      <figure className="mt-14 max-w-2xl border-t border-brand-ink/20 pt-8">
+        <span
+          aria-hidden
+          className="font-display text-4xl font-bold leading-none text-brand-cta"
+        >
+          &ldquo;
+        </span>
+        <blockquote className="mt-1 font-display text-xl font-bold leading-tight tracking-tight text-brand-ink sm:text-2xl">
+          Do yourself a favor, take a walk through their engine overall room, go
+          and check the work that they do. It&apos;s proper, it&apos;s sufficient.
         </blockquote>
-        <figcaption className="mt-4 text-sm text-brand-inkMuted">
-          <span className="font-semibold text-brand-ink">Hendrik Mostert</span>
-          {" · "}Engine rebuild customer
+        <figcaption className="mt-5 font-mono text-xs uppercase tracking-[0.15em] text-brand-inkMuted">
+          <span className="text-brand-ink">Hendrik Mostert</span>
+          <span className="text-brand-inkMuted"> / Engine rebuild customer</span>
         </figcaption>
       </figure>
+
+      <Link
+        href={utilityRoutes.services}
+        className="mt-10 inline-flex min-h-[44px] items-center gap-2 text-sm font-semibold text-brand-blue underline underline-offset-4 transition-colors hover:text-brand-ink focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue"
+      >
+        See what we take on
+        <ArrowRight className="h-4 w-4" aria-hidden />
+      </Link>
     </SectionContainer>
   );
 }
