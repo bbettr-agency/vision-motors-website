@@ -20,11 +20,28 @@ export const imagesConfig: Record<string, ImageSlot> = {
     id: "hero",
     // ✅ THE ONE REAL PHOTOGRAPH. Two Vision Motors technicians in branded
     // gold-on-black uniform working on an engine bay, workshop job board behind.
+    // Still used on /about-us and /our-work — it is the strongest real asset.
     src: "/images/vision-motors-technicians-engine-bay-pretoria.jpg",
     alt: "Two Vision Motors technicians working on an engine bay in the workshop in Wonderboom South, Pretoria",
     aspect: "3/2",
     shotBrief:
       "REPLACE WITH: wide workshop interior, bays occupied, real customer vehicles, good natural light. 16:9 @ 2400px.",
+    priority: 1,
+  },
+
+  // ⚠️ STOCK, and DECORATIVE. Client-supplied oil-service image used only as an
+  // atmospheric hero background under a heavy navy overlay — never captioned or
+  // presented as Vision Motors' own workshop/staff, and rendered with alt="" so
+  // it makes no claim and adds no screen-reader noise.
+  // TODO(client): replace with a real Vision Motors servicing/oil-change photo
+  //               from the photoshoot. See docs/IMAGE-INVENTORY.md.
+  heroBackground: {
+    id: "heroBackground",
+    src: "/images/vision-motors-oil-service-pretoria.jpg",
+    alt: "", // decorative
+    aspect: "2/1",
+    shotBrief:
+      "REPLACE WITH: a real Vision Motors servicing shot — oil change or under-bonnet work in the actual workshop, warm light. Wide 2:1.",
     priority: 1,
   },
 

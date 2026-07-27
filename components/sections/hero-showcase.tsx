@@ -1,44 +1,38 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
 import { heroShowcase } from "@/config/hero-showcase-config";
-import { imagesConfig } from "@/config/images-config";
-import Icon from "@/components/ui/icon";
 import { cn } from "@/utils/cn";
 
 // ─────────────────────────────────────────────────────────────────────────────
-//  HERO SERVICE SHOWCASE — the scroll-driven right column.
+//  HERO SERVICE-TITLE SHOWCASE — the scroll-driven right column.
 //
-//  DESKTOP: a tall list of service cards. The card nearest the viewport centre
-//  is "active" — it lifts, gains a blue rule + brighter number, and the others
-//  sit subdued but fully readable. The single real workshop photo is a dimmed,
-//  sticky backdrop behind the list (pinned, never stretched).
+//  v5: TITLES ONLY. Just the service names scroll — no icons, no descriptions.
+//  Each title becomes active in turn as the visitor scrolls, so the breadth of
+//  the workshop lands at a glance: diagnostics, engines, gearboxes, DSG,
+//  driveline, servicing, brakes, Ford Ranger.
 //
-//  ── Robustness (the lessons from the reveal system) ────────────────────────
-//  1. NO-JS SAFE. All content is server-rendered inside this client component,
-//     so it is in the HTML and crawlable. The subdued/active styling is applied
-//     only AFTER mount (`interactive` flag), so without JavaScript every card
-//     renders at full prominence — nothing is hidden.
-//  2. JUMP-SCROLL SAFE. Active state is computed from absolute element position
-//     on every scroll (rAF-throttled), not from IntersectionObserver's
-//     change-only callbacks — so an End-key jump or restored scroll lands on the
-//     correct active card.
-//  3. ONE shared listener, self-contained. No animation library.
-//  4. reduced-motion: transitions are gated with `motion-safe:`. Active tracking
-//     still runs (it is emphasis, not motion) so the section stays meaningful.
+//  The list floats on a frosted-navy panel over the hero's photographic
+//  background, which keeps every title readable regardless of the image behind.
+//
+//  ── Robustness (the reveal-system lessons) ──────────────────────────────────
+//  1. NO-JS SAFE. All titles are server-rendered here, so they are in the HTML,
+//     crawlable, and visible without JavaScript. The active/subdued styling is
+//     applied only AFTER mount (`interactive`), so no-JS shows every title at
+//     full prominence — nothing hidden.
+//  2. JUMP-SCROLL SAFE. Active is computed from absolute element position on
+//     scroll (rAF-throttled), not from IntersectionObserver change callbacks.
+//  3. One shared listener, self-contained. No animation library.
+//  4. reduced-motion: transitions are motion-safe-gated; active tracking still
+//     runs (it is emphasis, not motion).
 //
 //  ── Accessibility ──────────────────────────────────────────────────────────
 //  - Active is signalled by THREE cues, never colour alone: a blue left rule
-//    (structural), a surface change, and a brighter/bolder number.
-//  - `aria-current` marks the active item. No live region → no per-scroll
-//    screen-reader chatter.
-//  - The backdrop image is decorative here (the real informative copy is the
-//    list), so its alt stays descriptive but it is not announced per step.
+//    (structural), a size/weight shift, and a brighter number. `aria-current`
+//    marks it. No live region → no per-scroll screen-reader chatter.
 //
-//  Service pages are Phase 3 (`live: false`), so items are NOT links yet —
-//  nothing points at a 404.
+//  Service pages are Phase 3 (`live: false`), so titles are NOT links yet.
 // ─────────────────────────────────────────────────────────────────────────────
 
 export default function HeroShowcase() {
@@ -83,90 +77,38 @@ export default function HeroShowcase() {
   }, []);
 
   return (
-    <div className="relative lg:col-span-6">
-      {/* Persistent workshop backdrop — desktop only. Sticky so it stays behind
-          the list rather than stretching down the whole tall column. Dimmed
-          with a navy wash so the cards stay readable over it. */}
-      <div
-        className="pointer-events-none absolute inset-0 hidden lg:block"
-        aria-hidden
-      >
-        <div className="sticky top-28 h-[70vh] overflow-hidden rounded-[1.9rem] ring-1 ring-white/10">
-          <Image
-            src={imagesConfig.hero.src as string}
-            alt=""
-            fill
-            sizes="50vw"
-            className="object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-br from-brand-navy/85 via-brand-navy/70 to-brand-navy/55" />
-        </div>
-      </div>
+    <div className="lg:col-span-6">
+      {/* Frosted-navy panel floating over the hero photograph — guarantees the
+          titles stay readable whatever the image behind. */}
+      <div className="rounded-3xl border border-white/10 bg-brand-navy/45 p-6 backdrop-blur-md sm:p-8 lg:p-9">
+        <p className="text-xs font-semibold uppercase tracking-[0.22em] text-brand-blueSoft">
+          Everything we take on
+        </p>
 
-      {/* Mobile: the real photo, shown once, before the stacked list. */}
-      <div className="relative mb-8 overflow-hidden rounded-3xl ring-1 ring-white/10 lg:hidden">
-        <Image
-          src={imagesConfig.hero.src as string}
-          alt={imagesConfig.hero.alt}
-          width={1024}
-          height={682}
-          sizes="100vw"
-          className="h-auto w-full object-cover"
-        />
-      </div>
-
-      <p className="relative z-10 mb-6 text-xs font-semibold uppercase tracking-[0.22em] text-brand-blueSoft lg:mb-8">
-        Everything we take on
-      </p>
-
-      <ul className="relative z-10 space-y-3.5 lg:space-y-3">
-        {heroShowcase.map((item, i) => {
-          const isActive = interactive && i === active;
-          return (
-            <li
-              key={item.slug}
-              ref={(el) => {
-                itemRefs.current[i] = el;
-              }}
-              aria-current={isActive ? "true" : undefined}
-              className={cn(
-                "group relative flex items-start gap-4 rounded-2xl border p-5 sm:p-6",
-                "motion-safe:transition-all motion-safe:duration-500",
-                "lg:min-h-[14vh] lg:flex-col lg:justify-center lg:p-5",
-                // Backdrop-blur keeps the cards legible over the workshop image.
-                "border-white/10 bg-brand-navy/90 backdrop-blur-md lg:bg-brand-navy/85",
-                // Subdued vs active — applied only once interactive, so no-JS
-                // and first paint show every card at full prominence.
-                interactive && !isActive && "lg:opacity-65",
-                isActive &&
-                  "border-brand-blueMid/50 bg-brand-navyCard/95 lg:opacity-100 lg:shadow-glow",
-              )}
-            >
-              {/* Blue active rule — a structural cue, not colour alone. Blue
-                  (not amber): amber is reserved for the Call CTA. */}
-              <span
-                className={cn(
-                  "absolute left-0 top-5 bottom-5 w-[3px] rounded-full bg-brand-blueMid motion-safe:transition-opacity motion-safe:duration-500",
-                  isActive ? "opacity-100" : "opacity-0",
-                )}
-                aria-hidden
-              />
-
-              <span className="flex items-center gap-4 lg:contents">
+        <ul className="mt-6 lg:mt-4">
+          {heroShowcase.map((item, i) => {
+            const isActive = interactive && i === active;
+            return (
+              <li
+                key={item.slug}
+                ref={(el) => {
+                  itemRefs.current[i] = el;
+                }}
+                aria-current={isActive ? "true" : undefined}
+                className="relative flex items-baseline gap-4 border-t border-white/5 py-5 first:border-t-0 lg:min-h-[15vh] lg:flex-col lg:justify-center lg:gap-2"
+              >
+                {/* Blue active rule — a structural cue, not colour alone. */}
                 <span
                   className={cn(
-                    "flex h-11 w-11 shrink-0 items-center justify-center rounded-xl motion-safe:transition-colors motion-safe:duration-500",
-                    isActive
-                      ? "bg-brand-blue text-white"
-                      : "bg-white/[0.07] text-brand-blueSoft",
+                    "absolute -left-6 top-4 bottom-4 w-[3px] rounded-full bg-brand-blueMid motion-safe:transition-opacity motion-safe:duration-500 lg:-left-9",
+                    isActive ? "opacity-100" : "opacity-0",
                   )}
-                >
-                  <Icon name={item.icon} className="h-5 w-5" />
-                </span>
+                  aria-hidden
+                />
 
                 <span
                   className={cn(
-                    "font-mono text-xs motion-safe:transition-colors motion-safe:duration-500 lg:mt-4",
+                    "font-mono text-xs motion-safe:transition-colors motion-safe:duration-500",
                     isActive
                       ? "font-semibold text-brand-blueSoft"
                       : "text-brand-bone/70",
@@ -174,25 +116,22 @@ export default function HeroShowcase() {
                 >
                   {String(i + 1).padStart(2, "0")}
                 </span>
-              </span>
 
-              <span className="min-w-0 flex-1">
-                <span className="block font-display text-base font-semibold text-white sm:text-lg">
-                  {item.name}
-                </span>
                 <span
                   className={cn(
-                    "mt-1.5 block text-sm leading-[1.6] motion-safe:transition-colors motion-safe:duration-500",
-                    isActive ? "text-brand-bone/85" : "text-brand-bone/70",
+                    "origin-left font-display text-lg font-semibold leading-tight motion-safe:transition-all motion-safe:duration-500 sm:text-xl",
+                    isActive
+                      ? "text-white lg:scale-[1.03]"
+                      : "text-brand-bone/75",
                   )}
                 >
-                  {item.blurb}
+                  {item.name}
                 </span>
-              </span>
-            </li>
-          );
-        })}
-      </ul>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
     </div>
   );
 }
