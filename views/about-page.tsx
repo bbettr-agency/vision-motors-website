@@ -80,7 +80,7 @@ export default function AboutPage() {
                 {whatWeAre.map((item) => (
                   <div
                     key={item.title}
-                    className="border-l-2 border-brand-indigo/35 pl-6"
+                    className="border-l-2 border-brand-blue/35 pl-6"
                   >
                     <h3 className="font-display text-base font-semibold text-brand-ink">
                       {item.title}
@@ -112,7 +112,7 @@ export default function AboutPage() {
         </SectionContainer>
 
         {/* How we work — the approval gate, the highest-ranked objection */}
-        <SectionContainer className="bg-brand-indigoDeep">
+        <SectionContainer className="bg-brand-navy">
           <SectionHeading
             eyebrow="How we work"
             title="You'll know what's wrong before you spend anything"
@@ -138,7 +138,7 @@ export default function AboutPage() {
             ].map((item) => (
               <div
                 key={item.t}
-                className="rounded-2xl border border-white/10 bg-brand-indigoCard p-8 shadow-card"
+                className="rounded-2xl border border-white/10 bg-brand-navyCard p-8 shadow-card"
               >
                 <h3 className="font-display text-lg font-semibold text-white">
                   {item.t}
@@ -150,13 +150,13 @@ export default function AboutPage() {
             ))}
           </div>
 
-          <p className="mx-auto mt-12 max-w-[60ch] text-center text-sm leading-[1.7] text-brand-bone/60">
+          <p className="mx-auto mt-12 max-w-[60ch] text-center text-sm leading-[1.7] text-brand-bone/75">
             {siteConfig.warrantyInterimCopy}
           </p>
         </SectionContainer>
 
         {/* Team — architecture prepared, content awaiting confirmation */}
-        <SectionContainer className="bg-brand-linen">
+        <SectionContainer className="bg-brand-bluegrey">
           <SectionHeading
             tone="light"
             eyebrow="The team"
@@ -177,7 +177,7 @@ export default function AboutPage() {
               className="rounded-2xl sm:col-span-2"
               sizes="(max-width: 768px) 100vw, 60vw"
             />
-            <div className="rounded-2xl border border-brand-stone bg-white p-8 shadow-soft">
+            <div className="rounded-2xl border border-brand-line bg-white p-8 shadow-soft">
               <h3 className="font-display text-base font-semibold text-brand-ink">
                 Named by customers, not by us
               </h3>

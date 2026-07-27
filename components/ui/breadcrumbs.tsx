@@ -48,7 +48,7 @@ export default function Breadcrumbs({
                 <ChevronRight
                   className={cn(
                     "h-3 w-3 shrink-0",
-                    isDark ? "text-white/35" : "text-brand-inkMuted/60"
+                    isDark ? "text-white/35" : "text-brand-inkMuted"
                   )}
                   aria-hidden
                 />
@@ -69,8 +69,8 @@ export default function Breadcrumbs({
                   className={cn(
                     "rounded transition-colors focus:outline-none focus-visible:ring-2",
                     isDark
-                      ? "text-white/55 hover:text-brand-accent focus-visible:ring-brand-accent"
-                      : "text-brand-indigo hover:text-brand-indigoMid focus-visible:ring-brand-indigo"
+                      ? "text-white/55 hover:text-brand-blueSoft focus-visible:ring-brand-blueMid"
+                      : "text-brand-blue hover:text-brand-navy focus-visible:ring-brand-blueMid"
                   )}
                 >
                   {crumb.label}

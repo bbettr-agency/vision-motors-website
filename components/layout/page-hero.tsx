@@ -24,7 +24,7 @@ export default function PageHero({
   children?: ReactNode;
 }) {
   return (
-    <section className="relative overflow-hidden bg-brand-indigoDeep px-6 pb-16 pt-28 md:pb-20 md:pt-36 lg:px-8">
+    <section className="relative overflow-hidden bg-brand-navy px-6 pb-16 pt-28 md:pb-20 md:pt-36 lg:px-8">
       <div
         className="pointer-events-none absolute inset-0 bg-brass-glow opacity-70"
         aria-hidden
@@ -33,7 +33,7 @@ export default function PageHero({
         <Breadcrumbs trail={trail} tone="dark" />
 
         {eyebrow && (
-          <p className="mt-7 text-xs font-semibold uppercase tracking-[0.22em] text-brand-accent sm:text-sm">
+          <p className="mt-7 text-xs font-semibold uppercase tracking-[0.22em] text-brand-blueSoft sm:text-sm">
             {eyebrow}
           </p>
         )}

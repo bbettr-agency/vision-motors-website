@@ -64,9 +64,9 @@ export default function WarrantyRightsPage() {
               {rightsConfig.points.map((point) => (
                 <div
                   key={point.title}
-                  className="flex gap-5 rounded-2xl border border-brand-stone bg-white p-7 shadow-soft"
+                  className="flex gap-5 rounded-2xl border border-brand-line bg-white p-7 shadow-soft"
                 >
-                  <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-indigoTint text-brand-indigo">
+                  <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-tint text-brand-blue">
                     <Icon name={point.icon} className="h-5 w-5" />
                   </span>
                   <div>
@@ -85,7 +85,7 @@ export default function WarrantyRightsPage() {
             </div>
 
             {/* MANDATORY caveat. */}
-            <div className="mt-4 flex gap-5 rounded-2xl border border-brand-ink/15 bg-brand-linen p-7">
+            <div className="mt-4 flex gap-5 rounded-2xl border border-brand-ink/15 bg-brand-bluegrey p-7">
               <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-ink/10 text-brand-ink/70">
                 <Info className="h-5 w-5" aria-hidden />
               </span>
@@ -107,7 +107,7 @@ export default function WarrantyRightsPage() {
                 href={rightsConfig.sourceUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-xs font-medium text-brand-indigo underline underline-offset-4 transition-colors hover:text-brand-indigoMid focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-indigo"
+                className="inline-flex items-center gap-1.5 text-xs font-medium text-brand-blue underline underline-offset-4 transition-colors hover:text-brand-navy focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-blueMid"
               >
                 {rightsConfig.sourceLabel}
                 <ExternalLink className="h-3 w-3 shrink-0" aria-hidden />
@@ -118,7 +118,7 @@ export default function WarrantyRightsPage() {
             </div>
 
             {/* Our own warranty — restrained wording only. */}
-            <div className="mt-12 rounded-2xl border border-brand-indigoLine bg-brand-indigoTint/50 p-7">
+            <div className="mt-12 rounded-2xl border border-brand-line bg-brand-tint/50 p-7">
               <h2 className="font-display text-base font-semibold text-brand-ink">
                 What about the work we do?
               </h2>

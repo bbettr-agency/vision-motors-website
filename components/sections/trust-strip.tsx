@@ -19,7 +19,7 @@ export default function TrustStrip() {
   return (
     <section
       aria-label="Why customers use Vision Motors"
-      className="border-y border-white/10 bg-brand-charcoal px-6 py-12 md:py-14 lg:px-8"
+      className="border-y border-white/10 bg-brand-navy px-6 py-12 md:py-14 lg:px-8"
     >
       <div className="mx-auto grid max-w-7xl gap-9 sm:grid-cols-2 lg:grid-cols-4">
         {trustConfig.map((item, index) => (
@@ -28,14 +28,14 @@ export default function TrustStrip() {
             delay={index * 0.08}
             className="flex items-start gap-4"
           >
-            <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/[0.07] text-brand-accent">
+            <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/[0.07] text-brand-blueSoft">
               <Icon name={item.icon} className="h-5 w-5" />
             </span>
             <div>
               <h2 className="font-display text-sm font-bold leading-snug text-white">
                 {item.title}
               </h2>
-              <p className="mt-1.5 text-xs leading-[1.65] text-brand-bone/65">
+              <p className="mt-1.5 text-xs leading-[1.65] text-brand-bone/75">
                 {item.description}
               </p>
             </div>

@@ -22,7 +22,7 @@ export default function DirectionsLink({
       rel="noopener noreferrer"
       onClick={() => trackDirections("main")}
       className={cn(
-        "inline-flex min-h-[44px] items-center gap-2 text-sm font-semibold text-brand-indigo underline underline-offset-4 transition-colors hover:text-brand-indigoMid focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-indigo",
+        "inline-flex min-h-[44px] items-center gap-2 text-sm font-semibold text-brand-blue underline underline-offset-4 transition-colors hover:text-brand-navy focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-blueMid",
         className
       )}
     >

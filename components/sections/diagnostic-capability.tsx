@@ -40,7 +40,7 @@ const capabilityPoints = [
 
 export default function DiagnosticCapability() {
   return (
-    <SectionContainer id="diagnostics" className="overflow-hidden bg-brand-indigoDeep">
+    <SectionContainer id="diagnostics" className="overflow-hidden bg-brand-navy">
       <div
         className="pointer-events-none absolute inset-x-0 top-0 h-64 bg-brass-glow"
         aria-hidden
@@ -53,7 +53,7 @@ export default function DiagnosticCapability() {
             title={
               <>
                 When nobody can work out
-                <span className="text-brand-accent"> what&apos;s wrong</span>
+                <span className="text-brand-blueSoft"> what&apos;s wrong</span>
               </>
             }
             description="Intermittent faults, warning lights that come and go, and problems another workshop has already been paid to look at. This is the work we take on."
@@ -64,7 +64,7 @@ export default function DiagnosticCapability() {
               <Reveal
                 key={point.title}
                 delay={index * 0.08}
-                className="border-l-2 border-brand-accent/45 pl-6"
+                className="border-l-2 border-brand-blueMid/45 pl-6"
               >
                 <h3 className="font-display text-base font-semibold text-white">
                   {point.title}
@@ -94,7 +94,7 @@ export default function DiagnosticCapability() {
             sizes="(max-width: 1024px) 100vw, 45vw"
           />
 
-          <figure className="rounded-2xl border border-brand-accent/30 bg-brand-indigoCard p-8 shadow-card">
+          <figure className="rounded-2xl border border-brand-blueMid/30 bg-brand-navyCard p-8 shadow-card">
             <blockquote
               lang="af"
               className="font-display text-lg leading-snug text-white"
@@ -112,7 +112,7 @@ export default function DiagnosticCapability() {
               <span className="font-semibold text-white">
                 Andries Groenewald
               </span>
-              <span className="ml-2 text-brand-bone/55">
+              <span className="ml-2 text-brand-bone/75">
                 Nissan owner, Pretoria
               </span>
             </figcaption>

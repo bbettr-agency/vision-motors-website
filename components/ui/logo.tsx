@@ -1,14 +1,16 @@
 import { cn } from "@/utils/cn";
 
-// ⚠️ TEMPORARY TYPE LOCKUP.
-// The client's only available logo asset is a low-resolution white-on-dark PNG
-// hosted on their current page-builder's CDN. Rather than embed a third-party
-// CDN image (which next.config.js deliberately disallows) or ship a poor-quality
-// raster, this renders a clean type lockup in the real brand colours — brass on
-// dark, matching the embroidered uniform mark in the workshop photograph.
+// ⚠️ TEMPORARY TYPE LOCKUP — NOT the official logo.
+// The real Vision Motors mark is indigo (#290F74). It is not supplied as a
+// usable vector (FACT-VERIFICATION-REGISTER.md C5), and indigo would not read
+// on the navy header/footer anyway. So this renders a clean type lockup sized
+// and spaced to sit natively on navy: white "Vision" + soft-blue "Motors".
+// The official logo is NOT recoloured here — it simply isn't used yet.
 //
-// TODO(client): supply vector logo files (SVG/AI/EPS). Swap this component's
-// internals for next/image; nothing else in the codebase needs to change.
+// TODO(client): supply vector logo files (SVG/AI/EPS). If the indigo mark reads
+// acceptably on navy, use it via next/image with the correct light/dark variant;
+// otherwise a navy-safe variant is needed. Swapping this component's internals
+// is a local change — nothing else in the codebase depends on it.
 
 type LogoProps = {
   className?: string;
@@ -23,13 +25,18 @@ export default function Logo({ className, tone = "dark" }: LogoProps) {
       className={cn("inline-flex flex-col leading-none", className)}
       aria-label="Vision Motors"
     >
-      <span className="font-display text-lg font-extrabold uppercase tracking-[0.18em] text-brand-accent">
+      <span
+        className={cn(
+          "font-display text-lg font-extrabold uppercase tracking-[0.18em]",
+          isDark ? "text-white" : "text-brand-ink"
+        )}
+      >
         Vision
       </span>
       <span
         className={cn(
           "font-display text-[0.65rem] font-semibold uppercase tracking-[0.42em]",
-          isDark ? "text-white/80" : "text-brand-ink/70"
+          isDark ? "text-brand-blueSoft" : "text-brand-blue"
         )}
       >
         Motors

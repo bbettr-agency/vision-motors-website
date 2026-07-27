@@ -28,7 +28,7 @@ export default function FinalCta() {
   return (
     <section
       id="book"
-      className="relative overflow-hidden border-t border-white/10 bg-brand-indigoDeep px-6 py-24 md:py-32 lg:px-8"
+      className="relative overflow-hidden border-t border-white/10 bg-brand-navy px-6 py-24 md:py-32 lg:px-8"
     >
       <div className="pointer-events-none absolute inset-0 bg-brass-glow" aria-hidden />
 
@@ -39,7 +39,7 @@ export default function FinalCta() {
             title={
               <>
                 Let&apos;s find out what&apos;s
-                <span className="text-brand-accent"> actually wrong</span>
+                <span className="text-brand-blueSoft"> actually wrong</span>
               </>
             }
             description="Send us the details and the workshop will come back to you to arrange a time. If it's urgent, phone us — someone will help you straight away."
@@ -52,14 +52,14 @@ export default function FinalCta() {
                 className="group inline-flex min-h-[44px] items-start gap-4"
                 aria-label={`Call ${siteConfig.businessName} on ${siteConfig.phoneDisplay}`}
               >
-                <span className="mt-0.5 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-accent/12 text-brand-accent">
+                <span className="mt-0.5 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-blue/12 text-brand-blueSoft">
                   <Phone className="h-5 w-5" aria-hidden />
                 </span>
                 <span>
-                  <span className="block text-xs uppercase tracking-[0.14em] text-brand-bone/65">
+                  <span className="block text-xs uppercase tracking-[0.14em] text-brand-bone/75">
                     Phone the workshop
                   </span>
-                  <span className="mt-1 block whitespace-nowrap font-display text-lg font-bold text-white transition-colors group-hover:text-brand-accent">
+                  <span className="mt-1 block whitespace-nowrap font-display text-lg font-bold text-white transition-colors group-hover:text-brand-blueSoft">
                     {siteConfig.phoneDisplay}
                   </span>
                 </span>
@@ -71,14 +71,14 @@ export default function FinalCta() {
                 href={siteConfig.emailLink}
                 className="group inline-flex min-h-[44px] items-start gap-4"
               >
-                <span className="mt-0.5 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-accent/12 text-brand-accent">
+                <span className="mt-0.5 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-blue/12 text-brand-blueSoft">
                   <Mail className="h-5 w-5" aria-hidden />
                 </span>
                 <span>
-                  <span className="block text-xs uppercase tracking-[0.14em] text-brand-bone/65">
+                  <span className="block text-xs uppercase tracking-[0.14em] text-brand-bone/75">
                     Email
                   </span>
-                  <span className="mt-1 block break-all text-sm font-medium text-white transition-colors group-hover:text-brand-accent">
+                  <span className="mt-1 block break-all text-sm font-medium text-white transition-colors group-hover:text-brand-blueSoft">
                     {siteConfig.email}
                   </span>
                 </span>
@@ -86,11 +86,11 @@ export default function FinalCta() {
             </li>
 
             <li className="flex items-start gap-4">
-              <span className="mt-0.5 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-accent/12 text-brand-accent">
+              <span className="mt-0.5 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-blue/12 text-brand-blueSoft">
                 <MapPin className="h-5 w-5" aria-hidden />
               </span>
               <span>
-                <span className="block text-xs uppercase tracking-[0.14em] text-brand-bone/65">
+                <span className="block text-xs uppercase tracking-[0.14em] text-brand-bone/75">
                   Where we are
                 </span>
                 <span className="mt-1 block text-sm font-medium text-white">
@@ -102,7 +102,7 @@ export default function FinalCta() {
         </div>
 
         <Reveal className="lg:col-span-7">
-          <div className="rounded-3xl border border-brand-stone bg-white p-7 shadow-ink sm:p-9">
+          <div className="rounded-3xl border border-brand-line bg-white p-7 shadow-ink sm:p-9">
             <h3 className="font-display text-xl font-bold text-brand-ink sm:text-2xl">
               {formConfig.headings.title}
             </h3>

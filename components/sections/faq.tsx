@@ -24,7 +24,7 @@ export default function Faq() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <SectionContainer id="faq" className="bg-brand-linen">
+    <SectionContainer id="faq" className="bg-brand-bluegrey">
       <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
         <div className="lg:col-span-4">
           <SectionHeading
@@ -35,7 +35,7 @@ export default function Faq() {
         </div>
 
         <div className="lg:col-span-8">
-          <dl className="divide-y divide-brand-stone border-y border-brand-stone">
+          <dl className="divide-y divide-brand-line border-y border-brand-line">
             {faqConfig.map((item, index) => {
               const isOpen = openIndex === index;
               const panelId = `faq-panel-${index}`;
@@ -50,14 +50,14 @@ export default function Faq() {
                       onClick={() => setOpenIndex(isOpen ? null : index)}
                       aria-expanded={isOpen}
                       aria-controls={panelId}
-                      className="flex w-full items-center justify-between gap-6 py-7 text-left transition-colors hover:text-brand-accentInk focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accentInk"
+                      className="flex w-full items-center justify-between gap-6 py-7 text-left transition-colors hover:text-brand-blue focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue"
                     >
                       <span className="font-display text-base font-semibold text-brand-ink md:text-lg">
                         {item.question}
                       </span>
                       <ChevronDown
                         className={cn(
-                          "h-5 w-5 shrink-0 text-brand-accentInk transition-transform duration-300",
+                          "h-5 w-5 shrink-0 text-brand-blue transition-transform duration-300",
                           isOpen && "rotate-180"
                         )}
                         aria-hidden

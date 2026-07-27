@@ -23,7 +23,7 @@ export default function ThankYouPage() {
   return (
     <>
       <SkipLink />
-      <header className="border-b border-white/10 bg-brand-indigoDeep px-6 py-5 lg:px-8">
+      <header className="border-b border-white/10 bg-brand-navy px-6 py-5 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <Link href="/" aria-label={`${siteConfig.businessName} home`}>
             <Logo />
@@ -33,11 +33,11 @@ export default function ThankYouPage() {
 
       <main
         id="main"
-        className="flex min-h-[80vh] items-center justify-center bg-brand-indigoDeep px-6 py-20 lg:px-8"
+        className="flex min-h-[80vh] items-center justify-center bg-brand-navy px-6 py-20 lg:px-8"
       >
         <div className="mx-auto max-w-lg text-center">
           <CheckCircle2
-            className="mx-auto h-14 w-14 text-brand-accent"
+            className="mx-auto h-14 w-14 text-brand-blueSoft"
             aria-hidden
           />
 
@@ -51,7 +51,7 @@ export default function ThankYouPage() {
             either confirm it or offer you the nearest slot we can commit to.
           </p>
 
-          <p className="mt-4 text-sm leading-[1.7] text-brand-bone/65">
+          <p className="mt-4 text-sm leading-[1.7] text-brand-bone/75">
             If it&apos;s urgent, or your car isn&apos;t driveable, phone us and
             we&apos;ll help you straight away.
           </p>
@@ -60,13 +60,13 @@ export default function ThankYouPage() {
             <CallButton location="footer" variant="brass" showNumber />
             <Link
               href="/"
-              className="inline-flex min-h-[52px] items-center justify-center rounded-full border border-white/20 px-7 text-sm font-semibold text-white transition-colors hover:border-brand-accent/50 hover:bg-white/5 md:text-base"
+              className="inline-flex min-h-[52px] items-center justify-center rounded-full border border-white/20 px-7 text-sm font-semibold text-white transition-colors hover:border-brand-blueMid/50 hover:bg-white/5 md:text-base"
             >
               Back to the website
             </Link>
           </div>
 
-          <p className="mt-10 text-xs leading-relaxed text-brand-bone/55">
+          <p className="mt-10 text-xs leading-relaxed text-brand-bone/75">
             Monday – Friday 07:30 – 17:00 · {siteConfig.addressDisplay}
           </p>
 
@@ -76,7 +76,7 @@ export default function ThankYouPage() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="inline-flex min-h-[44px] items-center text-xs font-medium text-brand-bone/60 underline underline-offset-4 transition-colors hover:text-brand-accent"
+                    className="inline-flex min-h-[44px] items-center text-xs font-medium text-brand-bone/75 underline underline-offset-4 transition-colors hover:text-brand-blueSoft"
                   >
                     {item.label}
                   </Link>

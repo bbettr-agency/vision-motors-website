@@ -15,7 +15,7 @@ import Logo from "@/components/ui/logo";
  */
 export default function Footer() {
   return (
-    <footer className="border-t border-white/10 bg-brand-indigoDeep px-6 pb-28 pt-16 md:pb-16 lg:px-8">
+    <footer className="border-t border-white/10 bg-brand-navy px-6 pb-28 pt-16 md:pb-16 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
           {/* Brand + contact */}
@@ -30,11 +30,11 @@ export default function Footer() {
               <li>
                 <a
                   href={siteConfig.phoneLink}
-                  className="inline-flex min-h-[44px] items-center gap-2.5 text-white/80 transition-colors hover:text-brand-accent"
+                  className="inline-flex min-h-[44px] items-center gap-2.5 text-white/80 transition-colors hover:text-brand-blueSoft"
                   aria-label={`Call ${siteConfig.businessName} on ${siteConfig.phoneDisplay}`}
                   data-cta="call"
                 >
-                  <Phone className="h-4 w-4 shrink-0 text-brand-accent" aria-hidden />
+                  <Phone className="h-4 w-4 shrink-0 text-brand-blueSoft" aria-hidden />
                   <span className="whitespace-nowrap">
                     {siteConfig.phoneDisplay}
                   </span>
@@ -43,15 +43,15 @@ export default function Footer() {
               <li>
                 <a
                   href={siteConfig.emailLink}
-                  className="inline-flex min-h-[44px] items-center gap-2.5 break-all text-white/80 transition-colors hover:text-brand-accent"
+                  className="inline-flex min-h-[44px] items-center gap-2.5 break-all text-white/80 transition-colors hover:text-brand-blueSoft"
                 >
-                  <Mail className="h-4 w-4 shrink-0 text-brand-accent" aria-hidden />
+                  <Mail className="h-4 w-4 shrink-0 text-brand-blueSoft" aria-hidden />
                   {siteConfig.email}
                 </a>
               </li>
               <li className="flex items-start gap-2.5 py-2 text-white/80">
                 <MapPin
-                  className="mt-0.5 h-4 w-4 shrink-0 text-brand-accent"
+                  className="mt-0.5 h-4 w-4 shrink-0 text-brand-blueSoft"
                   aria-hidden
                 />
                 {/* Street address verified from own signage. Postcode is
@@ -86,7 +86,7 @@ export default function Footer() {
                   <li key={service.slug}>
                     <Link
                       href={service.slug}
-                      className="inline-flex min-h-[44px] items-center text-white/65 transition-colors hover:text-brand-accent"
+                      className="inline-flex min-h-[44px] items-center text-white/65 transition-colors hover:text-brand-blueSoft"
                     >
                       {service.navLabel}
                     </Link>
@@ -114,7 +114,7 @@ export default function Footer() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="inline-flex min-h-[44px] items-center text-white/65 transition-colors hover:text-brand-accent"
+                    className="inline-flex min-h-[44px] items-center text-white/65 transition-colors hover:text-brand-blueSoft"
                   >
                     {item.label}
                   </Link>
@@ -123,7 +123,7 @@ export default function Footer() {
               <li>
                 <Link
                   href={utilityRoutes.booking}
-                  className="inline-flex min-h-[44px] items-center text-white/65 transition-colors hover:text-brand-accent"
+                  className="inline-flex min-h-[44px] items-center text-white/65 transition-colors hover:text-brand-blueSoft"
                 >
                   {siteConfig.ctaSecondary}
                 </Link>
@@ -131,7 +131,7 @@ export default function Footer() {
               <li>
                 <Link
                   href={utilityRoutes.warrantyRights}
-                  className="inline-flex min-h-[44px] items-center text-white/65 transition-colors hover:text-brand-accent"
+                  className="inline-flex min-h-[44px] items-center text-white/65 transition-colors hover:text-brand-blueSoft"
                 >
                   Your Warranty Rights
                 </Link>
@@ -150,7 +150,7 @@ export default function Footer() {
                   href={siteConfig.social.facebook}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex min-h-[44px] items-center text-white/65 transition-colors hover:text-brand-accent"
+                  className="inline-flex min-h-[44px] items-center text-white/65 transition-colors hover:text-brand-blueSoft"
                 >
                   Facebook
                 </a>
@@ -158,7 +158,7 @@ export default function Footer() {
               <li>
                 <Link
                   href={utilityRoutes.privacy}
-                  className="inline-flex min-h-[44px] items-center text-white/65 transition-colors hover:text-brand-accent"
+                  className="inline-flex min-h-[44px] items-center text-white/65 transition-colors hover:text-brand-blueSoft"
                 >
                   Privacy Policy
                 </Link>
@@ -166,7 +166,7 @@ export default function Footer() {
               <li>
                 <Link
                   href={utilityRoutes.terms}
-                  className="inline-flex min-h-[44px] items-center text-white/65 transition-colors hover:text-brand-accent"
+                  className="inline-flex min-h-[44px] items-center text-white/65 transition-colors hover:text-brand-blueSoft"
                 >
                   Website Terms of Use
                 </Link>
@@ -196,7 +196,7 @@ export default function Footer() {
               href="https://www.bbettragency.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-semibold text-white/70 transition-colors hover:text-brand-accent"
+              className="font-semibold text-white/70 transition-colors hover:text-brand-blueSoft"
             >
               Bbettr Agency
             </a>

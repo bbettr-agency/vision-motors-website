@@ -113,7 +113,7 @@ export default function OurWorkPage() {
             />
           </div>
 
-          <figure className="mt-12 max-w-2xl border-l-2 border-brand-indigo/40 pl-6">
+          <figure className="mt-12 max-w-2xl border-l-2 border-brand-blue/40 pl-6">
             <blockquote className="font-display text-lg leading-snug text-brand-ink">
               &ldquo;Do yourself a favor, take a walk through their engine
               overall room, go and check the work that they do. It&apos;s
@@ -129,7 +129,7 @@ export default function OurWorkPage() {
         </SectionContainer>
 
         {/* Categorised gallery — structure in place, photography pending. */}
-        <SectionContainer className="bg-brand-linen">
+        <SectionContainer className="bg-brand-bluegrey">
           <SectionHeading
             tone="light"
             eyebrow="Coming soon"
@@ -164,8 +164,8 @@ export default function OurWorkPage() {
             ))}
           </div>
 
-          <div className="mt-14 flex items-start gap-4 rounded-2xl border border-brand-indigoLine bg-brand-indigoTint/50 p-7">
-            <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white text-brand-indigo">
+          <div className="mt-14 flex items-start gap-4 rounded-2xl border border-brand-line bg-brand-tint/50 p-7">
+            <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white text-brand-blue">
               <Camera className="h-5 w-5" aria-hidden />
             </span>
             <div>

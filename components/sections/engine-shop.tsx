@@ -32,7 +32,7 @@ import Reveal from "@/components/ui/reveal";
 
 export default function EngineShop() {
   return (
-    <SectionContainer className="bg-brand-linen">
+    <SectionContainer className="bg-brand-bluegrey">
       <div className="grid items-center gap-14 lg:grid-cols-2 lg:gap-16">
         <Reveal>
           <ImageSlotView
@@ -50,14 +50,14 @@ export default function EngineShop() {
             title={
               <>
                 We don&apos;t send engine work
-                <span className="text-brand-indigo"> anywhere else</span>
+                <span className="text-brand-blue"> anywhere else</span>
               </>
             }
             description="Most independent workshops sub-contract engine reconditioning out and mark it up. We run a separate engine shop of our own, which is where rebuilds and reconditioning are actually done."
           />
 
           <div className="mt-11 space-y-8">
-            <div className="border-l-2 border-brand-indigo/35 pl-6">
+            <div className="border-l-2 border-brand-blue/35 pl-6">
               <h3 className="font-display text-base font-semibold text-brand-ink">
                 A second premises, not a corner of the workshop
               </h3>
@@ -68,7 +68,7 @@ export default function EngineShop() {
               </p>
             </div>
 
-            <div className="border-l-2 border-brand-accent/50 pl-6">
+            <div className="border-l-2 border-brand-blueMid/50 pl-6">
               <h3 className="font-display text-base font-semibold text-brand-ink">
                 Ford Ranger and Mazda BT-50 engines
               </h3>
@@ -82,7 +82,7 @@ export default function EngineShop() {
 
           <Link
             href={utilityRoutes.services}
-            className="mt-11 inline-flex min-h-[44px] items-center gap-2 text-sm font-semibold text-brand-indigo underline underline-offset-4 transition-colors hover:text-brand-indigoMid focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-indigo"
+            className="mt-11 inline-flex min-h-[44px] items-center gap-2 text-sm font-semibold text-brand-blue underline underline-offset-4 transition-colors hover:text-brand-navy focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-blueMid"
           >
             See what we take on
             <ArrowRight className="h-4 w-4" aria-hidden />
@@ -90,7 +90,7 @@ export default function EngineShop() {
         </div>
       </div>
 
-      <figure className="mt-16 max-w-2xl border-l-2 border-brand-indigo/40 pl-6">
+      <figure className="mt-16 max-w-2xl border-l-2 border-brand-blue/40 pl-6">
         <blockquote className="font-display text-lg leading-snug text-brand-ink">
           &ldquo;Do yourself a favor, take a walk through their engine overall
           room, go and check the work that they do. It&apos;s proper, it&apos;s

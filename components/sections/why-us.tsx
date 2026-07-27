@@ -18,7 +18,7 @@ import Reveal from "@/components/ui/reveal";
  */
 export default function WhyUs() {
   return (
-    <SectionContainer className="bg-brand-charcoal">
+    <SectionContainer className="bg-brand-navy">
       <SectionHeading
         eyebrow="Why Vision Motors"
         title="No surprises on the invoice"
@@ -33,9 +33,9 @@ export default function WhyUs() {
             key={item.title}
             as="article"
             delay={index * 0.08}
-            className="rounded-2xl border border-white/10 bg-brand-indigoCard p-9 shadow-card"
+            className="rounded-2xl border border-white/10 bg-brand-navyCard p-9 shadow-card"
           >
-            <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-accent/12 text-brand-accent">
+            <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-blue/12 text-brand-blueSoft">
               <Icon name={item.icon} className="h-5 w-5" />
             </span>
 

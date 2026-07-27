@@ -33,7 +33,7 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
-        <meta name="theme-color" content="#0B0B0B" />
+        <meta name="theme-color" content="#0F2A44" />
 
         {/*
           Enables the scroll-reveal hidden state before first paint, so there is

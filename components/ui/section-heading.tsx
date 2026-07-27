@@ -40,7 +40,7 @@ export default function SectionHeading({
         <p
           className={cn(
             "text-xs font-semibold uppercase tracking-[0.22em] sm:text-sm",
-            isDark ? "text-brand-accent" : "text-brand-accentInk"
+            isDark ? "text-brand-blueSoft" : "text-brand-blue"
           )}
         >
           {eyebrow}

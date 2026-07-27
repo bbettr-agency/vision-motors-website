@@ -135,7 +135,7 @@ export default function ServicesPage() {
         {groups.map((group, groupIndex) => (
           <SectionContainer
             key={group.key}
-            className={groupIndex % 2 === 0 ? "bg-brand-cream" : "bg-brand-linen"}
+            className={groupIndex % 2 === 0 ? "bg-brand-cream" : "bg-brand-bluegrey"}
           >
             <SectionHeading
               tone="light"
@@ -153,7 +153,7 @@ export default function ServicesPage() {
 
                 const inner = (
                   <>
-                    <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-indigoTint text-brand-indigo transition-all duration-300 group-hover:bg-brand-accent group-hover:text-brand-ink">
+                    <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-tint text-brand-blue transition-all duration-300 group-hover:bg-brand-cta group-hover:text-brand-ink">
                       <Icon name={info.icon} className="h-5 w-5" />
                     </span>
 
@@ -165,7 +165,7 @@ export default function ServicesPage() {
                     </p>
 
                     {route.live && (
-                      <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-indigo">
+                      <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-blue">
                         Read more
                         <ArrowRight
                           className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
@@ -177,14 +177,14 @@ export default function ServicesPage() {
                 );
 
                 const cardClass =
-                  "group flex flex-col rounded-2xl border border-brand-stone bg-white p-8 shadow-soft transition-all duration-300";
+                  "group flex flex-col rounded-2xl border border-brand-line bg-white p-8 shadow-soft transition-all duration-300";
 
                 // Not yet built → no link, no dead end.
                 return route.live ? (
                   <Link
                     key={slug}
                     href={slug}
-                    className={`${cardClass} hover:-translate-y-1 hover:border-brand-indigo/40 hover:shadow-softLift focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-indigo focus-visible:ring-offset-2`}
+                    className={`${cardClass} hover:-translate-y-1 hover:border-brand-blue/40 hover:shadow-softLift focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-blueMid focus-visible:ring-offset-2`}
                   >
                     {inner}
                   </Link>
@@ -199,7 +199,7 @@ export default function ServicesPage() {
         ))}
 
         {/* Makes — factual, from the client's own signage. Never "approved". */}
-        <SectionContainer className="bg-brand-indigoDeep">
+        <SectionContainer className="bg-brand-navy">
           <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-5">
               <SectionHeading
@@ -232,7 +232,7 @@ export default function ServicesPage() {
                   </li>
                 ))}
               </ul>
-              <p className="mt-6 max-w-[60ch] text-xs leading-[1.7] text-brand-bone/55">
+              <p className="mt-6 max-w-[60ch] text-xs leading-[1.7] text-brand-bone/75">
                 Vision Motors is an independent workshop. We are not an
                 authorised dealer or approved agent for any manufacturer.
               </p>
@@ -241,7 +241,7 @@ export default function ServicesPage() {
         </SectionContainer>
 
         {/* Warranty — restrained wording only. No duration, no mileage. */}
-        <SectionContainer className="bg-brand-sand">
+        <SectionContainer className="bg-brand-bluegrey">
           <div className="mx-auto max-w-3xl text-center">
             <SectionHeading
               tone="light"
@@ -256,7 +256,7 @@ export default function ServicesPage() {
             </p>
             <Link
               href={utilityRoutes.warrantyRights}
-              className="mt-7 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-indigo underline underline-offset-4 transition-colors hover:text-brand-indigoMid"
+              className="mt-7 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-blue underline underline-offset-4 transition-colors hover:text-brand-navy"
             >
               Servicing here and your manufacturer&apos;s warranty
               <ArrowRight className="h-4 w-4" aria-hidden />

@@ -26,10 +26,10 @@ export default function NotFound() {
 
       <main
         id="main"
-        className="flex min-h-[75vh] items-center justify-center bg-brand-indigoDeep px-6 py-28 lg:px-8"
+        className="flex min-h-[75vh] items-center justify-center bg-brand-navy px-6 py-28 lg:px-8"
       >
         <div className="mx-auto max-w-xl text-center">
-          <p className="font-display text-6xl font-extrabold text-brand-accent/40">
+          <p className="font-display text-6xl font-extrabold text-brand-blueSoft/70">
             404
           </p>
           <h1 className="mt-5 font-display text-3xl font-extrabold tracking-tight text-white md:text-4xl">
@@ -45,14 +45,14 @@ export default function NotFound() {
             <CallButton location="footer" variant="brass" showNumber />
             <Link
               href="/"
-              className="inline-flex min-h-[52px] items-center justify-center rounded-full border border-white/20 px-7 text-sm font-semibold text-white transition-colors hover:border-brand-accent/50 hover:bg-white/5 md:text-base"
+              className="inline-flex min-h-[52px] items-center justify-center rounded-full border border-white/20 px-7 text-sm font-semibold text-white transition-colors hover:border-brand-blueMid/50 hover:bg-white/5 md:text-base"
             >
               Back to the homepage
             </Link>
           </div>
 
           <nav aria-label="Helpful links" className="mt-12">
-            <p className="text-xs uppercase tracking-[0.14em] text-brand-bone/50">
+            <p className="text-xs uppercase tracking-[0.14em] text-brand-bone/75">
               Or try one of these
             </p>
             <ul className="mt-4 flex flex-wrap justify-center gap-x-5 gap-y-2">
@@ -63,7 +63,7 @@ export default function NotFound() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="inline-flex min-h-[44px] items-center text-sm font-medium text-brand-bone/75 underline underline-offset-4 transition-colors hover:text-brand-accent"
+                    className="inline-flex min-h-[44px] items-center text-sm font-medium text-brand-bone/75 underline underline-offset-4 transition-colors hover:text-brand-blueSoft"
                   >
                     {item.label}
                   </Link>

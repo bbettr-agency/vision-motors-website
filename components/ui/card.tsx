@@ -9,22 +9,21 @@ type CardProps = {
   tone?: "dark" | "light" | "glass";
 };
 
-// v2 surface rules:
-// - on DARK sections cards use `graphite` (#1E1E24), a clear step up from the
-//   ink/charcoal behind them, with a visible border. Previously cards were
-//   #16161A on #0B0B0B, which barely separated and read as one flat slab.
-// - on LIGHT sections cards are near-white with a warm border and the faintest
-//   lift. They should feel like clean paper, not dark dashboard widgets.
+// Surface rules (v4 blue-led):
+// - on DARK sections cards use `navyCard` (#1A3A5A), a clear step up from the
+//   navy behind them, with a visible border so they never read as one flat slab.
+// - on LIGHT sections cards are white with a blue-grey border and the faintest
+//   cool lift. They should feel like clean paper, not dark dashboard widgets.
 const tones = {
-  dark: "bg-brand-graphite border border-white/10 text-white shadow-card",
-  light: "bg-white border border-brand-stone text-brand-ink shadow-soft",
+  dark: "bg-brand-navyCard border border-white/10 text-white shadow-card",
+  light: "bg-white border border-brand-line text-brand-ink shadow-soft",
   glass: "bg-white/[0.04] border border-white/12 backdrop-blur-xl text-white",
 };
 
 const interactiveTones = {
-  dark: "hover:-translate-y-1 hover:border-brand-accent/40 hover:shadow-glow",
-  light: "hover:-translate-y-1 hover:border-brand-accent/50 hover:shadow-softLift",
-  glass: "hover:-translate-y-1 hover:border-brand-accent/40 hover:bg-white/[0.07]",
+  dark: "hover:-translate-y-1 hover:border-brand-blueMid/40 hover:shadow-glow",
+  light: "hover:-translate-y-1 hover:border-brand-blueMid/50 hover:shadow-softLift",
+  glass: "hover:-translate-y-1 hover:border-brand-blueMid/40 hover:bg-white/[0.07]",
 };
 
 export default function Card({

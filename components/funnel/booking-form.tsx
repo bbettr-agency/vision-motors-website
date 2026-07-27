@@ -29,7 +29,7 @@ import { cn } from "@/utils/cn";
 type Status = "idle" | "submitting" | "success" | "error";
 
 const inputClass =
-  "w-full rounded-xl border border-brand-stone bg-brand-cream px-4 py-3.5 text-sm text-brand-ink outline-none transition placeholder:text-brand-inkMuted/60 focus:border-brand-indigo focus:bg-white focus:ring-2 focus:ring-brand-indigo/25";
+  "w-full rounded-xl border border-brand-line bg-brand-cream px-4 py-3.5 text-sm text-brand-ink outline-none transition placeholder:text-brand-inkMuted focus:border-brand-blue focus:bg-white focus:ring-2 focus:ring-brand-blueMid/25";
 const labelClass = "mb-2 block text-sm font-semibold text-brand-ink";
 
 export default function BookingForm({ compact = false }: { compact?: boolean }) {
@@ -140,12 +140,12 @@ export default function BookingForm({ compact = false }: { compact?: boolean }) 
   if (status === "success") {
     return (
       <div
-        className="rounded-2xl border border-brand-accent/40 bg-brand-accentTint/50 p-9 text-center"
+        className="rounded-2xl border border-brand-blueMid/40 bg-brand-tint/50 p-9 text-center"
         role="status"
         aria-live="polite"
       >
         <CheckCircle2
-          className="mx-auto h-10 w-10 text-brand-accentInk"
+          className="mx-auto h-10 w-10 text-brand-blue"
           aria-hidden
         />
         <h3 className="mt-5 font-display text-xl font-bold text-brand-ink">
@@ -158,7 +158,7 @@ export default function BookingForm({ compact = false }: { compact?: boolean }) 
         <a
           href={siteConfig.phoneLink}
           onClick={() => trackCall("booking_page")}
-          className="mt-7 inline-flex min-h-[48px] items-center gap-2 rounded-full bg-brand-accent px-6 text-sm font-bold text-brand-ink shadow-accent"
+          className="mt-7 inline-flex min-h-[48px] items-center gap-2 rounded-full bg-brand-cta px-6 text-sm font-bold text-brand-ink shadow-accent"
           aria-label={`Call ${siteConfig.businessName} on ${siteConfig.phoneDisplay}`}
           data-cta="call"
         >
@@ -167,7 +167,7 @@ export default function BookingForm({ compact = false }: { compact?: boolean }) 
         </a>
 
         {isDemo && (
-          <p className="mt-7 rounded-lg border border-brand-stone bg-white px-4 py-3 text-xs text-brand-inkMuted">
+          <p className="mt-7 rounded-lg border border-brand-line bg-white px-4 py-3 text-xs text-brand-inkMuted">
             <strong className="font-semibold text-brand-ink">DEMO MODE</strong> —
             this enquiry was validated but not delivered anywhere. Connect{" "}
             <code className="font-mono">GHL_WEBHOOK_URL</code> to go live.
@@ -290,7 +290,7 @@ export default function BookingForm({ compact = false }: { compact?: boolean }) 
       </div>
 
       {/* ⚠️ MANDATORY — a requested date is not a confirmed booking. */}
-      <p className="flex items-start gap-2.5 rounded-xl border border-brand-indigoLine bg-brand-indigoTint/60 px-4 py-3 text-xs leading-[1.65] text-brand-indigo">
+      <p className="flex items-start gap-2.5 rounded-xl border border-brand-line bg-brand-tint/60 px-4 py-3 text-xs leading-[1.65] text-brand-blue">
         <Info className="mt-0.5 h-4 w-4 shrink-0" aria-hidden />
         {formConfig.dateDisclaimer}
       </p>
@@ -308,7 +308,7 @@ export default function BookingForm({ compact = false }: { compact?: boolean }) 
       <button
         type="submit"
         disabled={submitting}
-        className="group inline-flex min-h-[54px] w-full items-center justify-center gap-2 rounded-full bg-brand-accent px-7 text-sm font-bold text-brand-ink shadow-accent transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-accentDark disabled:cursor-not-allowed disabled:opacity-70 md:text-base"
+        className="group inline-flex min-h-[54px] w-full items-center justify-center gap-2 rounded-full bg-brand-cta px-7 text-sm font-bold text-brand-ink shadow-accent transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-ctaDark disabled:cursor-not-allowed disabled:opacity-70 md:text-base"
       >
         {submitting ? (
           <>
@@ -361,7 +361,7 @@ function Field({
       <label htmlFor={id} className={labelClass}>
         {label}
         {required && (
-          <span className="ml-0.5 text-brand-accentInk" aria-hidden>
+          <span className="ml-0.5 text-brand-blue" aria-hidden>
             *
           </span>
         )}

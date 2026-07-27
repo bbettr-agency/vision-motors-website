@@ -17,7 +17,7 @@ const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${mapsQuery}`;
 
 export default function LocationHours() {
   return (
-    <SectionContainer className="bg-brand-sand">
+    <SectionContainer className="bg-brand-bluegrey">
       <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
         <div className="lg:col-span-5">
           <SectionHeading
@@ -35,8 +35,8 @@ export default function LocationHours() {
         </div>
 
         <div className="grid gap-5 sm:grid-cols-2 lg:col-span-7">
-          <div className="rounded-2xl border border-brand-stone bg-white p-7 shadow-soft">
-            <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-indigoTint text-brand-indigo">
+          <div className="rounded-2xl border border-brand-line bg-white p-7 shadow-soft">
+            <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-tint text-brand-blue">
               <MapPin className="h-5 w-5" aria-hidden />
             </span>
             <h3 className="mt-5 font-display text-base font-semibold text-brand-ink">
@@ -52,8 +52,8 @@ export default function LocationHours() {
             <DirectionsLink href={mapsUrl} className="mt-4" />
           </div>
 
-          <div className="rounded-2xl border border-brand-stone bg-white p-7 shadow-soft">
-            <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-indigoTint text-brand-indigo">
+          <div className="rounded-2xl border border-brand-line bg-white p-7 shadow-soft">
+            <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-tint text-brand-blue">
               <Clock className="h-5 w-5" aria-hidden />
             </span>
             <h3 className="mt-5 font-display text-base font-semibold text-brand-ink">

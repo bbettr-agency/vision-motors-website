@@ -368,3 +368,47 @@ Every section re-examined rather than inherited:
 - **Engine Shop:** described as a facility, never given an address, never presented as a second
   customer-facing branch.
 - **867 Voortrekkersweg** appears only on Contact, labelled as a former address.
+
+---
+
+## 2c. Visual system v4 — blue-led palette (2026-07-22)
+
+**Approved.** Site-wide colour re-skin from the v3 indigo + brass system to a blue-led one. No
+content, sitemap or functionality changed — a token-level refactor.
+
+### Palette
+
+| Role | Token | Hex | Use |
+|---|---|---|---|
+| Primary dark | `navy` | `#0F2A44` | header, hero, footer, major dark surfaces |
+| Card on dark | `navyCard` | `#1A3A5A` | cards on navy — visibly separated |
+| Secondary | `blue` | `#1F4E79` | links, icons, labels, active states, secondary buttons |
+| Accent | `blueMid` | `#3E7CB1` | hover, borders, focus rings, active highlight |
+| Blue on dark | `blueSoft` | `#7FB0D9` | text/icons on navy |
+| Light section | `bluegrey` | `#EAF1F7` | alternating light background |
+| Warm light | `cream` | `#F7F5F0` | keeps the system approachable |
+| Chip / border | `tint` / `line` | `#DCE8F3` / `#D3E0EC` | icon chips + borders on light |
+| Text on light | `ink` / `inkSoft` / `inkMuted` | `#17212B` / `#33414E` / `#51616F` | |
+| Text on dark | `mist` / `bone` | `#F4F7FA` / `#CBD8E4` | |
+| **CTA** | `cta` / `ctaDark` | `#C58A32` / `#A97324` | **Call buttons + small priority ONLY** |
+
+Measured balance: ~55% light neutral, ~30% navy/blue, deep-dark + amber the rest — on target.
+
+### How it was done
+Token values + names changed in `tailwind.config.ts`; a scripted, context-aware class migration
+across 40 component/view files (compound tokens before base; `bg-brand-accent` solid → amber CTA
+vs `/opacity` → blue chip). `globals.css`, `theme-config.ts`, `logo.tsx`, `layout.tsx`
+theme-color, and the hero-showcase active state (amber → blue, since amber is CTA-only) updated
+by hand. Zero old `brand-indigo*/accent*/graphite/charcoal/sand/linen/stone` tokens remain.
+
+### Verification (clean production build)
+- Build · TypeScript · lint clean. First-load JS **126 kB** (budget 150).
+- **Contrast: 343 text/background pairs across 11 routes — zero failures**, lowest large-text
+  3.89:1. Fixed en route: process-steps/404 numbers (blueSoft landed on light), several muted
+  `bone`/`inkMuted` opacities that dipped below 4.5 on the lighter navy vs the old near-black.
+- Amber CTA uses dark text (5.5:1); white-on-amber (2.98:1) deliberately never used.
+- Responsive 360/390/430/768/1024/1280/1440 × 5 routes: zero overflow, phone never wraps.
+- One H1 per route (all 10); navy `theme-color`; booking API 200/422 unchanged.
+- Active service state signalled by blue rule + surface + number (not colour alone); focus rings
+  blue (`blueMid`, ≥3:1 UI); reduced-motion gating intact.
+- Logo not recoloured — placeholder lockup made navy-safe; RMI/MIWA/ARASA still gated off (C2).

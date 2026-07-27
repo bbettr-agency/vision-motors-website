@@ -100,10 +100,10 @@ export default function ServicePageTemplate(props: ServicePageProps) {
             {props.symptoms.map((symptom) => (
               <li
                 key={symptom}
-                className="flex items-start gap-3 rounded-2xl border border-brand-stone bg-white p-5 shadow-soft"
+                className="flex items-start gap-3 rounded-2xl border border-brand-line bg-white p-5 shadow-soft"
               >
                 <Check
-                  className="mt-0.5 h-4 w-4 shrink-0 text-brand-accentInk"
+                  className="mt-0.5 h-4 w-4 shrink-0 text-brand-blue"
                   strokeWidth={3}
                   aria-hidden
                 />
@@ -116,7 +116,7 @@ export default function ServicePageTemplate(props: ServicePageProps) {
         </SectionContainer>
 
         {/* What's involved */}
-        <SectionContainer className="bg-brand-linen">
+        <SectionContainer className="bg-brand-bluegrey">
           <div className="grid gap-14 lg:grid-cols-2 lg:gap-16">
             <div>
               <SectionHeading
@@ -128,7 +128,7 @@ export default function ServicePageTemplate(props: ServicePageProps) {
                 {props.whatsInvolved.map((item) => (
                   <div
                     key={item.heading}
-                    className="border-l-2 border-brand-indigo/35 pl-6"
+                    className="border-l-2 border-brand-blue/35 pl-6"
                   >
                     <h3 className="font-display text-base font-semibold text-brand-ink">
                       {item.heading}
@@ -150,7 +150,7 @@ export default function ServicePageTemplate(props: ServicePageProps) {
         </SectionContainer>
 
         {/* Unique angle — the reason this page exists */}
-        <SectionContainer className="bg-brand-indigoDeep">
+        <SectionContainer className="bg-brand-navy">
           <div className="mx-auto max-w-3xl">
             <SectionHeading
               eyebrow="Why us for this"
@@ -159,7 +159,7 @@ export default function ServicePageTemplate(props: ServicePageProps) {
             <div className="mt-6 text-base leading-[1.8] text-brand-bone/80">
               {props.uniqueAngle.body}
             </div>
-            <p className="mt-8 text-sm leading-[1.7] text-brand-bone/60">
+            <p className="mt-8 text-sm leading-[1.7] text-brand-bone/75">
               {siteConfig.warrantyInterimCopy}
             </p>
           </div>
@@ -174,7 +174,7 @@ export default function ServicePageTemplate(props: ServicePageProps) {
               title="What people ask us about this"
               className="max-w-3xl"
             />
-            <dl className="mt-10 divide-y divide-brand-stone border-y border-brand-stone">
+            <dl className="mt-10 divide-y divide-brand-line border-y border-brand-line">
               {props.faqs.map((faq) => (
                 <div key={faq.question} className="py-7">
                   <dt className="font-display text-base font-semibold text-brand-ink md:text-lg">
@@ -191,7 +191,7 @@ export default function ServicePageTemplate(props: ServicePageProps) {
 
         {/* Related — 2-3 only, never all eight */}
         {related.length > 0 && (
-          <SectionContainer className="bg-brand-linen">
+          <SectionContainer className="bg-brand-bluegrey">
             <SectionHeading
               tone="light"
               eyebrow="Related work"
@@ -204,20 +204,20 @@ export default function ServicePageTemplate(props: ServicePageProps) {
                   <Link
                     key={r.slug}
                     href={r.slug}
-                    className="group flex items-center justify-between gap-4 rounded-2xl border border-brand-stone bg-white p-6 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:border-brand-indigo/40 hover:shadow-softLift"
+                    className="group flex items-center justify-between gap-4 rounded-2xl border border-brand-line bg-white p-6 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:border-brand-blue/40 hover:shadow-softLift"
                   >
                     <span className="font-display text-base font-semibold text-brand-ink">
                       {r.label}
                     </span>
                     <ArrowRight
-                      className="h-4 w-4 shrink-0 text-brand-indigo transition-transform duration-300 group-hover:translate-x-1"
+                      className="h-4 w-4 shrink-0 text-brand-blue transition-transform duration-300 group-hover:translate-x-1"
                       aria-hidden
                     />
                   </Link>
                 ) : (
                   <div
                     key={r.slug}
-                    className="rounded-2xl border border-brand-stone bg-white p-6 text-base font-semibold text-brand-ink shadow-soft"
+                    className="rounded-2xl border border-brand-line bg-white p-6 text-base font-semibold text-brand-ink shadow-soft"
                   >
                     {r.label}
                   </div>
@@ -226,7 +226,7 @@ export default function ServicePageTemplate(props: ServicePageProps) {
             </div>
             <Link
               href={utilityRoutes.services}
-              className="mt-10 inline-flex min-h-[44px] items-center gap-2 text-sm font-semibold text-brand-indigo underline underline-offset-4 hover:text-brand-indigoMid"
+              className="mt-10 inline-flex min-h-[44px] items-center gap-2 text-sm font-semibold text-brand-blue underline underline-offset-4 hover:text-brand-navy"
             >
               All services
               <ArrowRight className="h-4 w-4" aria-hidden />

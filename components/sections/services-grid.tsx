@@ -23,7 +23,7 @@ import Reveal from "@/components/ui/reveal";
 
 export default function ServicesGrid() {
   return (
-    <SectionContainer id="services" className="bg-brand-linen">
+    <SectionContainer id="services" className="bg-brand-bluegrey">
       <SectionHeading
         tone="light"
         eyebrow="What we do"
@@ -45,13 +45,13 @@ export default function ServicesGrid() {
             key={service.slug}
             as="article"
             delay={(index % 3) * 0.07}
-            className="group flex flex-col rounded-2xl border border-brand-stone bg-white p-8 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:border-brand-accent/50 hover:shadow-softLift"
+            className="group flex flex-col rounded-2xl border border-brand-line bg-white p-8 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:border-brand-blueMid/50 hover:shadow-softLift"
           >
             <div className="mb-6 flex items-center justify-between">
-              <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-accentTint text-brand-accentInk transition-all duration-300 group-hover:bg-brand-accent group-hover:text-brand-ink">
+              <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-tint text-brand-blue transition-all duration-300 group-hover:bg-brand-cta group-hover:text-brand-ink">
                 <Icon name={service.icon} className="h-5 w-5" />
               </span>
-              <span className="font-mono text-xs text-brand-inkMuted/60">
+              <span className="font-mono text-xs text-brand-inkMuted">
                 0{index + 1}
               </span>
             </div>
@@ -64,11 +64,11 @@ export default function ServicesGrid() {
             </p>
 
             {service.bullets && (
-              <ul className="mt-6 space-y-2 border-t border-brand-stone pt-5 text-xs text-brand-inkMuted">
+              <ul className="mt-6 space-y-2 border-t border-brand-line pt-5 text-xs text-brand-inkMuted">
                 {service.bullets.map((bullet) => (
                   <li key={bullet} className="flex items-center gap-2.5">
                     <span
-                      className="h-1 w-1 shrink-0 rounded-full bg-brand-accentInk"
+                      className="h-1 w-1 shrink-0 rounded-full bg-brand-blue"
                       aria-hidden
                     />
                     {bullet}
@@ -91,11 +91,11 @@ export default function ServicesGrid() {
             <Reveal
               key={service.slug}
               delay={index * 0.05}
-              className="inline-flex items-center gap-2.5 rounded-full border border-brand-stone bg-white px-5 py-3 shadow-soft"
+              className="inline-flex items-center gap-2.5 rounded-full border border-brand-line bg-white px-5 py-3 shadow-soft"
             >
               <Icon
                 name={service.icon}
-                className="h-4 w-4 shrink-0 text-brand-accentInk"
+                className="h-4 w-4 shrink-0 text-brand-blue"
               />
               <span className="text-sm font-medium text-brand-ink">
                 {service.title}
@@ -106,7 +106,7 @@ export default function ServicesGrid() {
 
         <Link
           href={utilityRoutes.services}
-          className="mt-10 inline-flex min-h-[44px] items-center gap-2 text-sm font-semibold text-brand-indigo underline underline-offset-4 transition-colors hover:text-brand-indigoMid focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-indigo"
+          className="mt-10 inline-flex min-h-[44px] items-center gap-2 text-sm font-semibold text-brand-blue underline underline-offset-4 transition-colors hover:text-brand-navy focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-blueMid"
         >
           See all services in detail
           <ArrowRight className="h-4 w-4" aria-hidden />

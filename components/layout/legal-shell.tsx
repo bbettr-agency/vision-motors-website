@@ -49,7 +49,7 @@ export default function LegalShell({
         <SectionContainer className="bg-brand-cream">
           <div
             className="mx-auto max-w-[68ch] space-y-6 text-sm leading-[1.8] text-brand-inkSoft
-              [&_a]:font-medium [&_a]:text-brand-indigo [&_a]:underline [&_a]:underline-offset-4
+              [&_a]:font-medium [&_a]:text-brand-blue [&_a]:underline [&_a]:underline-offset-4
               [&_h2]:mt-12 [&_h2]:font-display [&_h2]:text-xl [&_h2]:font-bold [&_h2]:text-brand-ink
               [&_h3]:mt-8 [&_h3]:font-display [&_h3]:text-base [&_h3]:font-semibold [&_h3]:text-brand-ink
               [&_li]:mt-2 [&_ul]:list-disc [&_ul]:space-y-1 [&_ul]:pl-5"

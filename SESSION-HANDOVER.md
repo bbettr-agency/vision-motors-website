@@ -86,10 +86,17 @@ valuable sentence the business owns.
   deliberately avoids (there is no "guideline R7"; CPA s56 is not a warranty-choice protection).
 - **No rating displayed, no `aggregateRating` schema.** 4.2★ from 71 reviews with 8 one-star
   entries.
-- **Indigo primary + brass accent (Direction C, approved 2026-07-22).** The official logo is
-  indigo `#290F74`. `indigoDeep #1A0A4A` is now a third dark anchor surface alongside ink and
-  charcoal, which gives the brand large-area presence **without** putting gold on large areas.
-  Brass stays reserved for CTAs, small labels, key icons and active states.
+- **⚠️ BLUE-LED PALETTE — v4, approved 2026-07-22. Supersedes the indigo/brass v3 below.**
+  Navy `#0F2A44` primary (header/hero/footer/anchors) · blue `#1F4E79` secondary (links, icons,
+  labels, active states, selected cards) · accent blue `#3E7CB1` (hover/borders/focus/active
+  highlight) · warm light neutrals cream `#F7F5F0` + blue-grey `#EAF1F7` · **amber `#C58A32`
+  held strictly for the Call CTA and small priority — never a large background, always with dark
+  (`ink #17212B`) text (white-on-amber fails contrast).** Full token table + contrast in
+  `config/theme-config.ts` and `tailwind.config.ts`. The indigo mark (`#290F74`) is NOT
+  recoloured — the header/footer use a placeholder type lockup (white "Vision" + soft-blue
+  "Motors") until a usable vector arrives (C5). Do **not** reintroduce indigo or brass tokens,
+  and do **not** put blue gradients on every section or turn every card blue.
+- *(Superseded — v3: indigo primary + brass accent. Kept for history only.)*
 - **CALLING is the primary CTA, booking is secondary** (client instruction). Inverted from the
   demo. `click_to_call` is the primary tracked conversion — an Ads setup optimising for form
   fills alone will misread this account.

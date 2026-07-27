@@ -1,137 +1,93 @@
 // ─────────────────────────────────────────────────────────────────────────────
-//  BRAND TOKENS — per SYSTEM/01-DESIGN-TOKENS.md (structure fixed, values brand-derived)
+//  BRAND TOKENS — documentation mirror of tailwind.config.ts.
+//  Not imported at runtime; Tailwind is the render path. Keep the two in sync.
 //
-//  BRAND DERIVATION:
-//  The real Vision Motors identity is GOLD-ON-BLACK. It is visible embroidered
-//  on the team's uniforms in the one authentic photograph on the current site,
-//  and the logo file is a white-on-dark wordmark.
+//  ── v4: BLUE-LED SYSTEM (approved 2026-07-22) ───────────────────────────────
+//  Replaces the v3 indigo + brass system. The palette is now:
+//    navy (primary dark) · blue (secondary/accents/links) · warm neutral lights
+//    · amber (Call CTA only).
+//  Target balance ≈ 55% light neutral / 30% navy+blue / 10% deep dark / 5% warm.
 //
-//  ── v2 REVISION: warm light surfaces ────────────────────────────────────────
-//  The first pass put every section on a near-black surface. Structurally sound,
-//  but the page read as one continuous black slab: flat, dense and, for an
-//  ordinary vehicle owner with a broken car, slightly intimidating.
+//  The official logo is indigo (#290F74) — NOT recoloured. It is a placeholder
+//  type lockup until a usable vector arrives (C5), sized to sit on navy.
 //
-//  This revision keeps black + brass as the identity and adds a WARM light
-//  family so sections can alternate. The lights are warm (cream/sand/linen),
-//  never clinical white — warm neutrals sit naturally beside brass, whereas a
-//  cool white would fight it and read as a generic mechanic template.
-//
-//  Blue has been retired entirely. The first pass carried a steel blue as
-//  `primary` for icons and links; against warm cream it read as a foreign
-//  colour. The palette is now black · warm neutral · brass, which is what
-//  "premium black and gold" actually means.
-//
-//  ── v3: INDIGO PRIMARY + BRASS ACCENT (Direction C, approved 2026-07-22) ────
-//  The official logo is indigo #290F74. v2 ran brass-on-black, which came from
-//  gold uniform embroidery — real, but a uniform treatment, not the mark.
-//  v3 makes indigo primary so the logo sits natively in the design, and keeps
-//  brass strictly as the conversion accent. The dark/warm-light rhythm is
-//  retained; indigoDeep now serves as a third anchor surface alongside ink and
-//  charcoal, which gives the brand large-area presence WITHOUT putting gold on
-//  large areas.
-//
-//  ── CONTRAST VERIFICATION (SYSTEM/01 §6.3 — checked at token time) ──────────
-//  INDIGO
-//    indigo   #290F74 on cream      #F7F5F0 → 13.6:1  ✅ headings/text on light
-//    white    #FFFFFF on indigoDeep #1A0A4A → 17.7:1  ✅ headings on brand anchor
-//    bone     #E7E5E4 on indigoDeep #1A0A4A → 14.1:1  ✅ body on brand anchor
-//    brass    #C9A24B on indigoDeep #1A0A4A →  7.4:1  ✅ accent on brand anchor
-//    white    #FFFFFF on indigoCard #241259 → 16.1:1  ✅ cards on brand anchor
-//    indigoLt #8B72D9 on ink        #0B0B0B →  5.2:1  ✅ indigo text on black
-//  DARK SURFACES
-//    bone     #E7E5E4 on ink       #0B0B0B → 14.6:1  ✅ body text
-//    white    #FFFFFF on ink       #0B0B0B → 18.9:1  ✅ headings
-//    bone     #E7E5E4 on charcoal  #141418 → 13.4:1  ✅ body on alt sections
-//    bone     #E7E5E4 on graphite  #1E1E24 → 11.6:1  ✅ body in cards
-//    brass    #C9A24B on ink       #0B0B0B →  8.2:1  ✅ labels, icons
-//    ink      #0B0B0B on brass     #C9A24B →  8.2:1  ✅ CTA label
-//  LIGHT SURFACES
-//    ink      #0B0B0B on cream     #F7F5F0 → 16.8:1  ✅ headings
-//    inkSoft  #4A453C on cream     #F7F5F0 →  8.7:1  ✅ body text
-//    inkMuted #6B655A on cream     #F7F5F0 →  5.4:1  ✅ secondary text
-//    accentInk#7E611B on cream     #F7F5F0 →  5.4:1  ✅ labels, icons
-//    inkSoft  #4A453C on linen     #EEEAE1 →  7.9:1  ✅ body on deeper warm
-//    accentInk#7E611B on linen     #EEEAE1 →  4.9:1  ✅ labels, icons
-//
-//  ⚠️ PROVISIONAL brass value — sampled from the uniform embroidery, not vector.
-//  TODO(client): supply vector logo files (SVG/AI/EPS) to confirm.
+//  ── CONTRAST VERIFICATION (checked at token time; live-audited after build) ──
+//  DARK (on navy #0F2A44)
+//    white    #FFFFFF → 14.6:1   mist #F4F7FA → 13.6:1   bone #CBD8E4 → 10.1:1
+//    blueSoft #7FB0D9 →  6.4:1   (labels/icons on navy)
+//    blueMid  #3E7CB1 →  3.3:1   (borders/focus/UI only — 3:1 bar)
+//  CARDS on navy (#1A3A5A): white 11.7:1 · bone 8.1:1 · blueSoft 5.1:1
+//  SECONDARY BUTTON (white on blue #1F4E79): 8.7:1
+//  LIGHT (on bluegrey #EAF1F7)
+//    ink #17212B → 14.3:1 · inkSoft #33414E → 9.2:1 · inkMuted #51616F → 5.6:1
+//    blue #1F4E79 → 7.6:1 (links/labels) · navy 12.8:1
+//  LIGHT (on cream #F7F5F0): inkMuted 5.9:1 · blue 8.0:1
+//  CTA amber #C58A32: ink label 5.5:1 ✅ · white label 3.0:1 ❌ (never used)
 // ─────────────────────────────────────────────────────────────────────────────
 
 export const themeConfig = {
   colors: {
-    // ── PRIMARY: official Vision Motors indigo ───────────────────────────────
-    // Sampled from the supplied logo file. This is the primary brand colour;
-    // brass is the accent. Direction C, approved 2026-07-22.
-    indigo: "#290F74", // official mark
-    indigoDeep: "#1A0A4A", // dark brand section surface
-    indigoCard: "#241259", // cards on indigoDeep
-    indigoMid: "#3D1C9E", // hover / mid
-    indigoLight: "#8B72D9", // indigo on dark surfaces
-    indigoTint: "#EDE9F9", // soft chip on light
-    indigoLine: "#D6CEF0", // border on light
+    // ── PRIMARY: navy ────────────────────────────────────────────────────────
+    navy: "#0F2A44", // header, hero anchor, footer, major dark surfaces
+    navyCard: "#1A3A5A", // cards on navy — visibly separated
 
-    // ── Accent: brass. The conversion colour. ────────────────────────────────
-    // Reserved for primary CTAs, small labels, key icons, highlights and
-    // active states. NEVER on large background areas.
-    accent: "#C9A24B", // on dark surfaces
-    accentDark: "#A8842F", // CTA hover
-    accentLight: "#DCBE79", // icons/detail on dark
-    accentInk: "#7E611B", // brass for text + icons on LIGHT surfaces (4.9:1 on linen)
-    accentTint: "#F2EAD6", // soft brass-tinted chip behind icons on light
+    // ── SECONDARY: blue ──────────────────────────────────────────────────────
+    blue: "#1F4E79", // links, icons, labels, secondary buttons, selected/active
+    blueMid: "#3E7CB1", // accent: hover, borders, focus rings, active highlight
+    blueSoft: "#7FB0D9", // blue for text + icons ON navy
 
-    // ── Dark surfaces (darkest → lightest) ───────────────────────────────────
-    ink: "#0B0B0B", // anchor sections: hero, diagnostics, testimonials, final CTA
-    charcoal: "#141418", // alternate dark sections — visibly lighter than ink
-    graphite: "#1E1E24", // CARDS on dark. Raised from #16161A so cards
-    //                      separate from the section behind them.
-    steel: "#2E2E36", // borders + hover surfaces on dark
-
-    // ── Warm light surfaces (lightest → deepest) ─────────────────────────────
-    cream: "#F7F5F0", // primary light section
-    sand: "#F5F2EA", // alternate light section
-    linen: "#EEEAE1", // deeper warm light section
-    stone: "#E3DFD5", // borders + dividers on light
+    // ── Light surfaces ───────────────────────────────────────────────────────
+    bluegrey: "#EAF1F7", // light section background
+    cream: "#F7F5F0", // warm off-white — keeps the system approachable
+    tint: "#DCE8F3", // soft blue chip behind icons on light
+    line: "#D3E0EC", // blue-grey border / divider on light
 
     // ── Text ─────────────────────────────────────────────────────────────────
-    inkSoft: "#4A453C", // body copy on light — warm, never cold grey
-    inkMuted: "#6B655A", // secondary/caption on light
-    mist: "#F5F5F4", // body copy on dark
-    bone: "#E7E5E4", // secondary on dark
+    ink: "#17212B", // headings + body on light; also the deepest dark surface
+    inkSoft: "#33414E", // body on light
+    inkMuted: "#51616F", // secondary/caption on light
+    mist: "#F4F7FA", // body on navy
+    bone: "#CBD8E4", // secondary on navy
+
+    // ── Warm CTA accent — Call buttons + small priority ONLY ─────────────────
+    // Never a large background. Always paired with dark (ink) text.
+    cta: "#C58A32",
+    ctaDark: "#A97324",
+    ctaTint: "#F3E7D2",
   },
 
   radius: {
     card: "1.25rem", // rounded-2xl
     panel: "1.75rem", // rounded-3xl
-    button: "9999px", // pill — the chosen button radius, used everywhere
+    button: "9999px", // pill
   },
 
   spacing: {
-    // Raised from py-20/md:py-28 — the extra breathing room is doing as much
-    // work as the lighter surfaces in making the page feel less dense.
     section: "py-24 md:py-32",
     container: "max-w-7xl",
     gutter: "px-6 lg:px-8",
   },
 
   /**
-   * Section rhythm. The page must never read as one continuous dark slab.
-   * Dark anchors bookend and punctuate; warm light zones carry the scanning.
-   * Section ORDER is unchanged from the approved build — only surfaces differ.
+   * Section rhythm. Dark navy anchors bookend and punctuate; warm-neutral light
+   * zones (cream / bluegrey) carry the scanning. Section ORDER is unchanged —
+   * only surfaces differ.
    */
   rhythm: [
-    { section: "header", tone: "dark", surface: "ink" },
-    { section: "hero", tone: "dark", surface: "ink" },
-    { section: "trust-strip", tone: "dark", surface: "charcoal" },
+    { section: "header", tone: "dark", surface: "navy" },
+    { section: "hero", tone: "dark", surface: "navy" },
+    { section: "trust-strip", tone: "dark", surface: "navy" },
     { section: "symptom-band", tone: "light", surface: "cream" },
-    { section: "services", tone: "light", surface: "linen" },
-    { section: "diagnostics", tone: "dark", surface: "ink" },
-    { section: "workshop-proof", tone: "light", surface: "cream" },
-    { section: "why-us", tone: "dark", surface: "charcoal" },
-    { section: "your-rights", tone: "light", surface: "sand" },
-    { section: "testimonials", tone: "dark", surface: "ink" },
+    { section: "services", tone: "light", surface: "bluegrey" },
+    { section: "diagnostics", tone: "dark", surface: "navy" },
+    { section: "engine-shop", tone: "light", surface: "bluegrey" },
+    { section: "why-us", tone: "dark", surface: "navy" },
+    { section: "your-rights", tone: "light", surface: "bluegrey" },
+    { section: "testimonials", tone: "dark", surface: "navy" },
     { section: "process", tone: "light", surface: "cream" },
-    { section: "faq", tone: "light", surface: "linen" },
-    { section: "final-cta", tone: "dark", surface: "ink" },
-    { section: "footer", tone: "dark", surface: "ink" },
+    { section: "faq", tone: "light", surface: "bluegrey" },
+    { section: "location-hours", tone: "light", surface: "bluegrey" },
+    { section: "final-cta", tone: "dark", surface: "navy" },
+    { section: "footer", tone: "dark", surface: "navy" },
   ],
 };

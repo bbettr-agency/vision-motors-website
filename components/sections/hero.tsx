@@ -9,7 +9,7 @@ import HeroShowcase from "@/components/sections/hero-showcase";
 // ─────────────────────────────────────────────────────────────────────────────
 //  HERO — answers, in ~5 seconds: what they do, where, why them, what to do next.
 //
-//  v3 (scroll-driven service showcase): two columns.
+//  v4 (scroll-driven service showcase, blue-led palette): two columns.
 //    LEFT  — sticky conversion column. Eyebrow, the single H1, supporting copy,
 //            Call (primary) + Book (secondary), trust points. Pinned while the
 //            visitor scrolls the services on the right, so the conversion
@@ -42,21 +42,21 @@ const heroTicks = [
 
 export default function Hero() {
   return (
-    <section id="top" className="relative bg-brand-indigoDeep pt-28 md:pt-36">
-      {/* Indigo brand wash — official brand colour present above the fold. */}
+    <section id="top" className="relative bg-brand-navy pt-28 md:pt-36">
+      {/* Blue brand wash — navy/blue present above the fold. */}
       <div className="pointer-events-none absolute inset-0 bg-hero-glow" aria-hidden />
 
       <div className="relative mx-auto grid max-w-7xl gap-12 px-6 pb-20 md:pb-28 lg:grid-cols-12 lg:items-start lg:gap-16 lg:px-8">
         {/* LEFT — sticky conversion column. */}
         <div className="lg:sticky lg:top-28 lg:col-span-6 lg:self-start lg:py-4">
-          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-brand-accent sm:text-sm">
+          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-brand-blueSoft sm:text-sm">
             {siteConfig.suburb} · {siteConfig.city}
           </p>
 
           {/* The single H1 on the page. */}
           <h1 className="mt-5 font-display text-4xl font-extrabold leading-[1.05] tracking-tight text-white md:text-5xl lg:text-6xl">
             Specialist vehicle diagnostics, engine and gearbox repairs
-            <span className="text-brand-accent"> in Pretoria</span>
+            <span className="text-brand-blueSoft"> in Pretoria</span>
           </h1>
 
           <p className="mt-7 max-w-[60ch] text-base leading-[1.75] text-brand-bone/80 md:text-lg">
@@ -73,7 +73,7 @@ export default function Hero() {
                 className="inline-flex items-center gap-2 text-sm font-medium text-brand-bone/85"
               >
                 <Check
-                  className="h-4 w-4 shrink-0 text-brand-accent"
+                  className="h-4 w-4 shrink-0 text-brand-blueSoft"
                   strokeWidth={3}
                   aria-hidden
                 />
@@ -89,13 +89,13 @@ export default function Hero() {
             {/* SECONDARY — book. */}
             <Link
               href={utilityRoutes.booking}
-              className="inline-flex min-h-[52px] items-center justify-center rounded-full border border-white/20 px-7 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-accent/50 hover:bg-white/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-indigoDeep md:text-base"
+              className="inline-flex min-h-[52px] items-center justify-center rounded-full border border-white/20 px-7 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-blueMid/50 hover:bg-white/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-blueMid focus-visible:ring-offset-2 focus-visible:ring-offset-brand-navy md:text-base"
             >
               {siteConfig.ctaSecondary}
             </Link>
           </div>
 
-          <p className="mt-6 text-xs leading-relaxed text-brand-bone/65">
+          <p className="mt-6 text-xs leading-relaxed text-brand-bone/75">
             No obligation · We diagnose before we quote · Nothing gets done
             without your approval
           </p>
@@ -107,7 +107,7 @@ export default function Hero() {
 
       {/* Eases the seam into the trust strip below. */}
       <div
-        className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent to-brand-charcoal"
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent to-brand-navy"
         aria-hidden
       />
     </section>

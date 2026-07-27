@@ -17,7 +17,9 @@ html {
 }
 
 body {
-  background: #0b0b0b;
+  /* Navy, not near-black — the primary brand dark. Shows during load and on
+     overscroll. */
+  background: #0f2a44;
   color: #ffffff;
   font-family: var(--font-body);
   overflow-x: hidden;
@@ -28,8 +30,8 @@ body {
 }
 
 ::selection {
-  background: #c9a24b;
-  color: #0b0b0b;
+  background: #1f4e79; /* secondary blue */
+  color: #ffffff;
 }
 
 /* Scrollbar */
@@ -38,14 +40,14 @@ body {
   height: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: #0b0b0b;
+  background: #0f2a44;
 }
 ::-webkit-scrollbar-thumb {
-  background: #2e2e36;
+  background: #1f4e79;
   border-radius: 5px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #c9a24b;
+  background: #3e7cb1; /* accent blue */
 }
 
 /* ───────────────────────────────────────────────────────────────────────────

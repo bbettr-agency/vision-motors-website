@@ -73,7 +73,7 @@ export default function WorkshopProof() {
         </Reveal>
       </div>
 
-      <figure className="mt-12 max-w-2xl border-l-2 border-brand-accent/50 pl-6">
+      <figure className="mt-12 max-w-2xl border-l-2 border-brand-blueMid/50 pl-6">
         <blockquote className="font-display text-lg leading-snug text-brand-ink">
           &ldquo;Do yourself a favor, take a walk through their engine overall
           room, go and check the work that they do. It&apos;s proper, it&apos;s

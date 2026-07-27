@@ -58,7 +58,7 @@ export default function ImageSlotView({
       <div
         className={cn(
           "relative overflow-hidden",
-          isDark ? "bg-brand-graphite" : "bg-brand-linen",
+          isDark ? "bg-brand-navyCard" : "bg-brand-bluegrey",
           sizing.className,
           className
         )}
@@ -81,8 +81,8 @@ export default function ImageSlotView({
       className={cn(
         "relative flex flex-col items-center justify-center overflow-hidden border border-dashed p-6 text-center",
         isDark
-          ? "border-white/15 bg-brand-graphite"
-          : "border-brand-accentInk/25 bg-brand-accentTint/45",
+          ? "border-white/15 bg-brand-navyCard"
+          : "border-brand-blue/25 bg-brand-tint/45",
         sizing.className,
         className
       )}
@@ -94,7 +94,7 @@ export default function ImageSlotView({
       <Camera
         className={cn(
           "relative h-7 w-7",
-          isDark ? "text-brand-accent/70" : "text-brand-accentInk/70"
+          isDark ? "text-brand-blueSoft" : "text-brand-blue"
         )}
         aria-hidden
       />
@@ -102,7 +102,7 @@ export default function ImageSlotView({
       <p
         className={cn(
           "relative mt-3 text-[0.65rem] font-semibold uppercase tracking-[0.2em]",
-          isDark ? "text-brand-accent/80" : "text-brand-accentInk"
+          isDark ? "text-brand-blueSoft" : "text-brand-blue"
         )}
       >
         Client photo required

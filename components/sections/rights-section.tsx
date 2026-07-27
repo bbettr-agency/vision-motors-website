@@ -28,7 +28,7 @@ import Reveal from "@/components/ui/reveal";
 
 export default function RightsSection() {
   return (
-    <SectionContainer id="your-rights" className="bg-brand-sand">
+    <SectionContainer id="your-rights" className="bg-brand-bluegrey">
       <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
         <div className="lg:col-span-5">
           <SectionHeading
@@ -45,9 +45,9 @@ export default function RightsSection() {
               <Reveal
                 key={point.title}
                 delay={index * 0.08}
-                className="flex gap-5 rounded-2xl border border-brand-stone bg-white p-7 shadow-soft"
+                className="flex gap-5 rounded-2xl border border-brand-line bg-white p-7 shadow-soft"
               >
-                <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-accentTint text-brand-accentInk">
+                <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-tint text-brand-blue">
                   <Icon name={point.icon} className="h-5 w-5" />
                 </span>
 
@@ -71,7 +71,7 @@ export default function RightsSection() {
               an honest aside rather than another selling point. */}
           <Reveal
             delay={0.24}
-            className="mt-4 flex gap-5 rounded-2xl border border-brand-ink/15 bg-brand-linen p-7"
+            className="mt-4 flex gap-5 rounded-2xl border border-brand-ink/15 bg-brand-bluegrey p-7"
           >
             <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-ink/10 text-brand-ink/70">
               <Info className="h-5 w-5" aria-hidden />
@@ -95,7 +95,7 @@ export default function RightsSection() {
               href={rightsConfig.sourceUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-xs font-medium text-brand-accentInk underline underline-offset-4 transition-colors hover:text-brand-ink focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accentInk"
+              className="inline-flex items-center gap-1.5 text-xs font-medium text-brand-blue underline underline-offset-4 transition-colors hover:text-brand-ink focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue"
             >
               {rightsConfig.sourceLabel}
               <ExternalLink className="h-3 w-3 shrink-0" aria-hidden />

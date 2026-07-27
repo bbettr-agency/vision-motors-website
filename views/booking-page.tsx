@@ -75,12 +75,12 @@ export default function BookingPage() {
               <ol className="mt-9 space-y-7">
                 {whatHappens.map((step, i) => (
                   <li key={step.title} className="flex gap-5">
-                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-indigoTint text-brand-indigo">
+                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-tint text-brand-blue">
                       <step.icon className="h-5 w-5" aria-hidden />
                     </span>
                     <div>
                       <h3 className="font-display text-base font-semibold text-brand-ink">
-                        <span className="mr-2 text-brand-accentInk">
+                        <span className="mr-2 text-brand-blue">
                           {String(i + 1).padStart(2, "0")}
                         </span>
                         {step.title}
@@ -93,7 +93,7 @@ export default function BookingPage() {
                 ))}
               </ol>
 
-              <div className="mt-10 rounded-2xl border border-brand-stone bg-white p-7 shadow-soft">
+              <div className="mt-10 rounded-2xl border border-brand-line bg-white p-7 shadow-soft">
                 <h3 className="font-display text-base font-semibold text-brand-ink">
                   Would rather just talk to someone?
                 </h3>
@@ -111,7 +111,7 @@ export default function BookingPage() {
 
             {/* Form */}
             <div className="lg:col-span-7">
-              <div className="rounded-3xl border border-brand-stone bg-white p-7 shadow-soft sm:p-9">
+              <div className="rounded-3xl border border-brand-line bg-white p-7 shadow-soft sm:p-9">
                 <h2 className="font-display text-xl font-bold text-brand-ink sm:text-2xl">
                   {formConfig.headings.title}
                 </h2>

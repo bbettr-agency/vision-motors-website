@@ -59,8 +59,8 @@ export default function ContactPage() {
         {/* Details */}
         <SectionContainer className="bg-brand-cream">
           <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
-            <div className="rounded-2xl border border-brand-stone bg-white p-8 shadow-soft">
-              <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-indigoTint text-brand-indigo">
+            <div className="rounded-2xl border border-brand-line bg-white p-8 shadow-soft">
+              <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-tint text-brand-blue">
                 <MapPin className="h-5 w-5" aria-hidden />
               </span>
               <h2 className="mt-6 font-display text-lg font-semibold text-brand-ink">
@@ -81,8 +81,8 @@ export default function ContactPage() {
               <DirectionsLink href={mapsUrl} />
             </div>
 
-            <div className="rounded-2xl border border-brand-stone bg-white p-8 shadow-soft">
-              <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-indigoTint text-brand-indigo">
+            <div className="rounded-2xl border border-brand-line bg-white p-8 shadow-soft">
+              <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-tint text-brand-blue">
                 <Clock className="h-5 w-5" aria-hidden />
               </span>
               <h2 className="mt-6 font-display text-lg font-semibold text-brand-ink">
@@ -112,8 +112,8 @@ export default function ContactPage() {
               </p>
             </div>
 
-            <div className="rounded-2xl border border-brand-stone bg-white p-8 shadow-soft md:col-span-2 lg:col-span-1">
-              <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-indigoTint text-brand-indigo">
+            <div className="rounded-2xl border border-brand-line bg-white p-8 shadow-soft md:col-span-2 lg:col-span-1">
+              <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-tint text-brand-blue">
                 <Mail className="h-5 w-5" aria-hidden />
               </span>
               <h2 className="mt-6 font-display text-lg font-semibold text-brand-ink">
@@ -137,7 +137,7 @@ export default function ContactPage() {
                   </span>
                   <a
                     href={siteConfig.emailLink}
-                    className="mt-1 inline-flex min-h-[44px] items-center break-all font-medium text-brand-indigo transition-colors hover:text-brand-indigoMid"
+                    className="mt-1 inline-flex min-h-[44px] items-center break-all font-medium text-brand-blue transition-colors hover:text-brand-navy"
                   >
                     {siteConfig.email}
                   </a>
@@ -150,8 +150,8 @@ export default function ContactPage() {
             Engine Shop — described as a facility, NOT given an address and NOT
             presented as a second branch. Address unconfirmed (C3).
           */}
-          <div className="mt-8 flex items-start gap-4 rounded-2xl border border-brand-indigoLine bg-brand-indigoTint/50 p-7">
-            <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white text-brand-indigo">
+          <div className="mt-8 flex items-start gap-4 rounded-2xl border border-brand-line bg-brand-tint/50 p-7">
+            <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white text-brand-blue">
               <Navigation className="h-5 w-5" aria-hidden />
             </span>
             <div>
@@ -169,7 +169,7 @@ export default function ContactPage() {
         </SectionContainer>
 
         {/* Map */}
-        <section aria-labelledby="map-heading" className="bg-brand-linen px-6 py-16 md:py-20 lg:px-8">
+        <section aria-labelledby="map-heading" className="bg-brand-bluegrey px-6 py-16 md:py-20 lg:px-8">
           <div className="mx-auto max-w-7xl">
             <h2
               id="map-heading"
@@ -182,7 +182,7 @@ export default function ContactPage() {
               north through the Moot. Look for the Vision Motors signage.
             </p>
 
-            <div className="mt-8 overflow-hidden rounded-2xl border border-brand-stone shadow-soft">
+            <div className="mt-8 overflow-hidden rounded-2xl border border-brand-line shadow-soft">
               <iframe
                 title="Map showing Vision Motors, Steve Biko Road, Wonderboom South, Pretoria"
                 src={`https://maps.google.com/maps?q=${mapsQuery}&output=embed`}
@@ -209,7 +209,7 @@ export default function ContactPage() {
               />
             </div>
             <div className="lg:col-span-7">
-              <div className="rounded-3xl border border-brand-stone bg-white p-7 shadow-soft sm:p-9">
+              <div className="rounded-3xl border border-brand-line bg-white p-7 shadow-soft sm:p-9">
                 <BookingForm compact />
               </div>
             </div>

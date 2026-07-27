@@ -12,7 +12,7 @@ import { cn } from "@/utils/cn";
 //  HERO SERVICE SHOWCASE — the scroll-driven right column.
 //
 //  DESKTOP: a tall list of service cards. The card nearest the viewport centre
-//  is "active" — it lifts, gains a brass rule + brighter number, and the others
+//  is "active" — it lifts, gains a blue rule + brighter number, and the others
 //  sit subdued but fully readable. The single real workshop photo is a dimmed,
 //  sticky backdrop behind the list (pinned, never stretched).
 //
@@ -30,7 +30,7 @@ import { cn } from "@/utils/cn";
 //     still runs (it is emphasis, not motion) so the section stays meaningful.
 //
 //  ── Accessibility ──────────────────────────────────────────────────────────
-//  - Active is signalled by THREE cues, never colour alone: a brass left rule
+//  - Active is signalled by THREE cues, never colour alone: a blue left rule
 //    (structural), a surface change, and a brighter/bolder number.
 //  - `aria-current` marks the active item. No live region → no per-scroll
 //    screen-reader chatter.
@@ -86,7 +86,7 @@ export default function HeroShowcase() {
     <div className="relative lg:col-span-6">
       {/* Persistent workshop backdrop — desktop only. Sticky so it stays behind
           the list rather than stretching down the whole tall column. Dimmed
-          with an indigo wash so the cards stay readable over it. */}
+          with a navy wash so the cards stay readable over it. */}
       <div
         className="pointer-events-none absolute inset-0 hidden lg:block"
         aria-hidden
@@ -99,7 +99,7 @@ export default function HeroShowcase() {
             sizes="50vw"
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-brand-indigoDeep/85 via-brand-indigoDeep/70 to-brand-indigoDeep/55" />
+          <div className="absolute inset-0 bg-gradient-to-br from-brand-navy/85 via-brand-navy/70 to-brand-navy/55" />
         </div>
       </div>
 
@@ -115,7 +115,7 @@ export default function HeroShowcase() {
         />
       </div>
 
-      <p className="relative z-10 mb-6 text-xs font-semibold uppercase tracking-[0.22em] text-brand-accent lg:mb-8">
+      <p className="relative z-10 mb-6 text-xs font-semibold uppercase tracking-[0.22em] text-brand-blueSoft lg:mb-8">
         Everything we take on
       </p>
 
@@ -134,18 +134,19 @@ export default function HeroShowcase() {
                 "motion-safe:transition-all motion-safe:duration-500",
                 "lg:min-h-[14vh] lg:flex-col lg:justify-center lg:p-5",
                 // Backdrop-blur keeps the cards legible over the workshop image.
-                "border-white/10 bg-brand-indigoDeep/90 backdrop-blur-md lg:bg-brand-indigoDeep/85",
+                "border-white/10 bg-brand-navy/90 backdrop-blur-md lg:bg-brand-navy/85",
                 // Subdued vs active — applied only once interactive, so no-JS
                 // and first paint show every card at full prominence.
                 interactive && !isActive && "lg:opacity-65",
                 isActive &&
-                  "border-brand-accent/50 bg-brand-indigoCard/95 lg:opacity-100 lg:shadow-glow",
+                  "border-brand-blueMid/50 bg-brand-navyCard/95 lg:opacity-100 lg:shadow-glow",
               )}
             >
-              {/* Brass rule — a structural active cue, not colour alone. */}
+              {/* Blue active rule — a structural cue, not colour alone. Blue
+                  (not amber): amber is reserved for the Call CTA. */}
               <span
                 className={cn(
-                  "absolute left-0 top-5 bottom-5 w-[3px] rounded-full bg-brand-accent motion-safe:transition-opacity motion-safe:duration-500",
+                  "absolute left-0 top-5 bottom-5 w-[3px] rounded-full bg-brand-blueMid motion-safe:transition-opacity motion-safe:duration-500",
                   isActive ? "opacity-100" : "opacity-0",
                 )}
                 aria-hidden
@@ -156,8 +157,8 @@ export default function HeroShowcase() {
                   className={cn(
                     "flex h-11 w-11 shrink-0 items-center justify-center rounded-xl motion-safe:transition-colors motion-safe:duration-500",
                     isActive
-                      ? "bg-brand-accent text-brand-ink"
-                      : "bg-white/[0.07] text-brand-indigoLight",
+                      ? "bg-brand-blue text-white"
+                      : "bg-white/[0.07] text-brand-blueSoft",
                   )}
                 >
                   <Icon name={item.icon} className="h-5 w-5" />
@@ -167,7 +168,7 @@ export default function HeroShowcase() {
                   className={cn(
                     "font-mono text-xs motion-safe:transition-colors motion-safe:duration-500 lg:mt-4",
                     isActive
-                      ? "font-semibold text-brand-accent"
+                      ? "font-semibold text-brand-blueSoft"
                       : "text-brand-bone/70",
                   )}
                 >

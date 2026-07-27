@@ -43,12 +43,12 @@ const sizes = {
 
 const variants: Record<Variant, string> = {
   brass:
-    "bg-brand-accent text-brand-ink shadow-accent hover:bg-brand-accentDark hover:-translate-y-0.5 focus-visible:ring-brand-accent focus-visible:ring-offset-brand-ink",
+    "bg-brand-cta text-brand-ink shadow-accent hover:bg-brand-ctaDark hover:-translate-y-0.5 focus-visible:ring-brand-blueMid focus-visible:ring-offset-brand-ink",
   outlineDark:
-    "border border-white/20 text-white hover:-translate-y-0.5 hover:border-brand-accent/50 hover:bg-white/5 focus-visible:ring-brand-accent focus-visible:ring-offset-brand-ink",
+    "border border-white/20 text-white hover:-translate-y-0.5 hover:border-brand-blueMid/50 hover:bg-white/5 focus-visible:ring-brand-blueMid focus-visible:ring-offset-brand-ink",
   outlineLight:
-    "border border-brand-indigoLine bg-white text-brand-indigo shadow-soft hover:-translate-y-0.5 hover:border-brand-indigo/50 hover:shadow-softLift focus-visible:ring-brand-indigo focus-visible:ring-offset-brand-cream",
-  bare: "text-brand-indigo hover:text-brand-indigoMid focus-visible:ring-brand-indigo focus-visible:ring-offset-white",
+    "border border-brand-line bg-white text-brand-blue shadow-soft hover:-translate-y-0.5 hover:border-brand-blue/50 hover:shadow-softLift focus-visible:ring-brand-blueMid focus-visible:ring-offset-brand-cream",
+  bare: "text-brand-blue hover:text-brand-navy focus-visible:ring-brand-blueMid focus-visible:ring-offset-white",
 };
 
 export default function CallButton({
@@ -74,9 +74,9 @@ export default function CallButton({
       <Phone
         className={cn(
           "h-4 w-4 shrink-0",
-          variant === "brass" ? "text-brand-ink" : "text-brand-accent",
-          variant === "outlineLight" && "text-brand-indigo",
-          variant === "bare" && "text-brand-indigo"
+          variant === "brass" ? "text-brand-ink" : "text-brand-blueSoft",
+          variant === "outlineLight" && "text-brand-blue",
+          variant === "bare" && "text-brand-blue"
         )}
         aria-hidden
       />

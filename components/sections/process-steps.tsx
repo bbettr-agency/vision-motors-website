@@ -32,9 +32,9 @@ export default function ProcessSteps() {
             key={step.number}
             as="li"
             delay={index * 0.08}
-            className="relative rounded-2xl border border-brand-stone bg-white p-8 shadow-soft"
+            className="relative rounded-2xl border border-brand-line bg-white p-8 shadow-soft"
           >
-            <span className="font-display text-3xl font-extrabold text-brand-accent">
+            <span className="font-display text-3xl font-extrabold text-brand-blue/70">
               {step.number}
             </span>
 
