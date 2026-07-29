@@ -13,6 +13,8 @@ export type LeadPayload = {
   problem: string;
   preferredDate: string;
   contactMethod: string;
+  /** Preferred branch (default "Not sure — we'll confirm"). */
+  location: string;
   // Attribution, captured client-side.
   source?: string;
   gclid?: string;
@@ -66,6 +68,7 @@ export function validateLead(data: Partial<LeadPayload>): {
     problem: cap(data.problem, 1500),
     preferredDate: cap(data.preferredDate, 30),
     contactMethod: cap(data.contactMethod, 30),
+    location: cap(data.location, 80),
     source: cap(data.source, 300) || undefined,
     gclid: cap(data.gclid, 200) || undefined,
     utm: data.utm && typeof data.utm === "object" ? data.utm : undefined,

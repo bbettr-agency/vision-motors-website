@@ -7,6 +7,7 @@ import ImageSlotView from "@/components/ui/image-slot";
 import Button from "@/components/ui/button";
 import Reveal from "@/components/ui/reveal";
 import { siteConfig } from "@/config/site-config";
+import { diagnosticPolicy } from "@/config/diagnostic-policy-config";
 import { scrollToBookingForm } from "@/lib/scroll-to-form";
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -33,6 +34,10 @@ const capabilityPoints = [
   {
     title: "Electronic and mechanical, not one or the other",
     body: "Dual-clutch transmissions and mechatronic units fail in ways that look mechanical and read electronic. Diagnosing them takes both sides of the trade.",
+  },
+  {
+    title: "When a strip-and-assess is needed, you hear it first",
+    body: diagnosticPolicy.short,
   },
 ];
 

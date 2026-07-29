@@ -75,18 +75,52 @@ export const siteConfig = {
   // TODO(client/agency): capture lat/long from the GBP listing.
   geo: null as { latitude: number; longitude: number } | null,
 
-  // ── Second premises ────────────────────────────────────────────────────────
-  // ✅ DISCOVERED 2026-07-22 in the company profile: a visually distinct second
-  // building branded "ENGINE SHOP" with a "RANGER & BT50" wall sign.
-  // ⚠️ The street number is INFERRED. The photo shows no number; onboarding
-  // lists 1197 Steve Biko Road as a second address, and there are two premises.
-  // Do NOT publish this address until confirmed.
-  // TODO(client): confirm the Engine Shop address and what work happens there
-  //               vs at 1059. See FACT-VERIFICATION-REGISTER.md C3.
+  // ── Workshop branches ──────────────────────────────────────────────────────
+  // ✅ CONFIRMED 2026-07-27 (client instruction + legacy HTML): TWO Vision Motors
+  // workshops on Steve Biko Road. This RESOLVES C3 (role of 1197) and B5.
+  // They are DISTINCT branches — NOT historical versions of one address (1059's
+  // historical alias is 867 Voortrekkersweg, a different matter — A3/D1).
+  // Shared phone/email/hours (above). Do NOT invent per-branch contact details.
+  branches: [
+    {
+      id: "main",
+      label: "Main workshop",
+      streetNumber: "1059",
+      street: "Steve Biko Road",
+      suburb: "Wonderboom South",
+      city: "Pretoria",
+      region: "Gauteng",
+      // 1059 postcode still OPEN — GBP says 0031, onboarding 0084 (C20).
+      postalCode: null as string | null,
+      manager: "Christo Vorster",
+      // Name confirmed (B3); the "Branch Manager" title is from the legacy HTML.
+      managerTitleSource: "html" as "html" | "confirmed",
+      primary: true,
+    },
+    {
+      id: "engine-shop",
+      label: "Engine shop",
+      streetNumber: "1197",
+      street: "Steve Biko Road",
+      suburb: "Wonderboom South",
+      city: "Pretoria",
+      region: "Gauteng",
+      // 0084 CONFIRMED for 1197 (onboarding B6 + client instruction 2026-07-27).
+      postalCode: "0084",
+      manager: "Jacques du Randt",
+      managerTitleSource: "confirmed" as "html" | "confirmed",
+      primary: false,
+    },
+  ],
+
+  // ── Second premises (legacy field) ─────────────────────────────────────────
+  // Superseded by `branches` above (C3 resolved 2026-07-27). Kept null so no
+  // legacy consumer renders a stale address. The engine-shop section reads no
+  // address from here — it is model-agnostic (see components/sections/engine-shop).
   engineShop: {
     value: null,
     status: "unverified",
-    note: "Second premises confirmed by photograph (branded ENGINE SHOP + RANGER & BT50). Street number inferred as 1197 Steve Biko Road from onboarding — NOT confirmed.",
+    note: "Superseded by branches[]. The Engine Shop is the 1197 Steve Biko Road branch (confirmed 2026-07-27).",
   } as Claim<{ streetNumber: string; street: string; role: string }>,
 
   // ── Business hours ─────────────────────────────────────────────────────────

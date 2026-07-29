@@ -203,3 +203,14 @@ then be checked against the RMI register.
 Both logos are also only 270×148 and are almost certainly subject to brand-usage rules
 (clear-space, minimum size, no recolouring). Request the official usage guidelines with the
 certificate.
+
+---
+
+### Update 2026-07-27 — legacy HTML page
+A client-supplied legacy Vision Motors HTML page (rendered) was audited (`LEGACY-HTML-CONTENT-
+AUDIT.md`). It **confirms the two-branch structure** (1059 + 1197, with Christo Vorster and
+Jacques du Randt as branch managers) and the industrial/technical brand voice. It also repeats
+several **unverified or contaminated claims** — "5-STAR RMI MEMBER" (LR Auto's, E1/E11), insurer
+approvals, VAT-registered, and internally-inconsistent manager bios (a "39-year-old" with "34
+years" since 1992) — none published. Founding year, legal name ("Vision Value Service Centre t/a")
+and bodywork/insurance are **held** pending direct confirmation.

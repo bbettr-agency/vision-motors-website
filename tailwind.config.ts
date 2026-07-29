@@ -4,16 +4,17 @@ import type { Config } from "tailwindcss";
 // rationale and the full contrast-pair verification. Tailwind is the render
 // path; theme-config is the runtime/documentation reference. Keep them in sync.
 //
-// ── v5: "WORKSHOP MANUAL" INDUSTRIAL-EDITORIAL SYSTEM (approved 2026-07-27) ───
-// Replaces the v4 blue-led corporate system. Two darks — near-black charcoal
-// (`ink`, dominant) + deep navy (secondary band) — alternate with warm paper /
-// concrete neutrals. Blue is demoted to a muted steel accent used sparingly;
-// large baby-blue is GONE. Amber is held strictly for the Call CTA + the active
-// capability rule. Target balance ~35% charcoal/navy · 40% paper/concrete ·
-// 20% photography · 5% amber. See config/theme-config.ts for the contrast table.
+// ── v5.1: "WORKSHOP MANUAL" + PREMIUM NAVY (approved 2026-07-27) ──────────────
+// The industrial-editorial system, with the dark family shifted from near-black
+// charcoal to one coherent PREMIUM AUTOMOTIVE NAVY (deep, refined — not black,
+// not muddy grey, not corporate blue). `ink` is the primary deep navy (hero,
+// header, footer, major dark bands); `navy` a slightly lifted band navy;
+// `steel` a restrained steel-BLUE for rules/labels. Warm paper/concrete lights
+// are unchanged; amber stays for the Call CTA + active highlights.
 //
-// Token NAMES are unchanged from v4 so components need no mass rename; only the
-// VALUES moved. A few tokens were added (steel, charcoalLight).
+// Because every dark section references bg-brand-ink / bg-brand-navy, moving the
+// token VALUES re-skins all dark surfaces centrally — no section edits. Token
+// NAMES are unchanged so nothing needs renaming.
 
 const config: Config = {
   content: [
@@ -27,35 +28,37 @@ const config: Config = {
     extend: {
       colors: {
         brand: {
-          // ── PRIMARY DARK: near-black warm charcoal. Dominant workshop surface,
-          //    and the deepest text colour on light. (white 15.9:1)
-          ink: "#15181C",
-          charcoalLight: "#1E2226", // subtle raised charcoal (rare)
+          // ── PRIMARY DARK: premium automotive navy. Dominant dark surface
+          //    (hero, header, footer, major bands) + darkest text on light.
+          //    Deep and refined — not black, not grey. (white 15.4:1)
+          ink: "#0E2338",
+          charcoalLight: "#17314E", // raised deep navy (rare)
 
-          // ── SECONDARY DARK: deep navy band. Used to punctuate, not dominate.
-          navy: "#0F2A44", // deep-navy band (white 14.6:1)
-          navyCard: "#1C2A36", // rare raised dark surface (booking form, bars)
+          // ── SECONDARY DARK: band navy, slightly lifted — same family, used to
+          //    punctuate (diagnostics / testimonials). (white 14.0:1)
+          navy: "#12293F",
+          navyCard: "#1A3452", // raised navy surface (dark cards, bars)
 
-          // ── STEEL-BLUE ACCENT: demoted. Micro technical accents on dark only,
-          //    links + focus. NOT large fills, NOT big baby-blue backgrounds.
+          // ── STEEL-BLUE ACCENT: links + focus, micro accents on dark.
           blue: "#1F4E79", // links + focus on light
           blueMid: "#3E7CB1", // focus rings / UI borders (3:1)
-          blueSoft: "#8FA6B8", // muted steel-blue for tiny accents ON dark (7.4:1)
+          blueSoft: "#8FA6B8", // muted steel-blue for tiny accents ON dark (6.0:1)
 
-          // ── LIGHT surfaces — warm workshop paper + concrete. No baby blue.
+          // ── LIGHT surfaces — warm workshop paper + concrete. Unchanged.
           cream: "#F3EFE7", // warm paper — primary light surface
           bluegrey: "#E4DFD5", // concrete grey — deeper light surface
           tint: "#E9E3D7", // warm inset/chip on light
           line: "#CFC9BC", // warm hairline border / divider on light
 
-          // ── STEEL — muted-steel rules, dividers, vertical labels (UI 3:1).
-          steel: "#7C838B",
+          // ── STEEL — restrained steel-BLUE for rules, dividers, technical
+          //    labels (5.1:1 on ink for small text; UI/rules on light).
+          steel: "#7891B0",
 
           // ── TEXT.
           inkSoft: "#3A3F45", // body on light (9.7:1 on paper)
           inkMuted: "#5E6368", // muted-steel caption/label on light (5.3:1 paper)
-          mist: "#F4F1EA", // warm off-white body on dark (15.9:1)
-          bone: "#C6C2B8", // warm grey secondary on dark (10.6:1)
+          mist: "#F4F1EA", // warm off-white body on dark (14.9:1 on ink)
+          bone: "#C6C2B8", // warm grey secondary on dark (9.6:1 on ink)
 
           // ── WARM CTA ACCENT — Call buttons + the active capability rule ONLY.
           //    NEVER a large background. Always paired with dark (ink) text —

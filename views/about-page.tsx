@@ -1,5 +1,6 @@
 import { imagesConfig } from "@/config/images-config";
 import { siteConfig } from "@/config/site-config";
+import { diagnosticPolicy } from "@/config/diagnostic-policy-config";
 import { buildTrail } from "@/components/ui/breadcrumbs";
 import { breadcrumbSchema } from "@/lib/schema";
 import Header from "@/components/layout/header";
@@ -150,7 +151,11 @@ export default function AboutPage() {
             ))}
           </div>
 
-          <p className="mx-auto mt-12 max-w-[60ch] text-center text-sm leading-[1.7] text-brand-bone/75">
+          <p className="mx-auto mt-12 max-w-[68ch] text-center text-sm leading-[1.7] text-brand-bone/75">
+            {diagnosticPolicy.short}
+          </p>
+
+          <p className="mx-auto mt-6 max-w-[60ch] text-center text-sm leading-[1.7] text-brand-bone/75">
             {siteConfig.warrantyInterimCopy}
           </p>
         </SectionContainer>
@@ -161,7 +166,7 @@ export default function AboutPage() {
             tone="light"
             eyebrow="The team"
             title="The people who'll work on your car"
-            description="Customers name our people in their own reviews — Christo and Jacques among them. Full team profiles are being photographed."
+            description="Two branches, two managers on the floor. Full team profiles are being photographed."
             className="max-w-3xl"
           />
 
@@ -179,12 +184,18 @@ export default function AboutPage() {
             />
             <div className="rounded-2xl border border-brand-line bg-white p-8 shadow-soft">
               <h3 className="font-display text-base font-semibold text-brand-ink">
-                Named by customers, not by us
+                A manager on the floor at each branch
               </h3>
               <p className="mt-3 text-sm leading-[1.75] text-brand-inkSoft">
-                Christo Vorster and Jacques du Randt are both thanked by name in
-                reviews customers wrote themselves. We&apos;d rather you read
-                that than a list of job titles.
+                <span className="font-semibold text-brand-ink">
+                  Jacques du Randt
+                </span>{" "}
+                is Branch Manager at the engine shop (1197 Steve Biko Road);{" "}
+                <span className="font-semibold text-brand-ink">
+                  Christo Vorster
+                </span>{" "}
+                runs the main workshop at 1059. Both are thanked by name in
+                reviews customers wrote themselves.
               </p>
             </div>
           </div>

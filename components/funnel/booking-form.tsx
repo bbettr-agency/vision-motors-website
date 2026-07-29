@@ -4,6 +4,7 @@ import { CheckCircle2, Info, Loader2, Phone } from "lucide-react";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 
 import { formConfig, SELECT_SERVICE_EVENT } from "@/config/form-config";
+import { diagnosticPolicy } from "@/config/diagnostic-policy-config";
 import { siteConfig } from "@/config/site-config";
 import {
   captureAttribution,
@@ -46,6 +47,7 @@ export default function BookingForm({ compact = false }: { compact?: boolean }) 
   const [contactMethod, setContactMethod] = useState(
     formConfig.contactMethods[0]
   );
+  const [location, setLocation] = useState(formConfig.locationOptions[0]);
   /** Honeypot — hidden from real users, bots fill it. */
   const [company, setCompany] = useState("");
 
@@ -102,6 +104,7 @@ export default function BookingForm({ compact = false }: { compact?: boolean }) 
           problem: problem.trim(),
           preferredDate,
           contactMethod,
+          location,
           company, // honeypot
           source: attribution.source,
           gclid: attribution.gclid,
@@ -271,6 +274,24 @@ export default function BookingForm({ compact = false }: { compact?: boolean }) 
         </div>
       </div>
 
+      <div>
+        <label htmlFor="vm-location" className={labelClass}>
+          {formConfig.fields.locationLabel}
+        </label>
+        <select
+          id="vm-location"
+          value={location}
+          onChange={(e) => setLocation(e.target.value)}
+          className={inputClass}
+        >
+          {formConfig.locationOptions.map((o) => (
+            <option key={o} value={o}>
+              {o}
+            </option>
+          ))}
+        </select>
+      </div>
+
       {/* Honeypot. Off-screen, hidden from assistive tech; bots fill it. */}
       <div
         aria-hidden
@@ -293,6 +314,16 @@ export default function BookingForm({ compact = false }: { compact?: boolean }) 
       <p className="flex items-start gap-2.5 rounded-xl border border-brand-line bg-brand-tint/60 px-4 py-3 text-xs leading-[1.65] text-brand-blue">
         <Info className="mt-0.5 h-4 w-4 shrink-0" aria-hidden />
         {formConfig.dateDisclaimer}
+      </p>
+
+      {/* Diagnostic strip-and-assess acknowledgement (informational — NOT a
+          consent checkbox). Also clarifies this form does not authorise any
+          dismantling. Client instruction 2026-07-27 §7. */}
+      <p className="rounded-xl border border-brand-line bg-brand-cream px-4 py-3 text-xs leading-[1.65] text-brand-inkMuted">
+        {diagnosticPolicy.bookingNote}{" "}
+        <span className="text-brand-inkSoft">
+          {diagnosticPolicy.bookingRequestClarifier}
+        </span>
       </p>
 
       {error && (

@@ -3,7 +3,11 @@ import { Inter, Barlow_Semi_Condensed, IBM_Plex_Mono } from "next/font/google";
 
 import "./globals.css";
 import { createMetadata } from "@/lib/metadata";
-import { autoRepairSchema, websiteSchema } from "@/lib/schema";
+import {
+  autoRepairSchema,
+  engineShopBranchSchema,
+  websiteSchema,
+} from "@/lib/schema";
 
 // Self-hosted via next/font, display: swap — SYSTEM/07 performance budget.
 // v5 type system ("workshop manual"): Barlow Semi Condensed = compact
@@ -44,7 +48,7 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
-        <meta name="theme-color" content="#15181C" />
+        <meta name="theme-color" content="#0E2338" />
 
         {/*
           Enables the scroll-reveal hidden state before first paint, so there is
@@ -67,6 +71,13 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(autoRepairSchema) }}
+        />
+        {/* Second workshop (1197 Steve Biko Road), branchOf the primary above. */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(engineShopBranchSchema),
+          }}
         />
         <script
           type="application/ld+json"

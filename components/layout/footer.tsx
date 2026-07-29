@@ -49,15 +49,27 @@ export default function Footer() {
                   {siteConfig.email}
                 </a>
               </li>
-              <li className="flex items-start gap-2.5 py-2 text-white/80">
-                <MapPin
-                  className="mt-0.5 h-4 w-4 shrink-0 text-brand-blueSoft"
-                  aria-hidden
-                />
-                {/* Street address verified from own signage. Postcode is
-                    deliberately omitted — 0031 vs 0084 unresolved (C20). */}
-                <span>{siteConfig.addressDisplay}</span>
-              </li>
+              {/* TWO confirmed branches on Steve Biko Road (2026-07-27). 1197
+                  postcode 0084 confirmed; 1059 postcode omitted (C20). */}
+              {siteConfig.branches.map((branch, i) => (
+                <li
+                  key={branch.id}
+                  className="flex items-start gap-2.5 py-2 text-white/80"
+                >
+                  <MapPin
+                    className="mt-0.5 h-4 w-4 shrink-0 text-brand-blueSoft"
+                    aria-hidden
+                  />
+                  <span>
+                    <span className="block text-xs uppercase tracking-[0.14em] text-white/55">
+                      Branch {String(i + 1).padStart(2, "0")} · {branch.label}
+                    </span>
+                    {branch.streetNumber} {branch.street},{" "}
+                    {branch.suburb}, {branch.city}
+                    {branch.postalCode ? `, ${branch.postalCode}` : ""}
+                  </span>
+                </li>
+              ))}
             </ul>
 
             {siteConfig.hours.value && (

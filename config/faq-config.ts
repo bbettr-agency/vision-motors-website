@@ -9,6 +9,7 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 import type { FaqItem } from "@/types/site";
+import { diagnosticPolicy } from "@/config/diagnostic-policy-config";
 
 export const faqConfig: FaqItem[] = [
   {
@@ -22,6 +23,11 @@ export const faqConfig: FaqItem[] = [
     question: "Will you do work I haven't approved?",
     answer:
       "No. We diagnose the fault, explain what we've found and give you a quote. Work only starts once you've approved it. If we find something additional while the car is with us, we come back to you before doing anything about it.",
+  },
+  {
+    // Strip-and-assess policy (2026-07-27). Standard version, verbatim.
+    question: diagnosticPolicy.faqQuestion,
+    answer: diagnosticPolicy.standard,
   },
   {
     // Objection #7 — the "another workshop couldn't find it" entry point
@@ -59,8 +65,6 @@ export const faqConfig: FaqItem[] = [
   {
     question: "Where are you and how do I get hold of you?",
     answer:
-      "We're an independent workshop on Steve Biko Road in Wonderboom South, Pretoria — on the M5 running through the Moot. Phone the workshop on 012 335 0070 or send us your details through the booking form.",
-    // TODO(client): add the exact street number and opening hours once confirmed.
-    // Four different addresses are currently in circulation across directories.
+      "We have two workshops on Steve Biko Road in Wonderboom South, Pretoria, a short distance apart — the main workshop at 1059, and our engine shop at 1197. Both share one number: phone 012 335 0070, Monday to Friday 07:30 to 17:00, or send us your details through the booking form and we'll confirm which branch to bring your vehicle to.",
   },
 ];

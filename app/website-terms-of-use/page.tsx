@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { createMetadata } from "@/lib/metadata";
 import LegalShell from "@/components/layout/legal-shell";
 import { siteConfig } from "@/config/site-config";
+import { diagnosticPolicy } from "@/config/diagnostic-policy-config";
 
 export const metadata: Metadata = createMetadata({
   title: "Website Terms of Use",
@@ -39,6 +40,10 @@ export default function Page() {
         when we examine your vehicle. We diagnose the fault, explain it, and give
         you a quote — and work begins only once you approve it.
       </p>
+
+      <h2>Engine and gearbox stripping (strip-and-assess)</h2>
+      <p>{diagnosticPolicy.detailed}</p>
+      <p>{diagnosticPolicy.bookingRequestClarifier}</p>
 
       <h2>Information on this website</h2>
       <p>

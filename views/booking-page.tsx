@@ -2,6 +2,7 @@ import { CalendarClock, PhoneCall, Wrench } from "lucide-react";
 
 import { formConfig } from "@/config/form-config";
 import { siteConfig } from "@/config/site-config";
+import { diagnosticPolicy } from "@/config/diagnostic-policy-config";
 import { buildTrail } from "@/components/ui/breadcrumbs";
 import { breadcrumbSchema } from "@/lib/schema";
 import Header from "@/components/layout/header";
@@ -92,6 +93,16 @@ export default function BookingPage() {
                   </li>
                 ))}
               </ol>
+
+              {/* Strip-and-assess policy — standard version (2026-07-27 §6). */}
+              <div className="mt-10 border-l-2 border-brand-cta/60 pl-5">
+                <h3 className="font-display text-base font-bold uppercase tracking-tight text-brand-ink">
+                  Engine &amp; gearbox faults
+                </h3>
+                <p className="mt-2 max-w-[52ch] text-sm leading-[1.75] text-brand-inkSoft">
+                  {diagnosticPolicy.standard}
+                </p>
+              </div>
 
               <div className="mt-10 rounded-2xl border border-brand-line bg-white p-7 shadow-soft">
                 <h3 className="font-display text-base font-semibold text-brand-ink">

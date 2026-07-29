@@ -86,6 +86,7 @@ export async function POST(request: Request) {
     // must not send a confirmation implying the date is secured.
     preferred_date_requested: clean.preferredDate,
     preferred_contact_method: clean.contactMethod,
+    preferred_workshop: clean.location,
     source: clean.source ?? "Vision Motors website",
     gclid: clean.gclid ?? "",
     utm_source: clean.utm?.utm_source ?? "",

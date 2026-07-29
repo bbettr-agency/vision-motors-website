@@ -28,6 +28,22 @@ The homepage was rescued from a generic corporate/SaaS look to an **industrial-e
 - **Fact correction**: hero item 8 softened to **"Ford Engine Work"**; engine-shop copy made
   model-agnostic. No Ranger/BT-50 specialist claim until C9/C21 confirmed (Correction 1).
 
+### v5.1 update (2026-07-27) — premium navy · header logo · second branch · diagnostic policy
+- **Premium navy**: dark family shifted charcoal → premium automotive navy centrally via tokens
+  (`ink #0E2338`, `navy #12293F`, raised `#1A3452`/`#17314E`, `steel #7891B0` steel-blue). Warm
+  paper/concrete lights + amber unchanged. No section edits — token values only.
+- **Header logo**: larger at top, compact on scroll (transform-scale + padding transition;
+  reduced-motion safe; header is `fixed` so no content shift).
+- **Second workshop** (C3 resolved): 1197 Steve Biko Road (0084), Branch Manager Jacques du Randt;
+  1059 Branch Manager Christo Vorster. `site-config.branches`; second `AutoRepair` schema node
+  (`branchOf`); rendered on homepage location, footer, Contact, Booking; booking-form "preferred
+  workshop" field. Distinct branches — never merged.
+- **Diagnostic strip-and-assess policy** (`config/diagnostic-policy-config.ts`) on diagnostics,
+  FAQ (+schema), booking form (note, no checkbox), booking page, About, Terms. Booking = request,
+  not dismantling authorisation.
+- **Legacy HTML audited** → `docs/LEGACY-HTML-CONTENT-AUDIT.md`. Held: founding year, legal name,
+  bodywork/insurance. Rejected: 5-star RMI, insurer approvals, manager bios, VAT badge.
+
 ### ⚠️ Follow-up: internal-page templates NOT yet redesigned
 Scope was the **homepage** (Correction 6). Shared chrome (header, footer, page-hero, buttons,
 image plates) is on the v5 system, and internal pages inherit the new palette/type, but their

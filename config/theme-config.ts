@@ -2,58 +2,58 @@
 //  BRAND TOKENS — documentation mirror of tailwind.config.ts.
 //  Not imported at runtime; Tailwind is the render path. Keep the two in sync.
 //
-//  ── v5: "WORKSHOP MANUAL" INDUSTRIAL-EDITORIAL SYSTEM (approved 2026-07-27) ───
-//  Replaces the v4 blue-led corporate system. Two darks — near-black charcoal
-//  (`ink`, dominant) + deep navy (secondary band) — alternate with warm paper /
-//  concrete neutrals. Blue is demoted to a muted steel accent used sparingly;
-//  large baby-blue is gone. Amber is held strictly for the Call CTA + the active
-//  capability rule. Balance ≈ 35% charcoal/navy · 40% paper/concrete ·
-//  20% photography · 5% amber.
+//  ── v5.1: "WORKSHOP MANUAL" + PREMIUM NAVY (approved 2026-07-27) ─────────────
+//  The industrial-editorial system, dark family shifted to one coherent PREMIUM
+//  AUTOMOTIVE NAVY: `ink` #0E2338 primary deep navy (hero/header/footer/major
+//  bands + darkest text on light), `navy` #12293F band navy (diagnostics/
+//  testimonials), `steel` a restrained steel-blue for rules/labels. Warm paper/
+//  concrete lights unchanged; amber held for the Call CTA + active highlights.
+//  Balance ≈ 35% navy · 40% paper/concrete · 20% photography · 5% amber.
 //
 //  Type: Barlow Semi Condensed (display + numerals) · Inter (body) ·
 //        IBM Plex Mono (technical labels). Shape: squared (radius 0.375/0.5rem),
 //        hairline borders + surface contrast instead of drop shadows.
 //
 //  The official logo is indigo (#290F74) — NOT recoloured. It is a placeholder
-//  type lockup until a usable vector arrives (C5), sized to sit on charcoal.
+//  type lockup until a usable vector arrives (C5), sized to sit on navy.
 //
 //  ── CONTRAST VERIFICATION (checked at token time; live-audited after build) ──
-//  DARK (on charcoal ink #15181C)
-//    white  #FFFFFF → 15.9:1   mist #F4F1EA → 15.9:1   bone #C6C2B8 → 10.6:1
-//    blueSoft #8FA6B8 → 7.4:1  (micro accents)   steel #7C838B → 4.0:1 (UI/large)
-//    cta #C58A32 text → 6.3:1  (active-rule label)
-//  DARK (on navy #0F2A44): white 14.6:1 · bone 8.5:1 · blueSoft 6.0:1
-//  CTA BUTTON (ink label on amber #C58A32): 6.3:1 ✅ · white on amber 2.98:1 ❌
+//  DARK (on primary navy ink #0E2338)
+//    white  #FFFFFF → 15.4:1   mist #F4F1EA → 14.9:1   bone #C6C2B8 → 9.6:1
+//    blueSoft #8FA6B8 → 6.0:1  (micro accents)   steel #7891B0 → 5.1:1 (labels/rules)
+//    cta #C58A32 text → 5.3:1  (active-rule label)
+//  DARK (on band navy #12293F): white 14.0:1 · bone 8.7:1 · blueSoft 5.5:1
+//  CTA BUTTON (ink label on amber #C58A32): 6.0:1 ✅ · white on amber 2.98:1 ❌
 //  LIGHT (on paper cream #F3EFE7)
-//    ink #15181C → 16.4:1 · inkSoft #3A3F45 → 9.7:1 · inkMuted #5E6368 → 5.3:1
+//    ink #0E2338 → 13.7:1 · inkSoft #3A3F45 → 9.7:1 · inkMuted #5E6368 → 5.3:1
 //    blue #1F4E79 → 8.4:1 (links/labels)
 //  LIGHT (on concrete bluegrey #E4DFD5)
-//    ink → 14.0:1 · inkSoft → 8.3:1 · inkMuted #5E6368 → 4.6:1 · steel → 3.4:1 (UI)
+//    ink → 12.0:1 · inkSoft → 8.3:1 · inkMuted #5E6368 → 4.6:1 · steel → 3.4:1 (UI)
 // ─────────────────────────────────────────────────────────────────────────────
 
 export const themeConfig = {
   colors: {
-    // ── PRIMARY DARK: near-black warm charcoal ───────────────────────────────
-    ink: "#15181C", // dominant dark surface + darkest text on light
-    charcoalLight: "#1E2226", // subtle raised charcoal (rare)
+    // ── PRIMARY DARK: premium automotive navy ────────────────────────────────
+    ink: "#0E2338", // dominant dark surface + darkest text on light
+    charcoalLight: "#17314E", // raised deep navy (rare)
 
-    // ── SECONDARY DARK: deep navy band ───────────────────────────────────────
-    navy: "#0F2A44", // punctuating deep-navy band
-    navyCard: "#1C2A36", // rare raised dark surface (booking form, bars)
+    // ── SECONDARY DARK: band navy, slightly lifted ───────────────────────────
+    navy: "#12293F", // punctuating band navy (same family)
+    navyCard: "#1A3452", // raised navy surface (dark cards, bars)
 
-    // ── STEEL-BLUE ACCENT (demoted) ──────────────────────────────────────────
+    // ── STEEL-BLUE ACCENT ────────────────────────────────────────────────────
     blue: "#1F4E79", // links + focus on light
     blueMid: "#3E7CB1", // focus rings / UI borders
     blueSoft: "#8FA6B8", // muted steel-blue micro accents ON dark
 
-    // ── LIGHT surfaces — warm paper + concrete ───────────────────────────────
+    // ── LIGHT surfaces — warm paper + concrete (unchanged) ───────────────────
     cream: "#F3EFE7", // warm paper — primary light surface
     bluegrey: "#E4DFD5", // concrete grey — deeper light surface
     tint: "#E9E3D7", // warm inset/chip on light
     line: "#CFC9BC", // warm hairline border / divider on light
 
-    // ── STEEL — rules, dividers, vertical labels (UI/large only) ─────────────
-    steel: "#7C838B",
+    // ── STEEL — restrained steel-blue rules, dividers, technical labels ──────
+    steel: "#7891B0",
 
     // ── Text ─────────────────────────────────────────────────────────────────
     inkSoft: "#3A3F45", // body on light

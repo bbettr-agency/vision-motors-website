@@ -51,7 +51,19 @@ export const formConfig = {
       "Describe it in your own words — you don't need to know what's wrong.",
     preferredDateLabel: "Preferred date",
     contactMethodLabel: "How should we contact you?",
+    locationLabel: "Preferred workshop",
   },
+
+  /**
+   * Two confirmed branches (2026-07-27). "Not sure" is the default — booking
+   * confirmation determines the correct workshop, so no visitor is forced to
+   * choose. No per-branch contact details are invented.
+   */
+  locationOptions: [
+    "Not sure — we'll confirm",
+    "Main workshop — 1059 Steve Biko Road",
+    "Engine shop — 1197 Steve Biko Road",
+  ],
 
   /** Mirrors the approved service architecture. */
   serviceOptions: [

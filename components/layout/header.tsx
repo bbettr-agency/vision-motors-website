@@ -47,13 +47,28 @@ export default function Header() {
           : "bg-transparent"
       )}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-6 py-4 lg:px-8">
+      <div
+        className={cn(
+          "mx-auto flex max-w-7xl items-center justify-between gap-3 px-6 transition-[padding] duration-300 ease-out lg:px-8",
+          scrolled ? "py-2.5 md:py-3" : "py-5 md:py-6"
+        )}
+      >
         <Link
           href="/"
-          className="inline-flex min-h-[44px] shrink-0 items-center rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-blueMid"
+          className="inline-flex min-h-[44px] shrink-0 items-center rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-cta"
           aria-label={`${siteConfig.businessName} — home`}
         >
-          <Logo />
+          {/* Larger at the top, compact once scrolled. Scaling an inner span
+              (not the Link) keeps the 44px tap target and avoids reflow — the
+              transform is GPU-composited, so no flicker or layout shift. */}
+          <span
+            className={cn(
+              "block origin-left transition-transform duration-300 ease-out",
+              scrolled ? "scale-[0.82]" : "scale-100"
+            )}
+          >
+            <Logo />
+          </span>
         </Link>
 
         <nav

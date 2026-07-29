@@ -6,16 +6,19 @@ import CallButton from "@/components/ui/call-button";
 import ImageSlotView from "@/components/ui/image-slot";
 import DirectionsLink from "@/components/funnel/directions-link";
 
-// Location + hours. Both confirmed in Phase 1; previously missing from the site.
-// Postcode deliberately omitted (0031 vs 0084 unresolved, C20).
+// Location + hours. TWO confirmed branches on Steve Biko Road (2026-07-27) —
+// shown as distinct workshops, NOT historical versions of one address.
+// Shared phone/hours; 1197 postcode 0084 confirmed, 1059 postcode omitted (C20).
 //
 // v6 ("workshop manual"): a workshop-DESTINATION block — big phone, an exterior
-// image plate, and address/hours as a ruled spec strip. No white info cards.
+// image plate, and both branches + hours as a ruled spec strip. No cards.
 
-const mapsQuery = encodeURIComponent(
-  `${siteConfig.businessName}, ${siteConfig.addressDisplay}`
-);
-const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${mapsQuery}`;
+function mapsUrl(streetNumber: string, street: string): string {
+  const q = encodeURIComponent(
+    `${siteConfig.businessName}, ${streetNumber} ${street}, ${siteConfig.suburb}, ${siteConfig.city}`
+  );
+  return `https://www.google.com/maps/search/?api=1&query=${q}`;
+}
 
 export default function LocationHours() {
   return (
@@ -25,8 +28,8 @@ export default function LocationHours() {
           <SectionHeading
             tone="light"
             eyebrow="Find the workshop"
-            title="On Steve Biko Road, Wonderboom South"
-            description="We're on the M5 running north through the Moot. Phone ahead if you're dropping a vehicle off so we can make sure someone is free to take it in."
+            title="Two workshops on Steve Biko Road"
+            description="Both branches are on Steve Biko Road in Wonderboom South, a short distance apart. Phone ahead if you're dropping a vehicle off and we'll make sure the right branch is ready for it."
           />
 
           {/* Big phone — decorative emphasis; the tracked CTA is the button. */}
@@ -37,9 +40,8 @@ export default function LocationHours() {
             {siteConfig.phoneDisplay}
           </p>
 
-          <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
+          <div className="mt-6">
             <CallButton location="final_cta" variant="brass" showNumber />
-            <DirectionsLink href={mapsUrl} />
           </div>
         </div>
 
@@ -54,20 +56,33 @@ export default function LocationHours() {
         </div>
       </div>
 
-      {/* Address + hours — ruled spec strip, no cards. */}
-      <div className="mt-14 grid gap-y-8 border-t border-brand-ink/15 pt-10 sm:grid-cols-2 sm:gap-x-0 sm:divide-x sm:divide-brand-ink/15">
-        <div className="sm:pr-10">
-          <h3 className="font-mono text-xs font-medium uppercase tracking-[0.28em] text-brand-inkMuted">
-            The workshop
-          </h3>
-          <address className="mt-4 not-italic font-display text-lg font-semibold uppercase leading-tight tracking-tight text-brand-ink">
-            {siteConfig.streetNumber} {siteConfig.street}
-            <br />
-            {siteConfig.suburb}, {siteConfig.city}
-          </address>
-        </div>
+      {/* Branches + hours — ruled spec strip, no cards. */}
+      <div className="mt-14 grid gap-y-10 border-t border-brand-ink/15 pt-10 md:grid-cols-3 md:gap-x-0 md:divide-x md:divide-brand-ink/15">
+        {siteConfig.branches.map((branch, i) => (
+          <div key={branch.id} className="md:px-8 md:first:pl-0">
+            <h3 className="font-mono text-xs font-medium uppercase tracking-[0.28em] text-brand-inkMuted">
+              Branch {String(i + 1).padStart(2, "0")} · {branch.label}
+            </h3>
+            <address className="mt-4 not-italic font-display text-lg font-semibold uppercase leading-tight tracking-tight text-brand-ink">
+              {branch.streetNumber} {branch.street}
+              <br />
+              {branch.suburb}, {branch.city}
+              {branch.postalCode ? `, ${branch.postalCode}` : ""}
+            </address>
+            <p className="mt-3 text-sm text-brand-inkSoft">
+              <span className="text-brand-inkMuted">Branch Manager:</span>{" "}
+              <span className="font-semibold text-brand-ink">
+                {branch.manager}
+              </span>
+            </p>
+            <DirectionsLink
+              href={mapsUrl(branch.streetNumber, branch.street)}
+              className="mt-4"
+            />
+          </div>
+        ))}
 
-        <div className="sm:pl-10">
+        <div className="md:px-8">
           <h3 className="font-mono text-xs font-medium uppercase tracking-[0.28em] text-brand-inkMuted">
             Opening hours
           </h3>

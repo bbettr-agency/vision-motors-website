@@ -146,6 +146,68 @@ export const autoRepairSchema: JsonLd = (() => {
   return schema;
 })();
 
+/**
+ * SECOND WORKSHOP (1197 Steve Biko Road) — the engine-shop branch.
+ *
+ * Modelled as ONE organisation, TWO locations: a distinct `AutoRepair` node
+ * linked to the primary `#business` via `branchOf` (schema.org-correct
+ * multi-location). It does NOT merge the two addresses into one entity.
+ *
+ * Truth-gating preserved:
+ *   • 1197 street address + postcode 0084 are confirmed (client instruction
+ *     2026-07-27 + onboarding), so they ARE emitted.
+ *   • The 1059 postcode remains omitted (C20 unresolved) and geo is omitted for
+ *     both — a wrong coordinate/postcode is worse than none.
+ *   • Shared telephone / email / hours — no per-branch details are invented.
+ */
+export const engineShopBranchSchema: JsonLd = (() => {
+  const branch = siteConfig.branches.find((b) => !b.primary);
+  if (!branch) return {} as JsonLd;
+
+  const address: JsonLd = {
+    "@type": "PostalAddress",
+    streetAddress: `${branch.streetNumber} ${branch.street}`,
+    addressLocality: branch.suburb,
+    addressRegion: branch.region,
+    addressCountry: "ZA",
+  };
+  if (branch.postalCode) address.postalCode = branch.postalCode;
+
+  const schema: JsonLd = {
+    "@context": "https://schema.org",
+    "@type": "AutoRepair",
+    "@id": `${siteConfig.website}/#engine-shop`,
+    name: `${siteConfig.businessName} — Engine Shop`,
+    url: siteConfig.website,
+    telephone: siteConfig.phone,
+    email: siteConfig.email,
+    image: `${siteConfig.website}${seoConfig.ogImage}`,
+    address,
+    branchOf: { "@id": `${siteConfig.website}/#business` },
+    parentOrganization: { "@id": `${siteConfig.website}/#business` },
+    areaServed: [
+      { "@type": "City", name: "Pretoria" },
+      { "@type": "AdministrativeArea", name: "Gauteng" },
+    ],
+  };
+
+  // Same shared hours as the main business (client-provided).
+  if (
+    (siteConfig.hours.status === "verified" ||
+      siteConfig.hours.status === "client-stated") &&
+    siteConfig.hours.value
+  ) {
+    schema.openingHoursSpecification = siteConfig.hours.value.map((h) => ({
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: `https://schema.org/${h.day}`,
+      opens: "07:30",
+      closes: "17:00",
+    }));
+  }
+
+  return schema;
+})();
+
 export const faqSchema: JsonLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",

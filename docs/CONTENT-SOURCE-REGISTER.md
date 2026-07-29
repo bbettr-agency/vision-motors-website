@@ -82,3 +82,22 @@ be converted into specific, checkable statements:
 | Competitive pricing | "The most affordable in Pretoria" | "You get a quote before any work starts, and it's explained in plain language." |
 | Warranty | "2-year warranty" *(unverified)* | "Ask our team about the warranty applicable to your repair." |
 | Friendly / good service | "Friendly service guaranteed" | Carmen Keppler's testimonial about seat and carpet protection — shown, not claimed |
+
+## Source added 2026-07-27 — legacy Vision Motors HTML (client-supplied render)
+
+A client-supplied Vision Motors HTML page (rendered screenshot) was audited as a content source.
+Full disposition in **`LEGACY-HTML-CONTENT-AUDIT.md`**. Summary:
+
+| From the HTML | Disposition | New-site treatment |
+|---|---|---|
+| Second workshop 1197 Steve Biko Rd (0084), Branch Manager Jacques du Randt; 1059 Branch Manager Christo Vorster | **Imported** (client-confirmed) | branches, location section, footer, Contact, Booking, schema |
+| Voice: "good workmanship / honest service", "family-run, owner on the floor" | **Adopted as voice** | tone only, no new facts |
+| "Since 1992 / 34 years", legal name "Vision Value Service Centre t/a", bodywork/insurance "approved by insurers" | **Held** (client decision) | not published — C4 / C6 / new |
+| "5-STAR RMI MEMBER", RMI/MIWA/ARASA badges, named-insurer approvals, manager bios/ages, "VAT Registered" | **Rejected** | never published — E1/E11/C2/E9 |
+
+## Content added 2026-07-27 — diagnostic strip-and-assess policy (client-confirmed)
+
+Canonical source `config/diagnostic-policy-config.ts` (short/standard/detailed/bookingNote).
+Rendered on homepage diagnostics, FAQ (+schema), booking form (informational note, no checkbox),
+booking page, About, Terms. No fixed pricing, no free-diagnostics/stripping, no guaranteed
+acceptance (§10).

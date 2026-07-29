@@ -123,3 +123,6 @@ Before every deploy:
 | 2026-07-22 | `streetAddress` + `postalCode` now emitted — address resolved from own signage |
 | 2026-07-22 | `openingHoursSpecification` now emitted with proper `opens`/`closes` |
 | 2026-07-22 | `legalName` **removed** — unsupported guess |
+| 2026-07-27 | **Second location added** — a distinct `AutoRepair` node `@id …/#engine-shop` with `branchOf`/`parentOrganization` → `#business` (schema.org multi-location). Own PostalAddress (1197 Steve Biko Road, postcode **0084**), shared `telephone`/`email`/`openingHoursSpecification`, **no geo**. Emitted as a 2nd JSON-LD block in `app/layout.tsx`. |
+| 2026-07-27 | Truth-gating intact — 1059 postcode still omitted (C20); geo omitted for both; `legalName` still not emitted (C6 held); no `aggregateRating`/`review`; no accreditation `hasCredential` (C2). |
+| 2026-07-27 | Strip-and-assess FAQ entry added → flows into `FAQPage` schema (same `faqConfig` array). |

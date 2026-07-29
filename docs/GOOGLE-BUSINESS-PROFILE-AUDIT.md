@@ -169,3 +169,21 @@ engagement, and this costs nothing beyond the shoot already required for the web
 4.2★ from 71 reviews stays **off the website**, and `aggregateRating` schema is still not
 emitted. Eight one-star reviews sit behind that average; leading with the number surfaces the
 weakest asset. Revisit after the review-generation programme moves the average.
+
+---
+
+## Update 2026-07-27 — two branches confirmed
+
+The business has **two workshops** on Steve Biko Road (C3 resolved): **1059** (main, Branch
+Manager Christo Vorster) and **1197** (engine shop, Branch Manager Jacques du Randt, postcode
+**0084**). GBP actions arising:
+
+- **Decide the GBP model.** Two separate premises usually warrant **two GBP listings** (one per
+  address), each with the same phone and hours. Confirm with the client whether both should be
+  listed, and whether reviews/traffic currently sit on one profile only.
+- **Postcode conflict (C20) still open** — the site publishes **0084 for 1197** (confirmed) but
+  omits the **1059** postcode because the GBP says **0031** vs onboarding 0084. Resolve 1059's
+  postcode from an authoritative source, then align GBP + schema together.
+- **Attach the website URL** to the GBP (still the highest-traffic single fix — C14).
+- Do **not** invent per-branch phone numbers/hours; both branches share the one number until the
+  client confirms otherwise (HTML showed per-branch WhatsApp numbers — held, C13).

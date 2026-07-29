@@ -190,3 +190,13 @@ Ranking, traffic and conversion tracking are Phase 5. Detail in
 
 Note: the current site runs **Facebook Pixel `353548153124201`** and a GTM reference, with no GA4
 measurement ID found. Confirm what carries over.
+
+---
+
+### Update 2026-07-27 — two locations (local SEO)
+Second workshop confirmed: **1197 Steve Biko Road, 0084** (engine shop) alongside **1059** (main).
+Both are emitted as `AutoRepair` nodes (`branchOf`). Local-SEO actions: decide on **one vs two GBP
+listings** (see `GOOGLE-BUSINESS-PROFILE-AUDIT.md`), resolve the **1059 postcode** (GBP 0031 vs
+onboarding 0084, C20) before publishing it, and keep NAP identical across both branches (shared
+phone/hours). The engine-shop branch strengthens the "Ford / engine reconditioning in Pretoria"
+local intent — still scoped to verified wording only (no Ranger-specialist claim, C21).

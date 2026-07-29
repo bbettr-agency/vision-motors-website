@@ -259,4 +259,13 @@ Client's own site (`visionmotors.co.za` homepage + `/services`) · Google Places
 pretoria.co.za mirror · MechanicBuddy · sayellow.com · yep.co.za · Competition Commission,
 *Guidelines for Competition in the South African Automotive Aftermarket* (effective 1 July 2021)
 · RMI and MIWA published consumer guidance · Wikipedia (Wonderboom South demographics, M5/Steve
-Biko Road renaming) · competitor websites as listed in §7.
+Biko Road renaming) · competitor websites as listed in §7 · **a client-supplied legacy Vision
+Motors HTML page (2026-07-27, audited in `LEGACY-HTML-CONTENT-AUDIT.md`)**.
+
+---
+
+### Update 2026-07-27
+Confirmed: **two branches** (1059 / 1197 Steve Biko Road, 0084) with Branch Managers Christo
+Vorster and Jacques du Randt; a **strip-and-assess diagnostic policy** the site must explain.
+Client decisions: founding year, legal name and bodywork/insurance **held** pending confirmation.
+Unverified HTML claims (5-star RMI, insurer approvals, manager bios) **excluded**.

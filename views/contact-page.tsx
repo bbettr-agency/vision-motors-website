@@ -21,13 +21,14 @@ import BookingForm from "@/components/funnel/booking-form";
 //  For someone actively trying to phone or visit. The single most important
 //  job of this page is that nobody wastes a trip.
 //
-//  ⚠️ TWO-PREMISES HANDLING: the Engine Shop is mentioned as a facility, NOT
-//  presented as a second customer-facing branch, because its address and role
-//  are unconfirmed (FACT-VERIFICATION-REGISTER.md C3). Approved instruction.
+//  ✅ TWO CONFIRMED BRANCHES (2026-07-27, C3 resolved): 1059 (main workshop,
+//  Branch Manager Christo Vorster) and 1197 (engine shop, Branch Manager Jacques
+//  du Randt) — both on Steve Biko Road. Presented as distinct branches, sharing
+//  one phone/email/hours. 1197 postcode 0084 confirmed; 1059 postcode omitted (C20).
 //
-//  ⚠️ The 867 Voortrekkersweg alias IS shown here — long-standing customers
-//  still know the workshop by that name, and it prevents "is this the same
-//  place?" confusion. It is labelled as a former address, never as current.
+//  ⚠️ The 867 Voortrekkersweg alias IS shown on the 1059 branch — long-standing
+//  customers still know it by that name (a former address of the SAME premises,
+//  not the second branch). Labelled as former, never current.
 // ─────────────────────────────────────────────────────────────────────────────
 
 // Maps search by name + street + suburb rather than a pinned coordinate,
@@ -36,6 +37,11 @@ const mapsQuery = encodeURIComponent(
   `${siteConfig.businessName}, ${siteConfig.addressDisplay}`
 );
 const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${mapsQuery}`;
+
+const branchMapsUrl = (streetNumber: string, street: string) =>
+  `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+    `${siteConfig.businessName}, ${streetNumber} ${street}, ${siteConfig.suburb}, ${siteConfig.city}`
+  )}`;
 
 export default function ContactPage() {
   const trail = buildTrail("/contact-us");
@@ -63,22 +69,29 @@ export default function ContactPage() {
               <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-tint text-brand-blue">
                 <MapPin className="h-5 w-5" aria-hidden />
               </span>
-              <h2 className="mt-6 font-display text-lg font-semibold text-brand-ink">
-                Where to find us
+              <span className="mt-6 block text-xs uppercase tracking-[0.14em] text-brand-inkMuted">
+                Branch 01 · Main workshop
+              </span>
+              <h2 className="mt-1 font-display text-lg font-semibold text-brand-ink">
+                1059 Steve Biko Road
               </h2>
               <address className="mt-3 not-italic text-sm leading-[1.75] text-brand-inkSoft">
-                {siteConfig.streetNumber} {siteConfig.street}
-                <br />
                 {siteConfig.suburb}
                 <br />
                 {siteConfig.city}, {siteConfig.region}
               </address>
+              <p className="mt-3 text-sm text-brand-inkSoft">
+                <span className="text-brand-inkMuted">Branch Manager:</span>{" "}
+                <span className="font-semibold text-brand-ink">
+                  Christo Vorster
+                </span>
+              </p>
               <p className="mt-4 text-xs leading-[1.7] text-brand-inkMuted">
                 Steve Biko Road was previously Voortrekkers Road, so you may
-                know us as 867 Voortrekkersweg. It&apos;s the same workshop —
-                our signage still carries both.
+                know this workshop as 867 Voortrekkersweg. It&apos;s the same
+                premises — our signage still carries both.
               </p>
-              <DirectionsLink href={mapsUrl} />
+              <DirectionsLink href={branchMapsUrl("1059", "Steve Biko Road")} />
             </div>
 
             <div className="rounded-2xl border border-brand-line bg-white p-8 shadow-soft">
@@ -146,24 +159,32 @@ export default function ContactPage() {
             </div>
           </div>
 
-          {/*
-            Engine Shop — described as a facility, NOT given an address and NOT
-            presented as a second branch. Address unconfirmed (C3).
-          */}
+          {/* Branch 02 — the engine shop, now a confirmed second branch (C3). */}
           <div className="mt-8 flex items-start gap-4 rounded-2xl border border-brand-line bg-brand-tint/50 p-7">
             <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white text-brand-blue">
               <Navigation className="h-5 w-5" aria-hidden />
             </span>
             <div>
-              <h2 className="font-display text-base font-semibold text-brand-ink">
-                Our engine shop
+              <span className="block text-xs uppercase tracking-[0.14em] text-brand-inkMuted">
+                Branch 02 · Engine shop
+              </span>
+              <h2 className="mt-1 font-display text-base font-semibold text-brand-ink">
+                1197 Steve Biko Road, {siteConfig.suburb}, 0084
               </h2>
               <p className="mt-2 max-w-[65ch] text-sm leading-[1.7] text-brand-inkSoft">
-                Engine reconditioning and rebuild work is carried out at our
-                separate engine shop rather than sub-contracted out. If your
-                vehicle is booked in for engine work, we&apos;ll tell you where
-                to bring it when you book.
+                Our second workshop on Steve Biko Road, a short distance from the
+                main branch, is where engine reconditioning and rebuild work is
+                carried out in-house. Branch Manager:{" "}
+                <span className="font-semibold text-brand-ink">
+                  Jacques du Randt
+                </span>
+                . Same phone, same hours — if you&apos;re booked in for engine
+                work we&apos;ll confirm which branch to bring the vehicle to.
               </p>
+              <DirectionsLink
+                href={branchMapsUrl("1197", "Steve Biko Road")}
+                className="mt-3"
+              />
             </div>
           </div>
         </SectionContainer>

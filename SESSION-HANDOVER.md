@@ -264,3 +264,29 @@ npm install
 npm run dev
 npm run build && npx tsc --noEmit && npm run lint   # all three must pass before any push
 ```
+
+---
+
+## 2026-07-27 — Workshop-Manual redesign + premium navy + second branch + diagnostic policy
+
+- **Visual system v5 "Pretoria Workshop Manual"** shipped (industrial-editorial; cards removed;
+  Barlow Semi Condensed + IBM Plex Mono + Inter). Then **premium-navy refinement (v5.1)**: dark
+  family shifted from charcoal to premium automotive navy centrally via tokens (`ink #0E2338`,
+  `navy #12293F`, `steel #7891B0`); warm paper/concrete lights + amber unchanged.
+- **Header logo** now larger at top, shrinks on scroll (transform-scale + padding transition,
+  reduced-motion safe, no layout shift).
+- **Second workshop confirmed** (C3 resolved): 1197 Steve Biko Road (0084), Branch Manager
+  **Jacques du Randt**; 1059 main, Branch Manager **Christo Vorster** (title HTML-sourced).
+  `site-config.branches`, second `AutoRepair` schema node (`branchOf`), location section, footer,
+  Contact, Booking, booking-form "preferred workshop" field (flows through `lib/lead` → GHL).
+- **Diagnostic strip-and-assess policy** (client-confirmed) — `config/diagnostic-policy-config.ts`,
+  rendered on homepage diagnostics, FAQ (+schema), booking form (note, **no checkbox**), booking
+  page, About, Terms. Booking form still a *request*, not dismantling authorisation.
+- **Legacy HTML audited** — `docs/LEGACY-HTML-CONTENT-AUDIT.md`. Rejected 5-star RMI, insurer
+  approvals, manager bios, VAT badge. **Held** (client decision): founding year, legal name,
+  bodywork/insurance.
+- **Deploy:** v5 was promoted to Vercel production (`vision-motors-website.vercel.app`, commit
+  766f191) with approval. `visionmotors.co.za` remains disconnected. This v5.1 batch deploys to
+  **preview only** unless production promotion is approved.
+- **Open items:** C1 warranty, C2 accreditation numbers, C4 founding year, C6 legal name, C20
+  1059 postcode vs GBP 0031, C13 WhatsApp, bodywork/insurance confirmation, B2 mailbox.

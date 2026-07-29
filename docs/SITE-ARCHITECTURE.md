@@ -282,3 +282,13 @@ render cleanly in a header at 2×.
 
 **The photoshoot is the critical path.** It gates Phase 3 and hard-blocks Phase 4. I recommend
 booking it now, in parallel with Phase 2, rather than treating it as a Phase 4 task.
+
+---
+
+### Update 2026-07-27 — two branches
+The business is now modelled as **one organisation, two workshops** on Steve Biko Road: **1059**
+(main, Christo Vorster) and **1197** (engine shop, 0084, Jacques du Randt). Both surface on the
+homepage location section, footer, Contact and Booking, and as two `AutoRepair` schema nodes
+(`branchOf`). Booking form carries an optional "preferred workshop" field. A single canonical
+diagnostic strip-and-assess policy (`config/diagnostic-policy-config.ts`) is threaded through
+diagnostics, FAQ, booking, About and Terms. See `LEGACY-HTML-CONTENT-AUDIT.md`.
