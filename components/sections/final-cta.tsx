@@ -23,7 +23,7 @@ export default function FinalCta() {
   return (
     <section
       id="book"
-      className="relative overflow-hidden border-t border-white/10 bg-brand-ink px-6 py-24 md:py-32 lg:px-8"
+      className="relative mx-2.5 overflow-hidden rounded-panel bg-brand-ink px-6 py-24 shadow-panel sm:mx-4 md:py-32 lg:mx-6 lg:rounded-panel-lg lg:px-8"
     >
       <span
         aria-hidden

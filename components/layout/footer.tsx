@@ -15,7 +15,7 @@ import Logo from "@/components/ui/logo";
  */
 export default function Footer() {
   return (
-    <footer className="border-t border-white/10 bg-brand-ink px-6 pb-28 pt-16 md:pb-16 lg:px-8">
+    <footer className="mx-2.5 mb-2.5 mt-2.5 overflow-clip rounded-panel bg-brand-ink px-6 pb-28 pt-16 shadow-panel sm:mx-4 sm:mb-4 sm:mt-4 md:pb-16 lg:mx-6 lg:mb-6 lg:mt-6 lg:rounded-panel-lg lg:px-8">
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
           {/* Brand + contact */}

@@ -37,7 +37,10 @@ export default function Homepage() {
         container, so the hero's `position: sticky` left column works. Using
         `overflow-hidden` here silently breaks sticky for every descendant.
       */}
-      <main id="main" className="overflow-x-clip bg-brand-ink">
+      <main
+        id="main"
+        className="space-y-2.5 overflow-x-clip bg-brand-bluegrey pt-2.5 sm:space-y-4 sm:pt-4 lg:space-y-6 lg:pt-6"
+      >
         {/*
           SECTION ORDER — reviewed section by section in Phase 2.
           Rhythm: dark anchor → light → light → dark → light → dark → light →

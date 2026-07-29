@@ -76,11 +76,13 @@ const config: Config = {
         // IBM Plex Mono — technical labels, index numerals, spec captions.
         mono: ["var(--font-mono)", "ui-monospace", "monospace"],
       },
-      // Sharper shape language — squared, not soft. (Tailwind `rounded-md`
-      // default 0.375rem is the button radius; buttons drop the pill.)
+      // Shape language: sharp for controls/insets, but MAJOR SECTIONS sit in
+      // large rounded PANELS floating on a warm page (v5.2, approved 2026-07-29).
       borderRadius: {
         "2xl": "0.375rem",
         "3xl": "0.5rem",
+        panel: "1.75rem", // 28px — section panels on small screens
+        "panel-lg": "2.5rem", // 40px — section panels on large screens
       },
       backgroundImage: {
         // Restrained warm vignette for the charcoal hero — a faint amber edge,
@@ -95,12 +97,13 @@ const config: Config = {
           "linear-gradient(rgba(21,24,28,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(21,24,28,0.05) 1px, transparent 1px)",
       },
       boxShadow: {
-        // Restrained — the new system separates with hairlines + surface
-        // contrast, not drop shadows. `form` is the one real lift, reserved for
-        // the booking panel + sticky bars.
         accent: "0 14px 34px -18px rgba(197,138,50,0.45)", // amber lift — CTA only
         form: "0 24px 60px -30px rgba(6,10,14,0.7)",
         ink: "0 30px 80px -30px rgba(6,10,14,0.85)",
+        // Soft lift for the floating section panels on the warm page — the
+        // "beautifully crafted panel" depth. Cool navy-tinted, never heavy.
+        panel:
+          "0 30px 60px -34px rgba(8,20,34,0.42), 0 10px 24px -16px rgba(8,20,34,0.22)",
       },
       keyframes: {
         float: {

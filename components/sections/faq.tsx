@@ -24,7 +24,7 @@ export default function Faq() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <SectionContainer id="faq" className="bg-brand-bluegrey">
+    <SectionContainer id="faq" className="bg-brand-cream">
       <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
         <div className="lg:col-span-4">
           <SectionHeading

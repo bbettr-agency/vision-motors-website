@@ -52,7 +52,7 @@ export default function ContactPage() {
       <JsonLd data={breadcrumbSchema(trail)} />
       <Header />
 
-      <main id="main" className="overflow-hidden">
+      <main id="main" className="space-y-2.5 overflow-x-clip bg-brand-bluegrey pt-2.5 sm:space-y-4 sm:pt-4 lg:space-y-6 lg:pt-6">
         <PageHero
           trail={trail}
           eyebrow="Get in touch"
@@ -190,7 +190,7 @@ export default function ContactPage() {
         </SectionContainer>
 
         {/* Map */}
-        <section aria-labelledby="map-heading" className="bg-brand-bluegrey px-6 py-16 md:py-20 lg:px-8">
+        <section aria-labelledby="map-heading" className="mx-2.5 overflow-clip rounded-panel bg-brand-cream px-6 py-16 shadow-panel sm:mx-4 md:py-20 lg:mx-6 lg:rounded-panel-lg lg:px-8">
           <div className="mx-auto max-w-7xl">
             <h2
               id="map-heading"

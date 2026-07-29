@@ -33,7 +33,7 @@ export default function ThankYouPage() {
 
       <main
         id="main"
-        className="flex min-h-[80vh] items-center justify-center bg-brand-navy px-6 py-20 lg:px-8"
+        className="mx-2.5 my-2.5 flex min-h-[80vh] items-center justify-center overflow-clip rounded-panel bg-brand-navy px-6 py-20 shadow-panel sm:mx-4 sm:my-4 lg:mx-6 lg:my-6 lg:rounded-panel-lg lg:px-8"
       >
         <div className="mx-auto max-w-lg text-center">
           <CheckCircle2
