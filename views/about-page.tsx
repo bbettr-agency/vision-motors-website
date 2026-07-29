@@ -59,7 +59,7 @@ export default function AboutPage() {
       <JsonLd data={breadcrumbSchema(trail)} />
       <Header />
 
-      <main id="main" className="space-y-2.5 overflow-x-clip bg-brand-bluegrey pt-2.5 sm:space-y-4 sm:pt-4 lg:space-y-6 lg:pt-6">
+      <main id="main" className="overflow-hidden">
         <PageHero
           trail={trail}
           eyebrow="About us"
@@ -161,7 +161,7 @@ export default function AboutPage() {
         </SectionContainer>
 
         {/* Team — architecture prepared, content awaiting confirmation */}
-        <SectionContainer className="bg-brand-cream">
+        <SectionContainer className="bg-brand-bluegrey">
           <SectionHeading
             tone="light"
             eyebrow="The team"

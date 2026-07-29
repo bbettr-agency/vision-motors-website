@@ -23,7 +23,7 @@ import Reveal from "@/components/ui/reveal";
 
 export default function ServicesGrid() {
   return (
-    <SectionContainer id="services" className="bg-brand-cream">
+    <SectionContainer id="services" className="bg-brand-bluegrey">
       <SectionHeading
         tone="light"
         eyebrow="Capabilities"

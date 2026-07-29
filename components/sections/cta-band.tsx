@@ -19,7 +19,7 @@ export default function CtaBand({
   body?: string;
 }) {
   return (
-    <section className="relative mx-2.5 overflow-hidden rounded-panel bg-brand-ink px-6 py-20 shadow-panel sm:mx-4 md:py-24 lg:mx-6 lg:rounded-panel-lg lg:px-8">
+    <section className="relative overflow-hidden border-t border-white/10 bg-brand-ink px-6 py-20 md:py-24 lg:px-8">
       <span
         aria-hidden
         className="pointer-events-none absolute inset-0 bg-grid-dark bg-[length:44px_44px] opacity-30 [mask-image:radial-gradient(ellipse_70%_60%_at_50%_0%,black,transparent_75%)]"

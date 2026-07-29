@@ -119,7 +119,7 @@ export default function ServicesPage() {
       <JsonLd data={breadcrumbSchema(trail)} />
       <Header />
 
-      <main id="main" className="space-y-2.5 overflow-x-clip bg-brand-bluegrey pt-2.5 sm:space-y-4 sm:pt-4 lg:space-y-6 lg:pt-6">
+      <main id="main" className="overflow-hidden">
         <PageHero
           trail={trail}
           eyebrow="What we do"
@@ -243,7 +243,7 @@ export default function ServicesPage() {
         </SectionContainer>
 
         {/* Warranty — restrained wording only. No duration, no mileage. */}
-        <SectionContainer className="bg-brand-cream">
+        <SectionContainer className="bg-brand-bluegrey">
           <div className="mx-auto max-w-3xl text-center">
             <SectionHeading
               tone="light"

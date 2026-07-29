@@ -116,7 +116,7 @@ export default function ServicePageTemplate(props: ServicePageProps) {
         </SectionContainer>
 
         {/* What's involved */}
-        <SectionContainer className="bg-brand-cream">
+        <SectionContainer className="bg-brand-bluegrey">
           <div className="grid gap-14 lg:grid-cols-2 lg:gap-16">
             <div>
               <SectionHeading
@@ -191,7 +191,7 @@ export default function ServicePageTemplate(props: ServicePageProps) {
 
         {/* Related — 2-3 only, never all eight */}
         {related.length > 0 && (
-          <SectionContainer className="bg-brand-cream">
+          <SectionContainer className="bg-brand-bluegrey">
             <SectionHeading
               tone="light"
               eyebrow="Related work"

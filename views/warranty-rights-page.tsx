@@ -50,7 +50,7 @@ export default function WarrantyRightsPage() {
       <JsonLd data={articleSchema} />
       <Header />
 
-      <main id="main" className="space-y-2.5 overflow-x-clip bg-brand-bluegrey pt-2.5 sm:space-y-4 sm:pt-4 lg:space-y-6 lg:pt-6">
+      <main id="main" className="overflow-hidden">
         <PageHero
           trail={trail}
           eyebrow={rightsConfig.eyebrow}

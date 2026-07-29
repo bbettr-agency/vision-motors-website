@@ -45,10 +45,7 @@ export default function Hero() {
   const photo = imagesConfig.hero;
 
   return (
-    <section
-      id="top"
-      className="relative mx-2.5 overflow-hidden rounded-panel bg-brand-ink pt-28 shadow-panel sm:mx-4 md:pt-32 lg:mx-6 lg:rounded-panel-lg"
-    >
+    <section id="top" className="relative overflow-hidden bg-brand-ink pt-28 md:pt-32">
       {/* Faint service-manual grid + warm vignette — texture, not decoration. */}
       <span
         aria-hidden

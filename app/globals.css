@@ -18,11 +18,10 @@ html {
 }
 
 body {
-  /* Warm concrete — the PAGE background that shows around each floating section
-     panel (v5.2). Sections are rounded navy/paper panels on top of this. Shows
-     during load and on overscroll. */
-  background: #e4dfd5;
-  color: #0e2338;
+  /* Premium automotive navy — the primary brand dark. Shows during load and on
+     overscroll. */
+  background: #0e2338;
+  color: #ffffff;
   font-family: var(--font-body);
   overflow-x: hidden;
 }
