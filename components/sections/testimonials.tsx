@@ -21,7 +21,10 @@ export default function Testimonials() {
   const [featured, ...supporting] = reviewsConfig;
 
   return (
-    <SectionContainer id="reviews" className="bg-brand-navy">
+    <SectionContainer
+      id="reviews"
+      className="rounded-[1.5rem] bg-brand-navy md:rounded-[2.5rem]"
+    >
       <SectionHeading
         eyebrow="In their words"
         title="What customers actually said"

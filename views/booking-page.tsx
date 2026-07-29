@@ -142,7 +142,7 @@ export default function BookingPage() {
         </SectionContainer>
       </main>
 
-      <Footer />
+      <Footer roundedTop />
       <StickyMobileBar />
     </>
   );

@@ -62,7 +62,7 @@ export default function LegalShell({
         </SectionContainer>
       </main>
 
-      <Footer />
+      <Footer roundedTop />
       <StickyMobileBar />
     </>
   );

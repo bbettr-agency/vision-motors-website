@@ -113,7 +113,7 @@ export default function AboutPage() {
         </SectionContainer>
 
         {/* How we work — the approval gate, the highest-ranked objection */}
-        <SectionContainer className="bg-brand-navy">
+        <SectionContainer className="rounded-[1.5rem] bg-brand-navy md:rounded-[2.5rem]">
           <SectionHeading
             eyebrow="How we work"
             title="You'll know what's wrong before you spend anything"

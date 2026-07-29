@@ -4,6 +4,7 @@ import { Mail, MapPin, Phone } from "lucide-react";
 import { navRoutes, serviceRoutes, utilityRoutes } from "@/config/routes";
 import { siteConfig } from "@/config/site-config";
 import Logo from "@/components/ui/logo";
+import { cn } from "@/utils/cn";
 
 /**
  * Global footer.
@@ -12,10 +13,20 @@ import Logo from "@/components/ui/logo";
  *
  * Service links point at planned Phase 3 routes. Those that are not yet `live`
  * render as plain text rather than dead links — nothing links to a 404.
+ *
+ * `roundedTop` rounds the footer's top corners — set it on pages where the
+ * footer follows a LIGHT section (so the navy curves into the cream canvas).
+ * When the footer follows another navy section (final CTA / cta-band) it stays
+ * square so the two navy blocks read as one chapter.
  */
-export default function Footer() {
+export default function Footer({ roundedTop = false }: { roundedTop?: boolean }) {
   return (
-    <footer className="border-t border-white/10 bg-brand-ink px-6 pb-28 pt-16 md:pb-16 lg:px-8">
+    <footer
+      className={cn(
+        "border-t border-white/10 bg-brand-ink px-6 pb-28 pt-16 md:pb-16 lg:px-8",
+        roundedTop && "rounded-t-[1.5rem] md:rounded-t-[2.5rem]"
+      )}
+    >
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
           {/* Brand + contact */}

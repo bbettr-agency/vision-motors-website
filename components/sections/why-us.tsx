@@ -15,7 +15,7 @@ import Reveal from "@/components/ui/reveal";
  */
 export default function WhyUs() {
   return (
-    <SectionContainer className="bg-brand-ink">
+    <SectionContainer className="rounded-[1.5rem] bg-brand-ink md:rounded-[2.5rem]">
       <SectionHeading
         eyebrow="Why Vision Motors"
         title="No surprises on the invoice"

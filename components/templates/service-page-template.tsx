@@ -150,7 +150,7 @@ export default function ServicePageTemplate(props: ServicePageProps) {
         </SectionContainer>
 
         {/* Unique angle — the reason this page exists */}
-        <SectionContainer className="bg-brand-navy">
+        <SectionContainer className="rounded-[1.5rem] bg-brand-navy md:rounded-[2.5rem]">
           <div className="mx-auto max-w-3xl">
             <SectionHeading
               eyebrow="Why us for this"
