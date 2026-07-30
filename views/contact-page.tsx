@@ -238,7 +238,7 @@ export default function ContactPage() {
         </SectionContainer>
       </main>
 
-      <Footer roundedTop />
+      <Footer />
       <StickyMobileBar />
     </>
   );

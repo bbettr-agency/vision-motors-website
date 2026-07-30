@@ -29,7 +29,7 @@ export default function PageHero({
   children?: ReactNode;
 }) {
   return (
-    <section className="relative overflow-hidden rounded-b-[1.5rem] bg-brand-ink px-6 pb-16 pt-28 md:rounded-b-[2.5rem] md:pb-20 md:pt-36 lg:px-8">
+    <section className="relative overflow-hidden bg-brand-ink px-6 pb-16 pt-28 md:pb-20 md:pt-36 lg:px-8">
       <span
         aria-hidden
         className="pointer-events-none absolute inset-0 bg-grid-dark bg-[length:44px_44px] opacity-40 [mask-image:radial-gradient(ellipse_80%_60%_at_30%_0%,black,transparent_75%)]"

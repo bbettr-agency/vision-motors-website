@@ -20,8 +20,8 @@ html {
 body {
   /* Premium automotive navy — the primary brand dark. Shows during load and on
      overscroll. */
-  background: #f3efe7;
-  color: #0e2338;
+  background: #0e2338;
+  color: #ffffff;
   font-family: var(--font-body);
   overflow-x: hidden;
 }

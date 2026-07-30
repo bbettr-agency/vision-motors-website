@@ -17,7 +17,7 @@ export default function TrustStrip() {
   return (
     <section
       aria-label="Why customers use Vision Motors"
-      className="rounded-b-[1.5rem] border-y border-white/10 bg-brand-ink px-6 py-10 md:py-12 md:rounded-b-[2.5rem] lg:px-8"
+      className="border-y border-white/10 bg-brand-ink px-6 py-10 md:py-12 lg:px-8"
     >
       <div className="mx-auto grid max-w-7xl gap-x-10 gap-y-8 sm:grid-cols-2 lg:grid-cols-4 lg:divide-x lg:divide-white/10">
         {trustConfig.map((item, index) => (

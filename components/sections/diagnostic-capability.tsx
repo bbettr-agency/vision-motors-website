@@ -43,10 +43,7 @@ const capabilityPoints = [
 
 export default function DiagnosticCapability() {
   return (
-    <SectionContainer
-      id="diagnostics"
-      className="rounded-[1.5rem] bg-brand-navy md:rounded-[2.5rem]"
-    >
+    <SectionContainer id="diagnostics" className="bg-brand-navy">
       <div className="grid items-start gap-14 lg:grid-cols-2 lg:gap-16">
         <div>
           <SectionHeading

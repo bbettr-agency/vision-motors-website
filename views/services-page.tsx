@@ -201,7 +201,7 @@ export default function ServicesPage() {
         ))}
 
         {/* Makes — factual, from the client's own signage. Never "approved". */}
-        <SectionContainer className="rounded-[1.5rem] bg-brand-navy md:rounded-[2.5rem]">
+        <SectionContainer className="bg-brand-navy">
           <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-5">
               <SectionHeading
