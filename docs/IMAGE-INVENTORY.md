@@ -24,7 +24,8 @@ diagnostic session, or a completed repair.
 | 4 | `client-assets/team/team-khaki-shirt-163x275.jpg` | 163×275 | Team portrait | ✅ Real | ⚠️ Very low | High | Avatar only (≤80px). Name illegible. |
 | 5 | `client-assets/team/team-black-polo-a-184x276.jpg` | 184×276 | Team portrait | ✅ Real | ⚠️ Very low | High | Avatar only. |
 | 6 | `client-assets/team/team-black-polo-b-181x271.jpg` | 181×271 | Team portrait | ✅ Real | ⚠️ Very low | High | Avatar only. |
-| 7 | `client-assets/logos/vision-motors-logo-indigo-RASTER-606x251.jpg` | 606×251 | Branding | ✅ Real | ⚠️ Raster, JPEG artefacts | n/a | **Not usable in a header at 2×.** Vector needed. |
+| 7 | `client-assets/logos/vision-motors-logo-indigo-RASTER-606x251.jpg` | 606×251 | Branding | ✅ Real | ⚠️ Raster, JPEG artefacts | n/a | Superseded by #7a below for on-site use. |
+| 7a | `public/images/vision-motors-logo-white.png` + `…-logo-indigo.png` | 503×193 | Branding | ✅ Real | Good (transparent, trimmed) | High | **IN USE — the official wordmark, header + footer.** Generated 2026-08-04 from the client PNG (`image001.png`): reversed to **white** for navy surfaces (client-approved fit) + kept in brand **indigo #290F74** for light surfaces, both with luminance-derived anti-aliased alpha (no white box/halo). Only ever downscaled (header/footer ~48px). **Vector still wanted (C5)** for large-size crispness. |
 | 8 | `client-assets/logos/rmi-logo-270x148.png` | 270×148 | Accreditation | ✅ Real file | Low | — | ⛔ **Blocked** — membership unverified (`FACT-VERIFICATION-REGISTER.md` C2) |
 | 9 | `client-assets/logos/miwa-logo-270x148.png` | 270×148 | Accreditation | ✅ Real file | Low | — | ⛔ **Blocked** — same |
 | — | `public/images/vision-motors-og-image.jpg` | 1200×630 | Social | Derived from #1 | Good | — | In use. Replace when #1 is reshot. |

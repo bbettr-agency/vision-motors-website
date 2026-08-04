@@ -67,7 +67,7 @@ export default function Header() {
               scrolled ? "scale-[0.82]" : "scale-100"
             )}
           >
-            <Logo />
+            <Logo priority />
           </span>
         </Link>
 
