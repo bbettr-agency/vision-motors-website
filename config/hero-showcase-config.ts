@@ -35,59 +35,56 @@ export type HeroShowcaseItem = {
   slug: string;
 };
 
+// Names + blurbs are DISPLAY COPY for the hero index only (this config is
+// imported nowhere else). Kept terse and customer-outcome for the image-free
+// motion hero (2026-08-04) — no service FACT changed, no Ranger-specialist
+// wording restored.
 export const heroShowcase: HeroShowcaseItem[] = [
   {
-    name: "Vehicle Diagnostics & Fault Finding",
-    blurb:
-      "The warning lights and intermittent faults other workshops couldn't pin down. We find the cause before we quote.",
+    name: "Diagnostics & Fault Finding",
+    blurb: "Find the cause before replacing parts.",
     icon: "Gauge",
     slug: "/vehicle-diagnostics-pretoria",
   },
   {
-    name: "Engine Reconditioning & Repairs",
-    blurb:
-      "Full rebuilds and reconditioning in our own engine shop — not sent away and marked up.",
+    name: "Engine Reconditioning",
+    blurb: "Internal engine assessment, repair and rebuild.",
     icon: "Cog",
     slug: "/engine-reconditioning-pretoria",
   },
   {
     name: "Gearbox Repairs",
-    blurb:
-      "Automatic and manual gearboxes repaired and overhauled, including slipping and jerking faults.",
+    blurb: "Automatic and manual gearbox diagnosis and repair.",
     icon: "Settings2",
     slug: "/gearbox-repairs-pretoria",
   },
   {
     name: "DSG & Mechatronic Repairs",
-    blurb:
-      "Dual-clutch gearboxes and mechatronic units — the electronic control work most workshops send away.",
+    blurb: "Dual-clutch and mechatronic unit repairs.",
     icon: "CircuitBoard",
     slug: "/dsg-mechatronic-repairs-pretoria",
   },
   {
     name: "Driveline Repairs",
-    blurb:
-      "Differentials, transfer cases and propshafts. The driveline work that keeps bakkies and 4x4s going.",
+    blurb: "Diffs, transfer cases and propshafts.",
     icon: "Disc3",
     slug: "/driveline-repairs-pretoria",
   },
   {
     name: "Car Servicing & Maintenance",
-    blurb:
-      "Routine servicing for cars, bakkies and commercial vehicles, petrol and diesel.",
+    blurb: "Servicing for cars, bakkies and commercial vehicles.",
     icon: "Car",
     slug: "/car-service-pretoria",
   },
   {
     name: "Brakes, Clutches & Mechanical Repairs",
-    blurb:
-      "Brakes, clutches and general mechanical repairs — diagnosed properly before anything is replaced.",
+    blurb: "Brakes, clutches and general mechanical repairs.",
     icon: "CircleGauge",
     slug: "/brake-clutch-repairs-pretoria",
   },
   {
     name: "Ford Engine Work",
-    blurb: "Ford engine work, done in our own engine shop.",
+    blurb: "Ford engine work in our own engine shop.",
     icon: "Wrench",
     slug: "/ford-ranger-engine-specialists-pretoria",
   },
