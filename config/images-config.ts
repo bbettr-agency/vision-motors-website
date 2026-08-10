@@ -29,22 +29,6 @@ export const imagesConfig: Record<string, ImageSlot> = {
     priority: 1,
   },
 
-  // ⚠️ STOCK, and DECORATIVE. Client-supplied oil-service image used only as an
-  // atmospheric hero background under a heavy navy overlay — never captioned or
-  // presented as Vision Motors' own workshop/staff, and rendered with alt="" so
-  // it makes no claim and adds no screen-reader noise.
-  // TODO(client): replace with a real Vision Motors servicing/oil-change photo
-  //               from the photoshoot. See docs/IMAGE-INVENTORY.md.
-  heroBackground: {
-    id: "heroBackground",
-    src: "/images/vision-motors-oil-service-pretoria.jpg",
-    alt: "", // decorative
-    aspect: "2/1",
-    shotBrief:
-      "REPLACE WITH: a real Vision Motors servicing shot — oil change or under-bonnet work in the actual workshop, warm light. Wide 2:1.",
-    priority: 1,
-  },
-
   // ✅ REAL. Engine blocks stripped for reconditioning on the bench in the
   // engine shop — the flagship proof band. Landscape, sits in wide fill plates.
   engineRoom: {
