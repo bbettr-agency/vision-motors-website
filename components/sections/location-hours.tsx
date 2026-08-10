@@ -45,10 +45,10 @@ export default function LocationHours() {
           </div>
         </div>
 
-        {/* Exterior image plate — the physical destination. */}
-        <div className="relative h-[38vh] min-h-[260px] w-full">
+        {/* The customer-facing space — the workshop you walk into. */}
+        <div className="relative h-[38vh] min-h-[260px] w-full overflow-hidden rounded-2xl">
           <ImageSlotView
-            slot={imagesConfig.exterior}
+            slot={imagesConfig.waitingArea}
             tone="light"
             fill
             sizes="(max-width: 1024px) 100vw, 45vw"
@@ -63,7 +63,7 @@ export default function LocationHours() {
             <h3 className="font-mono text-xs font-medium uppercase tracking-[0.28em] text-brand-inkMuted">
               Branch {String(i + 1).padStart(2, "0")} · {branch.label}
             </h3>
-            <address className="mt-4 not-italic font-display text-lg font-semibold uppercase leading-tight tracking-tight text-brand-ink">
+            <address className="mt-4 not-italic font-display text-lg font-semibold leading-tight tracking-tight text-brand-ink">
               {branch.streetNumber} {branch.street}
               <br />
               {branch.suburb}, {branch.city}
@@ -89,7 +89,7 @@ export default function LocationHours() {
           <dl className="mt-4 space-y-2 text-sm text-brand-inkSoft">
             <div className="flex justify-between gap-3 border-b border-brand-ink/10 pb-2">
               <dt>Mon – Fri</dt>
-              <dd className="font-display font-bold uppercase tracking-tight text-brand-ink">
+              <dd className="font-display font-bold tracking-tight text-brand-ink">
                 07:30 – 17:00
               </dd>
             </div>

@@ -9,6 +9,8 @@ import StickyMobileBar from "@/components/layout/sticky-mobile-bar";
 import PageHero from "@/components/layout/page-hero";
 import SectionContainer from "@/components/layout/section-container";
 import SectionHeading from "@/components/ui/section-heading";
+import ImageSlotView from "@/components/ui/image-slot";
+import { imagesConfig } from "@/config/images-config";
 import CallButton from "@/components/ui/call-button";
 import JsonLd from "@/components/ui/json-ld";
 import SkipLink from "@/components/layout/skip-link";
@@ -61,6 +63,15 @@ export default function ContactPage() {
         >
           <CallButton location="contact_page" variant="brass" showNumber />
         </PageHero>
+
+        {/* Real people — the team you'll actually speak to. */}
+        <div className="relative aspect-[16/10] w-full overflow-hidden sm:aspect-[2.4/1]">
+          <ImageSlotView
+            slot={imagesConfig.techniciansDiagnosis}
+            fill
+            sizes="100vw"
+          />
+        </div>
 
         {/* Details */}
         <SectionContainer className="bg-brand-cream">

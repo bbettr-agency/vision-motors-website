@@ -56,7 +56,7 @@ export default function SymptomBand() {
                 name={symptom.icon}
                 className="h-5 w-5 shrink-0 text-brand-steel transition-colors duration-300 group-hover:text-brand-cta"
               />
-              <span className="flex-1 font-display text-lg font-semibold uppercase tracking-tight text-brand-ink sm:text-xl">
+              <span className="flex-1 font-display text-lg font-semibold tracking-tight text-brand-ink sm:text-xl">
                 {symptom.label}
               </span>
               <ArrowRight

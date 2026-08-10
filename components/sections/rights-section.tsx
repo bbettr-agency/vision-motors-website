@@ -48,7 +48,7 @@ export default function RightsSection() {
                     {String(index + 1).padStart(2, "0")}
                   </span>
                   <div>
-                    <h3 className="font-display text-lg font-bold uppercase leading-tight tracking-tight text-brand-ink">
+                    <h3 className="font-display text-lg font-bold leading-tight tracking-tight text-brand-ink">
                       {point.title}
                     </h3>
                     <p className="mt-2.5 text-sm leading-[1.7] text-brand-inkSoft">
@@ -72,7 +72,7 @@ export default function RightsSection() {
           >
             <Info className="mt-0.5 h-5 w-5 shrink-0 text-brand-inkSoft" aria-hidden />
             <div>
-              <h3 className="font-display text-base font-bold uppercase tracking-tight text-brand-ink">
+              <h3 className="font-display text-base font-bold tracking-tight text-brand-ink">
                 {rightsConfig.caveat.title}
               </h3>
               <p className="mt-2 text-sm leading-[1.7] text-brand-inkSoft">

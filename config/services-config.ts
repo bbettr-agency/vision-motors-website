@@ -123,3 +123,95 @@ export const servicesConfig: ServiceItem[] = [
 
 export const specialistServices = servicesConfig.filter((s) => s.tier === "specialist");
 export const everydayServices = servicesConfig.filter((s) => s.tier === "everyday");
+
+// ─────────────────────────────────────────────────────────────────────────────
+//  SERVICE GROUPS — the homepage "what can they repair?" answer.
+//
+//  The eight verified capabilities above, grouped into four plain-language
+//  buckets a normal car owner can scan. Each group states what it covers, the
+//  everyday reasons someone needs it, and the specific work we do. Nothing new
+//  or unsupported is introduced — every item traces back to servicesConfig and
+//  the verified service architecture (config/routes.ts serviceRoutes).
+// ─────────────────────────────────────────────────────────────────────────────
+export type ServiceGroup = {
+  key: string;
+  title: string;
+  icon: string;
+  /** One line — what this group covers. */
+  covers: string;
+  /** Everyday, customer-language reasons someone books this. */
+  reasons: string[];
+  /** The specific work we do (capabilities). */
+  work: string[];
+};
+
+export const serviceGroups: ServiceGroup[] = [
+  {
+    key: "diagnostics",
+    title: "Diagnostics & Fault Finding",
+    icon: "Gauge",
+    covers:
+      "Warning lights, intermittent faults and problems another workshop has already looked at.",
+    reasons: [
+      "Check-engine or warning light on",
+      "A fault that comes and goes",
+      "A second opinion after another quote",
+    ],
+    work: [
+      "Electronic diagnostics",
+      "Drivability & running faults",
+      "Second-opinion diagnosis",
+    ],
+  },
+  {
+    key: "engines",
+    title: "Engines",
+    icon: "Cog",
+    covers:
+      "Engine repairs and full reconditioning, done in our own engine shop rather than sent away.",
+    reasons: [
+      "Knocking, smoking or overheating",
+      "High oil use or low power",
+      "A quoted engine replacement",
+    ],
+    work: [
+      "Complete engine rebuilds",
+      "Reconditioned engines supplied",
+      "Rod resizing & line boring",
+    ],
+  },
+  {
+    key: "gearboxes",
+    title: "Gearboxes & Driveline",
+    icon: "Settings2",
+    covers:
+      "Automatic, manual, DSG / mechatronic and driveline work most workshops send away.",
+    reasons: [
+      "Slipping, jerking or harsh shifts",
+      "Gearbox stuck in limp mode",
+      "Noise from the diff or transfer case",
+    ],
+    work: [
+      "Automatic & manual overhauls",
+      "DSG & mechatronic repair",
+      "Diffs, transfer cases & propshafts",
+    ],
+  },
+  {
+    key: "servicing",
+    title: "Servicing & Mechanical Repairs",
+    icon: "Wrench",
+    covers:
+      "Routine servicing and everyday mechanical repairs for all makes and models.",
+    reasons: [
+      "A service is due",
+      "Brakes feeling soft or noisy",
+      "A cambelt or clutch at end of life",
+    ],
+    work: [
+      "Vehicle servicing",
+      "Brakes, clutches & belts",
+      "Oil changes & fuel-system cleaning",
+    ],
+  },
+];

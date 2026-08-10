@@ -92,7 +92,7 @@ export default function FinalCta() {
 
         <Reveal className="lg:col-span-7">
           <div className="border border-white/12 bg-white p-7 shadow-form sm:p-9">
-            <h3 className="font-display text-2xl font-bold uppercase leading-tight tracking-tight text-brand-ink sm:text-3xl">
+            <h3 className="font-display text-2xl font-bold leading-tight tracking-tight text-brand-ink sm:text-3xl">
               {formConfig.headings.title}
             </h3>
             <p className="mt-2 text-sm leading-[1.7] text-brand-inkSoft">

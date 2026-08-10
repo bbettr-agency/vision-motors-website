@@ -11,6 +11,8 @@ import StickyMobileBar from "@/components/layout/sticky-mobile-bar";
 import PageHero from "@/components/layout/page-hero";
 import SectionContainer from "@/components/layout/section-container";
 import SectionHeading from "@/components/ui/section-heading";
+import ImageSlotView from "@/components/ui/image-slot";
+import { imagesConfig } from "@/config/images-config";
 import Icon from "@/components/ui/icon";
 import CtaBand from "@/components/sections/cta-band";
 import JsonLd from "@/components/ui/json-ld";
@@ -133,6 +135,11 @@ export default function ServicesPage() {
             </>
           }
         />
+
+        {/* Editorial workshop image — breaks the technical copy with real proof. */}
+        <div className="relative aspect-[16/10] w-full overflow-hidden sm:aspect-[2.4/1]">
+          <ImageSlotView slot={imagesConfig.engineRoom} fill sizes="100vw" />
+        </div>
 
         {groups.map((group, groupIndex) => (
           <SectionContainer

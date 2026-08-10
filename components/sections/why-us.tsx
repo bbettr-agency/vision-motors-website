@@ -1,10 +1,8 @@
 "use client";
 
 import { whyUsConfig } from "@/config/trust-config";
-import { imagesConfig } from "@/config/images-config";
 import SectionContainer from "@/components/layout/section-container";
 import SectionHeading from "@/components/ui/section-heading";
-import ImageSlotView from "@/components/ui/image-slot";
 import Icon from "@/components/ui/icon";
 import Reveal from "@/components/ui/reveal";
 
@@ -41,7 +39,7 @@ export default function WhyUs() {
               <Icon name={item.icon} className="h-5 w-5 text-brand-steel" />
             </div>
 
-            <h3 className="mt-6 font-display text-xl font-bold uppercase leading-[0.98] tracking-tight text-white">
+            <h3 className="mt-6 font-display text-xl font-bold leading-[0.98] tracking-tight text-white">
               {item.title}
             </h3>
             <p className="mt-3.5 text-sm leading-[1.75] text-brand-bone">
@@ -50,17 +48,6 @@ export default function WhyUs() {
           </Reveal>
         ))}
       </div>
-
-      {/* Editorial workshop band — quiet proof that this is a real operation. */}
-      <Reveal className="mt-16">
-        <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl sm:aspect-[5/2]">
-          <ImageSlotView
-            slot={imagesConfig.vehicleCare}
-            fill
-            sizes="100vw"
-          />
-        </div>
-      </Reveal>
     </SectionContainer>
   );
 }

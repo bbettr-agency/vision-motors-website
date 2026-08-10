@@ -64,7 +64,7 @@ export default function DiagnosticCapability() {
                 delay={index * 0.08}
                 className="border-l-2 border-brand-steel/50 pl-6"
               >
-                <h3 className="font-display text-lg font-bold uppercase leading-tight tracking-tight text-white">
+                <h3 className="font-display text-lg font-bold leading-tight tracking-tight text-white">
                   {point.title}
                 </h3>
                 <p className="mt-2.5 max-w-[55ch] text-sm leading-[1.75] text-brand-bone">

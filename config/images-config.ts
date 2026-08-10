@@ -137,6 +137,26 @@ export const imagesConfig: Record<string, ImageSlot> = {
     shotBrief: "The customer waiting lounge — clean, comfortable, real.",
     priority: 8,
   },
+
+  // ✅ REAL. Two technicians diagnosing a vehicle together (branded uniform).
+  techniciansDiagnosis: {
+    id: "techniciansDiagnosis",
+    src: "/images/vision-motors-technicians-diagnosis-pretoria.jpg",
+    alt: "Two Vision Motors technicians diagnosing a vehicle together in the workshop, Wonderboom South, Pretoria",
+    aspect: "3/4",
+    shotBrief: "Two technicians working a fault together — teamwork and expertise.",
+    priority: 5,
+  },
+
+  // ✅ REAL. Specialist tooling — the equipment behind the diagnostics work.
+  tools: {
+    id: "tools",
+    src: "/images/vision-motors-workshop-tools-pretoria.jpg",
+    alt: "Specialist workshop tools and equipment at Vision Motors, Pretoria",
+    aspect: "3/4",
+    shotBrief: "Specialist tooling laid out — the equipment behind the work.",
+    priority: 9,
+  },
 };
 
 /** Ordered shot list for the client brief. Rendered in PROJECT_STATUS.md. */

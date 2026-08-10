@@ -29,7 +29,7 @@ export default function TrustStrip() {
             <span className="font-mono text-xs font-medium tracking-[0.2em] text-brand-cta">
               {String(index + 1).padStart(2, "0")}
             </span>
-            <h2 className="mt-3 font-display text-base font-bold uppercase leading-tight tracking-tight text-white">
+            <h2 className="mt-3 font-display text-base font-bold leading-tight tracking-tight text-white">
               {item.title}
             </h2>
             <p className="mt-2 text-xs leading-[1.65] text-brand-bone">

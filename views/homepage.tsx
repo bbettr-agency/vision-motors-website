@@ -17,6 +17,7 @@ import ProcessSteps from "@/components/sections/process-steps";
 import Faq from "@/components/sections/faq";
 import FinalCta from "@/components/sections/final-cta";
 import EngineShop from "@/components/sections/engine-shop";
+import WorkshopBand from "@/components/sections/workshop-band";
 import LocationHours from "@/components/sections/location-hours";
 
 /**
@@ -59,6 +60,7 @@ export default function Homepage() {
         <ServicesGrid />
         <DiagnosticCapability />
         <EngineShop />
+        <WorkshopBand />
         <WhyUs />
         <RightsSection />
         <Testimonials />

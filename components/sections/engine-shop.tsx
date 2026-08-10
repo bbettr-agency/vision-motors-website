@@ -74,7 +74,7 @@ export default function EngineShop() {
       {/* Feature blocks + proof quote. */}
       <div className="mt-14 grid gap-x-16 gap-y-10 lg:grid-cols-2">
         <div className="border-l-2 border-brand-ink/25 pl-6">
-          <h3 className="font-display text-xl font-bold uppercase leading-tight tracking-tight text-brand-ink">
+          <h3 className="font-display text-xl font-bold leading-tight tracking-tight text-brand-ink">
             A second premises, not a corner of the workshop
           </h3>
           <p className="mt-3 max-w-[55ch] text-sm leading-[1.75] text-brand-inkSoft">
@@ -85,7 +85,7 @@ export default function EngineShop() {
         </div>
 
         <div className="border-l-2 border-brand-cta/60 pl-6">
-          <h3 className="font-display text-xl font-bold uppercase leading-tight tracking-tight text-brand-ink">
+          <h3 className="font-display text-xl font-bold leading-tight tracking-tight text-brand-ink">
             Rebuilt and reconditioned in-house
           </h3>
           <p className="mt-3 max-w-[55ch] text-sm leading-[1.75] text-brand-inkSoft">

@@ -1,107 +1,91 @@
+import Image from "next/image";
 import Link from "next/link";
 
 import { siteConfig } from "@/config/site-config";
 import { utilityRoutes } from "@/config/routes";
 import CallButton from "@/components/ui/call-button";
-import HeroShowcase from "@/components/sections/hero-showcase";
 
 // ─────────────────────────────────────────────────────────────────────────────
-//  HERO — IMAGE-FREE, motion-driven "workshop manual" opening (2026-08-04).
+//  HERO — image-led, centred (2026-08-10).
 //
-//  NO photography, NO stock, NO AI images, NO video, NO placeholder image. The
-//  right side is a large, typography-led CAPABILITY INDEX with an inline-SVG
-//  diagnostic trace that draws as you scroll (components/sections/hero-showcase).
-//  Atmosphere is built from CSS gradients (grid + warm glow) and type — not media.
+//  A full-bleed REAL Vision Motors photograph (the busy workshop interior) under
+//  a premium navy overlay. Centred eyebrow → H1 → one supporting sentence → Call
+//  (primary) / Book (secondary) → a small trust line. The job is to make a
+//  visitor feel "this is a real, established workshop" in ~5 seconds.
 //
-//  Composition:
-//    LEFT (sticky)  — the single H1 + conversion copy + Call (primary) / Book.
-//                     Server-rendered, crawlable; a light staggered entrance via a
-//                     one-time CSS @keyframes (`vmHeroRise`) — NOT the scroll-reveal
-//                     system. This is deliberate: a time-based keyframe ALWAYS ends
-//                     visible and can never get "stuck hidden" the way a
-//                     scroll/position-triggered reveal can when the CTA sits below
-//                     the initial fold. It is `motion-safe:` only, so reduced-motion
-//                     and no-JS users get the fully-visible column with no motion.
-//    RIGHT          — the animated capability index (hero-showcase.tsx), which
-//                     fills the former photo area and scrolls beneath the pinned
-//                     left column, releasing naturally after the last capability.
+//  ⚠️ The capability index (01–08) that used to live here has been removed — the
+//  Services section now carries the service list. No stock, no AI, no video, no
+//  collage: one authentic photograph.
 //
-//  SERVER component. The H1 + all copy are in the SSR HTML, at full opacity by
-//  default (the keyframe only animates FROM hidden TO the visible resting state).
-//  ⚠️ `position: sticky` needs a non-transformed, non-overflow-clipped ancestor
-//  chain — so no `overflow-hidden` here and the left column is a plain div.
-//  ❌ No founding year, no accreditation badge, no warranty claim, no rating.
+//  PERFORMANCE / a11y:
+//    • The hero image is the LCP element → `priority`, and it is NEVER
+//      opacity-animated (that would defeat the preload). alt="" — it is a
+//      backdrop; the workshop is named in copy and carries descriptive alt where
+//      it appears as content (location-hours). The overlay keeps text readable
+//      without crushing the photograph to black.
+//    • The text has a light, one-time TRANSFORM+opacity entrance (motion-safe
+//      only, never on the image), so reduced-motion / no-JS users get the final
+//      state instantly. SERVER component; H1 + copy are in the SSR HTML.
 // ─────────────────────────────────────────────────────────────────────────────
 
 export default function Hero() {
   return (
-    <section id="top" className="relative bg-brand-ink pt-28 md:pt-32">
-      {/* Faint service-manual grid + warm vignette — CSS gradients, NOT images. */}
+    <section
+      id="top"
+      className="relative isolate flex min-h-[88vh] items-center overflow-hidden md:min-h-[92vh]"
+    >
+      {/* Full-bleed real workshop photograph (LCP — priority, never faded). */}
+      <Image
+        src="/images/vision-motors-workshop-interior-pretoria.jpg"
+        alt=""
+        fill
+        priority
+        sizes="100vw"
+        className="-z-20 object-cover object-center"
+      />
+
+      {/* Premium navy overlay: darker top (nav legibility) and bottom (behind the
+          CTAs), lighter through the middle so the workshop stays clearly visible.
+          A faint flat tint unifies the brand navy and guarantees text contrast. */}
       <span
         aria-hidden
-        className="pointer-events-none absolute inset-0 bg-grid-dark bg-[length:44px_44px] opacity-40 [mask-image:radial-gradient(ellipse_80%_60%_at_30%_0%,black,transparent_75%)]"
+        className="absolute inset-0 -z-10 bg-gradient-to-b from-brand-ink/85 via-brand-ink/45 to-brand-ink/92"
       />
-      <span aria-hidden className="pointer-events-none absolute inset-0 bg-hero-glow" />
+      <span aria-hidden className="absolute inset-0 -z-10 bg-brand-ink/15" />
 
-      {/* One-time staggered entrance for the left column. Time-based (never
-          scroll-triggered) so content ALWAYS ends visible; `motion-safe:` gated so
-          reduced-motion / no-JS users get the resting (fully-visible) state. */}
+      {/* One-time, time-based entrance (never scroll-triggered → never stuck). */}
       <style>{`@keyframes vmHeroRise{from{opacity:0;transform:translateY(0.75rem)}to{opacity:1;transform:none}}`}</style>
 
-      <div className="relative mx-auto grid max-w-7xl gap-x-12 gap-y-4 px-6 pb-20 md:pb-28 lg:grid-cols-12 lg:items-start lg:gap-x-16 lg:px-8">
-        {/* LEFT — sticky conversion column. Deliberately concise so the whole
-            column (through the CTAs) fits within a normal desktop viewport: that
-            is what lets it pin cleanly and keeps the Call/Book CTAs above the fold.
-            The "what we do" list lives in the capability index on the right, so it
-            is NOT repeated here. Staggered CSS entrance (no-JS / reduced-motion
-            safe). */}
-        <div className="lg:sticky lg:top-28 lg:col-span-5 lg:self-start">
-          <div className="motion-safe:[animation:vmHeroRise_0.55s_cubic-bezier(0.22,1,0.36,1)_both]">
-            {/* Amber brand rule — the one warm accent up here. */}
-            <span aria-hidden className="block h-1 w-12 bg-brand-cta" />
+      <div className="relative mx-auto w-full max-w-4xl px-6 pb-16 pt-32 text-center md:pb-24 md:pt-36 lg:px-8">
+        <p className="font-mono text-[0.7rem] font-medium uppercase tracking-[0.3em] text-brand-bone motion-safe:[animation:vmHeroRise_0.5s_cubic-bezier(0.22,1,0.36,1)_both]">
+          Vehicle Repairs · Diagnostics · {siteConfig.city}
+        </p>
 
-            <p className="mt-5 font-mono text-[0.7rem] font-medium uppercase tracking-[0.28em] text-brand-bone">
-              {siteConfig.suburb} · {siteConfig.city}
-              <span className="text-brand-steel"> / Independent workshop</span>
-            </p>
-          </div>
+        {/* The single H1 — mixed case, natural and readable, SEO-relevant. */}
+        <h1 className="mx-auto mt-6 max-w-3xl font-display text-4xl font-extrabold leading-[1.02] tracking-tight text-white motion-safe:[animation:vmHeroRise_0.55s_cubic-bezier(0.22,1,0.36,1)_0.08s_both] sm:text-5xl lg:text-[3.75rem]">
+          Specialist vehicle, engine &amp; gearbox repairs
+          <span className="text-brand-bone"> in Pretoria</span>
+        </h1>
 
-          {/* The single H1 on the page. */}
-          <h1 className="mt-4 font-display text-[2.5rem] font-extrabold uppercase leading-[0.95] tracking-tight text-white motion-safe:[animation:vmHeroRise_0.55s_cubic-bezier(0.22,1,0.36,1)_0.08s_both] sm:text-5xl lg:text-[3.25rem]">
-            Specialist vehicle diagnostics, engine &amp; gearbox repairs
-            <span className="mt-1 block text-brand-bone"> in Pretoria</span>
-          </h1>
+        <p className="mx-auto mt-6 max-w-[54ch] text-base leading-[1.7] text-brand-mist md:text-lg motion-safe:[animation:vmHeroRise_0.55s_cubic-bezier(0.22,1,0.36,1)_0.16s_both]">
+          From everyday servicing to the difficult engine, gearbox and diagnostic
+          faults other workshops send away — we find the fault first, then quote
+          to fix it.
+        </p>
 
-          <div className="motion-safe:[animation:vmHeroRise_0.55s_cubic-bezier(0.22,1,0.36,1)_0.16s_both]">
-            <p className="mt-6 max-w-[44ch] text-base leading-[1.6] text-brand-mist/90 md:text-lg">
-              The independent workshop for jobs that need more than a parts swap —
-              complex fault finding, engine and gearbox work, DSG and mechatronic
-              units. We find the actual fault first, then quote to fix it.
-            </p>
-          </div>
-
-          <div className="motion-safe:[animation:vmHeroRise_0.55s_cubic-bezier(0.22,1,0.36,1)_0.24s_both]">
-            <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
-              <CallButton location="hero" variant="brass" showNumber />
-              <Link
-                href={utilityRoutes.booking}
-                className="inline-flex min-h-[52px] items-center justify-center rounded-md border border-white/25 px-7 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-cta/60 hover:bg-white/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-cta focus-visible:ring-offset-2 focus-visible:ring-offset-brand-ink md:text-base"
-              >
-                {siteConfig.ctaSecondary}
-              </Link>
-            </div>
-
-            <p className="mt-5 font-mono text-[0.65rem] uppercase tracking-[0.15em] text-brand-steel">
-              No obligation · We diagnose before we quote · All makes &amp; models
-            </p>
-          </div>
+        <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row motion-safe:[animation:vmHeroRise_0.55s_cubic-bezier(0.22,1,0.36,1)_0.24s_both]">
+          <CallButton location="hero" variant="brass" size="lg" showNumber />
+          <Link
+            href={utilityRoutes.booking}
+            className="inline-flex min-h-[52px] items-center justify-center rounded-md border border-white/30 bg-white/5 px-7 text-sm font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-cta/60 hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-cta focus-visible:ring-offset-2 focus-visible:ring-offset-brand-ink md:text-base"
+          >
+            {siteConfig.ctaSecondary}
+          </Link>
         </div>
 
-        {/* RIGHT — the image-free animated capability index (fills the former
-            photo area and provides the scroll distance). */}
-        <div className="lg:col-span-7 lg:pt-1">
-          <HeroShowcase />
-        </div>
+        <p className="mt-7 font-mono text-[0.65rem] uppercase tracking-[0.18em] text-brand-bone/80 motion-safe:[animation:vmHeroRise_0.55s_cubic-bezier(0.22,1,0.36,1)_0.3s_both]">
+          No obligation · We diagnose before we quote · All makes &amp; models
+        </p>
       </div>
     </section>
   );

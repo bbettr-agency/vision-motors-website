@@ -46,7 +46,7 @@ export default function ProcessSteps() {
             </span>
 
             <div className="md:mt-6">
-              <h3 className="font-display text-lg font-bold uppercase leading-[0.98] tracking-tight text-brand-ink">
+              <h3 className="font-display text-lg font-bold leading-[0.98] tracking-tight text-brand-ink">
                 {step.title}
               </h3>
               <p className="mt-2.5 max-w-[34ch] text-sm leading-[1.7] text-brand-inkSoft">
