@@ -32,31 +32,31 @@ export default function Hero() {
   return (
     <section
       id="top"
-      className="relative isolate flex min-h-[88vh] items-center overflow-hidden md:min-h-[92vh]"
+      className="relative flex min-h-[88vh] items-center overflow-hidden bg-brand-ink md:min-h-[92vh]"
     >
-      {/* Full-bleed real workshop photograph (LCP — priority, never faded). */}
-      <Image
-        src="/images/vision-motors-og-image.jpg"
-        alt=""
-        fill
-        priority
-        sizes="100vw"
-        className="-z-20 object-cover object-center"
-      />
-
-      {/* Premium navy overlay: darker top (nav legibility) and bottom (behind the
-          CTAs), lighter through the middle so the workshop stays clearly visible.
-          A faint flat tint unifies the brand navy and guarantees text contrast. */}
-      <span
-        aria-hidden
-        className="absolute inset-0 -z-10 bg-gradient-to-b from-brand-ink/85 via-brand-ink/45 to-brand-ink/92"
-      />
-      <span aria-hidden className="absolute inset-0 -z-10 bg-brand-ink/15" />
+      {/* Background layer — the full-bleed real photograph + navy overlay. Kept in
+          a plain z-0 stacking layer (NOT negative z-index / isolate, which some
+          browsers fail to composite, leaving the hero flat navy). The image is the
+          LCP: `priority`, never opacity-animated. Premium navy overlay: darker top
+          (nav legibility) and bottom (behind the CTAs), lighter through the middle
+          so the workshop stays clearly visible without being crushed to black. */}
+      <div aria-hidden className="absolute inset-0 z-0">
+        <Image
+          src="/images/vision-motors-og-image.jpg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+        <span className="absolute inset-0 bg-gradient-to-b from-brand-ink/80 via-brand-ink/40 to-brand-ink/90" />
+        <span className="absolute inset-0 bg-brand-ink/10" />
+      </div>
 
       {/* One-time, time-based entrance (never scroll-triggered → never stuck). */}
       <style>{`@keyframes vmHeroRise{from{opacity:0;transform:translateY(0.75rem)}to{opacity:1;transform:none}}`}</style>
 
-      <div className="relative mx-auto w-full max-w-4xl px-6 pb-16 pt-32 text-center md:pb-24 md:pt-36 lg:px-8">
+      <div className="relative z-10 mx-auto w-full max-w-4xl px-6 pb-16 pt-32 text-center md:pb-24 md:pt-36 lg:px-8">
         <p className="font-mono text-[0.7rem] font-medium uppercase tracking-[0.3em] text-brand-bone motion-safe:[animation:vmHeroRise_0.5s_cubic-bezier(0.22,1,0.36,1)_both]">
           Vehicle Repairs · Diagnostics · {siteConfig.city}
         </p>
