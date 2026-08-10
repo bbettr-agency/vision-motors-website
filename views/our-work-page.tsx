@@ -101,29 +101,29 @@ export default function OurWorkPage() {
             description="No stock photography on this site. Every image is Vision Motors, photographed on site."
             className="max-w-3xl"
           />
-          <div className="mt-12">
+          <div className="mt-12 grid items-center gap-10 md:grid-cols-2">
             <ImageSlotView
-              slot={imagesConfig.hero}
+              slot={imagesConfig.techniciansDiagnosis}
               tone="light"
               className="rounded-3xl shadow-soft"
-              sizes="(max-width: 1024px) 100vw, 80vw"
+              sizes="(max-width: 768px) 100vw, 45vw"
               showBrief={false}
             />
-          </div>
 
-          <figure className="mt-12 max-w-2xl border-l-2 border-brand-blue/40 pl-6">
-            <blockquote className="font-display text-lg leading-snug text-brand-ink">
-              &ldquo;Do yourself a favor, take a walk through their engine
-              overall room, go and check the work that they do. It&apos;s
-              proper, it&apos;s sufficient.&rdquo;
-            </blockquote>
-            <figcaption className="mt-4 text-sm text-brand-inkMuted">
-              <span className="font-semibold text-brand-ink">
-                Hendrik Mostert
-              </span>
-              {" · "}Engine rebuild customer
-            </figcaption>
-          </figure>
+            <figure className="border-l-2 border-brand-blue/40 pl-6">
+              <blockquote className="font-display text-xl leading-snug text-brand-ink sm:text-2xl">
+                &ldquo;Do yourself a favor, take a walk through their engine
+                overall room, go and check the work that they do. It&apos;s
+                proper, it&apos;s sufficient.&rdquo;
+              </blockquote>
+              <figcaption className="mt-5 text-sm text-brand-inkMuted">
+                <span className="font-semibold text-brand-ink">
+                  Hendrik Mostert
+                </span>
+                {" · "}Engine rebuild customer
+              </figcaption>
+            </figure>
+          </div>
         </SectionContainer>
 
         {/* Categorised gallery — real workshop photography. */}

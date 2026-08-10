@@ -96,7 +96,7 @@ export default function AboutPage() {
 
             <div className="space-y-5">
               <ImageSlotView
-                slot={imagesConfig.hero}
+                slot={imagesConfig.techniciansDiagnosis}
                 tone="light"
                 className="rounded-3xl shadow-soft"
                 sizes="(max-width: 1024px) 100vw, 45vw"

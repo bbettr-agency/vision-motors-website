@@ -16,19 +16,6 @@
 import type { ImageSlot } from "@/types/site";
 
 export const imagesConfig: Record<string, ImageSlot> = {
-  hero: {
-    id: "hero",
-    // ✅ THE ONE REAL PHOTOGRAPH. Two Vision Motors technicians in branded
-    // gold-on-black uniform working on an engine bay, workshop job board behind.
-    // Still used on /about-us and /our-work — it is the strongest real asset.
-    src: "/images/vision-motors-technicians-engine-bay-pretoria.jpg",
-    alt: "Two Vision Motors technicians working on an engine bay in the workshop in Wonderboom South, Pretoria",
-    aspect: "3/2",
-    shotBrief:
-      "REPLACE WITH: wide workshop interior, bays occupied, real customer vehicles, good natural light. 16:9 @ 2400px.",
-    priority: 1,
-  },
-
   // ✅ REAL. Engine blocks stripped for reconditioning on the bench in the
   // engine shop — the flagship proof band. Landscape, sits in wide fill plates.
   engineRoom: {
