@@ -68,7 +68,7 @@ export default function ImageSlotView({
     return (
       <div
         className={cn(
-          "relative overflow-hidden",
+          "group relative overflow-hidden",
           isDark ? "bg-brand-charcoalLight" : "bg-brand-bluegrey",
           sizing.className,
           className
@@ -81,7 +81,12 @@ export default function ImageSlotView({
           fill
           priority={priority}
           sizes={sizes}
-          className={cn("object-cover", imageClassName)}
+          // Slow, restrained editorial zoom on hover — one sitewide easing,
+          // GPU transform only, and disabled entirely for reduced-motion.
+          className={cn(
+            "object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform motion-safe:group-hover:scale-[1.045] motion-reduce:transition-none",
+            imageClassName
+          )}
         />
       </div>
     );

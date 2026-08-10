@@ -49,15 +49,25 @@ export default function EngineShop() {
         </p>
       </div>
 
-      {/* Full-width flagship image plate. */}
+      {/* Flagship editorial pair — the engine shop in two real frames. */}
       <Reveal className="mt-12">
-        <div className="relative h-[40vh] min-h-[280px] w-full lg:h-[52vh]">
-          <ImageSlotView
-            slot={imagesConfig.engineRoom}
-            tone="light"
-            fill
-            sizes="100vw"
-          />
+        <div className="grid gap-4 sm:grid-cols-3">
+          <div className="relative h-[36vh] min-h-[240px] overflow-hidden rounded-2xl sm:col-span-2 sm:h-[54vh]">
+            <ImageSlotView
+              slot={imagesConfig.engineRoom}
+              tone="light"
+              fill
+              sizes="(max-width: 640px) 100vw, 62vw"
+            />
+          </div>
+          <div className="relative h-[36vh] min-h-[240px] overflow-hidden rounded-2xl sm:h-[54vh]">
+            <ImageSlotView
+              slot={imagesConfig.engineRecon}
+              tone="light"
+              fill
+              sizes="(max-width: 640px) 100vw, 31vw"
+            />
+          </div>
         </div>
       </Reveal>
 

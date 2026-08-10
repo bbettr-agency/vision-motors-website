@@ -1,5 +1,3 @@
-import { Camera } from "lucide-react";
-
 import { imagesConfig } from "@/config/images-config";
 import { buildTrail } from "@/components/ui/breadcrumbs";
 import { breadcrumbSchema } from "@/lib/schema";
@@ -41,9 +39,9 @@ const categories = [
     wide: true,
   },
   {
-    key: "gearbox",
-    title: "Gearboxes and driveline",
-    body: "Automatic and manual gearbox overhauls, DSG and mechatronic units, differentials and transfer cases.",
+    key: "engine-bench",
+    title: "Stripped to the block",
+    body: "Engines stripped, measured and rebuilt on our own benches — petrol and diesel, cars, bakkies and commercial vehicles.",
     slot: imagesConfig.gearboxBench,
     wide: false,
   },
@@ -62,9 +60,9 @@ const categories = [
     wide: true,
   },
   {
-    key: "care",
-    title: "How your car comes back",
-    body: "Seat and carpet protection while we work, and your vehicle returned clean — something customers mention in their own reviews.",
+    key: "bays",
+    title: "All makes and models",
+    body: "Everyday runabouts to workhorses, up on the ramps — petrol and diesel, all makes and models.",
     slot: imagesConfig.vehicleCare,
     wide: false,
   },
@@ -91,16 +89,16 @@ export default function OurWorkPage() {
           trail={trail}
           eyebrow="Our work"
           title="Inside the workshop"
-          intro="One of our customers put it better than we could: take a walk through the engine overhaul room and go and look at the work. This page is being photographed properly so you can do that without leaving your desk."
+          intro="One of our customers put it better than we could: take a walk through the engine overhaul room and go and look at the work. Here's a look inside — the engine shop, the diagnostic bay and the bays, photographed on site."
         />
 
-        {/* The one real photograph we have. */}
+        {/* Lead editorial image — the team at work. */}
         <SectionContainer className="bg-brand-cream">
           <SectionHeading
             tone="light"
             eyebrow="The team"
             title="Real people, real workshop"
-            description="No stock photography on this site. Every image is Vision Motors."
+            description="No stock photography on this site. Every image is Vision Motors, photographed on site."
             className="max-w-3xl"
           />
           <div className="mt-12">
@@ -128,13 +126,13 @@ export default function OurWorkPage() {
           </figure>
         </SectionContainer>
 
-        {/* Categorised gallery — structure in place, photography pending. */}
+        {/* Categorised gallery — real workshop photography. */}
         <SectionContainer className="bg-brand-bluegrey">
           <SectionHeading
             tone="light"
-            eyebrow="Coming soon"
-            title="More of the workshop, properly photographed"
-            description="Rather than filling this page with stock images of somebody else's workshop, we're waiting for the real thing."
+            eyebrow="Inside the workshop"
+            title="A real look at the work"
+            description="The engine shop, the diagnostic bay, the ramps and the team — every image here is Vision Motors, photographed on site."
             className="max-w-3xl"
           />
 
@@ -164,21 +162,11 @@ export default function OurWorkPage() {
             ))}
           </div>
 
-          <div className="mt-14 flex items-start gap-4 rounded-2xl border border-brand-line bg-brand-tint/50 p-7">
-            <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white text-brand-blue">
-              <Camera className="h-5 w-5" aria-hidden />
-            </span>
-            <div>
-              <h2 className="font-display text-base font-semibold text-brand-ink">
-                Why some spaces are empty
-              </h2>
-              <p className="mt-2 max-w-[65ch] text-sm leading-[1.75] text-brand-inkSoft">
-                We&apos;d rather show you nothing than show you a stock
-                photograph of a workshop that isn&apos;t ours. Photography of the
-                engine shop, the diagnostic bay and the team is being arranged.
-              </p>
-            </div>
-          </div>
+          <p className="mt-14 max-w-[65ch] text-sm leading-[1.75] text-brand-inkSoft">
+            No stock photography, and nothing generated — every image on this
+            page was taken in our own workshop. Want to see the rest? You&apos;re
+            welcome to come and look in person.
+          </p>
         </SectionContainer>
 
         <CtaBand

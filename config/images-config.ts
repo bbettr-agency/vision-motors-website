@@ -45,64 +45,97 @@ export const imagesConfig: Record<string, ImageSlot> = {
     priority: 1,
   },
 
+  // ✅ REAL. Engine blocks stripped for reconditioning on the bench in the
+  // engine shop — the flagship proof band. Landscape, sits in wide fill plates.
   engineRoom: {
     id: "engineRoom",
-    src: null,
-    alt: "The engine overhaul room at Vision Motors, Pretoria",
+    src: "/images/vision-motors-engine-blocks-pretoria.jpg",
+    alt: "Engine blocks stripped for reconditioning on the bench at the Vision Motors engine shop in Wonderboom South, Pretoria",
     aspect: "4/3",
     shotBrief:
-      "The engine overhaul room — a stripped engine on the bench, clean and organised. A customer review already invites people to come and look at this room, which makes it the single strongest proof asset available.",
+      "The engine overhaul room — a stripped engine on the bench, clean and organised.",
     priority: 2,
   },
 
+  // ✅ REAL. A diagnostic scanner + interface — literal fault-finding proof.
   diagnostics: {
     id: "diagnostics",
-    src: null,
-    alt: "A Vision Motors technician running electronic diagnostics on a customer vehicle",
+    src: "/images/vision-motors-diagnostic-scanner-pretoria.jpg",
+    alt: "A diagnostic scanner and interface used for electronic fault finding at Vision Motors, Pretoria",
     aspect: "4/3",
     shotBrief:
-      "Technician at a diagnostic scanner with the screen visible, vehicle in shot. Supports the complex-fault-finding positioning.",
+      "Technician at a diagnostic scanner with the screen visible, vehicle in shot.",
     priority: 3,
   },
 
+  // ✅ REAL. An engine stripped to the short block on the bench. NOTE: this is
+  // engine-reconditioning proof — the alt says engine, NOT gearbox. No clean
+  // gearbox/DSG/mechatronic photograph was supplied, so nothing is captioned as
+  // one (the gearbox/driveline capability stays text-only until a real photo).
   gearboxBench: {
     id: "gearboxBench",
-    src: null,
-    alt: "Gearbox and mechatronic unit work on the bench at Vision Motors",
-    aspect: "4/3",
+    src: "/images/vision-motors-engine-rebuild-bench-pretoria.jpg",
+    alt: "An engine stripped to the short block for reconditioning on the bench at Vision Motors, Pretoria",
+    aspect: "3/4",
     shotBrief:
-      "A gearbox or DSG/mechatronic unit stripped on the bench. Proves the specialist tier — this is the capability most competitors do not have.",
+      "A gearbox or DSG/mechatronic unit stripped on the bench — still wanted; no gearbox photo supplied yet.",
     priority: 4,
   },
 
+  // ✅ REAL. A Vision Motors technician at work on an engine (branded uniform).
   team: {
     id: "team",
-    src: null,
-    alt: "The Vision Motors workshop team in Wonderboom South, Pretoria",
-    aspect: "16/9",
+    src: "/images/vision-motors-technician-engine-repair-pretoria.jpg",
+    alt: "A Vision Motors technician in branded uniform working on an engine in the workshop, Wonderboom South, Pretoria",
+    aspect: "3/4",
     shotBrief:
-      "Team photograph in branded gold-on-black uniform, outside the workshop. Names needed for captions — testimonials already name Jacques, Christo, Mitchell and Cyril, and no competitor puts real named faces on their site.",
+      "Team photograph in branded gold-on-black uniform. Named roles still wanted for captions.",
     priority: 5,
   },
 
+  // ✅ REAL. Inside the workshop — a busy bay of customer vehicles. Used where a
+  // "the physical place" image is needed. A street-facing SIGNAGE/frontage shot
+  // is still wanted (the only supplied frontage shows blocked RMI/MIWA livery).
   exterior: {
     id: "exterior",
-    src: null,
-    alt: "The Vision Motors workshop exterior and signage on Steve Biko Road, Pretoria",
-    aspect: "16/9",
+    src: "/images/vision-motors-workshop-interior-pretoria.jpg",
+    alt: "Inside the Vision Motors workshop in Wonderboom South, Pretoria, with customer vehicles up for repair",
+    aspect: "4/3",
     shotBrief:
-      "Street-facing exterior with signage clearly readable. Helps customers physically find the workshop and supports local SEO.",
+      "Street-facing exterior with signage clearly readable (no RMI/MIWA badge in frame — C2).",
     priority: 6,
   },
 
+  // ✅ REAL. Customer vehicles in the workshop bays.
   vehicleCare: {
     id: "vehicleCare",
-    src: null,
-    alt: "A customer vehicle with seat and carpet protection fitted at Vision Motors",
+    src: "/images/vision-motors-workshop-bays-pretoria.jpg",
+    alt: "Customer vehicles in the workshop bays at Vision Motors, Wonderboom South, Pretoria",
     aspect: "4/3",
     shotBrief:
-      "Close-up of seat and carpet protection fitted in a customer car. Makes the Carmen Keppler testimonial visible rather than just claimed.",
+      "Close-up of seat and carpet protection fitted in a customer car.",
     priority: 7,
+  },
+
+  // ✅ REAL. Reconditioned engines lined up in the engine shop — the richest
+  // engine frame; used as an editorial crop.
+  engineRecon: {
+    id: "engineRecon",
+    src: "/images/vision-motors-engine-reconditioning-pretoria.jpg",
+    alt: "Reconditioned engines and cylinder heads on the bench at the Vision Motors engine shop, Wonderboom South, Pretoria",
+    aspect: "3/4",
+    shotBrief: "Reconditioned engines lined up, checked-and-calibrated labels visible.",
+    priority: 2,
+  },
+
+  // ✅ REAL. The customer waiting area.
+  waitingArea: {
+    id: "waitingArea",
+    src: "/images/vision-motors-waiting-area-pretoria.jpg",
+    alt: "The customer waiting area at Vision Motors, Wonderboom South, Pretoria",
+    aspect: "3/4",
+    shotBrief: "The customer waiting lounge — clean, comfortable, real.",
+    priority: 8,
   },
 };
 

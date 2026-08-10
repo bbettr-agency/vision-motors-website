@@ -166,21 +166,19 @@ export default function AboutPage() {
             tone="light"
             eyebrow="The team"
             title="The people who'll work on your car"
-            description="Two branches, two managers on the floor. Full team profiles are being photographed."
+            description="Two branches, two managers on the floor — the same faces year after year. Customers thank them by name in their own reviews."
             className="max-w-3xl"
           />
 
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {/*
-              ⛔ Portraits exist but are ~180×275px — avatar-size only — and no
-              roles are confirmed. Rendering documented placeholders rather than
-              publishing unusable images or inventing job titles (C7).
-            */}
+          <div className="mt-12 grid items-stretch gap-5 sm:grid-cols-2">
+            {/* Real technician-at-work photograph. Full named team portraits
+                (roles confirmed) are still wanted; the supplied portraits are
+                avatar-size only (C7). */}
             <ImageSlotView
               slot={imagesConfig.team}
               tone="light"
-              className="rounded-2xl sm:col-span-2"
-              sizes="(max-width: 768px) 100vw, 60vw"
+              className="rounded-2xl"
+              sizes="(max-width: 768px) 100vw, 45vw"
             />
             <div className="rounded-2xl border border-brand-line bg-white p-8 shadow-soft">
               <h3 className="font-display text-base font-semibold text-brand-ink">
