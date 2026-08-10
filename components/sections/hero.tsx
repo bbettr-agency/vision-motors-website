@@ -36,7 +36,7 @@ export default function Hero() {
     >
       {/* Full-bleed real workshop photograph (LCP — priority, never faded). */}
       <Image
-        src="/images/vision-motors-workshop-interior-pretoria.jpg"
+        src="/images/vision-motors-og-image.jpg"
         alt=""
         fill
         priority
