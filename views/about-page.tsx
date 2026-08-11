@@ -45,8 +45,8 @@ const whatWeAre = [
     body: "Engine reconditioning and rebuild work happens at our own engine shop rather than being sent out to a third party and marked up. Very few independents can say that.",
   },
   {
-    title: "On Steve Biko Road since long before it was called that",
-    body: "Our signage still carries both 867 Voortrekkersweg and 1059 Steve Biko Road, because plenty of customers have been coming to us since before the street was renamed.",
+    title: "Two workshops, one team",
+    body: "Vision Motors runs two workshops in Wonderboom South, Pretoria — Vision Motors on the M5 for servicing and repairs, and The Engine Shop/Vision Motors on Steve Biko Road for engine reconditioning and rebuilds.",
   },
 ];
 
@@ -188,12 +188,13 @@ export default function AboutPage() {
                 <span className="font-semibold text-brand-ink">
                   Jacques du Randt
                 </span>{" "}
-                is Branch Manager at the engine shop (1197 Steve Biko Road);{" "}
+                is Branch Manager at The Engine Shop/Vision Motors (999 Steve
+                Biko Rd);{" "}
                 <span className="font-semibold text-brand-ink">
                   Christo Vorster
                 </span>{" "}
-                runs the main workshop at 1059. Both are thanked by name in
-                reviews customers wrote themselves.
+                runs Vision Motors (867 M5). Both are thanked by name in reviews
+                customers wrote themselves.
               </p>
             </div>
           </div>

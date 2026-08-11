@@ -26,11 +26,12 @@ export default function Footer() {
               {siteConfig.city}. Diagnostics, engine and gearbox specialists.
             </p>
 
-            <ul className="mt-5 text-sm">
+            {/* General company contact (switchboard + both mailboxes). */}
+            <ul className="mt-5 space-y-1 text-sm">
               <li>
                 <a
                   href={siteConfig.phoneLink}
-                  className="inline-flex min-h-[44px] items-center gap-2.5 text-white/80 transition-colors hover:text-brand-blueSoft"
+                  className="inline-flex min-h-[40px] items-center gap-2.5 text-white/80 transition-colors hover:text-brand-blueSoft"
                   aria-label={`Call ${siteConfig.businessName} on ${siteConfig.phoneDisplay}`}
                   data-cta="call"
                 >
@@ -43,34 +44,51 @@ export default function Footer() {
               <li>
                 <a
                   href={siteConfig.emailLink}
-                  className="inline-flex min-h-[44px] items-center gap-2.5 break-all text-white/80 transition-colors hover:text-brand-blueSoft"
+                  className="inline-flex min-h-[40px] items-center gap-2.5 break-all text-white/80 transition-colors hover:text-brand-blueSoft"
                 >
                   <Mail className="h-4 w-4 shrink-0 text-brand-blueSoft" aria-hidden />
                   {siteConfig.email}
                 </a>
               </li>
-              {/* TWO confirmed branches on Steve Biko Road (2026-07-27). 1197
-                  postcode 0084 confirmed; 1059 postcode omitted (C20). */}
-              {siteConfig.branches.map((branch, i) => (
-                <li
-                  key={branch.id}
-                  className="flex items-start gap-2.5 py-2 text-white/80"
+              <li>
+                <a
+                  href={siteConfig.emailServiceLink}
+                  className="inline-flex min-h-[40px] items-center gap-2.5 break-all text-white/80 transition-colors hover:text-brand-blueSoft"
                 >
+                  <Mail className="h-4 w-4 shrink-0 text-brand-blueSoft" aria-hidden />
+                  {siteConfig.emailService}
+                </a>
+              </li>
+            </ul>
+
+            {/* Two confirmed branches, each with its OWN number (2026-08-11). */}
+            <div className="mt-6 space-y-4">
+              {siteConfig.branches.map((branch) => (
+                <div key={branch.id} className="flex items-start gap-2.5">
                   <MapPin
                     className="mt-0.5 h-4 w-4 shrink-0 text-brand-blueSoft"
                     aria-hidden
                   />
-                  <span>
-                    <span className="block text-xs uppercase tracking-[0.14em] text-white/55">
-                      Branch {String(i + 1).padStart(2, "0")} · {branch.label}
+                  <div className="text-sm text-white/80">
+                    <span className="block text-xs font-semibold uppercase tracking-[0.14em] text-white/60">
+                      {branch.name}
                     </span>
-                    {branch.streetNumber} {branch.street},{" "}
-                    {branch.suburb}, {branch.city}
-                    {branch.postalCode ? `, ${branch.postalCode}` : ""}
-                  </span>
-                </li>
+                    <address className="not-italic">
+                      {branch.streetLine}, {branch.suburb}, {branch.city}
+                      {branch.postalCode ? `, ${branch.postalCode}` : ""}
+                    </address>
+                    <a
+                      href={branch.phoneLink}
+                      data-cta="call"
+                      className="inline-flex min-h-[36px] items-center whitespace-nowrap font-medium text-white/85 transition-colors hover:text-brand-blueSoft"
+                      aria-label={`Call ${branch.name} on ${branch.phoneDisplay}`}
+                    >
+                      {branch.phoneDisplay}
+                    </a>
+                  </div>
+                </div>
               ))}
-            </ul>
+            </div>
 
             {siteConfig.hours.value && (
               <div className="mt-6">

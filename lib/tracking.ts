@@ -42,7 +42,8 @@ export type CallLocation =
   | "service_page"
   | "final_cta"
   | "contact_page"
-  | "booking_page";
+  | "booking_page"
+  | "branch";
 
 export function trackCall(location: CallLocation) {
   push({
@@ -59,8 +60,19 @@ export function trackEmail() {
   });
 }
 
-export function trackDirections(premises: "main" | "engine_shop" = "main") {
-  push({ event: "get_directions", premises });
+/** `branch` is a branch id (e.g. "vision-motors", "engine-shop-vision-motors"). */
+export function trackDirections(branch = "vision-motors") {
+  push({ event: "get_directions", branch });
+}
+
+/** Branch-specific WhatsApp click (branch buttons + form routing). */
+export function trackWhatsApp(branch: string, placement = "branch") {
+  push({
+    event: "click_to_whatsapp",
+    branch,
+    placement,
+    page_path: typeof window !== "undefined" ? window.location.pathname : "",
+  });
 }
 
 export function trackBookingStart(servicePreselected?: string) {

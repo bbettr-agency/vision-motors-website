@@ -1,5 +1,21 @@
 # SCHEMA MAP — Vision Motors
 
+> ## ⚠️ SUPERSEDED — CONFIRMED BRANCHES (2026-08-11)
+>
+> The client confirmed final branch names, addresses and **branch-specific**
+> numbers. These override any 1059 / 1197 / single-shared-number references
+> below (kept for audit history only):
+>
+> | Branch | Address | Call / WhatsApp |
+> |---|---|---|
+> | **Vision Motors** | 867 M5, Wonderboom South, Pretoria, **0084** | 082 823 5178 (`27828235178`) |
+> | **The Engine Shop/Vision Motors** | 999 Steve Biko Rd, Wonderboom South, Pretoria, **0031** | 071 048 8213 (`27710488213`) |
+>
+> Company switchboard **012 335 0070** stays the general site-wide number.
+> Emails: general `vision@visionmotors.co.za`, service `service@visionmotors.co.za`.
+> Hours: Mon–Fri 07:30–17:00. C3 (branch roles) and C20 (postcodes) are RESOLVED.
+> Numbers are branch-specific and must never be crossed.
+
 **Updated:** 2026-07-22
 
 **Baseline:** the current live site emits **zero structured data** — `application/ld+json`

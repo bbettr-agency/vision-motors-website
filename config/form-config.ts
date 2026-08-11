@@ -55,15 +55,22 @@ export const formConfig = {
   },
 
   /**
-   * Two confirmed branches (2026-07-27). "Not sure" is the default — booking
-   * confirmation determines the correct workshop, so no visitor is forced to
-   * choose. No per-branch contact details are invented.
+   * Two confirmed branches (2026-08-11). The customer sees `label`; a stable
+   * `value` is sent to the backend/GHL; `whatsapp` routes the prefilled enquiry
+   * to the correct branch WhatsApp number on submit. NEVER cross the numbers.
    */
   locationOptions: [
-    "Not sure — we'll confirm",
-    "Main workshop — 1059 Steve Biko Road",
-    "Engine shop — 1197 Steve Biko Road",
-  ],
+    {
+      value: "vision-motors",
+      label: "Vision Motors",
+      whatsapp: "27828235178",
+    },
+    {
+      value: "engine-shop-vision-motors",
+      label: "The Engine Shop/Vision Motors",
+      whatsapp: "27710488213",
+    },
+  ] as const,
 
   /** Mirrors the approved service architecture. */
   serviceOptions: [

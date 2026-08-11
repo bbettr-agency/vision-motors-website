@@ -128,6 +128,50 @@ export const imagesConfig: Record<string, ImageSlot> = {
     shotBrief: "Specialist tooling laid out — the equipment behind the work.",
     priority: 9,
   },
+
+  // ✅ REAL BRANCH SHOPFRONT — Vision Motors (867 M5). RMI badges + "SINCE 1987"
+  // founding claim redacted from the signage (fact-gate C2/C4), plates blurred.
+  branchVisionMotors: {
+    id: "branchVisionMotors",
+    src: "/images/vision-motors-branch-wonderboom-pretoria.jpg",
+    alt: "The Vision Motors workshop on the M5, Wonderboom South, Pretoria",
+    aspect: "16/10",
+    shotBrief: "Vision Motors branch frontage.",
+    priority: 6,
+  },
+
+  // ✅ REAL BRANCH SHOPFRONT — The Engine Shop/Vision Motors (999 Steve Biko Rd).
+  // RMI badge + "OFFICIAL RMI DEALER ENGINES" redacted (fact-gate C2); the
+  // signage's old address is not used — 999 Steve Biko Rd is the confirmed one.
+  branchEngineShop: {
+    id: "branchEngineShop",
+    src: "/images/vision-motors-engine-shop-branch-pretoria.jpg",
+    alt: "The Engine Shop / Vision Motors on Steve Biko Road, Wonderboom South, Pretoria",
+    aspect: "4/3",
+    shotBrief: "The Engine Shop branch frontage.",
+    priority: 6,
+  },
+
+  // ✅ REAL. Two reconditioned engines on the bench — the Engine Shop's primary
+  // proof (enhanced, 2026-08-11).
+  engineShopWork1: {
+    id: "engineShopWork1",
+    src: "/images/vision-motors-engine-shop-workshop-01.jpg",
+    alt: "Two reconditioned engines on the bench at The Engine Shop, Vision Motors, Pretoria",
+    aspect: "4/3",
+    shotBrief: "Two reconditioned engines side by side.",
+    priority: 2,
+  },
+
+  // ✅ REAL. Reconditioned engines lined up, injectors checked and calibrated.
+  engineShopWork2: {
+    id: "engineShopWork2",
+    src: "/images/vision-motors-engine-shop-workshop-02.jpg",
+    alt: "Reconditioned engines lined up in the engine shop at Vision Motors, Pretoria",
+    aspect: "3/4",
+    shotBrief: "Engine lineup, checked-and-calibrated labels visible.",
+    priority: 2,
+  },
 };
 
 /** Ordered shot list for the client brief. Rendered in PROJECT_STATUS.md. */

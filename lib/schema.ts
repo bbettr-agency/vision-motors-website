@@ -54,7 +54,11 @@ export const autoRepairSchema: JsonLd = (() => {
     "@id": `${siteConfig.website}/#business`,
     name: siteConfig.businessName,
     url: siteConfig.website,
-    telephone: siteConfig.phone,
+    // Primary LOCATION = the Vision Motors branch → its OWN number (082 823 5178),
+    // not the company switchboard. Each location carries its correct phone.
+    telephone:
+      siteConfig.branches.find((b) => b.primary)?.phoneLink.replace("tel:", "") ??
+      siteConfig.phone,
     email: siteConfig.email,
     image: `${siteConfig.website}${seoConfig.ogImage}`,
     description: seoConfig.description,
@@ -147,18 +151,17 @@ export const autoRepairSchema: JsonLd = (() => {
 })();
 
 /**
- * SECOND WORKSHOP (1197 Steve Biko Road) — the engine-shop branch.
+ * SECOND WORKSHOP — The Engine Shop/Vision Motors (999 Steve Biko Rd).
  *
  * Modelled as ONE organisation, TWO locations: a distinct `AutoRepair` node
  * linked to the primary `#business` via `branchOf` (schema.org-correct
  * multi-location). It does NOT merge the two addresses into one entity.
  *
  * Truth-gating preserved:
- *   • 1197 street address + postcode 0084 are confirmed (client instruction
- *     2026-07-27 + onboarding), so they ARE emitted.
- *   • The 1059 postcode remains omitted (C20 unresolved) and geo is omitted for
- *     both — a wrong coordinate/postcode is worse than none.
- *   • Shared telephone / email / hours — no per-branch details are invented.
+ *   • 999 Steve Biko Rd + postcode 0031 + the branch's own number are confirmed
+ *     (client instruction 2026-08-11), so they ARE emitted.
+ *   • geo is omitted for both — a wrong coordinate is worse than none.
+ *   • Each branch uses its OWN telephone; numbers are never crossed.
  */
 export const engineShopBranchSchema: JsonLd = (() => {
   const branch = siteConfig.branches.find((b) => !b.primary);
@@ -166,7 +169,7 @@ export const engineShopBranchSchema: JsonLd = (() => {
 
   const address: JsonLd = {
     "@type": "PostalAddress",
-    streetAddress: `${branch.streetNumber} ${branch.street}`,
+    streetAddress: branch.streetLine,
     addressLocality: branch.suburb,
     addressRegion: branch.region,
     addressCountry: "ZA",
@@ -177,9 +180,10 @@ export const engineShopBranchSchema: JsonLd = (() => {
     "@context": "https://schema.org",
     "@type": "AutoRepair",
     "@id": `${siteConfig.website}/#engine-shop`,
-    name: `${siteConfig.businessName} — Engine Shop`,
+    name: branch.name,
     url: siteConfig.website,
-    telephone: siteConfig.phone,
+    // The Engine Shop's OWN number (071 048 8213) — never the other branch's.
+    telephone: branch.phoneLink.replace("tel:", ""),
     email: siteConfig.email,
     image: `${siteConfig.website}${seoConfig.ogImage}`,
     address,

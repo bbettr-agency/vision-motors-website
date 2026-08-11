@@ -33,42 +33,31 @@ export const siteConfig = {
   // used on the current live site.
   // ⚠️ TODO(client): confirm WHICH mailbox is actually monitored. If enquiries
   // go to an unwatched address that is a silent lead leak.
+  // General/company enquiries.
   email: "vision@visionmotors.co.za",
   emailLink: "mailto:vision@visionmotors.co.za",
+  // Service/workshop enquiries (confirmed 2026-08-11).
+  emailService: "service@visionmotors.co.za",
+  emailServiceLink: "mailto:service@visionmotors.co.za",
 
   website: "https://visionmotors.co.za",
 
   // ── Location ───────────────────────────────────────────────────────────────
-  // ✅ RESOLVED 2026-07-22. The company profile contains a photograph of the
-  // premises signage. Both boards print the SAME address block:
-  //      012 335 0070
-  //      867 Voortrekkersweg
-  //      1059 Steve Biko Road
-  //      Wonderboom South
-  // i.e. Vision Motors' own signage treats 867 Voortrekkersweg and 1059 Steve
-  // Biko Road as ONE address — Voortrekker Rd was renamed Steve Biko Rd in 2012
-  // and the premises renumbered. The kerb outside is painted "1059".
-  // The directory listings showing "867 Voortrekkers Rd" are therefore the same
-  // premises under its pre-2012 address, not a separate site.
-  streetNumber: "1059",
-  street: "Steve Biko Road",
+  // ✅ CONFIRMED 2026-08-11 (client instruction). Two distinct workshops, each
+  // with its own address + Call/WhatsApp number (see `branches[]`). Top-level
+  // fields below = the PRIMARY branch (Vision Motors, 867 M5, 0084).
+  // Top-level address = the PRIMARY branch (Vision Motors, 867 M5). Confirmed
+  // 2026-08-11. Used for org-level schema + page metadata. Per-branch NAP lives
+  // in `branches[]` below.
+  streetNumber: "867",
+  street: "M5",
   suburb: "Wonderboom South",
   city: "Pretoria",
   region: "Gauteng",
   country: "South Africa",
-  // ⚠️ POSTCODE UNRESOLVED — deliberately NOT published.
-  // Onboarding says 0084; the Google Business Profile says 0031; the client's
-  // own website publishes neither, which is the root cause of the NAP
-  // fragmentation. Two conflicting client-side sources is not confirmation.
-  // Publishing the wrong code into schema would harden the wrong entity signal.
-  // TODO(client): confirm from an authoritative postal source, then set it here
-  //               and in the GBP together. See FACT-VERIFICATION-REGISTER.md C20.
-  postalCode: null as string | null,
-  addressStatus: "verified" as ClaimStatus, // street address is verified; postcode is not
-  addressDisplay: "1059 Steve Biko Road, Wonderboom South, Pretoria",
-
-  /** Historical alias — for directory NAP clean-up only. NEVER published. */
-  formerAddress: "867 Voortrekkersweg, Wonderboom South, Pretoria",
+  postalCode: "0084",
+  addressStatus: "verified" as ClaimStatus,
+  addressDisplay: "867 M5, Wonderboom South, Pretoria, 0084",
 
   // ⚠️ Coordinates still pending — must be taken from the confirmed pin on the
   // Google Business Profile rather than geocoded, so schema and GBP agree.
@@ -77,38 +66,53 @@ export const siteConfig = {
 
   // ── Workshop branches ──────────────────────────────────────────────────────
   // ✅ CONFIRMED 2026-07-27 (client instruction + legacy HTML): TWO Vision Motors
-  // workshops on Steve Biko Road. This RESOLVES C3 (role of 1197) and B5.
-  // They are DISTINCT branches — NOT historical versions of one address (1059's
-  // historical alias is 867 Voortrekkersweg, a different matter — A3/D1).
+  // workshops in Wonderboom South, confirmed 2026-08-11. They are DISTINCT
+  // branches with their own addresses and Call/WhatsApp numbers.
   // Shared phone/email/hours (above). Do NOT invent per-branch contact details.
+  // ✅ CONFIRMED ADDRESSES + BRANCH-SPECIFIC NUMBERS (client instruction 2026-08-11).
+  // Each branch has its OWN Call/WhatsApp number — NEVER cross them. The company
+  // switchboard (012 335 0070, above) stays the GENERAL site-wide number
+  // (header/hero/sticky bar/footer company line); the numbers below are used only
+  // inside each branch's own context.
   branches: [
     {
-      id: "main",
-      label: "Main workshop",
-      streetNumber: "1059",
-      street: "Steve Biko Road",
+      id: "vision-motors",
+      name: "Vision Motors",
+      utilityLabel: "Branch 01",
+      streetLine: "867 M5",
       suburb: "Wonderboom South",
       city: "Pretoria",
       region: "Gauteng",
-      // 1059 postcode still OPEN — GBP says 0031, onboarding 0084 (C20).
-      postalCode: null as string | null,
+      postalCode: "0084",
       manager: "Christo Vorster",
-      // Name confirmed (B3); the "Branch Manager" title is from the legacy HTML.
       managerTitleSource: "html" as "html" | "confirmed",
+      phoneDisplay: "082 823 5178",
+      phoneLink: "tel:+27828235178",
+      whatsappNumber: "27828235178",
+      whatsappLink: "https://wa.me/27828235178",
+      mapsUrl: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+        "Vision Motors, 867 M5, Wonderboom South, Pretoria, 0084"
+      )}`,
       primary: true,
     },
     {
-      id: "engine-shop",
-      label: "Engine shop",
-      streetNumber: "1197",
-      street: "Steve Biko Road",
+      id: "engine-shop-vision-motors",
+      name: "The Engine Shop/Vision Motors",
+      utilityLabel: "Branch 02",
+      streetLine: "999 Steve Biko Rd",
       suburb: "Wonderboom South",
       city: "Pretoria",
       region: "Gauteng",
-      // 0084 CONFIRMED for 1197 (onboarding B6 + client instruction 2026-07-27).
-      postalCode: "0084",
+      postalCode: "0031",
       manager: "Jacques du Randt",
       managerTitleSource: "confirmed" as "html" | "confirmed",
+      phoneDisplay: "071 048 8213",
+      phoneLink: "tel:+27710488213",
+      whatsappNumber: "27710488213",
+      whatsappLink: "https://wa.me/27710488213",
+      mapsUrl: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+        "The Engine Shop Vision Motors, 999 Steve Biko Road, Wonderboom South, Pretoria, 0031"
+      )}`,
       primary: false,
     },
   ],
@@ -120,7 +124,7 @@ export const siteConfig = {
   engineShop: {
     value: null,
     status: "unverified",
-    note: "Superseded by branches[]. The Engine Shop is the 1197 Steve Biko Road branch (confirmed 2026-07-27).",
+    note: "Superseded by branches[]. The Engine Shop/Vision Motors is 999 Steve Biko Rd (confirmed 2026-08-11).",
   } as Claim<{ streetNumber: string; street: string; role: string }>,
 
   // ── Business hours ─────────────────────────────────────────────────────────

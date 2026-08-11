@@ -1,6 +1,6 @@
 "use client";
 
-import { CheckCircle2, Info, Loader2, Phone } from "lucide-react";
+import { CheckCircle2, Info, Loader2, MessageCircle, Phone } from "lucide-react";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 
 import { formConfig, SELECT_SERVICE_EVENT } from "@/config/form-config";
@@ -11,6 +11,7 @@ import {
   trackBookingStart,
   trackBookingSubmit,
   trackCall,
+  trackWhatsApp,
 } from "@/lib/tracking";
 import { cn } from "@/utils/cn";
 
@@ -47,7 +48,11 @@ export default function BookingForm({ compact = false }: { compact?: boolean }) 
   const [contactMethod, setContactMethod] = useState(
     formConfig.contactMethods[0]
   );
-  const [location, setLocation] = useState(formConfig.locationOptions[0]);
+  const [location, setLocation] = useState<string>(
+    formConfig.locationOptions[0].value
+  );
+  /** Prefilled branch WhatsApp link, built on successful submit. */
+  const [whatsappUrl, setWhatsappUrl] = useState<string | null>(null);
   /** Honeypot — hidden from real users, bots fill it. */
   const [company, setCompany] = useState("");
 
@@ -125,10 +130,56 @@ export default function BookingForm({ compact = false }: { compact?: boolean }) 
 
       trackBookingSubmit({ service, vehicleMake, source: attribution.source });
       setIsDemo(data.forwarded === false);
-      setStatus("success");
 
-      if (formConfig.redirectOnSuccess) {
-        window.location.assign(formConfig.successRedirect);
+      // ── Branch-routed WhatsApp handoff ──────────────────────────────────────
+      // The lead is already captured server-side above, so it is safe even if
+      // the customer never presses Send. Now build a clean, URL-encoded message
+      // and route it to the SELECTED branch's WhatsApp number (never crossed).
+      // Campaign/UTM data is intentionally kept OUT of the customer-facing text.
+      const branch =
+        formConfig.locationOptions.find((o) => o.value === location) ??
+        formConfig.locationOptions[0];
+      const vehicle = [vehicleYear, vehicleMake, vehicleModel]
+        .map((s) => s.trim())
+        .filter(Boolean)
+        .join(" ");
+      const message = [
+        "Hello Vision Motors,",
+        "",
+        "I would like to request a booking / enquiry.",
+        "",
+        `Workshop:\n${branch.label}`,
+        "",
+        `Name:\n${name.trim()}`,
+        "",
+        `Phone:\n${phone.trim()}`,
+        "",
+        `Email:\n${email.trim()}`,
+        "",
+        `Vehicle:\n${vehicle || "—"}`,
+        "",
+        `Service required:\n${service}`,
+        "",
+        `Problem / Notes:\n${problem.trim() || "—"}`,
+        "",
+        `Preferred booking date:\n${preferredDate || "—"}`,
+        "",
+        `Preferred contact method:\n${contactMethod}`,
+        "",
+        "Source:\nWebsite",
+      ].join("\n");
+      const waUrl = `https://wa.me/${branch.whatsapp}?text=${encodeURIComponent(
+        message
+      )}`;
+
+      setWhatsappUrl(waUrl);
+      setStatus("success");
+      trackWhatsApp(branch.value, "booking_form");
+
+      // Best-effort auto-open (mobile → app, desktop → WhatsApp Web). A popup
+      // blocker may defer this to the button on the success screen.
+      if (typeof window !== "undefined") {
+        window.open(waUrl, "_blank", "noopener,noreferrer");
       }
     } catch (err) {
       setError(
@@ -155,19 +206,34 @@ export default function BookingForm({ compact = false }: { compact?: boolean }) 
           {formConfig.successTitle}
         </h3>
         <p className="mx-auto mt-3 max-w-sm text-sm leading-[1.7] text-brand-inkSoft">
-          {formConfig.successBody}
+          We&apos;ve saved your details. Finish by sending them to the workshop
+          on WhatsApp — just press Send. If it&apos;s urgent, phone us instead.
         </p>
 
-        <a
-          href={siteConfig.phoneLink}
-          onClick={() => trackCall("booking_page")}
-          className="mt-7 inline-flex min-h-[48px] items-center gap-2 rounded-full bg-brand-cta px-6 text-sm font-bold text-brand-ink shadow-accent"
-          aria-label={`Call ${siteConfig.businessName} on ${siteConfig.phoneDisplay}`}
-          data-cta="call"
-        >
-          <Phone className="h-4 w-4" aria-hidden />
-          <span className="whitespace-nowrap">{siteConfig.phoneDisplay}</span>
-        </a>
+        <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          {whatsappUrl && (
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => trackWhatsApp(location, "booking_form_success")}
+              className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full bg-[#25D366] px-6 text-sm font-bold text-white shadow-sm transition-transform hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#25D366] focus-visible:ring-offset-2"
+            >
+              <MessageCircle className="h-4 w-4" aria-hidden />
+              Send on WhatsApp
+            </a>
+          )}
+          <a
+            href={siteConfig.phoneLink}
+            onClick={() => trackCall("booking_page")}
+            className="inline-flex min-h-[48px] items-center gap-2 rounded-full bg-brand-cta px-6 text-sm font-bold text-brand-ink shadow-accent"
+            aria-label={`Call ${siteConfig.businessName} on ${siteConfig.phoneDisplay}`}
+            data-cta="call"
+          >
+            <Phone className="h-4 w-4" aria-hidden />
+            <span className="whitespace-nowrap">{siteConfig.phoneDisplay}</span>
+          </a>
+        </div>
 
         {isDemo && (
           <p className="mt-7 rounded-lg border border-brand-line bg-white px-4 py-3 text-xs text-brand-inkMuted">
@@ -285,8 +351,8 @@ export default function BookingForm({ compact = false }: { compact?: boolean }) 
           className={inputClass}
         >
           {formConfig.locationOptions.map((o) => (
-            <option key={o} value={o}>
-              {o}
+            <option key={o.value} value={o.value}>
+              {o.label}
             </option>
           ))}
         </select>

@@ -1,5 +1,21 @@
 # Vision Motors — Session Handover
 
+> ## 🔔 UPDATE 2026-08-11 — Branch names, addresses, numbers, Contact/booking, imagery
+>
+> **Confirmed branches (supersede all 1059 / 1197 references below):**
+> - **Vision Motors** — 867 M5, Wonderboom South, Pretoria, **0084** · Call/WhatsApp **082 823 5178** (`tel:+27828235178` / `wa.me/27828235178`) · Christo Vorster · primary.
+> - **The Engine Shop/Vision Motors** — 999 Steve Biko Rd, Wonderboom South, Pretoria, **0031** · Call/WhatsApp **071 048 8213** (`tel:+27710488213` / `wa.me/27710488213`) · Jacques du Randt.
+> - Company switchboard **012 335 0070** stays the GENERAL site-wide number (header/hero/sticky/footer company line). Branch numbers are used ONLY in branch contexts and **must never be crossed**.
+> - Emails: general `vision@visionmotors.co.za` + service `service@visionmotors.co.za`. Hours: Mon–Fri 07:30–17:00.
+>
+> **What changed:** `config/site-config.ts` `branches[]` (new shape: `name/utilityLabel/streetLine/phoneDisplay/phoneLink/whatsappNumber/whatsappLink/mapsUrl`); `config/form-config.ts` `locationOptions` = `{value,label,whatsapp}`; new `components/funnel/branch-actions.tsx` (Call·WhatsApp·Directions, per-branch); homepage `location-hours.tsx` = two branch blocks with shopfront photos; Contact page rebuilt (hero → form → two branch sections each with an embedded map); footer two-branch + both emails; `lib/schema.ts` two AutoRepair nodes each with its OWN phone; About/FAQ/metadata updated.
+>
+> **🚨 Booking WhatsApp routing (booking + contact forms):** on submit the lead is POSTed to `/api/booking` FIRST (GHL/UTM/GCLID/validation/honeypot all preserved), then the selected workshop opens the correct branch WhatsApp (`wa.me/<num>?text=<url-encoded message>`) — Vision Motors→`27828235178`, Engine Shop→`27710488213`. Verified both routes, never crossed. Campaign data stays server-side. `lib/tracking.ts` gained `trackWhatsApp` + branch-aware `trackDirections`/`trackCall("branch")`.
+>
+> **Imagery:** 4 new files in `public/images/` (originals archived non-public): `vision-motors-branch-wonderboom-pretoria.jpg`, `vision-motors-engine-shop-branch-pretoria.jpg`, `vision-motors-engine-shop-workshop-01.jpg`, `vision-motors-engine-shop-workshop-02.jpg`. ⚠️ Both shopfront photos had **RMI badges / "OFFICIAL RMI DEALER ENGINES" / "SPECIALISTS SINCE 1987"** redacted (blurred) — fact-gate C2/C4; reversible if RMI membership + 1987 founding are ever verified. Engine Shop homepage section now uses workshop-01/02.
+>
+> ⚠️ Verify the two Google Maps pins are correct ("867 M5" geocodes oddly). Production commit below is now stale — see latest git log.
+
 _Last updated: 2026-08-10 (end of the visual / navigation / photography pass + hero fix).
 Read this FIRST next session. The site is in an approved, happy state — do not re-audit._
 

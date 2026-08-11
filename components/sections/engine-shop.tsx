@@ -54,7 +54,7 @@ export default function EngineShop() {
         <div className="grid gap-4 sm:grid-cols-3">
           <div className="relative h-[36vh] min-h-[240px] overflow-hidden rounded-2xl sm:col-span-2 sm:h-[54vh]">
             <ImageSlotView
-              slot={imagesConfig.engineRoom}
+              slot={imagesConfig.engineShopWork1}
               tone="light"
               fill
               sizes="(max-width: 640px) 100vw, 62vw"
@@ -62,7 +62,7 @@ export default function EngineShop() {
           </div>
           <div className="relative h-[36vh] min-h-[240px] overflow-hidden rounded-2xl sm:h-[54vh]">
             <ImageSlotView
-              slot={imagesConfig.engineRecon}
+              slot={imagesConfig.engineShopWork2}
               tone="light"
               fill
               sizes="(max-width: 640px) 100vw, 31vw"
