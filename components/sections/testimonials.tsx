@@ -69,7 +69,7 @@ export default function Testimonials() {
       <SectionHeading
         eyebrow="Reviews"
         title="Read what people are saying"
-        description="Real, named reviews from Vision Motors customers — shown exactly as written, including the ones in Afrikaans."
+        description="Real customers, in their own words — every review below is quoted exactly as it was left on Google, in English and Afrikaans, with nothing edited out."
         align="center"
         className="max-w-2xl"
       />
