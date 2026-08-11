@@ -28,6 +28,11 @@ const AVATAR_TONES = [
   "bg-brand-steel/25 text-brand-bone",
 ];
 
+// Reviews longer than this get a "Read more" toggle so they don't dominate the
+// grid. The toggle is a native checkbox + CSS line-clamp (no JS): the full text
+// is always in the DOM and expandable even with JavaScript disabled.
+const READ_MORE_THRESHOLD = 180;
+
 /** Renders 5 stars with a fractional fill for `value` (e.g. 4.3). */
 function Stars({ value = 5, className }: { value?: number; className?: string }) {
   return (
@@ -84,41 +89,71 @@ export default function Testimonials() {
       {/* Masonry grid — varied review lengths flow without gaps. */}
       <Reveal className="mt-12">
         <div className="gap-5 sm:columns-2 lg:columns-3">
-          {reviews.map((review, i) => (
-            <figure
-              key={review.name}
-              className="mb-5 break-inside-avoid rounded-2xl border border-white/10 bg-brand-navyCard/60 p-6 shadow-card"
-            >
-              <div className="flex items-center gap-3.5">
-                <span
-                  aria-hidden
-                  className={cn(
-                    "flex h-11 w-11 shrink-0 items-center justify-center rounded-full font-display text-sm font-bold",
-                    AVATAR_TONES[i % AVATAR_TONES.length]
-                  )}
-                >
-                  {initials(review.name)}
-                </span>
-                <figcaption className="min-w-0">
-                  <span className="block truncate font-display text-base font-bold text-white">
-                    {review.name}
-                  </span>
-                  <span className="block truncate text-xs text-brand-bone/70">
-                    {review.meta}
-                  </span>
-                </figcaption>
-              </div>
-
-              <Stars className="mt-4" />
-
-              <blockquote
-                lang={review.language}
-                className="mt-3 text-sm leading-[1.75] text-brand-bone"
+          {reviews.map((review, i) => {
+            const isLong = review.text.length > READ_MORE_THRESHOLD;
+            const toggleId = `review-${i}`;
+            return (
+              <figure
+                key={review.name}
+                className="mb-5 break-inside-avoid rounded-2xl border border-white/10 bg-brand-navyCard/60 p-6 shadow-card"
               >
-                {review.text}
-              </blockquote>
-            </figure>
-          ))}
+                <div className="flex items-center gap-3.5">
+                  <span
+                    aria-hidden
+                    className={cn(
+                      "flex h-11 w-11 shrink-0 items-center justify-center rounded-full font-display text-sm font-bold",
+                      AVATAR_TONES[i % AVATAR_TONES.length]
+                    )}
+                  >
+                    {initials(review.name)}
+                  </span>
+                  <figcaption className="min-w-0">
+                    <span className="block truncate font-display text-base font-bold text-white">
+                      {review.name}
+                    </span>
+                    <span className="block truncate text-xs text-brand-bone/70">
+                      {review.meta}
+                    </span>
+                  </figcaption>
+                </div>
+
+                <Stars className="mt-4" />
+
+                {isLong ? (
+                  // CSS-only expand/collapse: the checkbox toggles line-clamp on
+                  // the blockquote and swaps the two labels. Works with no JS.
+                  <div className="mt-3">
+                    <input type="checkbox" id={toggleId} className="peer sr-only" />
+                    <blockquote
+                      lang={review.language}
+                      className="line-clamp-4 text-sm leading-[1.75] text-brand-bone peer-checked:line-clamp-none"
+                    >
+                      {review.text}
+                    </blockquote>
+                    <label
+                      htmlFor={toggleId}
+                      className="mt-2 inline-block cursor-pointer text-xs font-semibold text-brand-blueSoft underline-offset-4 hover:underline peer-checked:hidden peer-focus-visible:underline"
+                    >
+                      Read more
+                    </label>
+                    <label
+                      htmlFor={toggleId}
+                      className="mt-2 hidden cursor-pointer text-xs font-semibold text-brand-blueSoft underline-offset-4 hover:underline peer-checked:inline-block peer-focus-visible:underline"
+                    >
+                      Read less
+                    </label>
+                  </div>
+                ) : (
+                  <blockquote
+                    lang={review.language}
+                    className="mt-3 text-sm leading-[1.75] text-brand-bone"
+                  >
+                    {review.text}
+                  </blockquote>
+                )}
+              </figure>
+            );
+          })}
         </div>
       </Reveal>
 
