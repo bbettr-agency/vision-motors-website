@@ -69,7 +69,7 @@ export default function Testimonials() {
       <SectionHeading
         eyebrow="Reviews"
         title="Read what people are saying"
-        description="Real customers, in their own words — every review below is quoted exactly as it was left on Google, in English and Afrikaans, with nothing edited out."
+        description="What people say once we've had their car, bakkie or engine through the workshop, and met the team behind the counter."
         align="center"
         className="max-w-2xl"
       />
