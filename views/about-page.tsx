@@ -1,3 +1,5 @@
+import { MapPin } from "lucide-react";
+
 import { imagesConfig } from "@/config/images-config";
 import { siteConfig } from "@/config/site-config";
 import { diagnosticPolicy } from "@/config/diagnostic-policy-config";
@@ -13,6 +15,7 @@ import ImageSlotView from "@/components/ui/image-slot";
 import CtaBand from "@/components/sections/cta-band";
 import JsonLd from "@/components/ui/json-ld";
 import SkipLink from "@/components/layout/skip-link";
+import { cn } from "@/utils/cn";
 
 // ─────────────────────────────────────────────────────────────────────────────
 //  ABOUT — DELIBERATELY RESTRAINED
@@ -48,6 +51,23 @@ const whatWeAre = [
     title: "Two workshops, one team",
     body: "Vision Motors runs two workshops in Wonderboom South, Pretoria — Vision Motors on the M5 for servicing and repairs, and The Engine Shop / Vision Motors on Steve Biko Road for engine reconditioning and rebuilds.",
   },
+];
+
+/** First-two-word initials, for the manager avatars. */
+const initials = (name: string) =>
+  name
+    .split(" ")
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((w) => w[0]?.toUpperCase())
+    .join("");
+
+/** Compact, all-true facts — they add structure without inventing a story. */
+const quickFacts = [
+  { value: "2", label: "Workshops in Wonderboom South" },
+  { value: "In-house", label: "Engine reconditioning & rebuilds" },
+  { value: "Family", label: "Owned and run" },
+  { value: "Mon–Fri", label: "07:30 – 17:00" },
 ];
 
 export default function AboutPage() {
@@ -92,22 +112,46 @@ export default function AboutPage() {
                   </div>
                 ))}
               </div>
+
+              {/* Quick facts — balances the taller image column and adds
+                  scannable, all-true detail. */}
+              <dl className="mt-12 grid grid-cols-2 gap-3">
+                {quickFacts.map((fact) => (
+                  <div
+                    key={fact.label}
+                    className="rounded-xl border border-brand-line bg-white p-5"
+                  >
+                    <dt className="font-display text-2xl font-bold tracking-tight text-brand-ink">
+                      {fact.value}
+                    </dt>
+                    <dd className="mt-1 text-xs leading-snug text-brand-inkSoft">
+                      {fact.label}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
             </div>
 
+            {/* Heights are capped so the image column tracks the text column
+                instead of running far past it and leaving dead space. */}
             <div className="space-y-5">
-              <ImageSlotView
-                slot={imagesConfig.techniciansDiagnosis}
-                tone="light"
-                className="rounded-3xl shadow-soft"
-                sizes="(max-width: 1024px) 100vw, 45vw"
-                showBrief={false}
-              />
-              <ImageSlotView
-                slot={imagesConfig.exterior}
-                tone="light"
-                className="rounded-2xl"
-                sizes="(max-width: 1024px) 100vw, 45vw"
-              />
+              <div className="relative h-[300px] overflow-hidden rounded-3xl shadow-soft sm:h-[500px]">
+                <ImageSlotView
+                  slot={imagesConfig.techniciansDiagnosis}
+                  tone="light"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 45vw"
+                  showBrief={false}
+                />
+              </div>
+              <div className="relative h-[240px] overflow-hidden rounded-2xl sm:h-[360px]">
+                <ImageSlotView
+                  slot={imagesConfig.exterior}
+                  tone="light"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 45vw"
+                />
+              </div>
             </div>
           </div>
         </SectionContainer>
@@ -136,12 +180,15 @@ export default function AboutPage() {
                 t: "Nothing without your say-so",
                 b: "You get a quote, and work starts only when you approve it. If we find something else along the way, we come back to you first.",
               },
-            ].map((item) => (
+            ].map((item, i) => (
               <div
                 key={item.t}
-                className="rounded-2xl border border-white/10 bg-brand-navyCard p-8 shadow-card"
+                className="flex flex-col rounded-2xl border border-white/10 bg-brand-navyCard p-8 shadow-card"
               >
-                <h3 className="font-display text-lg font-semibold text-white">
+                <span className="font-mono text-xs font-medium tracking-[0.2em] text-brand-cta">
+                  0{i + 1}
+                </span>
+                <h3 className="mt-4 font-display text-lg font-semibold text-white">
                   {item.t}
                 </h3>
                 <p className="mt-3 text-sm leading-[1.75] text-brand-bone/75">
@@ -151,13 +198,14 @@ export default function AboutPage() {
             ))}
           </div>
 
-          <p className="mx-auto mt-12 max-w-[68ch] text-center text-sm leading-[1.7] text-brand-bone/75">
-            {diagnosticPolicy.short}
-          </p>
-
-          <p className="mx-auto mt-6 max-w-[60ch] text-center text-sm leading-[1.7] text-brand-bone/75">
-            {siteConfig.warrantyInterimCopy}
-          </p>
+          <div className="mx-auto mt-12 max-w-2xl rounded-2xl border border-white/10 bg-white/[0.03] p-6 text-center sm:p-8">
+            <p className="text-sm leading-[1.7] text-brand-bone/80">
+              {diagnosticPolicy.short}
+            </p>
+            <p className="mt-4 border-t border-white/10 pt-4 text-sm leading-[1.7] text-brand-bone/60">
+              {siteConfig.warrantyInterimCopy}
+            </p>
+          </div>
         </SectionContainer>
 
         {/* Team — architecture prepared, content awaiting confirmation */}
@@ -170,32 +218,67 @@ export default function AboutPage() {
             className="max-w-3xl"
           />
 
-          <div className="mt-12 grid items-stretch gap-5 sm:grid-cols-2">
+          <div className="mt-12 grid gap-6 lg:grid-cols-5 lg:items-stretch">
             {/* Real technician-at-work photograph. Full named team portraits
                 (roles confirmed) are still wanted; the supplied portraits are
                 avatar-size only (C7). */}
-            <ImageSlotView
-              slot={imagesConfig.team}
-              tone="light"
-              className="rounded-2xl"
-              sizes="(max-width: 768px) 100vw, 45vw"
-            />
-            <div className="rounded-2xl border border-brand-line bg-white p-8 shadow-soft">
-              <h3 className="font-display text-base font-semibold text-brand-ink">
-                A manager on the floor at each branch
-              </h3>
-              <p className="mt-3 text-sm leading-[1.75] text-brand-inkSoft">
-                <span className="font-semibold text-brand-ink">
-                  Jacques du Randt
-                </span>{" "}
-                is Branch Manager at The Engine Shop / Vision Motors (999 Steve
-                Biko Rd);{" "}
-                <span className="font-semibold text-brand-ink">
-                  Christo Vorster
-                </span>{" "}
-                runs Vision Motors (867 M5). Both are thanked by name in reviews
-                customers wrote themselves.
-              </p>
+            <div className="relative min-h-[280px] overflow-hidden rounded-2xl lg:col-span-2">
+              <ImageSlotView
+                slot={imagesConfig.team}
+                tone="light"
+                fill
+                sizes="(max-width: 1024px) 100vw, 40vw"
+              />
+            </div>
+
+            {/* A manager on the floor at each branch — one card per branch,
+                built from the same confirmed branch data used site-wide. */}
+            <div className="grid gap-6 sm:grid-cols-2 lg:col-span-3">
+              {siteConfig.branches.map((branch, i) => (
+                <div
+                  key={branch.id}
+                  className="flex flex-col rounded-2xl border border-brand-line bg-white p-7 shadow-soft"
+                >
+                  <div className="flex items-center gap-4">
+                    <span
+                      aria-hidden
+                      className={cn(
+                        "flex h-12 w-12 shrink-0 items-center justify-center rounded-full font-display text-base font-bold",
+                        i === 0
+                          ? "bg-brand-blue/10 text-brand-blue"
+                          : "bg-brand-cta/15 text-brand-cta"
+                      )}
+                    >
+                      {initials(branch.manager)}
+                    </span>
+                    <div className="min-w-0">
+                      <p className="truncate font-display text-lg font-bold text-brand-ink">
+                        {branch.manager}
+                      </p>
+                      <p className="font-mono text-[0.7rem] uppercase tracking-[0.15em] text-brand-inkMuted">
+                        Branch Manager
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="mt-6 space-y-2 border-t border-brand-line pt-5 text-sm">
+                    <p className="font-semibold text-brand-ink">{branch.name}</p>
+                    <p className="flex items-start gap-2 text-brand-inkSoft">
+                      <MapPin
+                        className="mt-0.5 h-4 w-4 shrink-0 text-brand-inkMuted"
+                        aria-hidden
+                      />
+                      <span>
+                        {branch.streetLine}, {branch.suburb}, {branch.city}
+                      </span>
+                    </p>
+                  </div>
+
+                  <p className="mt-auto pt-5 text-sm leading-[1.7] text-brand-inkSoft">
+                    Thanked by name in customers&apos; own Google reviews.
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         </SectionContainer>
