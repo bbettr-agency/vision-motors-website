@@ -17,6 +17,7 @@ import Icon from "@/components/ui/icon";
 import CtaBand from "@/components/sections/cta-band";
 import JsonLd from "@/components/ui/json-ld";
 import SkipLink from "@/components/layout/skip-link";
+import { cn } from "@/utils/cn";
 
 // ─────────────────────────────────────────────────────────────────────────────
 //  SERVICES HUB
@@ -34,6 +35,7 @@ type Group = {
   eyebrow: string;
   title: string;
   intro: string;
+  img: (typeof imagesConfig)[keyof typeof imagesConfig];
   slugs: string[];
 };
 
@@ -44,6 +46,7 @@ const groups: Group[] = [
     title: "The work most workshops send away",
     intro:
       "Engine and driveline work is done here rather than sub-contracted out. This is the side of the business that separates us from a general service centre.",
+    img: imagesConfig.engineShopWork1,
     slugs: [
       "/engine-reconditioning-pretoria",
       "/ford-ranger-engine-specialists-pretoria",
@@ -58,6 +61,7 @@ const groups: Group[] = [
     title: "Servicing and mechanical repairs",
     intro:
       "The routine work that keeps a vehicle reliable — for cars, bakkies and commercial vehicles of all makes and models.",
+    img: imagesConfig.vehicleCare,
     slugs: [
       "/vehicle-diagnostics-pretoria",
       "/brake-clutch-repairs-pretoria",
@@ -136,23 +140,37 @@ export default function ServicesPage() {
           }
         />
 
-        {/* Editorial workshop image — breaks the technical copy with real proof. */}
-        <div className="relative aspect-[16/10] w-full overflow-hidden sm:aspect-[2.4/1]">
-          <ImageSlotView slot={imagesConfig.engineRoom} fill sizes="100vw" />
-        </div>
-
-        {groups.map((group, groupIndex) => (
+        {groups.map((group, groupIndex) => {
+          const imageRight = groupIndex % 2 === 0;
+          return (
           <SectionContainer
             key={group.key}
             className={groupIndex % 2 === 0 ? "bg-brand-cream" : "bg-brand-bluegrey"}
           >
-            <SectionHeading
-              tone="light"
-              eyebrow={group.eyebrow}
-              title={group.title}
-              description={group.intro}
-              className="max-w-3xl"
-            />
+            {/* Group header paired with a real, enhanced workshop photograph.
+                Its alt text carries the location keywords for image SEO. */}
+            <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+              <div className={cn(!imageRight && "lg:order-2")}>
+                <SectionHeading
+                  tone="light"
+                  eyebrow={group.eyebrow}
+                  title={group.title}
+                  description={group.intro}
+                />
+              </div>
+              <div
+                className={cn(
+                  "relative aspect-[4/3] overflow-hidden rounded-2xl shadow-soft",
+                  !imageRight && "lg:order-1"
+                )}
+              >
+                <ImageSlotView
+                  slot={group.img}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 45vw"
+                />
+              </div>
+            </div>
 
             <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {group.slugs.map((slug) => {
@@ -205,7 +223,8 @@ export default function ServicesPage() {
               })}
             </div>
           </SectionContainer>
-        ))}
+          );
+        })}
 
         {/* Makes — factual, from the client's own signage. Never "approved". */}
         <SectionContainer className="bg-brand-navy">
