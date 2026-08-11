@@ -218,23 +218,10 @@ export default function AboutPage() {
             className="max-w-3xl"
           />
 
-          <div className="mt-12 grid gap-6 lg:grid-cols-5 lg:items-stretch">
-            {/* Real technician-at-work photograph. Full named team portraits
-                (roles confirmed) are still wanted; the supplied portraits are
-                avatar-size only (C7). */}
-            <div className="relative min-h-[280px] overflow-hidden rounded-2xl lg:col-span-2">
-              <ImageSlotView
-                slot={imagesConfig.team}
-                tone="light"
-                fill
-                sizes="(max-width: 1024px) 100vw, 40vw"
-              />
-            </div>
-
-            {/* A manager on the floor at each branch — one card per branch,
-                built from the same confirmed branch data used site-wide. */}
-            <div className="grid gap-6 sm:grid-cols-2 lg:col-span-3">
-              {siteConfig.branches.map((branch, i) => (
+          {/* A manager on the floor at each branch — one card per branch,
+              built from the same confirmed branch data used site-wide. */}
+          <div className="mt-12 grid gap-6 sm:grid-cols-2">
+            {siteConfig.branches.map((branch, i) => (
                 <div
                   key={branch.id}
                   className="flex flex-col rounded-2xl border border-brand-line bg-white p-7 shadow-soft"
@@ -279,7 +266,6 @@ export default function AboutPage() {
                   </p>
                 </div>
               ))}
-            </div>
           </div>
         </SectionContainer>
 
