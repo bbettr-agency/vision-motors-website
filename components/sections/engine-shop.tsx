@@ -33,7 +33,7 @@ export default function EngineShop() {
       <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
         <SectionHeading
           tone="light"
-          eyebrow="The engine shop"
+          eyebrow="The Engine Shop / Vision Motors"
           title={
             <>
               We don&apos;t send engine work

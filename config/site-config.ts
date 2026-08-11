@@ -97,7 +97,7 @@ export const siteConfig = {
     },
     {
       id: "engine-shop-vision-motors",
-      name: "The Engine Shop/Vision Motors",
+      name: "The Engine Shop / Vision Motors",
       utilityLabel: "Branch 02",
       streetLine: "999 Steve Biko Rd",
       suburb: "Wonderboom South",

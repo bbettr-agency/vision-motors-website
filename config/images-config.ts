@@ -148,7 +148,7 @@ export const imagesConfig: Record<string, ImageSlot> = {
     src: "/images/vision-motors-engine-shop-branch-pretoria.jpg",
     alt: "The Engine Shop / Vision Motors on Steve Biko Road, Wonderboom South, Pretoria",
     aspect: "4/3",
-    shotBrief: "The Engine Shop branch frontage.",
+    shotBrief: "The Engine Shop / Vision Motors branch frontage.",
     priority: 6,
   },
 
@@ -157,7 +157,7 @@ export const imagesConfig: Record<string, ImageSlot> = {
   engineShopWork1: {
     id: "engineShopWork1",
     src: "/images/vision-motors-engine-shop-workshop-01.jpg",
-    alt: "Two reconditioned engines on the bench at The Engine Shop, Vision Motors, Pretoria",
+    alt: "Two reconditioned engines on the bench at The Engine Shop / Vision Motors, Pretoria",
     aspect: "4/3",
     shotBrief: "Two reconditioned engines side by side.",
     priority: 2,

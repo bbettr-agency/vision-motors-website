@@ -67,7 +67,7 @@ export const formConfig = {
     },
     {
       value: "engine-shop-vision-motors",
-      label: "The Engine Shop/Vision Motors",
+      label: "The Engine Shop / Vision Motors",
       whatsapp: "27710488213",
     },
   ] as const,

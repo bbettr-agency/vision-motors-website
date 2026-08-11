@@ -46,7 +46,7 @@ const whatWeAre = [
   },
   {
     title: "Two workshops, one team",
-    body: "Vision Motors runs two workshops in Wonderboom South, Pretoria — Vision Motors on the M5 for servicing and repairs, and The Engine Shop/Vision Motors on Steve Biko Road for engine reconditioning and rebuilds.",
+    body: "Vision Motors runs two workshops in Wonderboom South, Pretoria — Vision Motors on the M5 for servicing and repairs, and The Engine Shop / Vision Motors on Steve Biko Road for engine reconditioning and rebuilds.",
   },
 ];
 
@@ -188,7 +188,7 @@ export default function AboutPage() {
                 <span className="font-semibold text-brand-ink">
                   Jacques du Randt
                 </span>{" "}
-                is Branch Manager at The Engine Shop/Vision Motors (999 Steve
+                is Branch Manager at The Engine Shop / Vision Motors (999 Steve
                 Biko Rd);{" "}
                 <span className="font-semibold text-brand-ink">
                   Christo Vorster
