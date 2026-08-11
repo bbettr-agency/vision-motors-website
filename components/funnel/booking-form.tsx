@@ -6,6 +6,7 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 import { formConfig, SELECT_SERVICE_EVENT } from "@/config/form-config";
 import { diagnosticPolicy } from "@/config/diagnostic-policy-config";
 import { siteConfig } from "@/config/site-config";
+import { closedDayMessage, isClosedDay } from "@/lib/za-holidays";
 import {
   captureAttribution,
   trackBookingStart,
@@ -45,6 +46,8 @@ export default function BookingForm({ compact = false }: { compact?: boolean }) 
   const [service, setService] = useState(formConfig.serviceOptions[0]);
   const [problem, setProblem] = useState("");
   const [preferredDate, setPreferredDate] = useState("");
+  /** Set when the chosen date is a weekend or public holiday (closed). */
+  const [dateError, setDateError] = useState<string | null>(null);
   const [contactMethod, setContactMethod] = useState(
     formConfig.contactMethods[0]
   );
@@ -71,6 +74,13 @@ export default function BookingForm({ compact = false }: { compact?: boolean }) 
     return () => window.removeEventListener(SELECT_SERVICE_EVENT, handler);
   }, []);
 
+  /** Reject weekend / public-holiday dates the moment they're picked. */
+  function handleDateChange(value: string) {
+    setPreferredDate(value);
+    const check = isClosedDay(value);
+    setDateError(check.closed ? closedDayMessage(check.reason!) : null);
+  }
+
   /** Fires once, on first interaction — a funnel diagnostic. */
   function markStarted() {
     if (startedRef.current) return;
@@ -88,6 +98,16 @@ export default function BookingForm({ compact = false }: { compact?: boolean }) 
       return setError("Please enter a valid phone number.");
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim()))
       return setError("Please enter a valid email address.");
+
+    // The workshop is closed on weekends and public holidays — a requested
+    // date on one of those can't be honoured, so block it here too.
+    const dateCheck = isClosedDay(preferredDate);
+    if (dateCheck.closed) {
+      setDateError(closedDayMessage(dateCheck.reason!));
+      return setError(
+        "Please choose a weekday for your preferred date — we're closed on weekends and public holidays."
+      );
+    }
 
     setStatus("submitting");
 
@@ -317,9 +337,28 @@ export default function BookingForm({ compact = false }: { compact?: boolean }) 
             type="date"
             min={today}
             value={preferredDate}
-            onChange={(e) => setPreferredDate(e.target.value)}
-            className={inputClass}
+            onChange={(e) => handleDateChange(e.target.value)}
+            aria-invalid={dateError ? true : undefined}
+            aria-describedby={dateError ? "vm-date-error" : "vm-date-hint"}
+            className={cn(
+              inputClass,
+              dateError &&
+                "border-red-400 focus:border-red-400 focus:ring-red-200/40"
+            )}
           />
+          {dateError ? (
+            <p
+              id="vm-date-error"
+              role="alert"
+              className="mt-1.5 text-xs font-medium text-red-600"
+            >
+              {dateError}
+            </p>
+          ) : (
+            <p id="vm-date-hint" className="mt-1.5 text-xs text-brand-inkMuted">
+              Weekdays only — we&apos;re closed weekends &amp; public holidays.
+            </p>
+          )}
         </div>
         <div>
           <label htmlFor="vm-contact" className={labelClass}>

@@ -1,6 +1,8 @@
 // Server-side validation + normalisation for booking enquiries.
 // Mirrored client-side for instant feedback; this is the authoritative check.
 
+import { isClosedDay } from "./za-holidays";
+
 export type LeadPayload = {
   name: string;
   phone: string;
@@ -51,6 +53,15 @@ export function validateLead(data: Partial<LeadPayload>): {
     errors.push("Please enter a valid email address.");
   }
 
+  // Preferred date is optional, but if given it must be a working day — the
+  // workshop is closed on weekends and public holidays.
+  const preferredDate = cap(data.preferredDate, 30);
+  if (isClosedDay(preferredDate).closed) {
+    errors.push(
+      "Please choose a weekday for your preferred date — we're closed on weekends and public holidays."
+    );
+  }
+
   // Honeypot: a real user never sees this field, so any value means a bot.
   // Handled as a silent success upstream rather than an error, so bots get no
   // signal about why they failed.
@@ -66,7 +77,7 @@ export function validateLead(data: Partial<LeadPayload>): {
     registration: cap(data.registration, 20),
     service: cap(data.service, 80),
     problem: cap(data.problem, 1500),
-    preferredDate: cap(data.preferredDate, 30),
+    preferredDate,
     contactMethod: cap(data.contactMethod, 30),
     location: cap(data.location, 80),
     source: cap(data.source, 300) || undefined,
