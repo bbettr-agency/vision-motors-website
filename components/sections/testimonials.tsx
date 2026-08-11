@@ -1,4 +1,4 @@
-import { Star } from "lucide-react";
+import { ChevronDown, Star } from "lucide-react";
 
 import { reviews, reviewsMeta } from "@/config/reviews-config";
 import SectionContainer from "@/components/layout/section-container";
@@ -32,6 +32,14 @@ const AVATAR_TONES = [
 // grid. The toggle is a native checkbox + CSS line-clamp (no JS): the full text
 // is always in the DOM and expandable even with JavaScript disabled.
 const READ_MORE_THRESHOLD = 180;
+
+// Only the first N review cards show by default; the rest reveal via the
+// "Read more reviews" button. Same no-JS approach — a native checkbox + CSS
+// `:has()`, so every review stays in the DOM (crawlable) and works with JS off.
+const VISIBLE_COUNT = 6;
+
+const moreReviewsButton =
+  "inline-flex cursor-pointer select-none items-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-6 py-3 text-sm font-semibold text-white transition-colors hover:border-brand-cta/40 hover:bg-white/[0.07] group-has-[#show-all-reviews:focus-visible]:ring-2 group-has-[#show-all-reviews:focus-visible]:ring-brand-cta";
 
 /** Renders 5 stars with a fractional fill for `value` (e.g. 4.3). */
 function Stars({ value = 5, className }: { value?: number; className?: string }) {
@@ -86,17 +94,29 @@ export default function Testimonials() {
         </div>
       )}
 
-      {/* Masonry grid — varied review lengths flow without gaps. */}
+      {/* Masonry grid — first VISIBLE_COUNT shown; the rest reveal via the
+          "Read more reviews" toggle (native checkbox + CSS :has(), no JS). */}
       <Reveal className="mt-12">
-        <div className="gap-5 sm:columns-2 lg:columns-3">
-          {reviews.map((review, i) => {
-            const isLong = review.text.length > READ_MORE_THRESHOLD;
-            const toggleId = `review-${i}`;
-            return (
-              <figure
-                key={review.name}
-                className="mb-5 break-inside-avoid rounded-2xl border border-white/10 bg-brand-navyCard/60 p-6 shadow-card"
-              >
+        <div className="group">
+          <input
+            type="checkbox"
+            id="show-all-reviews"
+            className="sr-only"
+            aria-label="Show all customer reviews"
+          />
+          <div className="gap-5 sm:columns-2 lg:columns-3">
+            {reviews.map((review, i) => {
+              const isLong = review.text.length > READ_MORE_THRESHOLD;
+              const toggleId = `review-${i}`;
+              return (
+                <figure
+                  key={review.name}
+                  className={cn(
+                    "mb-5 break-inside-avoid rounded-2xl border border-white/10 bg-brand-navyCard/60 p-6 shadow-card",
+                    i >= VISIBLE_COUNT &&
+                      "hidden group-has-[#show-all-reviews:checked]:block"
+                  )}
+                >
                 <div className="flex items-center gap-3.5">
                   <span
                     aria-hidden
@@ -150,10 +170,39 @@ export default function Testimonials() {
                   >
                     {review.text}
                   </blockquote>
+                  )}
+                </figure>
+              );
+            })}
+          </div>
+
+          {reviews.length > VISIBLE_COUNT && (
+            <div className="mt-12 flex justify-center">
+              <label
+                htmlFor="show-all-reviews"
+                className={cn(
+                  moreReviewsButton,
+                  "group-has-[#show-all-reviews:checked]:hidden"
                 )}
-              </figure>
-            );
-          })}
+              >
+                Read more reviews
+                <span className="font-normal text-brand-bone/70">
+                  ({reviews.length - VISIBLE_COUNT} more)
+                </span>
+                <ChevronDown className="h-4 w-4" aria-hidden />
+              </label>
+              <label
+                htmlFor="show-all-reviews"
+                className={cn(
+                  moreReviewsButton,
+                  "hidden group-has-[#show-all-reviews:checked]:inline-flex"
+                )}
+              >
+                Show fewer
+                <ChevronDown className="h-4 w-4 rotate-180" aria-hidden />
+              </label>
+            </div>
+          )}
         </div>
       </Reveal>
 
