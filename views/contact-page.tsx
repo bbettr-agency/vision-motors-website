@@ -9,8 +9,6 @@ import StickyMobileBar from "@/components/layout/sticky-mobile-bar";
 import PageHero from "@/components/layout/page-hero";
 import SectionContainer from "@/components/layout/section-container";
 import SectionHeading from "@/components/ui/section-heading";
-import ImageSlotView from "@/components/ui/image-slot";
-import { imagesConfig } from "@/config/images-config";
 import CallButton from "@/components/ui/call-button";
 import JsonLd from "@/components/ui/json-ld";
 import SkipLink from "@/components/layout/skip-link";
@@ -64,14 +62,25 @@ export default function ContactPage() {
           <CallButton location="contact_page" variant="brass" showNumber />
         </PageHero>
 
-        {/* Real people — the team you'll actually speak to. */}
-        <div className="relative aspect-[16/10] w-full overflow-hidden sm:aspect-[2.4/1]">
-          <ImageSlotView
-            slot={imagesConfig.techniciansDiagnosis}
-            fill
-            sizes="100vw"
-          />
-        </div>
+        {/* Form — moved high up the page so a visitor can send details without
+            scrolling past the branch/map detail. Phoning is still framed as faster. */}
+        <SectionContainer className="bg-brand-cream">
+          <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
+            <div className="lg:col-span-5">
+              <SectionHeading
+                tone="light"
+                eyebrow="Send us a message"
+                title="Rather send your details?"
+                description="Fill this in and the workshop will come back to you. If it's urgent, phoning will always be faster."
+              />
+            </div>
+            <div className="lg:col-span-7">
+              <div className="rounded-3xl border border-brand-line bg-white p-7 shadow-soft sm:p-9">
+                <BookingForm compact />
+              </div>
+            </div>
+          </div>
+        </SectionContainer>
 
         {/* Details */}
         <SectionContainer className="bg-brand-cream">
@@ -228,25 +237,6 @@ export default function ContactPage() {
             <DirectionsLink href={mapsUrl} className="mt-6" />
           </div>
         </section>
-
-        {/* Form */}
-        <SectionContainer className="bg-brand-cream">
-          <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
-            <div className="lg:col-span-5">
-              <SectionHeading
-                tone="light"
-                eyebrow="Send us a message"
-                title="Rather send your details?"
-                description="Fill this in and the workshop will come back to you. If it's urgent, phoning will always be faster."
-              />
-            </div>
-            <div className="lg:col-span-7">
-              <div className="rounded-3xl border border-brand-line bg-white p-7 shadow-soft sm:p-9">
-                <BookingForm compact />
-              </div>
-            </div>
-          </div>
-        </SectionContainer>
       </main>
 
       <Footer />
