@@ -140,9 +140,11 @@ export default function ContactPage() {
                     {branch.postalCode ? `, ${branch.postalCode}` : ""}
                   </address>
                   <p className="mt-3 text-sm text-brand-inkSoft">
-                    <span className="text-brand-inkMuted">Branch Manager:</span>{" "}
                     <span className="font-semibold text-brand-ink">
                       {branch.manager}
+                    </span>{" "}
+                    <span className="text-brand-inkMuted">
+                      — {branch.managerRole}
                     </span>
                   </p>
                   <p className="mt-3 font-mono text-xs uppercase tracking-[0.15em] text-brand-inkMuted">

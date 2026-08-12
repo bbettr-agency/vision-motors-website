@@ -18,6 +18,7 @@ import Faq from "@/components/sections/faq";
 import FinalCta from "@/components/sections/final-cta";
 import EngineShop from "@/components/sections/engine-shop";
 import WorkshopBand from "@/components/sections/workshop-band";
+import TeamLeaders from "@/components/sections/team-leaders";
 import LocationHours from "@/components/sections/location-hours";
 
 /**
@@ -66,6 +67,7 @@ export default function Homepage() {
         <Testimonials />
         <ProcessSteps />
         <Faq />
+        <TeamLeaders />
         <LocationHours />
         <FinalCta />
       </main>

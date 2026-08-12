@@ -1,7 +1,8 @@
-import { MapPin } from "lucide-react";
+import Image from "next/image";
 
 import { imagesConfig } from "@/config/images-config";
 import { siteConfig } from "@/config/site-config";
+import { teamMembers } from "@/config/team-config";
 import { diagnosticPolicy } from "@/config/diagnostic-policy-config";
 import { buildTrail } from "@/components/ui/breadcrumbs";
 import { breadcrumbSchema } from "@/lib/schema";
@@ -15,7 +16,6 @@ import ImageSlotView from "@/components/ui/image-slot";
 import CtaBand from "@/components/sections/cta-band";
 import JsonLd from "@/components/ui/json-ld";
 import SkipLink from "@/components/layout/skip-link";
-import { cn } from "@/utils/cn";
 
 // ─────────────────────────────────────────────────────────────────────────────
 //  ABOUT — DELIBERATELY RESTRAINED
@@ -52,15 +52,6 @@ const whatWeAre = [
     body: "Vision Motors runs two workshops in Wonderboom South, Pretoria — Vision Motors on the M5 for servicing and repairs, and The Engine Shop / Vision Motors on Steve Biko Road for engine reconditioning and rebuilds.",
   },
 ];
-
-/** First-two-word initials, for the manager avatars. */
-const initials = (name: string) =>
-  name
-    .split(" ")
-    .filter(Boolean)
-    .slice(0, 2)
-    .map((w) => w[0]?.toUpperCase())
-    .join("");
 
 /** Compact, all-true facts — they add structure without inventing a story. */
 const quickFacts = [
@@ -208,64 +199,67 @@ export default function AboutPage() {
           </div>
         </SectionContainer>
 
-        {/* Team — architecture prepared, content awaiting confirmation */}
+        {/* Team — the four real people, grouped by workshop so the branch
+            association is glanceable. Names / roles from team-config (confirmed);
+            nothing invented. */}
         <SectionContainer className="bg-brand-bluegrey">
           <SectionHeading
             tone="light"
             eyebrow="The team"
             title="The people who'll work on your car"
-            description="Two branches, two managers on the floor — the same faces year after year. Customers thank them by name in their own reviews."
+            description="Two workshops, one team — the same faces year after year. Here's who you'll deal with at each branch."
             className="max-w-3xl"
           />
 
-          {/* A manager on the floor at each branch — one card per branch,
-              built from the same confirmed branch data used site-wide. */}
-          <div className="mt-12 grid gap-6 sm:grid-cols-2">
-            {siteConfig.branches.map((branch, i) => (
-                <div
-                  key={branch.id}
-                  className="flex flex-col rounded-2xl border border-brand-line bg-white p-7 shadow-soft"
-                >
+          <div className="mt-14 space-y-14">
+            {siteConfig.branches.map((branch) => {
+              const people = teamMembers.filter(
+                (m) => m.branchId === branch.id
+              );
+              if (people.length === 0) return null;
+              return (
+                <div key={branch.id}>
+                  {/* Branch header — the association at a glance. */}
                   <div className="flex items-center gap-4">
-                    <span
-                      aria-hidden
-                      className={cn(
-                        "flex h-12 w-12 shrink-0 items-center justify-center rounded-full font-display text-base font-bold",
-                        i === 0
-                          ? "bg-brand-blue/10 text-brand-blue"
-                          : "bg-brand-cta/15 text-brand-cta"
-                      )}
-                    >
-                      {initials(branch.manager)}
+                    <h3 className="font-display text-lg font-bold tracking-tight text-brand-ink sm:text-xl">
+                      {branch.name}
+                    </h3>
+                    <span className="h-px flex-1 bg-brand-line" aria-hidden />
+                    <span className="whitespace-nowrap font-mono text-[0.7rem] uppercase tracking-[0.18em] text-brand-inkMuted">
+                      {branch.streetLine}
                     </span>
-                    <div className="min-w-0">
-                      <p className="truncate font-display text-lg font-bold text-brand-ink">
-                        {branch.manager}
-                      </p>
-                      <p className="font-mono text-[0.7rem] uppercase tracking-[0.15em] text-brand-inkMuted">
-                        Branch Manager
-                      </p>
-                    </div>
                   </div>
 
-                  <div className="mt-6 space-y-2 border-t border-brand-line pt-5 text-sm">
-                    <p className="font-semibold text-brand-ink">{branch.name}</p>
-                    <p className="flex items-start gap-2 text-brand-inkSoft">
-                      <MapPin
-                        className="mt-0.5 h-4 w-4 shrink-0 text-brand-inkMuted"
-                        aria-hidden
-                      />
-                      <span>
-                        {branch.streetLine}, {branch.suburb}, {branch.city}
-                      </span>
-                    </p>
+                  <div className="mt-7 grid gap-6 sm:grid-cols-2">
+                    {people.map((member) => (
+                      <figure
+                        key={member.name}
+                        className="overflow-hidden rounded-2xl border border-brand-line bg-white shadow-soft"
+                      >
+                        <div className="relative aspect-[4/5] bg-brand-bluegrey">
+                          <Image
+                            src={member.image}
+                            alt={member.alt}
+                            fill
+                            loading="lazy"
+                            sizes="(max-width: 640px) 100vw, 45vw"
+                            className="object-cover"
+                          />
+                        </div>
+                        <figcaption className="p-5">
+                          <h4 className="font-display text-lg font-bold text-brand-ink">
+                            {member.name}
+                          </h4>
+                          <p className="mt-1 text-sm text-brand-inkSoft">
+                            {member.role}
+                          </p>
+                        </figcaption>
+                      </figure>
+                    ))}
                   </div>
-
-                  <p className="mt-auto pt-5 text-sm leading-[1.7] text-brand-inkSoft">
-                    Thanked by name in customers&apos; own Google reviews.
-                  </p>
                 </div>
-              ))}
+              );
+            })}
           </div>
         </SectionContainer>
 
