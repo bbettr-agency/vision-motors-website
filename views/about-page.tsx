@@ -231,8 +231,8 @@ export default function AboutPage() {
                   </div>
 
                   {/* Compact roster — small headshots (full width on mobile,
-                      capped to ~208px on larger screens so they never dominate). */}
-                  <div className="mt-6 flex flex-wrap gap-6">
+                      capped to ~208px and centred on larger screens). */}
+                  <div className="mt-6 flex flex-wrap justify-center gap-6">
                     {people.map((member) => (
                       <figure
                         key={member.name}
