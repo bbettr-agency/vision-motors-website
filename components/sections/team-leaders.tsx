@@ -63,7 +63,7 @@ export default function TeamLeaders() {
           href={utilityRoutes.about}
           className="inline-flex min-h-[48px] items-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-7 text-sm font-semibold text-white transition-colors hover:border-brand-cta/40 hover:bg-white/[0.07] focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-cta"
         >
-          Meet the full team
+          Meet the team
           <ArrowRight className="h-4 w-4" aria-hidden />
         </Link>
       </div>
