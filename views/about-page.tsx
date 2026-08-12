@@ -230,11 +230,13 @@ export default function AboutPage() {
                     </span>
                   </div>
 
-                  <div className="mt-7 grid gap-6 sm:grid-cols-2">
+                  {/* Compact roster — small headshots (full width on mobile,
+                      capped to ~208px on larger screens so they never dominate). */}
+                  <div className="mt-6 flex flex-wrap gap-6">
                     {people.map((member) => (
                       <figure
                         key={member.name}
-                        className="overflow-hidden rounded-2xl border border-brand-line bg-white shadow-soft"
+                        className="w-full overflow-hidden rounded-2xl border border-brand-line bg-white shadow-soft sm:w-52"
                       >
                         <div className="relative aspect-[4/5] bg-brand-bluegrey">
                           <Image
@@ -242,15 +244,15 @@ export default function AboutPage() {
                             alt={member.alt}
                             fill
                             loading="lazy"
-                            sizes="(max-width: 640px) 100vw, 45vw"
+                            sizes="(max-width: 640px) 100vw, 208px"
                             className="object-cover"
                           />
                         </div>
-                        <figcaption className="p-5">
-                          <h4 className="font-display text-lg font-bold text-brand-ink">
+                        <figcaption className="p-4">
+                          <h4 className="font-display text-base font-bold text-brand-ink">
                             {member.name}
                           </h4>
-                          <p className="mt-1 text-sm text-brand-inkSoft">
+                          <p className="mt-0.5 text-sm text-brand-inkSoft">
                             {member.role}
                           </p>
                         </figcaption>

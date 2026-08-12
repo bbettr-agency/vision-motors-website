@@ -32,7 +32,7 @@ export default function TeamLeaders() {
       />
 
       <Reveal className="mt-14">
-        <div className="mx-auto grid max-w-3xl gap-8 sm:grid-cols-2 sm:gap-7">
+        <div className="mx-auto grid max-w-xl gap-8 sm:grid-cols-2 sm:gap-6">
           {homepageTeam.map((member) => (
             <figure key={member.name} className="flex flex-col">
               <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-white/10 bg-brand-navyCard">
@@ -40,7 +40,7 @@ export default function TeamLeaders() {
                   src={member.image}
                   alt={member.alt}
                   fill
-                  sizes="(max-width: 640px) 100vw, 42vw"
+                  sizes="(max-width: 640px) 100vw, 280px"
                   className="object-cover"
                 />
               </div>
