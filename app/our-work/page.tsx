@@ -4,9 +4,9 @@ import { createMetadata } from "@/lib/metadata";
 import OurWorkPage from "@/views/our-work-page";
 
 export const metadata: Metadata = createMetadata({
-  titleAbsolute: "Our Work | Vision Motors Workshop, Pretoria",
+  titleAbsolute: "Vision Motors Workshop Gallery | Pretoria",
   description:
-    "Inside the Vision Motors workshop and engine shop in Wonderboom South, Pretoria — engine reconditioning, gearboxes, diagnostics and mechanical repairs.",
+    "Real photographs from inside Vision Motors and The Engine Shop / Vision Motors in Wonderboom South, Pretoria — the workshop, engine reconditioning, diagnostics and the team at work.",
   path: "/our-work",
 });
 
