@@ -9,7 +9,7 @@
 > | Branch | Address | Call / WhatsApp |
 > |---|---|---|
 > | **Vision Motors** | 867 M5, Wonderboom South, Pretoria, **0084** | 082 823 5178 (`27828235178`) |
-> | **The Engine Shop/Vision Motors** | 999 Steve Biko Rd, Wonderboom South, Pretoria, **0031** | 071 048 8213 (`27710488213`) |
+> | **The Engine Shop/Vision Motors** | 999 Steve Biko Rd, Wonderboom South, Pretoria, **0031** | 069 007 2402 (`27690072402`) |
 >
 > Company switchboard **012 335 0070** stays the general site-wide number.
 > Emails: general `vision@visionmotors.co.za`, service `service@visionmotors.co.za`.

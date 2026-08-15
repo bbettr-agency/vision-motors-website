@@ -108,10 +108,10 @@ export const siteConfig = {
       manager: "Jacques Du Randt",
       managerRole: "Operational Manager · Motor Mechanic",
       managerTitleSource: "confirmed" as "html" | "confirmed",
-      phoneDisplay: "071 048 8213",
-      phoneLink: "tel:+27710488213",
-      whatsappNumber: "27710488213",
-      whatsappLink: "https://wa.me/27710488213",
+      phoneDisplay: "069 007 2402",
+      phoneLink: "tel:+27690072402",
+      whatsappNumber: "27690072402",
+      whatsappLink: "https://wa.me/27690072402",
       mapsUrl: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
         "The Engine Shop Vision Motors, 999 Steve Biko Road, Wonderboom South, Pretoria, 0031"
       )}`,

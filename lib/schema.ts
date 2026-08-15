@@ -182,7 +182,7 @@ export const engineShopBranchSchema: JsonLd = (() => {
     "@id": `${siteConfig.website}/#engine-shop`,
     name: branch.name,
     url: siteConfig.website,
-    // The Engine Shop's OWN number (071 048 8213) — never the other branch's.
+    // The Engine Shop's OWN number (069 007 2402) — never the other branch's.
     telephone: branch.phoneLink.replace("tel:", ""),
     email: siteConfig.email,
     image: `${siteConfig.website}${seoConfig.ogImage}`,
