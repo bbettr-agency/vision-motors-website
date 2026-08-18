@@ -47,7 +47,7 @@ export const trustConfig: TrustItem[] = [
   {
     title: "On Steve Biko Road, Pretoria",
     description:
-      "Independent workshop in Wonderboom South, on the M5 through the Moot.",
+      "Two independent workshops on Steve Biko Road, in the Moot, Pretoria.",
     icon: "MapPin",
   },
 ];

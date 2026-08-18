@@ -6,7 +6,7 @@ import OurWorkPage from "@/views/our-work-page";
 export const metadata: Metadata = createMetadata({
   titleAbsolute: "Vision Motors Workshop Gallery | Pretoria",
   description:
-    "Real photographs from inside Vision Motors and The Engine Shop / Vision Motors in Wonderboom South, Pretoria — the workshop, engine reconditioning, diagnostics and the team at work.",
+    "Real photographs from inside Vision Motors and The Engine Shop / Vision Motors on Steve Biko Road, Pretoria — the workshop, engine reconditioning, diagnostics and the team at work.",
   path: "/our-work",
 });
 

@@ -53,14 +53,14 @@ export type GalleryImage = {
 export const galleryImages: GalleryImage[] = [
   {
     src: "/images/gallery/vision-motors-reconditioned-engine-pretoria.jpg",
-    alt: "A reconditioned engine long block on a stand at The Engine Shop / Vision Motors, Wonderboom South, Pretoria",
+    alt: "A reconditioned engine long block on a stand at The Engine Shop / Vision Motors, Wonderboom, Pretoria",
     width: 1200,
     height: 1600,
     categories: ["engine", "engineshop"],
   },
   {
     src: "/images/gallery/vision-motors-engine-shop-interior-pretoria.jpg",
-    alt: "Inside The Engine Shop / Vision Motors, with engines on the benches in Wonderboom South, Pretoria",
+    alt: "Inside The Engine Shop / Vision Motors, with engines on the benches in Wonderboom, Pretoria",
     width: 1600,
     height: 1200,
     categories: ["engineshop", "engine"],

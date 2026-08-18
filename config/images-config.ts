@@ -129,24 +129,24 @@ export const imagesConfig: Record<string, ImageSlot> = {
     priority: 9,
   },
 
-  // ✅ REAL BRANCH SHOPFRONT — Vision Motors (867 M5). RMI badges + "SINCE 1987"
+  // ✅ REAL BRANCH SHOPFRONT — Vision Motors (1059 Steve Biko Rd). RMI badges + "SINCE 1987"
   // founding claim redacted from the signage (fact-gate C2/C4), plates blurred.
   branchVisionMotors: {
     id: "branchVisionMotors",
     src: "/images/vision-motors-branch-wonderboom-pretoria.jpg",
-    alt: "The Vision Motors workshop on the M5, Wonderboom South, Pretoria",
+    alt: "The Vision Motors workshop on Steve Biko Road, Wonderboom South, Pretoria",
     aspect: "16/10",
     shotBrief: "Vision Motors branch frontage.",
     priority: 6,
   },
 
-  // ✅ REAL BRANCH SHOPFRONT — The Engine Shop/Vision Motors (999 Steve Biko Rd).
+  // ✅ REAL BRANCH SHOPFRONT — The Engine Shop/Vision Motors (1197 Steve Biko Rd).
   // RMI badge + "OFFICIAL RMI DEALER ENGINES" redacted (fact-gate C2); the
-  // signage's old address is not used — 999 Steve Biko Rd is the confirmed one.
+  // signage's old address is not used — 1197 Steve Biko Rd is the confirmed one.
   branchEngineShop: {
     id: "branchEngineShop",
     src: "/images/vision-motors-engine-shop-branch-pretoria.jpg",
-    alt: "The Engine Shop / Vision Motors on Steve Biko Road, Wonderboom South, Pretoria",
+    alt: "The Engine Shop / Vision Motors on Steve Biko Road, Wonderboom, Pretoria",
     aspect: "4/3",
     shotBrief: "The Engine Shop / Vision Motors branch frontage.",
     priority: 6,

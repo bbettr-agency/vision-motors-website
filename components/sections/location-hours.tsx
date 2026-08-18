@@ -27,7 +27,7 @@ export default function LocationHours() {
         tone="light"
         eyebrow="Find the workshop"
         title="Two workshops, one team"
-        description="Vision Motors runs two workshops in Wonderboom South, Pretoria. Choose the one that suits you — or call or WhatsApp ahead and we'll make sure the right branch is ready for your vehicle."
+        description="Vision Motors runs two workshops on Steve Biko Road in Pretoria. Choose the one that suits you — or call or WhatsApp ahead and we'll make sure the right branch is ready for your vehicle."
         className="max-w-3xl"
       />
 

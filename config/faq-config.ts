@@ -65,6 +65,6 @@ export const faqConfig: FaqItem[] = [
   {
     question: "Where are you and how do I get hold of you?",
     answer:
-      "We have two workshops in Wonderboom South, Pretoria: Vision Motors at 867 M5, and The Engine Shop / Vision Motors at 999 Steve Biko Rd. Call our company line on 012 335 0070, or call/WhatsApp a branch directly — Vision Motors on 082 823 5178 and The Engine Shop / Vision Motors on 069 007 2402 — Monday to Friday, 07:30 to 17:00. You can also send your details through the booking form and we'll confirm which branch to bring your vehicle to.",
+      "We have two workshops on Steve Biko Road, Pretoria: Vision Motors at 1059 Steve Biko Rd, and The Engine Shop / Vision Motors at 1197 Steve Biko Rd. Call our company line on 012 335 0070, or call/WhatsApp a branch directly — Vision Motors on 082 823 5178 and The Engine Shop / Vision Motors on 069 007 2402 — Monday to Friday, 07:30 to 17:00. You can also send your details through the booking form and we'll confirm which branch to bring your vehicle to.",
   },
 ];

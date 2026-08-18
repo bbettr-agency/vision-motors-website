@@ -72,7 +72,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(autoRepairSchema) }}
         />
-        {/* The Engine Shop/Vision Motors (999 Steve Biko Rd), branchOf the primary. */}
+        {/* The Engine Shop/Vision Motors (1197 Steve Biko Rd), branchOf the primary. */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

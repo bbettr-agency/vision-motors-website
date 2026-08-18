@@ -43,21 +43,20 @@ export const siteConfig = {
   website: "https://visionmotors.co.za",
 
   // ── Location ───────────────────────────────────────────────────────────────
-  // ✅ CONFIRMED 2026-08-11 (client instruction). Two distinct workshops, each
-  // with its own address + Call/WhatsApp number (see `branches[]`). Top-level
-  // fields below = the PRIMARY branch (Vision Motors, 867 M5, 0084).
-  // Top-level address = the PRIMARY branch (Vision Motors, 867 M5). Confirmed
-  // 2026-08-11. Used for org-level schema + page metadata. Per-branch NAP lives
-  // in `branches[]` below.
-  streetNumber: "867",
-  street: "M5",
+  // ✅ FINAL addresses confirmed by client 2026-08-14. Two distinct workshops,
+  // each with its own address + Call/WhatsApp number (see `branches[]`).
+  // Top-level fields below = the PRIMARY branch (Vision Motors, 1059 Steve Biko
+  // Rd, Wonderboom South, 0031). Used for org-level schema + page metadata.
+  // Per-branch NAP lives in `branches[]` below.
+  streetNumber: "1059",
+  street: "Steve Biko Rd",
   suburb: "Wonderboom South",
   city: "Pretoria",
   region: "Gauteng",
   country: "South Africa",
-  postalCode: "0084",
+  postalCode: "0031",
   addressStatus: "verified" as ClaimStatus,
-  addressDisplay: "867 M5, Wonderboom South, Pretoria, 0084",
+  addressDisplay: "1059 Steve Biko Rd, Wonderboom South, Pretoria, 0031",
 
   // ⚠️ Coordinates still pending — must be taken from the confirmed pin on the
   // Google Business Profile rather than geocoded, so schema and GBP agree.
@@ -79,11 +78,11 @@ export const siteConfig = {
       id: "vision-motors",
       name: "Vision Motors",
       utilityLabel: "Branch 01",
-      streetLine: "867 M5",
+      streetLine: "1059 Steve Biko Rd",
       suburb: "Wonderboom South",
       city: "Pretoria",
       region: "Gauteng",
-      postalCode: "0084",
+      postalCode: "0031",
       manager: "Christo Vorster",
       managerRole: "Director · Auto Electrician",
       managerTitleSource: "confirmed" as "html" | "confirmed",
@@ -92,7 +91,7 @@ export const siteConfig = {
       whatsappNumber: "27828235178",
       whatsappLink: "https://wa.me/27828235178",
       mapsUrl: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-        "Vision Motors, 867 M5, Wonderboom South, Pretoria, 0084"
+        "Vision Motors, 1059 Steve Biko Rd, Wonderboom South, Pretoria, 0031"
       )}`,
       primary: true,
     },
@@ -100,11 +99,11 @@ export const siteConfig = {
       id: "engine-shop-vision-motors",
       name: "The Engine Shop / Vision Motors",
       utilityLabel: "Branch 02",
-      streetLine: "999 Steve Biko Rd",
-      suburb: "Wonderboom South",
+      streetLine: "1197 Steve Biko Rd",
+      suburb: "Wonderboom",
       city: "Pretoria",
       region: "Gauteng",
-      postalCode: "0031",
+      postalCode: "0084",
       manager: "Jacques Du Randt",
       managerRole: "Operational Manager · Motor Mechanic",
       managerTitleSource: "confirmed" as "html" | "confirmed",
@@ -113,7 +112,7 @@ export const siteConfig = {
       whatsappNumber: "27690072402",
       whatsappLink: "https://wa.me/27690072402",
       mapsUrl: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-        "The Engine Shop Vision Motors, 999 Steve Biko Road, Wonderboom South, Pretoria, 0031"
+        "The Engine Shop Vision Motors, 1197 Steve Biko Rd, Wonderboom, Pretoria, 0084"
       )}`,
       primary: false,
     },
@@ -126,7 +125,7 @@ export const siteConfig = {
   engineShop: {
     value: null,
     status: "unverified",
-    note: "Superseded by branches[]. The Engine Shop/Vision Motors is 999 Steve Biko Rd (confirmed 2026-08-11).",
+    note: "Superseded by branches[]. The Engine Shop/Vision Motors is 1197 Steve Biko Rd, Wonderboom, 0084 (final, confirmed 2026-08-14).",
   } as Claim<{ streetNumber: string; street: string; role: string }>,
 
   // ── Business hours ─────────────────────────────────────────────────────────

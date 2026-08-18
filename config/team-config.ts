@@ -38,7 +38,7 @@ export const teamMembers: TeamMember[] = [
     branchId: "engine-shop-vision-motors",
     role: "Operational Manager · Motor Mechanic",
     image: "/images/team/jacques-du-randt-engine-shop-vision-motors.jpg",
-    alt: "Jacques Du Randt, Operational Manager and Motor Mechanic at The Engine Shop / Vision Motors, Wonderboom South, Pretoria",
+    alt: "Jacques Du Randt, Operational Manager and Motor Mechanic at The Engine Shop / Vision Motors, Wonderboom, Pretoria",
     onHomepage: true,
   },
   {
@@ -54,7 +54,7 @@ export const teamMembers: TeamMember[] = [
     branchId: "engine-shop-vision-motors",
     role: "Service Advisor",
     image: "/images/team/mariska-coetzee-engine-shop-vision-motors.jpg",
-    alt: "Mariska Coetzee, Service Advisor at The Engine Shop / Vision Motors, Wonderboom South, Pretoria",
+    alt: "Mariska Coetzee, Service Advisor at The Engine Shop / Vision Motors, Wonderboom, Pretoria",
     onHomepage: false,
   },
 ];

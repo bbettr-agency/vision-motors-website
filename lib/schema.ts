@@ -151,14 +151,14 @@ export const autoRepairSchema: JsonLd = (() => {
 })();
 
 /**
- * SECOND WORKSHOP — The Engine Shop/Vision Motors (999 Steve Biko Rd).
+ * SECOND WORKSHOP — The Engine Shop/Vision Motors (1197 Steve Biko Rd).
  *
  * Modelled as ONE organisation, TWO locations: a distinct `AutoRepair` node
  * linked to the primary `#business` via `branchOf` (schema.org-correct
  * multi-location). It does NOT merge the two addresses into one entity.
  *
  * Truth-gating preserved:
- *   • 999 Steve Biko Rd + postcode 0031 + the branch's own number are confirmed
+ *   • 1197 Steve Biko Rd + postcode 0084 + the branch's own number are confirmed
  *     (client instruction 2026-08-11), so they ARE emitted.
  *   • geo is omitted for both — a wrong coordinate is worse than none.
  *   • Each branch uses its OWN telephone; numbers are never crossed.

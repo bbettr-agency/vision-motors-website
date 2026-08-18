@@ -33,7 +33,7 @@ export default function OurWorkPage() {
           trail={trail}
           eyebrow="Gallery"
           title="Inside Vision Motors"
-          intro="A real look inside Vision Motors and The Engine Shop / Vision Motors in Wonderboom South, Pretoria — the workshop floor, the engine shop, diagnostics and the team at work. Every photograph was taken on site. No stock, nothing generated."
+          intro="A real look inside Vision Motors and The Engine Shop / Vision Motors on Steve Biko Road, Pretoria — the workshop floor, the engine shop, diagnostics and the team at work. Every photograph was taken on site. No stock, nothing generated."
         />
 
         <SectionContainer className="bg-brand-cream">

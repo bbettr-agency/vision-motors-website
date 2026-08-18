@@ -49,13 +49,13 @@ const whatWeAre = [
   },
   {
     title: "Two workshops, one team",
-    body: "Vision Motors runs two workshops in Wonderboom South, Pretoria — Vision Motors on the M5 for servicing and repairs, and The Engine Shop / Vision Motors on Steve Biko Road for engine reconditioning and rebuilds.",
+    body: "Vision Motors runs two workshops on Steve Biko Road, Pretoria — Vision Motors at 1059 for servicing and repairs, and The Engine Shop / Vision Motors at 1197 for engine reconditioning and rebuilds.",
   },
 ];
 
 /** Compact, all-true facts — they add structure without inventing a story. */
 const quickFacts = [
-  { value: "2", label: "Workshops in Wonderboom South" },
+  { value: "2", label: "Workshops on Steve Biko Road" },
   { value: "In-house", label: "Engine reconditioning & rebuilds" },
   { value: "Family", label: "Owned and run" },
   { value: "Mon–Fri", label: "07:30 – 17:00" },
