@@ -41,7 +41,7 @@ export default function ThankYouPage() {
             aria-hidden
           />
 
-          <h1 className="mt-6 font-display text-3xl font-extrabold tracking-tight text-white md:text-4xl">
+          <h1 className="mt-6 font-display text-3xl font-semibold tracking-[-0.01em] text-white md:text-4xl">
             Thanks — we&apos;ve got your details
           </h1>
 

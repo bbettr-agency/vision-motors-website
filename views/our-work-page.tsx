@@ -46,7 +46,7 @@ export default function OurWorkPage() {
         </SectionContainer>
 
         <CtaBand
-          heading="Would rather see it in person?"
+          heading="Prefer to see it in person?"
           body="You're welcome to come and look at the workshop. Phone ahead so someone is free to show you around."
         />
       </main>

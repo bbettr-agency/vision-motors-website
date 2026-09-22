@@ -16,6 +16,7 @@ import ImageSlotView from "@/components/ui/image-slot";
 import CtaBand from "@/components/sections/cta-band";
 import JsonLd from "@/components/ui/json-ld";
 import SkipLink from "@/components/layout/skip-link";
+import { cn } from "@/utils/cn";
 
 // ─────────────────────────────────────────────────────────────────────────────
 //  ABOUT — DELIBERATELY RESTRAINED
@@ -45,7 +46,7 @@ const whatWeAre = [
   },
   {
     title: "A workshop with its own engine shop",
-    body: "Engine reconditioning and rebuild work happens at our own engine shop rather than being sent out to a third party and marked up. Very few independents can say that.",
+    body: "Engine reconditioning and rebuild work happens at our own engine shop, not sent out to a third party and marked up. Very few independents can say that.",
   },
   {
     title: "Two workshops, one team",
@@ -104,15 +105,20 @@ export default function AboutPage() {
                 ))}
               </div>
 
-              {/* Quick facts — balances the taller image column and adds
-                  scannable, all-true detail. */}
-              <dl className="mt-12 grid grid-cols-2 gap-3">
-                {quickFacts.map((fact) => (
+              {/* Quick facts — open spec rows divided by hairlines, not boxed
+                  cards. Scannable, all-true, and quieter. */}
+              <dl className="mt-12 grid grid-cols-2 border-t border-brand-line/80">
+                {quickFacts.map((fact, i) => (
                   <div
                     key={fact.label}
-                    className="rounded-xl border border-brand-line bg-white p-5"
+                    className={cn(
+                      "border-b border-brand-line/80 py-4",
+                      i % 2 === 0
+                        ? "pr-6"
+                        : "border-l border-brand-line/80 pl-6"
+                    )}
                   >
-                    <dt className="font-display text-2xl font-bold tracking-tight text-brand-ink">
+                    <dt className="font-display text-2xl font-semibold tracking-[-0.01em] text-brand-ink">
                       {fact.value}
                     </dt>
                     <dd className="mt-1 text-xs leading-snug text-brand-inkSoft">
@@ -157,11 +163,13 @@ export default function AboutPage() {
             className="max-w-2xl"
           />
 
-          <div className="mt-14 grid gap-6 md:grid-cols-3">
+          {/* Ruled process band — three columns divided by hairlines, not three
+              floating cards. Mono-indexed, editorial. */}
+          <div className="mx-auto mt-16 grid max-w-5xl gap-y-10 md:grid-cols-3 md:gap-y-0 md:divide-x md:divide-white/12">
             {[
               {
                 t: "Diagnose first",
-                b: "We find the actual fault rather than replacing parts until the symptom goes away. That's the difference between a repair and a guess.",
+                b: "We find the actual fault instead of replacing parts until the symptom goes away. That's the difference between a repair and a guess.",
               },
               {
                 t: "Explain it properly",
@@ -172,14 +180,11 @@ export default function AboutPage() {
                 b: "You get a quote, and work starts only when you approve it. If we find something else along the way, we come back to you first.",
               },
             ].map((item, i) => (
-              <div
-                key={item.t}
-                className="flex flex-col rounded-2xl border border-white/10 bg-brand-navyCard p-8 shadow-card"
-              >
-                <span className="font-mono text-xs font-medium tracking-[0.2em] text-brand-cta">
+              <div key={item.t} className="md:px-8 md:first:pl-0 md:last:pr-0">
+                <span className="font-mono text-2xl font-medium text-brand-cta">
                   0{i + 1}
                 </span>
-                <h3 className="mt-4 font-display text-lg font-semibold text-white">
+                <h3 className="mt-5 font-display text-lg font-semibold leading-snug text-white">
                   {item.t}
                 </h3>
                 <p className="mt-3 text-sm leading-[1.75] text-brand-bone/75">
@@ -189,11 +194,11 @@ export default function AboutPage() {
             ))}
           </div>
 
-          <div className="mx-auto mt-12 max-w-2xl rounded-2xl border border-white/10 bg-white/[0.03] p-6 text-center sm:p-8">
+          <div className="mx-auto mt-16 max-w-2xl border-t border-white/12 pt-8 text-center">
             <p className="text-sm leading-[1.7] text-brand-bone/80">
               {diagnosticPolicy.short}
             </p>
-            <p className="mt-4 border-t border-white/10 pt-4 text-sm leading-[1.7] text-brand-bone/60">
+            <p className="mt-4 text-sm leading-[1.7] text-brand-bone/55">
               {siteConfig.warrantyInterimCopy}
             </p>
           </div>
@@ -221,7 +226,7 @@ export default function AboutPage() {
                 <div key={branch.id}>
                   {/* Branch header — the association at a glance. */}
                   <div className="flex items-center gap-4">
-                    <h3 className="font-display text-lg font-bold tracking-tight text-brand-ink sm:text-xl">
+                    <h3 className="font-display text-lg font-semibold tracking-[-0.01em] text-brand-ink sm:text-xl">
                       {branch.name}
                     </h3>
                     <span className="h-px flex-1 bg-brand-line" aria-hidden />
@@ -230,26 +235,23 @@ export default function AboutPage() {
                     </span>
                   </div>
 
-                  {/* Compact roster — small headshots (full width on mobile,
-                      capped to ~208px and centred on larger screens). */}
-                  <div className="mt-6 flex flex-wrap justify-center gap-6">
+                  {/* Open editorial portraits — the photograph carries the block;
+                      caption sits below in the open, not inside a boxed card. */}
+                  <div className="mt-8 flex flex-wrap gap-x-6 gap-y-8 sm:gap-x-8">
                     {people.map((member) => (
-                      <figure
-                        key={member.name}
-                        className="w-full overflow-hidden rounded-2xl border border-brand-line bg-white shadow-soft sm:w-52"
-                      >
-                        <div className="relative aspect-[4/5] bg-brand-bluegrey">
+                      <figure key={member.name} className="w-full sm:w-56">
+                        <div className="relative aspect-[4/5] overflow-hidden rounded-xl bg-brand-bluegrey/70">
                           <Image
                             src={member.image}
                             alt={member.alt}
                             fill
                             loading="lazy"
-                            sizes="(max-width: 640px) 100vw, 208px"
+                            sizes="(max-width: 640px) 100vw, 224px"
                             className="object-cover"
                           />
                         </div>
-                        <figcaption className="p-4">
-                          <h4 className="font-display text-base font-bold text-brand-ink">
+                        <figcaption className="mt-3.5">
+                          <h4 className="font-display text-base font-semibold text-brand-ink">
                             {member.name}
                           </h4>
                           <p className="mt-0.5 text-sm text-brand-inkSoft">

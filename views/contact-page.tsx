@@ -1,6 +1,8 @@
+import Image from "next/image";
 import { Clock, Mail, Phone } from "lucide-react";
 
 import { siteConfig } from "@/config/site-config";
+import { imagesConfig } from "@/config/images-config";
 import { buildTrail } from "@/components/ui/breadcrumbs";
 import { breadcrumbSchema } from "@/lib/schema";
 import Header from "@/components/layout/header";
@@ -20,8 +22,8 @@ import { cn } from "@/utils/cn";
 //  CONTACT
 //
 //  Job of the page: answer "which workshop do I need?" immediately, then give
-//  each branch its own image-free map + address + Call / WhatsApp / Directions,
-//  and an enquiry form up top. TWO confirmed branches with their OWN numbers
+//  each branch its own shopfront photo + map + address + Call / WhatsApp /
+//  Directions, and an enquiry form up top. TWO confirmed branches with OWN numbers
 //  (client instruction 2026-08-11) — numbers are never crossed. Company
 //  switchboard 012 335 0070 stays the general number in the hero.
 // ─────────────────────────────────────────────────────────────────────────────
@@ -30,6 +32,18 @@ const mapEmbed = (b: (typeof siteConfig.branches)[number]) =>
   `https://maps.google.com/maps?q=${encodeURIComponent(
     `${b.name}, ${b.streetLine}, ${b.suburb}, ${b.city}, ${b.postalCode ?? ""}`
   )}&output=embed`;
+
+/** Real shopfront photograph per branch — makes each location tangible. */
+const branchImage: Record<string, { src: string; alt: string }> = {
+  "vision-motors": {
+    src: imagesConfig.branchVisionMotors.src as string,
+    alt: imagesConfig.branchVisionMotors.alt,
+  },
+  "engine-shop-vision-motors": {
+    src: imagesConfig.branchEngineShop.src as string,
+    alt: imagesConfig.branchEngineShop.alt,
+  },
+};
 
 export default function ContactPage() {
   const trail = buildTrail("/contact-us");
@@ -57,7 +71,7 @@ export default function ContactPage() {
               <SectionHeading
                 tone="light"
                 eyebrow="Send us a message"
-                title="Rather send your details?"
+                title="Prefer to send your details?"
                 description="Fill this in, choose your workshop, and we'll route it straight to that branch on WhatsApp. If it's urgent, phoning is always faster."
               />
 
@@ -71,7 +85,7 @@ export default function ContactPage() {
                       location="contact_page"
                       variant="bare"
                       showNumber
-                      className="font-display text-lg font-bold"
+                      className="font-display text-lg font-semibold"
                     />
                   </dd>
                 </div>
@@ -125,12 +139,12 @@ export default function ContactPage() {
               key={branch.id}
               className={i % 2 === 0 ? "bg-brand-bluegrey" : "bg-brand-cream"}
             >
-              <div className="grid gap-10 lg:grid-cols-2 lg:items-center lg:gap-14">
+              <div className="grid gap-10 lg:grid-cols-2 lg:items-start lg:gap-14">
                 <div className={cn(reversed && "lg:order-2")}>
-                  <p className="font-mono text-[0.7rem] font-medium uppercase tracking-[0.28em] text-brand-inkMuted">
+                  <p className="font-mono text-[0.7rem] font-medium uppercase tracking-[0.22em] text-brand-inkMuted">
                     {branch.utilityLabel}
                   </p>
-                  <h2 className="mt-2 font-display text-2xl font-bold tracking-tight text-brand-ink sm:text-3xl">
+                  <h2 className="mt-2 font-display text-2xl font-semibold tracking-[-0.01em] text-brand-ink sm:text-3xl">
                     {branch.name}
                   </h2>
                   <address className="mt-4 not-italic text-base leading-[1.7] text-brand-inkSoft">
@@ -154,21 +168,28 @@ export default function ContactPage() {
                   <BranchActions branch={branch} className="mt-6" />
                 </div>
 
-                <div
-                  className={cn(
-                    "overflow-hidden rounded-2xl border border-brand-line shadow-soft",
-                    reversed && "lg:order-1"
-                  )}
-                >
-                  <iframe
-                    title={`Map showing ${branch.name}, ${branch.streetLine}, ${branch.suburb}, ${branch.city}`}
-                    src={mapEmbed(branch)}
-                    width="100%"
-                    height="360"
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    className="block border-0"
-                  />
+                <div className={cn("space-y-4", reversed && "lg:order-1")}>
+                  <div className="relative aspect-[16/10] overflow-hidden rounded-2xl">
+                    <Image
+                      src={branchImage[branch.id].src}
+                      alt={branchImage[branch.id].alt}
+                      fill
+                      loading="lazy"
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                      className="object-cover"
+                    />
+                  </div>
+                  <div className="overflow-hidden rounded-2xl border border-brand-line/70">
+                    <iframe
+                      title={`Map showing ${branch.name}, ${branch.streetLine}, ${branch.suburb}, ${branch.city}`}
+                      src={mapEmbed(branch)}
+                      width="100%"
+                      height="300"
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                      className="block border-0"
+                    />
+                  </div>
                 </div>
               </div>
             </SectionContainer>

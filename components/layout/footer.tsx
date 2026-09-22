@@ -92,7 +92,7 @@ export default function Footer() {
 
             {siteConfig.hours.value && (
               <div className="mt-6">
-                <h2 className="font-display text-xs font-bold uppercase tracking-[0.18em] text-white">
+                <h2 className="font-display text-xs font-semibold uppercase tracking-[0.18em] text-white">
                   Opening hours
                 </h2>
                 <p className="mt-2.5 text-sm text-white/80">
@@ -107,7 +107,7 @@ export default function Footer() {
 
           {/* Services */}
           <div>
-            <h2 className="font-display text-sm font-bold uppercase tracking-[0.18em] text-white">
+            <h2 className="font-display text-sm font-semibold uppercase tracking-[0.18em] text-white">
               What We Do
             </h2>
             <ul className="mt-3 text-sm">
@@ -136,7 +136,7 @@ export default function Footer() {
 
           {/* Navigation */}
           <div>
-            <h2 className="font-display text-sm font-bold uppercase tracking-[0.18em] text-white">
+            <h2 className="font-display text-sm font-semibold uppercase tracking-[0.18em] text-white">
               Explore
             </h2>
             <ul className="mt-3 text-sm">
@@ -171,7 +171,7 @@ export default function Footer() {
 
           {/* Legal + social */}
           <div>
-            <h2 className="font-display text-sm font-bold uppercase tracking-[0.18em] text-white">
+            <h2 className="font-display text-sm font-semibold uppercase tracking-[0.18em] text-white">
               Company
             </h2>
             <ul className="mt-3 text-sm">

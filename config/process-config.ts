@@ -23,7 +23,7 @@ export const processConfig: ProcessStep[] = [
     number: "02",
     title: "We find the actual fault",
     description:
-      "We diagnose the problem properly rather than replacing parts and hoping. If another workshop has already looked at it, tell us what they found.",
+      "We diagnose the problem properly instead of replacing parts and hoping. If another workshop has already looked at it, tell us what they found.",
   },
   {
     number: "03",

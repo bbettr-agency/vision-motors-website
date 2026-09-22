@@ -168,7 +168,7 @@ export const serviceGroups: ServiceGroup[] = [
     title: "Engines",
     icon: "Cog",
     covers:
-      "Engine repairs and full reconditioning, done in our own engine shop rather than sent away.",
+      "Engine repairs and full reconditioning, done in our own engine shop, not sent away.",
     reasons: [
       "Knocking, smoking or overheating",
       "High oil use or low power",

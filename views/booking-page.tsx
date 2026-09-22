@@ -1,5 +1,3 @@
-import { CalendarClock, PhoneCall, Wrench } from "lucide-react";
-
 import { formConfig } from "@/config/form-config";
 import { siteConfig } from "@/config/site-config";
 import { diagnosticPolicy } from "@/config/diagnostic-policy-config";
@@ -30,17 +28,14 @@ import SkipLink from "@/components/layout/skip-link";
 
 const whatHappens = [
   {
-    icon: PhoneCall,
     title: "We call you back",
-    body: "Someone from the workshop contacts you to confirm a time that works — using the method you chose.",
+    body: "Someone from the workshop contacts you to confirm a time that works, using the method you chose.",
   },
   {
-    icon: CalendarClock,
     title: "We agree the date together",
     body: "Your preferred date is a request. We'll confirm it or offer the nearest slot we can genuinely commit to.",
   },
   {
-    icon: Wrench,
     title: "We diagnose, then quote",
     body: "We find the actual fault and explain it in plain language. Nothing gets done until you approve it.",
   },
@@ -69,24 +64,26 @@ export default function BookingPage() {
           <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
             {/* What happens next — kills the main objection before the form */}
             <div className="lg:col-span-5">
-              <h2 className="font-display text-2xl font-bold leading-tight text-brand-ink md:text-3xl">
+              <h2 className="font-display text-2xl font-semibold leading-tight tracking-[-0.01em] text-brand-ink md:text-3xl">
                 What happens after you send this
               </h2>
 
-              <ol className="mt-9 space-y-7">
+              {/* Mono-indexed editorial steps — open rows, no icon boxes, in
+                  step with the site-wide numbered bands. */}
+              <ol className="mt-10 border-t border-brand-line/70">
                 {whatHappens.map((step, i) => (
-                  <li key={step.title} className="flex gap-5">
-                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-tint text-brand-blue">
-                      <step.icon className="h-5 w-5" aria-hidden />
+                  <li
+                    key={step.title}
+                    className="flex gap-5 border-b border-brand-line/70 py-6"
+                  >
+                    <span className="font-mono text-xl font-medium text-brand-blue">
+                      0{i + 1}
                     </span>
                     <div>
                       <h3 className="font-display text-base font-semibold text-brand-ink">
-                        <span className="mr-2 text-brand-blue">
-                          {String(i + 1).padStart(2, "0")}
-                        </span>
                         {step.title}
                       </h3>
-                      <p className="mt-2 max-w-[48ch] text-sm leading-[1.75] text-brand-inkSoft">
+                      <p className="mt-1.5 max-w-[48ch] text-sm leading-[1.75] text-brand-inkSoft">
                         {step.body}
                       </p>
                     </div>
@@ -96,7 +93,7 @@ export default function BookingPage() {
 
               {/* Strip-and-assess policy — standard version (2026-07-27 §6). */}
               <div className="mt-10 border-l-2 border-brand-cta/60 pl-5">
-                <h3 className="font-display text-base font-bold uppercase tracking-tight text-brand-ink">
+                <h3 className="font-display text-base font-semibold text-brand-ink">
                   Engine &amp; gearbox faults
                 </h3>
                 <p className="mt-2 max-w-[52ch] text-sm leading-[1.75] text-brand-inkSoft">
@@ -104,9 +101,10 @@ export default function BookingPage() {
                 </p>
               </div>
 
-              <div className="mt-10 rounded-2xl border border-brand-line bg-white p-7 shadow-soft">
+              {/* Phone fallback — an open ruled note, not a floating card. */}
+              <div className="mt-10 border-t border-brand-line/70 pt-8">
                 <h3 className="font-display text-base font-semibold text-brand-ink">
-                  Would rather just talk to someone?
+                  Prefer to talk to someone?
                 </h3>
                 <p className="mt-2 text-sm leading-[1.7] text-brand-inkSoft">
                   The workshop is open Monday to Friday, 07:30 to 17:00.
@@ -123,7 +121,7 @@ export default function BookingPage() {
             {/* Form */}
             <div className="lg:col-span-7">
               <div className="rounded-3xl border border-brand-line bg-white p-7 shadow-soft sm:p-9">
-                <h2 className="font-display text-xl font-bold text-brand-ink sm:text-2xl">
+                <h2 className="font-display text-xl font-semibold text-brand-ink sm:text-2xl">
                   {formConfig.headings.title}
                 </h2>
                 <p className="mt-2 text-sm leading-[1.7] text-brand-inkSoft">

@@ -45,7 +45,7 @@ const groups: Group[] = [
     eyebrow: "Specialist work",
     title: "The work most workshops send away",
     intro:
-      "Engine and driveline work is done here rather than sub-contracted out. This is the side of the business that separates us from a general service centre.",
+      "Engine and driveline work is done here, not sub-contracted out. This is the side of the business that separates us from a general service centre.",
     img: imagesConfig.engineShopWork1,
     slugs: [
       "/engine-reconditioning-pretoria",
@@ -87,7 +87,7 @@ const detail: Record<string, { icon: string; blurb: string }> = {
     // ⚠️ Softened to model-agnostic (Correction 1, 2026-07-27). No Ranger/BT-50
     // specialist or model-year claim until C9/C21 is confirmed by the client.
     blurb:
-      "Ford engine work carried out in our own engine shop — full rebuilds and reconditioning done in-house rather than sent away and marked up.",
+      "Ford engine work carried out in our own engine shop — full rebuilds and reconditioning done in-house, not sent away and marked up.",
   },
   "/gearbox-repairs-pretoria": {
     icon: "Settings2",
@@ -172,56 +172,57 @@ export default function ServicesPage() {
               </div>
             </div>
 
-            <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {/* Capability list — an open, ruled specification index rather than a
+                grid of icon cards. Each row is link-ready: once a service page is
+                live (Phase 3) the row becomes a link; until then it's plain text,
+                so nothing points at a 404 and nothing is orphaned. */}
+            <ul className="mt-12 border-t border-brand-line/70">
               {group.slugs.map((slug) => {
                 const route = serviceRoutes.find((r) => r.slug === slug);
                 const info = detail[slug];
                 if (!route || !info) return null;
 
-                const inner = (
-                  <>
-                    <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-tint text-brand-blue transition-all duration-300 group-hover:bg-brand-cta group-hover:text-brand-ink">
-                      <Icon name={info.icon} className="h-5 w-5" />
-                    </span>
-
-                    <h3 className="mt-6 font-display text-lg font-semibold leading-snug text-brand-ink">
-                      {route.label}
-                    </h3>
-                    <p className="mt-3 flex-1 text-sm leading-[1.7] text-brand-inkSoft">
-                      {info.blurb}
-                    </p>
-
-                    {route.live && (
-                      <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-blue">
-                        Read more
-                        <ArrowRight
-                          className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
-                          aria-hidden
-                        />
+                const rowInner = (
+                  <div className="flex items-start gap-5 py-6">
+                    <Icon
+                      name={info.icon}
+                      className="mt-0.5 h-5 w-5 shrink-0 text-brand-blue/70"
+                    />
+                    <div className="min-w-0">
+                      <span className="flex items-center gap-2">
+                        <h3 className="font-display text-lg font-semibold leading-snug text-brand-ink">
+                          {route.label}
+                        </h3>
+                        {route.live && (
+                          <ArrowRight
+                            className="h-4 w-4 text-brand-blue transition-transform duration-300 group-hover:translate-x-1"
+                            aria-hidden
+                          />
+                        )}
                       </span>
-                    )}
-                  </>
-                );
-
-                const cardClass =
-                  "group flex flex-col rounded-2xl border border-brand-line bg-white p-8 shadow-soft transition-all duration-300";
-
-                // Not yet built → no link, no dead end.
-                return route.live ? (
-                  <Link
-                    key={slug}
-                    href={slug}
-                    className={`${cardClass} hover:-translate-y-1 hover:border-brand-blue/40 hover:shadow-softLift focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-blueMid focus-visible:ring-offset-2`}
-                  >
-                    {inner}
-                  </Link>
-                ) : (
-                  <div key={slug} className={cardClass}>
-                    {inner}
+                      <p className="mt-1.5 max-w-[72ch] text-sm leading-[1.7] text-brand-inkSoft">
+                        {info.blurb}
+                      </p>
+                    </div>
                   </div>
                 );
+
+                return (
+                  <li key={slug} className="border-b border-brand-line/70">
+                    {route.live ? (
+                      <Link
+                        href={slug}
+                        className="group -mx-4 block rounded-lg px-4 transition-colors hover:bg-brand-tint/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-blueMid"
+                      >
+                        {rowInner}
+                      </Link>
+                    ) : (
+                      rowInner
+                    )}
+                  </li>
+                );
               })}
-            </div>
+            </ul>
           </SectionContainer>
           );
         })}
@@ -237,7 +238,7 @@ export default function ServicesPage() {
               />
             </div>
             <div className="lg:col-span-7">
-              <ul className="flex flex-wrap gap-3">
+              <ul className="grid grid-cols-2 gap-x-8 border-t border-white/12 sm:grid-cols-3">
                 {[
                   "Ford",
                   "Mazda",
@@ -254,7 +255,7 @@ export default function ServicesPage() {
                 ].map((make) => (
                   <li
                     key={make}
-                    className="rounded-full border border-white/15 bg-white/[0.04] px-5 py-2.5 text-sm font-medium text-white/85"
+                    className="border-b border-white/12 py-3 font-display text-lg text-white/85"
                   >
                     {make}
                   </li>
@@ -279,8 +280,7 @@ export default function ServicesPage() {
               description={siteConfig.warrantyInterimCopy}
             />
             <p className="mt-6 text-sm leading-[1.7] text-brand-inkSoft">
-              You&apos;ll get a quote before any work starts, explained in plain
-              language — and nothing gets done until you approve it.
+              You&apos;ll get a quote before any work starts, explained in plain language, and nothing gets done until you approve it.
             </p>
             <Link
               href={utilityRoutes.warrantyRights}
