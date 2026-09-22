@@ -38,7 +38,7 @@ export default function PageHero({
         <Breadcrumbs trail={trail} tone="dark" />
 
         {eyebrow && (
-          <p className="mt-7 inline-flex items-center gap-2.5 font-mono text-[0.7rem] font-medium uppercase tracking-[0.28em] text-brand-cta sm:text-xs">
+          <p className="mt-7 inline-flex items-center gap-2.5 font-mono text-[0.7rem] font-medium uppercase tracking-[0.22em] text-brand-cta sm:text-xs">
             <span aria-hidden className="h-px w-8 bg-brand-cta/60" />
             {eyebrow}
           </p>
@@ -46,8 +46,8 @@ export default function PageHero({
 
         <h1
           className={cn(
-            "font-display font-extrabold uppercase leading-[0.98] tracking-tight text-white text-[2.5rem] md:text-5xl lg:text-6xl",
-            eyebrow ? "mt-5" : "mt-7"
+            "font-display font-semibold leading-[1.04] tracking-[-0.01em] text-white text-[2.25rem] md:text-5xl lg:text-[3.5rem]",
+            eyebrow ? "mt-4" : "mt-6"
           )}
         >
           {title}

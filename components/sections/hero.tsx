@@ -62,14 +62,14 @@ export default function Hero() {
         </p>
 
         {/* The single H1 — mixed case, natural and readable, SEO-relevant. */}
-        <h1 className="mx-auto mt-6 max-w-3xl font-display text-4xl font-extrabold leading-[1.02] tracking-tight text-white motion-safe:[animation:vmHeroRise_0.55s_cubic-bezier(0.22,1,0.36,1)_0.08s_both] sm:text-5xl lg:text-[3.75rem]">
+        <h1 className="mx-auto mt-6 max-w-3xl font-display text-4xl font-semibold leading-[1.07] tracking-[-0.01em] text-white motion-safe:[animation:vmHeroRise_0.55s_cubic-bezier(0.22,1,0.36,1)_0.08s_both] sm:text-5xl lg:text-[3.5rem]">
           Specialist vehicle, engine &amp; gearbox repairs
           <span className="text-brand-bone"> in Pretoria</span>
         </h1>
 
         <p className="mx-auto mt-6 max-w-[54ch] text-base leading-[1.7] text-brand-mist md:text-lg motion-safe:[animation:vmHeroRise_0.55s_cubic-bezier(0.22,1,0.36,1)_0.16s_both]">
           From everyday servicing to the difficult engine, gearbox and diagnostic
-          faults other workshops send away — we find the fault first, then quote
+          faults other workshops send away. We find the fault first, then quote
           to fix it.
         </p>
 

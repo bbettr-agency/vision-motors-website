@@ -29,7 +29,6 @@ export default function Faq() {
         <div className="lg:col-span-4">
           <SectionHeading
             tone="light"
-            eyebrow="Questions"
             title="The things people ask us"
           />
         </div>
@@ -52,7 +51,7 @@ export default function Faq() {
                       aria-controls={panelId}
                       className="flex w-full items-center justify-between gap-6 py-7 text-left transition-colors hover:text-brand-blue focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue"
                     >
-                      <span className="font-display text-lg font-bold uppercase leading-tight tracking-tight text-brand-ink md:text-xl">
+                      <span className="font-display text-lg font-semibold leading-snug tracking-[-0.01em] text-brand-ink md:text-xl">
                         {item.question}
                       </span>
                       <ChevronDown

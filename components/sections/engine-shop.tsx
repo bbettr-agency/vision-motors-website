@@ -34,13 +34,14 @@ export default function EngineShop() {
         <SectionHeading
           tone="light"
           eyebrow="The Engine Shop / Vision Motors"
+          rule
           title={
             <>
               We don&apos;t send engine work
               <span className="text-brand-inkMuted"> anywhere else</span>
             </>
           }
-          description="Most independent workshops sub-contract engine reconditioning out and mark it up. We run a separate engine shop of our own — where rebuilds and reconditioning are actually done."
+          description="Most independent workshops sub-contract engine reconditioning out and mark it up. We run a separate engine shop of our own, where rebuilds and reconditioning are actually done."
           className="lg:col-span-8"
         />
         <p className="font-mono text-xs uppercase tracking-[0.2em] text-brand-inkMuted lg:col-span-4 lg:text-right">
@@ -74,18 +75,18 @@ export default function EngineShop() {
       {/* Feature blocks + proof quote. */}
       <div className="mt-14 grid gap-x-16 gap-y-10 lg:grid-cols-2">
         <div className="border-l-2 border-brand-ink/25 pl-6">
-          <h3 className="font-display text-xl font-bold leading-tight tracking-tight text-brand-ink">
+          <h3 className="font-display text-xl font-semibold leading-tight tracking-tight text-brand-ink">
             A second premises, not a corner of the workshop
           </h3>
           <p className="mt-3 max-w-[55ch] text-sm leading-[1.75] text-brand-inkSoft">
             Engine work has its own building, its own benches and its own
-            equipment. That is what lets us take on full rebuilds rather than
-            just fitting parts somebody else machined.
+            equipment. That is what lets us take on full rebuilds instead of
+            only fitting parts somebody else machined.
           </p>
         </div>
 
         <div className="border-l-2 border-brand-cta/60 pl-6">
-          <h3 className="font-display text-xl font-bold leading-tight tracking-tight text-brand-ink">
+          <h3 className="font-display text-xl font-semibold leading-tight tracking-tight text-brand-ink">
             Rebuilt and reconditioned in-house
           </h3>
           <p className="mt-3 max-w-[55ch] text-sm leading-[1.75] text-brand-inkSoft">
@@ -99,11 +100,11 @@ export default function EngineShop() {
       <figure className="mt-14 max-w-2xl border-t border-brand-ink/20 pt-8">
         <span
           aria-hidden
-          className="font-display text-4xl font-bold leading-none text-brand-cta"
+          className="font-display text-4xl font-semibold leading-none text-brand-cta"
         >
           &ldquo;
         </span>
-        <blockquote className="mt-1 font-display text-xl font-bold leading-tight tracking-tight text-brand-ink sm:text-2xl">
+        <blockquote className="mt-1 font-display text-xl font-semibold leading-tight tracking-tight text-brand-ink sm:text-2xl">
           Do yourself a favor, take a walk through their engine overall room, go
           and check the work that they do. It&apos;s proper, it&apos;s sufficient.
         </blockquote>

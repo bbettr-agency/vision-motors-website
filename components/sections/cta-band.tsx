@@ -25,7 +25,7 @@ export default function CtaBand({
         className="pointer-events-none absolute inset-0 bg-grid-dark bg-[length:44px_44px] opacity-30 [mask-image:radial-gradient(ellipse_70%_60%_at_50%_0%,black,transparent_75%)]"
       />
       <div className="relative mx-auto max-w-3xl text-center">
-        <h2 className="font-display text-3xl font-bold uppercase leading-[1.05] tracking-tight text-white md:text-4xl">
+        <h2 className="font-display text-3xl font-semibold leading-[1.1] tracking-[-0.01em] text-white md:text-4xl">
           {heading}
         </h2>
         <p className="mx-auto mt-5 max-w-[55ch] text-base leading-[1.75] text-brand-bone">

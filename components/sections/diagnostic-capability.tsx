@@ -64,7 +64,7 @@ export default function DiagnosticCapability() {
                 delay={index * 0.08}
                 className="border-l-2 border-brand-steel/50 pl-6"
               >
-                <h3 className="font-display text-lg font-bold leading-tight tracking-tight text-white">
+                <h3 className="font-display text-lg font-semibold leading-tight tracking-tight text-white">
                   {point.title}
                 </h3>
                 <p className="mt-2.5 max-w-[55ch] text-sm leading-[1.75] text-brand-bone">
@@ -94,13 +94,13 @@ export default function DiagnosticCapability() {
           <figure className="mt-10 border-t border-brand-cta/50 pt-8">
             <span
               aria-hidden
-              className="font-display text-5xl font-bold leading-none text-brand-cta"
+              className="font-display text-5xl font-semibold leading-none text-brand-cta"
             >
               &ldquo;
             </span>
             <blockquote
               lang="af"
-              className="mt-2 font-display text-2xl font-bold leading-[1.15] tracking-tight text-white sm:text-3xl"
+              className="mt-2 font-display text-2xl font-semibold leading-[1.15] tracking-tight text-white sm:text-3xl"
             >
               Die fout wat julle opgespoor en reggestel het is iets wat die
               amptelike Nissan handelaar nie kon regkry nie!

@@ -67,7 +67,6 @@ export default function Testimonials() {
   return (
     <SectionContainer id="reviews" className="bg-brand-navy">
       <SectionHeading
-        eyebrow="Reviews"
         title="Read what people are saying"
         description="What people say once we've had their car, bakkie or engine through the workshop, and met the team behind the counter."
         align="center"
@@ -83,7 +82,7 @@ export default function Testimonials() {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-3 rounded-full border border-white/15 bg-white/[0.04] px-5 py-2.5 transition-colors hover:border-brand-cta/40 hover:bg-white/[0.07] focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-cta"
           >
-            <span className="font-display text-2xl font-extrabold text-white">
+            <span className="font-display text-2xl font-semibold text-white">
               {reviewsMeta.rating}
             </span>
             <Stars value={Number(reviewsMeta.rating)} />
@@ -121,14 +120,14 @@ export default function Testimonials() {
                   <span
                     aria-hidden
                     className={cn(
-                      "flex h-11 w-11 shrink-0 items-center justify-center rounded-full font-display text-sm font-bold",
+                      "flex h-11 w-11 shrink-0 items-center justify-center rounded-full font-display text-sm font-semibold",
                       AVATAR_TONES[i % AVATAR_TONES.length]
                     )}
                   >
                     {initials(review.name)}
                   </span>
                   <figcaption className="min-w-0">
-                    <span className="block truncate font-display text-base font-bold text-white">
+                    <span className="block truncate font-display text-base font-semibold text-white">
                       {review.name}
                     </span>
                     <span className="block truncate text-xs text-brand-bone/70">

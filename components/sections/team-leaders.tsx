@@ -48,7 +48,7 @@ export default function TeamLeaders() {
                 <p className="font-mono text-[0.7rem] font-medium uppercase tracking-[0.2em] text-brand-cta">
                   {branchName(member.branchId)}
                 </p>
-                <h3 className="mt-1.5 font-display text-2xl font-bold tracking-tight text-white">
+                <h3 className="mt-1.5 font-display text-2xl font-semibold tracking-tight text-white">
                   {member.name}
                 </h3>
                 <p className="mt-1 text-sm text-brand-bone/75">{member.role}</p>

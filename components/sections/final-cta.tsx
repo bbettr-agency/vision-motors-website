@@ -33,7 +33,6 @@ export default function FinalCta() {
       <div className="relative mx-auto grid max-w-7xl gap-14 lg:grid-cols-12 lg:gap-16">
         <div className="lg:col-span-5">
           <SectionHeading
-            eyebrow="Book your car in"
             title={
               <>
                 Let&apos;s find out what&apos;s
@@ -55,7 +54,7 @@ export default function FinalCta() {
                   <span className="block font-mono text-[0.7rem] uppercase tracking-[0.2em] text-brand-bone">
                     Phone the workshop
                   </span>
-                  <span className="mt-1.5 block whitespace-nowrap font-display text-2xl font-bold text-white transition-colors group-hover:text-brand-cta">
+                  <span className="mt-1.5 block whitespace-nowrap font-display text-2xl font-semibold text-white transition-colors group-hover:text-brand-cta">
                     {siteConfig.phoneDisplay}
                   </span>
                 </span>
@@ -92,7 +91,7 @@ export default function FinalCta() {
 
         <Reveal className="lg:col-span-7">
           <div className="border border-white/12 bg-white p-7 shadow-form sm:p-9">
-            <h3 className="font-display text-2xl font-bold leading-tight tracking-tight text-brand-ink sm:text-3xl">
+            <h3 className="font-display text-2xl font-semibold leading-tight tracking-tight text-brand-ink sm:text-3xl">
               {formConfig.headings.title}
             </h3>
             <p className="mt-2 text-sm leading-[1.7] text-brand-inkSoft">

@@ -38,7 +38,7 @@ export default function WorkshopBand() {
           <p className="font-mono text-[0.7rem] font-medium uppercase tracking-[0.28em] text-brand-cta">
             Inside the workshop
           </p>
-          <h2 className="mt-4 font-display text-3xl font-bold leading-[1.05] tracking-tight text-white sm:text-4xl lg:text-5xl">
+          <h2 className="mt-4 font-display text-3xl font-semibold leading-[1.05] tracking-tight text-white sm:text-4xl lg:text-5xl">
             A real, working workshop
           </h2>
           <p className="mt-5 max-w-[46ch] text-base leading-[1.7] text-brand-mist">

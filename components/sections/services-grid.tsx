@@ -41,7 +41,7 @@ export default function ServicesGrid() {
               <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-ink/5 text-brand-blue">
                 <Icon name={group.icon} className="h-5 w-5" />
               </span>
-              <h3 className="font-display text-xl font-bold leading-tight tracking-tight text-brand-ink sm:text-2xl">
+              <h3 className="font-display text-xl font-semibold leading-tight tracking-tight text-brand-ink sm:text-2xl">
                 {group.title}
               </h3>
             </div>

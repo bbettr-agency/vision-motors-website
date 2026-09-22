@@ -57,7 +57,7 @@ export default function LocationHours() {
                 <p className="font-mono text-[0.7rem] font-medium uppercase tracking-[0.28em] text-brand-inkMuted">
                   {branch.utilityLabel}
                 </p>
-                <h3 className="mt-2 font-display text-2xl font-bold tracking-tight text-brand-ink sm:text-3xl">
+                <h3 className="mt-2 font-display text-2xl font-semibold tracking-tight text-brand-ink sm:text-3xl">
                   {branch.name}
                 </h3>
                 <address className="mt-4 not-italic text-base leading-[1.7] text-brand-inkSoft">

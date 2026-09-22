@@ -17,7 +17,6 @@ export default function WhyUs() {
   return (
     <SectionContainer className="bg-brand-ink">
       <SectionHeading
-        eyebrow="Why Vision Motors"
         title="No surprises on the invoice"
         description="The most common complaint about workshops isn't the repair — it's finding out afterwards what it cost and why."
         align="center"
@@ -39,7 +38,7 @@ export default function WhyUs() {
               <Icon name={item.icon} className="h-5 w-5 text-brand-steel" />
             </div>
 
-            <h3 className="mt-6 font-display text-xl font-bold leading-[0.98] tracking-tight text-white">
+            <h3 className="mt-6 font-display text-xl font-semibold leading-[1.15] tracking-[-0.01em] text-white">
               {item.title}
             </h3>
             <p className="mt-3.5 text-sm leading-[1.75] text-brand-bone">
