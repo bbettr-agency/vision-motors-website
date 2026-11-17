@@ -20,12 +20,15 @@ export default function PageHero({
   eyebrow,
   title,
   intro,
+  introId,
   children,
 }: {
   trail: Crumb[];
   eyebrow?: string;
   title: string;
   intro?: ReactNode;
+  /** Optional id on the intro block (e.g. a schema `speakable` target). */
+  introId?: string;
   children?: ReactNode;
 }) {
   return (
@@ -54,7 +57,10 @@ export default function PageHero({
         </h1>
 
         {intro && (
-          <div className="mt-6 max-w-[62ch] text-base leading-[1.75] text-brand-bone md:text-lg">
+          <div
+            id={introId}
+            className="mt-6 max-w-[62ch] text-base leading-[1.75] text-brand-bone md:text-lg"
+          >
             {intro}
           </div>
         )}

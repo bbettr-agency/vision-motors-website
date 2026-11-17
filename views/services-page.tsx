@@ -4,7 +4,8 @@ import { ArrowRight } from "lucide-react";
 import { serviceRoutes, utilityRoutes } from "@/config/routes";
 import { siteConfig } from "@/config/site-config";
 import { buildTrail } from "@/components/ui/breadcrumbs";
-import { breadcrumbSchema } from "@/lib/schema";
+import { breadcrumbSchema, serviceSchema } from "@/lib/schema";
+import { servicesConfig } from "@/config/services-config";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import StickyMobileBar from "@/components/layout/sticky-mobile-bar";
@@ -123,6 +124,18 @@ export default function ServicesPage() {
     <>
       <SkipLink />
       <JsonLd data={breadcrumbSchema(trail)} />
+      {/* One Service node per capability described on this page, from the same
+          config that renders it. provider → #business; no offers/prices. */}
+      {servicesConfig.map((service) => (
+        <JsonLd
+          key={service.slug}
+          data={serviceSchema({
+            name: service.title,
+            description: service.description,
+            path: utilityRoutes.services,
+          })}
+        />
+      ))}
       <Header />
 
       <main id="main" className="overflow-hidden">

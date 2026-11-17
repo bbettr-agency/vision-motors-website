@@ -104,7 +104,7 @@ export default function EngineShop() {
           &ldquo;
         </span>
         <blockquote className="mt-1 font-display text-xl font-bold leading-tight tracking-tight text-brand-ink sm:text-2xl">
-          Do yourself a favor, take a walk through their engine overall room, go
+          Do yourself a favor, take a walk through their engine overhaul room
           and check the work that they do. It&apos;s proper, it&apos;s sufficient.
         </blockquote>
         <figcaption className="mt-5 font-mono text-xs uppercase tracking-[0.15em] text-brand-inkMuted">

@@ -70,6 +70,13 @@ export const rightsConfig = {
   sourceUrl:
     "https://www.compcom.co.za/wp-content/uploads/2021/07/Guidelines-for-Competition-in-the-South-African-Automotive-Aftermarket.pdf",
 
+  // Real content dates from git history (page authored 2026-07-27; copy last
+  // changed 2026-07-27). Update `dateModified` whenever the guidance changes —
+  // it drives both the visible "Last updated" line and the Article schema.
+  datePublished: "2026-07-27",
+  dateModified: "2026-07-27",
+  dateModifiedDisplay: "27 July 2026",
+
   disclaimer:
     "This is general information, not legal advice. Warranty terms differ between manufacturers — check your own warranty documentation.",
 };

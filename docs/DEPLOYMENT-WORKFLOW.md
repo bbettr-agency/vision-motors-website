@@ -33,7 +33,7 @@ Two branches. Nothing else. Feature branches are optional and also produce previ
 |---|---|---|
 | **Production / review** | `https://vision-motors-website.vercel.app` | `production` branch |
 | **Preview** | `vision-motors-website-<hash>-…vercel.app` (one per push) | `main` and any other branch |
-| **Client's real domain** | `visionmotors.co.za` | ⛔ **Not connected.** Still serving the old GroovePages site. |
+| **Client's real domain** | `www.visionmotors.co.za` (apex 308 → www) | 🔴 **LIVE — fed by `production`** (verified 2026-11-17). |
 
 > Note on naming: `vision-motors-website.vercel.app` is Vercel's *production* environment, but
 > commercially it is still a **staging / review** URL. The client's real domain is untouched.
@@ -86,7 +86,12 @@ failure mode this workflow exists to prevent.
 
 🔴 **`visionmotors.co.za` must not be connected without written client approval.**
 
-Current state, verified 2026-07-22:
+> **Update 2026-11-17:** the domain IS now connected. HTTP checks show
+> `www.visionmotors.co.za` served by Vercel (`server: Vercel`, Next.js) with this project's
+> production build, and `visionmotors.co.za` 308-redirecting to `www`. The checklist below is
+> historical; every push to `production` now publishes to the client's real domain.
+
+Historical state, verified 2026-07-22:
 
 - The project has **exactly one domain**: `vision-motors-website.vercel.app`
 - `visionmotors.co.za` is **not present anywhere in the Vercel account**

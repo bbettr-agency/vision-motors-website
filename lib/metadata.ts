@@ -36,7 +36,6 @@ export function createMetadata(options: CreateMetadataOptions = {}): Metadata {
     metadataBase: new URL(siteConfig.website),
     title,
     description,
-    keywords: seoConfig.keywords,
     authors: [{ name: seoConfig.author }],
     robots: options.noindex
       ? { index: false, follow: false }

@@ -32,6 +32,9 @@ const mono = IBM_Plex_Mono({
   variable: "--font-mono",
   display: "swap",
   weight: ["500", "600"],
+  // Small technical labels only — not worth competing with the hero image for
+  // early bandwidth. Swaps in when loaded (GEO audit 2026-11-17: 6 preloads).
+  preload: false,
 });
 
 export const metadata: Metadata = createMetadata();
