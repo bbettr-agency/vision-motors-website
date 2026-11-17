@@ -1,6 +1,7 @@
 import { ExternalLink, Info } from "lucide-react";
 
 import { rightsConfig } from "@/config/rights-config";
+import { seoConfig } from "@/config/seo-config";
 import { siteConfig } from "@/config/site-config";
 import { buildTrail } from "@/components/ui/breadcrumbs";
 import { breadcrumbSchema } from "@/lib/schema";
@@ -38,9 +39,19 @@ export default function WarrantyRightsPage() {
     "@type": "Article",
     headline: rightsConfig.title,
     description: rightsConfig.intro,
-    author: { "@type": "Organization", name: siteConfig.businessName },
+    author: { "@id": `${siteConfig.website}/#business` },
     publisher: { "@id": `${siteConfig.website}/#business` },
     mainEntityOfPage: `${siteConfig.website}/your-warranty-rights`,
+    datePublished: rightsConfig.datePublished,
+    dateModified: rightsConfig.dateModified,
+    image: `${siteConfig.website}${seoConfig.ogImage}`,
+    inLanguage: "en-ZA",
+    // The two passages that carry the page's meaning: the right itself and the
+    // mandatory caveat (so a voice answer can never read one without the other).
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: ["#rights-intro", "#rights-caveat"],
+    },
   };
 
   return (
@@ -56,6 +67,7 @@ export default function WarrantyRightsPage() {
           eyebrow={rightsConfig.eyebrow}
           title={rightsConfig.title}
           intro={rightsConfig.intro}
+          introId="rights-intro"
         />
 
         <SectionContainer className="bg-brand-cream">
@@ -85,7 +97,10 @@ export default function WarrantyRightsPage() {
             </div>
 
             {/* MANDATORY caveat. */}
-            <div className="mt-4 flex gap-5 rounded-2xl border border-brand-ink/15 bg-brand-bluegrey p-7">
+            <div
+              id="rights-caveat"
+              className="mt-4 flex gap-5 rounded-2xl border border-brand-ink/15 bg-brand-bluegrey p-7"
+            >
               <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-ink/10 text-brand-ink/70">
                 <Info className="h-5 w-5" aria-hidden />
               </span>
@@ -114,6 +129,12 @@ export default function WarrantyRightsPage() {
               </a>
               <p className="text-xs leading-[1.7] text-brand-inkMuted">
                 {rightsConfig.disclaimer}
+              </p>
+              <p className="text-xs leading-[1.7] text-brand-inkMuted">
+                Last updated:{" "}
+                <time dateTime={rightsConfig.dateModified}>
+                  {rightsConfig.dateModifiedDisplay}
+                </time>
               </p>
             </div>
 

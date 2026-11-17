@@ -23,8 +23,10 @@ git checkout production && git merge --ff-only main && git push origin productio
 ```
 
 ⛔ **Never run `npx vercel --prod`** — it bypasses the branch gate.
-⛔ **`visionmotors.co.za` is not connected and must not be** without written client approval.
-The client's real site is still served by GroovePages and is unaffected by anything here.
+🔴 **`visionmotors.co.za` is LIVE on this project.** Verified 2026-11-17: `www.visionmotors.co.za`
+is served by Vercel from the `production` branch, and the apex 308-redirects to `www`. A push to
+`production` therefore publishes to the client's real domain. The canonical origin is
+`https://www.visionmotors.co.za` (`config/site-config.ts`).
 
 Full detail, including rollback: **`docs/DEPLOYMENT-WORKFLOW.md`**.
 

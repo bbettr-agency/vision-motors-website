@@ -206,7 +206,8 @@ git checkout production && git merge --ff-only main && git push origin productio
 🔴 **`visionmotors.co.za` is NOT connected and must not be** without written client approval.
 Verified 2026-07-22: the project has exactly one domain (`vision-motors-website.vercel.app`),
 `visionmotors.co.za` appears nowhere in the Vercel account, and no DNS has been touched. The
-client's live site is still GroovePages and is unaffected.
+client's live site was then still GroovePages. **Update 2026-11-17:** `www.visionmotors.co.za` is
+now live on this project's `production` branch — see docs/DEPLOYMENT-WORKFLOW.md.
 
 ⚠️ "Auto-assign Custom Production Domains" is enabled — harmless while no custom domain exists,
 but it means the next production deploy claims the domain the moment one is added.
