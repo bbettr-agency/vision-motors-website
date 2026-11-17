@@ -102,23 +102,29 @@ type SitemapEntry = {
   path: string;
   priority: number;
   changeFreq: "weekly" | "monthly" | "yearly";
+  /**
+   * Date the page's CONTENT last changed (YYYY-MM-DD), taken from git history.
+   * ⚠️ Update it in the same commit as any real content change to that page.
+   * Shared chrome (header/footer) changes do not count.
+   */
+  lastModified?: string;
 };
 
 /**
  * Indexable routes → app/sitemap.ts.
- * `/thank-you` is deliberately excluded and disallowed in robots.
+ * `/thank-you` is deliberately excluded (it carries noindex).
  * Service pages append themselves automatically once `live: true`.
  */
 export const sitemapRoutes: SitemapEntry[] = [
-  { path: "/", priority: 1.0, changeFreq: "weekly" },
-  { path: "/services", priority: 0.9, changeFreq: "monthly" },
-  { path: "/book-a-vehicle-in", priority: 0.9, changeFreq: "monthly" },
-  { path: "/contact-us", priority: 0.8, changeFreq: "monthly" },
-  { path: "/about-us", priority: 0.7, changeFreq: "monthly" },
-  { path: "/our-work", priority: 0.6, changeFreq: "monthly" },
-  { path: "/your-warranty-rights", priority: 0.6, changeFreq: "yearly" },
-  { path: "/privacy-policy", priority: 0.2, changeFreq: "yearly" },
-  { path: "/website-terms-of-use", priority: 0.2, changeFreq: "yearly" },
+  { path: "/", priority: 1.0, changeFreq: "weekly", lastModified: "2026-11-17" },
+  { path: "/services", priority: 0.9, changeFreq: "monthly", lastModified: "2026-08-11" },
+  { path: "/book-a-vehicle-in", priority: 0.9, changeFreq: "monthly", lastModified: "2026-07-30" },
+  { path: "/contact-us", priority: 0.8, changeFreq: "monthly", lastModified: "2026-08-12" },
+  { path: "/about-us", priority: 0.7, changeFreq: "monthly", lastModified: "2026-08-18" },
+  { path: "/our-work", priority: 0.6, changeFreq: "monthly", lastModified: "2026-08-18" },
+  { path: "/your-warranty-rights", priority: 0.6, changeFreq: "yearly", lastModified: "2026-07-27" },
+  { path: "/privacy-policy", priority: 0.2, changeFreq: "yearly", lastModified: "2026-07-27" },
+  { path: "/website-terms-of-use", priority: 0.2, changeFreq: "yearly", lastModified: "2026-07-29" },
   ...serviceRoutes
     .filter((s) => s.live)
     .map((s) => ({

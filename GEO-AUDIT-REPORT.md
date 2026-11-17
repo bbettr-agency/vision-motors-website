@@ -302,3 +302,42 @@ Keep the existing `knowsAbout`, `hasOfferCatalog` and `areaServed`. The opening 
 - Plain-HTTP (port 80) redirects could not be tested from the audit environment.
 - Core Web Vitals figures are lab measurements (Playwright), not field data.
 - Brand and platform checks used a US-centric search index with weak South African coverage, so absence findings are a lower bound.
+
+---
+
+## Remediation Log: 17 November 2026
+
+Fixes were shipped to `production`, which feeds www.visionmotors.co.za. The Phase 1/2 typography redesign on `main` was deliberately left out.
+
+### Fixed in code
+
+| # | Issue | Fix |
+|---|---|---|
+| 4 | Canonicals pointed at the redirecting apex | `config/site-config.ts` origin → `https://www.visionmotors.co.za`. This covers canonicals, OG, sitemap, robots and every schema `@id`/`url`. |
+| 5 | NAP: switchboard missing from schema | `contactPoint` with +27 12 335 0070 added. Branch numbers stay on their branches. |
+| 7 | Thin entity data | `alternateName: "Vision Motors Pretoria"`, `logo`, `hasMap` on both branches, `department` ↔ `parentOrganization` (the superseded `branchOf` was dropped). |
+| 6 | No Person entities | `employee` Person nodes from the client-confirmed team (name, role, photo only; no credentials asserted). |
+| 8 | No llms.txt | `/llms.txt`, generated from config (`app/llms.txt/route.ts`). |
+| 9 | Quote mismatch | Engine-shop pull-quote now matches the source review word for word ("overhaul room and check the work…"). |
+| 10 | Security headers | CSP (framing/base/object/form-action), X-Frame-Options, X-Content-Type-Options, Referrer-Policy and Permissions-Policy, all in `next.config.js`. |
+| 12 | No lastmod / dates | Real per-route `lastModified` values taken from git history (`config/routes.ts`), plus a visible "Last updated" date on /your-warranty-rights. |
+| 13 | Article schema incomplete | `datePublished`, `dateModified`, `image`, `inLanguage`, author → `#business`, and `speakable` (intro + mandatory caveat). |
+| 14 | No Service schema | 10 Service nodes on /services, built from the same config that renders the page; provider → `#business`. |
+| 16 | /thank-you disallowed + noindex | Disallow removed; the page relies on its `noindex, nofollow`. |
+| Low | Robots `Host:`, meta keywords, font preloads, WebSite node, hours | Removed `Host:`; removed meta keywords; mono font no longer preloaded; WebSite gets `@id`/`publisher`/`inLanguage`; hours merged into one spec. |
+| Docs | README / DEPLOYMENT-WORKFLOW claimed the domain wasn't connected | Corrected. |
+
+Verified before deploy: `tsc` clean, lint clean, production build clean, and all 9 pages served locally with www canonicals. All JSON-LD parses, there are no console/CSP errors in Chromium, and the security headers are present.
+
+### Not fixed: needs the client or agency (the site's truth rules forbid guessing)
+
+- **GBP URL and coordinates** → `googleBusinessProfileUrl` and `geo` in `config/site-config.ts`. Once set, `sameAs` and `geo` emit automatically.
+- **Founding year, workmanship warranty terms, accreditation evidence (RMI/MIWA/ARASA), registered legal name.** These are gated in `site-config.ts` and emit automatically once marked verified.
+- **Service pages (DSG, gearbox, engine reconditioning…).** Blocked by `docs/SERVICE-PAGE-BRIEFS.md`: each needs a completed brief and a real photograph. Set `live: true` in `config/routes.ts` once built.
+- **Team credentials/tenure, /our-work captions and case studies.** These need client input.
+- **Off-site work:** GBP/Bing Places/Apple Business Connect, SA directory listings, a review drive, LinkedIn, Bing Webmaster Tools + IndexNow, and resubmitting the sitemap in Search Console with the www URLs.
+
+### Deferred (engineering, low risk to leave)
+
+- Homepage HTML weight (522 KB raw, about 33 KB with Brotli): an RSC payload and inline-SVG refactor. Better done on `main` alongside the redesign than as a production hotfix.
+- Strict CSP `script-src` with nonces. It needs a dedicated test pass.

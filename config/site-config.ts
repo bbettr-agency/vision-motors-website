@@ -40,7 +40,17 @@ export const siteConfig = {
   emailService: "service@visionmotors.co.za",
   emailServiceLink: "mailto:service@visionmotors.co.za",
 
-  website: "https://visionmotors.co.za",
+  // Canonical origin. The apex (visionmotors.co.za) 308-redirects to www on
+  // Vercel, so every canonical, sitemap <loc>, OG URL and schema @id must use
+  // www — otherwise each canonical points at a redirect (GEO audit 2026-11-17).
+  website: "https://www.visionmotors.co.za",
+
+  /**
+   * Disambiguation name for AI/search entity matching. Several unrelated
+   * "Vision Motors" businesses exist (UK, Fiji). Descriptive, not a new brand.
+   */
+  alternateName: "Vision Motors Pretoria",
+  logo: "/images/vision-motors-logo-indigo.png",
 
   // ── Location ───────────────────────────────────────────────────────────────
   // ✅ FINAL addresses confirmed by client 2026-08-14. Two distinct workshops,
